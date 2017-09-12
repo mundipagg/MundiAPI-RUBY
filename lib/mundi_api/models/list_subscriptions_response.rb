@@ -3,7 +3,7 @@
 module MundiApi
   class ListSubscriptionsResponse < BaseModel
     # The subscription objects
-    # @return [List of String]
+    # @return [List of GetSubscriptionResponse]
     attr_accessor :data
 
     # Paging object
@@ -31,7 +31,12 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash
-      data = hash['data']
+      # Parameter is an array, so we need to iterate through it
+      data = nil
+      if hash['data'] != nil
+        data = Array.new
+        hash['data'].each{|structure| data << (GetSubscriptionResponse.from_hash(structure) if structure)}
+      end
       paging = PagingResponse.from_hash(hash['paging']) if hash['paging']
 
       # Create object from extracted values

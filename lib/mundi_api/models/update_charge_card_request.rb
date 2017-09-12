@@ -14,6 +14,10 @@ module MundiApi
     # @return [CreateCardRequest]
     attr_accessor :card
 
+    # Indicates a recurrence
+    # @return [Boolean]
+    attr_accessor :recurrence
+
     # A mapping from model property names to API property names
     def self.names
       if @_hash.nil?
@@ -21,16 +25,19 @@ module MundiApi
         @_hash["update_subscription"] = "update_subscription"
         @_hash["card_id"] = "card_id"
         @_hash["card"] = "card"
+        @_hash["recurrence"] = "recurrence"
       end
       @_hash
     end
 
     def initialize(update_subscription = nil,
                    card_id = nil,
-                   card = nil)
+                   card = nil,
+                   recurrence = nil)
       @update_subscription = update_subscription
       @card_id = card_id
       @card = card
+      @recurrence = recurrence
     end
 
     # Creates an instance of the object from a hash
@@ -41,11 +48,13 @@ module MundiApi
       update_subscription = hash['update_subscription']
       card_id = hash['card_id']
       card = CreateCardRequest.from_hash(hash['card']) if hash['card']
+      recurrence = hash['recurrence']
 
       # Create object from extracted values
       UpdateChargeCardRequest.new(update_subscription,
                                   card_id,
-                                  card)
+                                  card,
+                                  recurrence)
     end
   end
 end

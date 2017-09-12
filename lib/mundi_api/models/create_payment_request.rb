@@ -30,6 +30,10 @@ module MundiApi
     # @return [String]
     attr_accessor :gateway_affiliation_id
 
+    # The amount of the payment, in cents
+    # @return [Integer]
+    attr_accessor :amount
+
     # A mapping from model property names to API property names
     def self.names
       if @_hash.nil?
@@ -41,6 +45,7 @@ module MundiApi
         @_hash["voucher"] = "voucher"
         @_hash["bank_transfer"] = "bank_transfer"
         @_hash["gateway_affiliation_id"] = "gateway_affiliation_id"
+        @_hash["amount"] = "amount"
       end
       @_hash
     end
@@ -51,7 +56,8 @@ module MundiApi
                    currency = nil,
                    voucher = nil,
                    bank_transfer = nil,
-                   gateway_affiliation_id = nil)
+                   gateway_affiliation_id = nil,
+                   amount = nil)
       @payment_method = payment_method
       @credit_card = credit_card
       @boleto = boleto
@@ -59,6 +65,7 @@ module MundiApi
       @voucher = voucher
       @bank_transfer = bank_transfer
       @gateway_affiliation_id = gateway_affiliation_id
+      @amount = amount
     end
 
     # Creates an instance of the object from a hash
@@ -73,6 +80,7 @@ module MundiApi
       voucher = CreateVoucherPaymentRequest.from_hash(hash['voucher']) if hash['voucher']
       bank_transfer = CreateBankTransferPaymentRequest.from_hash(hash['bank_transfer']) if hash['bank_transfer']
       gateway_affiliation_id = hash['gateway_affiliation_id']
+      amount = hash['amount']
 
       # Create object from extracted values
       CreatePaymentRequest.new(payment_method,
@@ -81,7 +89,8 @@ module MundiApi
                                currency,
                                voucher,
                                bank_transfer,
-                               gateway_affiliation_id)
+                               gateway_affiliation_id,
+                               amount)
     end
   end
 end

@@ -594,5 +594,37 @@ module MundiApi
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       return GetAccessTokenResponse.from_hash(decoded)
     end
+
+    # Updates the metadata a customer
+    # @param [String] customer_id Required parameter: The customer id
+    # @param [UpdateMetadataRequest] request Required parameter: Request for updating the customer metadata
+    # @return GetCustomerResponse response from the API call
+    def update_customer_metadata(customer_id,
+                                 request)
+
+      # prepare query url
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/Customers/{customer_id}/metadata'
+      _query_builder = APIHelper.append_url_with_template_parameters _query_builder, {
+        'customer_id' => customer_id
+      }
+      _query_url = APIHelper.clean_url _query_builder
+
+      # prepare headers
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # prepare and execute HttpRequest
+      _request = @http_client.patch _query_url, headers: _headers, parameters: request.to_json
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # return appropriate response type
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      return GetCustomerResponse.from_hash(decoded)
+    end
   end
 end
