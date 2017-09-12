@@ -30,6 +30,10 @@ module MundiApi
     # @return [String]
     attr_accessor :card_token
 
+    # Indicates a recurrence
+    # @return [Boolean]
+    attr_accessor :recurrence
+
     # Indicates if the operation should be only authorization or auth and capture.
     # @return [Boolean]
     attr_accessor :capture
@@ -45,6 +49,7 @@ module MundiApi
         @_hash["update_subscription_card"] = "update_subscription_card"
         @_hash["card_id"] = "card_id"
         @_hash["card_token"] = "card_token"
+        @_hash["recurrence"] = "recurrence"
         @_hash["capture"] = "capture"
       end
       @_hash
@@ -57,6 +62,7 @@ module MundiApi
                    update_subscription_card = nil,
                    card_id = nil,
                    card_token = nil,
+                   recurrence = nil,
                    capture = true)
       @installments = installments
       @statement_descriptor = statement_descriptor
@@ -65,6 +71,7 @@ module MundiApi
       @update_subscription_card = update_subscription_card
       @card_id = card_id
       @card_token = card_token
+      @recurrence = recurrence
       @capture = capture
     end
 
@@ -80,6 +87,7 @@ module MundiApi
       update_subscription_card = hash['update_subscription_card']
       card_id = hash['card_id']
       card_token = hash['card_token']
+      recurrence = hash['recurrence']
       capture = hash['capture'] ||= true
 
       # Create object from extracted values
@@ -90,6 +98,7 @@ module MundiApi
                                          update_subscription_card,
                                          card_id,
                                          card_token,
+                                         recurrence,
                                          capture)
     end
   end

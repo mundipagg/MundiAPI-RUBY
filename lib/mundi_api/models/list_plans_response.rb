@@ -7,7 +7,7 @@ module MundiApi
     attr_accessor :data
 
     # Paging object
-    # @return [String]
+    # @return [PagingResponse]
     attr_accessor :paging
 
     # A mapping from model property names to API property names
@@ -37,7 +37,7 @@ module MundiApi
         data = Array.new
         hash['data'].each{|structure| data << (GetPlanResponse.from_hash(structure) if structure)}
       end
-      paging = hash['paging']
+      paging = PagingResponse.from_hash(hash['paging']) if hash['paging']
 
       # Create object from extracted values
       ListPlansResponse.new(data,

@@ -30,6 +30,10 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
+    # Defines whether the order will go through anti-fraud
+    # @return [Boolean]
+    attr_accessor :antifraud_enabled
+
     # A mapping from model property names to API property names
     def self.names
       if @_hash.nil?
@@ -41,6 +45,7 @@ module MundiApi
         @_hash["customer_id"] = "customer_id"
         @_hash["shipping"] = "shipping"
         @_hash["metadata"] = "metadata"
+        @_hash["antifraud_enabled"] = "antifraud_enabled"
       end
       @_hash
     end
@@ -51,7 +56,8 @@ module MundiApi
                    code = nil,
                    customer_id = nil,
                    shipping = nil,
-                   metadata = nil)
+                   metadata = nil,
+                   antifraud_enabled = nil)
       @items = items
       @customer = customer
       @payments = payments
@@ -59,6 +65,7 @@ module MundiApi
       @customer_id = customer_id
       @shipping = shipping
       @metadata = metadata
+      @antifraud_enabled = antifraud_enabled
     end
 
     # Creates an instance of the object from a hash
@@ -83,6 +90,7 @@ module MundiApi
       customer_id = hash['customer_id']
       shipping = CreateShippingRequest.from_hash(hash['shipping']) if hash['shipping']
       metadata = hash['metadata']
+      antifraud_enabled = hash['antifraud_enabled']
 
       # Create object from extracted values
       CreateOrderRequest.new(items,
@@ -91,7 +99,8 @@ module MundiApi
                              code,
                              customer_id,
                              shipping,
-                             metadata)
+                             metadata,
+                             antifraud_enabled)
     end
   end
 end

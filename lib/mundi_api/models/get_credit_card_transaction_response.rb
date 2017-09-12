@@ -37,6 +37,10 @@ module MundiApi
     # @return [GetCardResponse]
     attr_accessor :card
 
+    # Acquirer message
+    # @return [String]
+    attr_accessor :acquirer_message
+
     # Number of installments
     # @return [Integer]
     attr_accessor :installments
@@ -53,6 +57,7 @@ module MundiApi
         @_hash["acquirer_auth_code"] = "acquirer_auth_code"
         @_hash["operation_type"] = "operation_type"
         @_hash["card"] = "card"
+        @_hash["acquirer_message"] = "acquirer_message"
         @_hash["installments"] = "installments"
         @_hash = super().merge(@_hash)
       end
@@ -67,6 +72,7 @@ module MundiApi
                    acquirer_auth_code = nil,
                    operation_type = nil,
                    card = nil,
+                   acquirer_message = nil,
                    gateway_id = nil,
                    amount = nil,
                    status = nil,
@@ -86,6 +92,7 @@ module MundiApi
       @acquirer_auth_code = acquirer_auth_code
       @operation_type = operation_type
       @card = card
+      @acquirer_message = acquirer_message
       @installments = installments
 
       # Call the constructor of the base class
@@ -114,6 +121,7 @@ module MundiApi
       acquirer_auth_code = hash['acquirer_auth_code']
       operation_type = hash['operation_type']
       card = GetCardResponse.from_hash(hash['card']) if hash['card']
+      acquirer_message = hash['acquirer_message']
       gateway_id = hash['gateway_id']
       amount = hash['amount']
       status = hash['status']
@@ -135,6 +143,7 @@ module MundiApi
                                            acquirer_auth_code,
                                            operation_type,
                                            card,
+                                           acquirer_message,
                                            gateway_id,
                                            amount,
                                            status,
