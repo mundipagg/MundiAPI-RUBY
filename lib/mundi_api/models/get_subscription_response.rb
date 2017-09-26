@@ -61,7 +61,7 @@ module MundiApi
 
     # TODO: Write general description for this method
     # @return [GetCardResponse]
-    attr_accessor :credit_card
+    attr_accessor :card
 
     # TODO: Write general description for this method
     # @return [List of GetSubscriptionItemResponse]
@@ -95,6 +95,10 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :canceled_at
 
+    # Subscription discounts
+    # @return [List of GetDiscountResponse]
+    attr_accessor :discounts
+
     # A mapping from model property names to API property names
     def self.names
       if @_hash.nil?
@@ -113,7 +117,7 @@ module MundiApi
         @_hash["created_at"] = "created_at"
         @_hash["updated_at"] = "updated_at"
         @_hash["customer"] = "customer"
-        @_hash["credit_card"] = "credit_card"
+        @_hash["card"] = "card"
         @_hash["items"] = "items"
         @_hash["statement_descriptor"] = "statement_descriptor"
         @_hash["metadata"] = "metadata"
@@ -122,6 +126,7 @@ module MundiApi
         @_hash["billing_day"] = "billing_day"
         @_hash["minimum_price"] = "minimum_price"
         @_hash["canceled_at"] = "canceled_at"
+        @_hash["discounts"] = "discounts"
       end
       @_hash
     end
@@ -140,7 +145,7 @@ module MundiApi
                    created_at = nil,
                    updated_at = nil,
                    customer = nil,
-                   credit_card = nil,
+                   card = nil,
                    items = nil,
                    statement_descriptor = nil,
                    metadata = nil,
@@ -148,7 +153,8 @@ module MundiApi
                    next_billing_at = nil,
                    billing_day = nil,
                    minimum_price = nil,
-                   canceled_at = nil)
+                   canceled_at = nil,
+                   discounts = nil)
       @id = id
       @code = code
       @start_at = start_at
@@ -163,7 +169,7 @@ module MundiApi
       @created_at = created_at
       @updated_at = updated_at
       @customer = customer
-      @credit_card = credit_card
+      @card = card
       @items = items
       @statement_descriptor = statement_descriptor
       @metadata = metadata
@@ -172,6 +178,7 @@ module MundiApi
       @billing_day = billing_day
       @minimum_price = minimum_price
       @canceled_at = canceled_at
+      @discounts = discounts
     end
 
     # Creates an instance of the object from a hash
@@ -193,7 +200,7 @@ module MundiApi
       created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
       customer = GetCustomerResponse.from_hash(hash['customer']) if hash['customer']
-      credit_card = GetCardResponse.from_hash(hash['credit_card']) if hash['credit_card']
+      card = GetCardResponse.from_hash(hash['card']) if hash['card']
       # Parameter is an array, so we need to iterate through it
       items = nil
       if hash['items'] != nil
@@ -207,6 +214,12 @@ module MundiApi
       billing_day = hash['billing_day']
       minimum_price = hash['minimum_price']
       canceled_at = DateTime.rfc3339(hash['canceled_at']) if hash['canceled_at']
+      # Parameter is an array, so we need to iterate through it
+      discounts = nil
+      if hash['discounts'] != nil
+        discounts = Array.new
+        hash['discounts'].each{|structure| discounts << (GetDiscountResponse.from_hash(structure) if structure)}
+      end
 
       # Create object from extracted values
       GetSubscriptionResponse.new(id,
@@ -223,7 +236,7 @@ module MundiApi
                                   created_at,
                                   updated_at,
                                   customer,
-                                  credit_card,
+                                  card,
                                   items,
                                   statement_descriptor,
                                   metadata,
@@ -231,7 +244,8 @@ module MundiApi
                                   next_billing_at,
                                   billing_day,
                                   minimum_price,
-                                  canceled_at)
+                                  canceled_at,
+                                  discounts)
     end
   end
 end
