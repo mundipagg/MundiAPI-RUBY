@@ -14,6 +14,14 @@ module MundiApi
     # @return [Integer]
     attr_accessor :quantity
 
+    # Item seller
+    # @return [CreateSellerRequest]
+    attr_accessor :seller
+
+    # seller identificator
+    # @return [String]
+    attr_accessor :seller_id
+
     # A mapping from model property names to API property names
     def self.names
       if @_hash.nil?
@@ -21,16 +29,22 @@ module MundiApi
         @_hash["amount"] = "amount"
         @_hash["description"] = "description"
         @_hash["quantity"] = "quantity"
+        @_hash["seller"] = "seller"
+        @_hash["seller_id"] = "seller_id"
       end
       @_hash
     end
 
     def initialize(amount = nil,
                    description = nil,
-                   quantity = nil)
+                   quantity = nil,
+                   seller = nil,
+                   seller_id = nil)
       @amount = amount
       @description = description
       @quantity = quantity
+      @seller = seller
+      @seller_id = seller_id
     end
 
     # Creates an instance of the object from a hash
@@ -41,11 +55,15 @@ module MundiApi
       amount = hash['amount']
       description = hash['description']
       quantity = hash['quantity']
+      seller = CreateSellerRequest.from_hash(hash['seller']) if hash['seller']
+      seller_id = hash['seller_id']
 
       # Create object from extracted values
       CreateOrderItemRequest.new(amount,
                                  description,
-                                 quantity)
+                                 quantity,
+                                 seller,
+                                 seller_id)
     end
   end
 end

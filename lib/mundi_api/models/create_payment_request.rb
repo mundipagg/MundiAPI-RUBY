@@ -22,6 +22,10 @@ module MundiApi
     # @return [CreateVoucherPaymentRequest]
     attr_accessor :voucher
 
+    # Metadata
+    # @return [Array<String, String>]
+    attr_accessor :metadata
+
     # Settings for bank transfer payment
     # @return [CreateBankTransferPaymentRequest]
     attr_accessor :bank_transfer
@@ -34,6 +38,10 @@ module MundiApi
     # @return [Integer]
     attr_accessor :amount
 
+    # Settings for checkout payment
+    # @return [CreateCheckoutPaymentRequest]
+    attr_accessor :checkout
+
     # A mapping from model property names to API property names
     def self.names
       if @_hash.nil?
@@ -43,9 +51,11 @@ module MundiApi
         @_hash["boleto"] = "boleto"
         @_hash["currency"] = "currency"
         @_hash["voucher"] = "voucher"
+        @_hash["metadata"] = "metadata"
         @_hash["bank_transfer"] = "bank_transfer"
         @_hash["gateway_affiliation_id"] = "gateway_affiliation_id"
         @_hash["amount"] = "amount"
+        @_hash["checkout"] = "checkout"
       end
       @_hash
     end
@@ -55,17 +65,21 @@ module MundiApi
                    boleto = nil,
                    currency = nil,
                    voucher = nil,
+                   metadata = nil,
                    bank_transfer = nil,
                    gateway_affiliation_id = nil,
-                   amount = nil)
+                   amount = nil,
+                   checkout = nil)
       @payment_method = payment_method
       @credit_card = credit_card
       @boleto = boleto
       @currency = currency
       @voucher = voucher
+      @metadata = metadata
       @bank_transfer = bank_transfer
       @gateway_affiliation_id = gateway_affiliation_id
       @amount = amount
+      @checkout = checkout
     end
 
     # Creates an instance of the object from a hash
@@ -78,9 +92,11 @@ module MundiApi
       boleto = CreateBoletoPaymentRequest.from_hash(hash['boleto']) if hash['boleto']
       currency = hash['currency']
       voucher = CreateVoucherPaymentRequest.from_hash(hash['voucher']) if hash['voucher']
+      metadata = hash['metadata']
       bank_transfer = CreateBankTransferPaymentRequest.from_hash(hash['bank_transfer']) if hash['bank_transfer']
       gateway_affiliation_id = hash['gateway_affiliation_id']
       amount = hash['amount']
+      checkout = CreateCheckoutPaymentRequest.from_hash(hash['checkout']) if hash['checkout']
 
       # Create object from extracted values
       CreatePaymentRequest.new(payment_method,
@@ -88,9 +104,11 @@ module MundiApi
                                boleto,
                                currency,
                                voucher,
+                               metadata,
                                bank_transfer,
                                gateway_affiliation_id,
-                               amount)
+                               amount,
+                               checkout)
     end
   end
 end
