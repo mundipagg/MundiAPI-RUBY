@@ -2,23 +2,23 @@
 # ( https://apimatic.io ).
 
 module MundiApi
-  # Request for creating a new Access Token
-  class CreateAccessTokenRequest < BaseModel
-    # Minutes to expire the token
-    # @return [Integer]
-    attr_accessor :expires_in
+  # Updates the default bank account for a recipient
+  class UpdateRecipientBankAccountRequest < BaseModel
+    # Bank account
+    # @return [CreateBankAccountRequest]
+    attr_accessor :bank_account
 
     # A mapping from model property names to API property names.
     def self.names
       if @_hash.nil?
         @_hash = {}
-        @_hash['expires_in'] = 'expires_in'
+        @_hash['bank_account'] = 'bank_account'
       end
       @_hash
     end
 
-    def initialize(expires_in = nil)
-      @expires_in = expires_in
+    def initialize(bank_account = nil)
+      @bank_account = bank_account
     end
 
     # Creates an instance of the object from a hash.
@@ -26,10 +26,11 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      expires_in = hash['expires_in']
+      bank_account = CreateBankAccountRequest.from_hash(hash['bank_account']) if
+        hash['bank_account']
 
       # Create object from extracted values.
-      CreateAccessTokenRequest.new(expires_in)
+      UpdateRecipientBankAccountRequest.new(bank_account)
     end
   end
 end

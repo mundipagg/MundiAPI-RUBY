@@ -2,35 +2,35 @@
 # ( https://apimatic.io ).
 
 module MundiApi
-  # Request for updating a customer
-  class UpdateCustomerRequest < BaseModel
-    # Name
+  # Request for creating a recipient
+  class CreateRecipientRequest < BaseModel
+    # Recipient name
     # @return [String]
     attr_accessor :name
 
-    # Email
+    # Recipient email
     # @return [String]
     attr_accessor :email
 
-    # Document number
+    # Recipient description
+    # @return [String]
+    attr_accessor :description
+
+    # Recipient document number
     # @return [String]
     attr_accessor :document
 
-    # Person type
+    # Recipient type
     # @return [String]
     attr_accessor :type
 
-    # Address
-    # @return [CreateAddressRequest]
-    attr_accessor :address
+    # Bank account
+    # @return [CreateBankAccountRequest]
+    attr_accessor :default_bank_account
 
     # Metadata
     # @return [Array<String, String>]
     attr_accessor :metadata
-
-    # Metadata
-    # @return [CreatePhonesRequest]
-    attr_accessor :phones
 
     # A mapping from model property names to API property names.
     def self.names
@@ -38,29 +38,29 @@ module MundiApi
         @_hash = {}
         @_hash['name'] = 'name'
         @_hash['email'] = 'email'
+        @_hash['description'] = 'description'
         @_hash['document'] = 'document'
         @_hash['type'] = 'type'
-        @_hash['address'] = 'address'
+        @_hash['default_bank_account'] = 'default_bank_account'
         @_hash['metadata'] = 'metadata'
-        @_hash['phones'] = 'phones'
       end
       @_hash
     end
 
     def initialize(name = nil,
                    email = nil,
+                   description = nil,
                    document = nil,
                    type = nil,
-                   address = nil,
-                   metadata = nil,
-                   phones = nil)
+                   default_bank_account = nil,
+                   metadata = nil)
       @name = name
       @email = email
+      @description = description
       @document = document
       @type = type
-      @address = address
+      @default_bank_account = default_bank_account
       @metadata = metadata
-      @phones = phones
     end
 
     # Creates an instance of the object from a hash.
@@ -70,21 +70,21 @@ module MundiApi
       # Extract variables from the hash.
       name = hash['name']
       email = hash['email']
+      description = hash['description']
       document = hash['document']
       type = hash['type']
-      address = CreateAddressRequest.from_hash(hash['address']) if
-        hash['address']
+      default_bank_account = CreateBankAccountRequest.from_hash(hash['default_bank_account']) if
+        hash['default_bank_account']
       metadata = hash['metadata']
-      phones = CreatePhonesRequest.from_hash(hash['phones']) if hash['phones']
 
       # Create object from extracted values.
-      UpdateCustomerRequest.new(name,
-                                email,
-                                document,
-                                type,
-                                address,
-                                metadata,
-                                phones)
+      CreateRecipientRequest.new(name,
+                                 email,
+                                 description,
+                                 document,
+                                 type,
+                                 default_bank_account,
+                                 metadata)
     end
   end
 end

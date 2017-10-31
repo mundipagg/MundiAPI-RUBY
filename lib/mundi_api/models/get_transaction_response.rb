@@ -37,6 +37,10 @@ module MundiApi
     # @return [Integer]
     attr_accessor :max_attempts
 
+    # Splits
+    # @return [List of GetSplitResponse]
+    attr_accessor :splits
+
     # Date and time of the next attempt
     # @return [DateTime]
     attr_accessor :next_attempt
@@ -70,6 +74,7 @@ module MundiApi
         @_hash['updated_at'] = 'updated_at'
         @_hash['attempt_count'] = 'attempt_count'
         @_hash['max_attempts'] = 'max_attempts'
+        @_hash['splits'] = 'splits'
         @_hash['next_attempt'] = 'next_attempt'
         @_hash['transaction_type'] = 'transaction_type'
       end
@@ -84,6 +89,7 @@ module MundiApi
                    updated_at = nil,
                    attempt_count = nil,
                    max_attempts = nil,
+                   splits = nil,
                    next_attempt = nil,
                    transaction_type = nil)
       @gateway_id = gateway_id
@@ -94,6 +100,7 @@ module MundiApi
       @updated_at = updated_at
       @attempt_count = attempt_count
       @max_attempts = max_attempts
+      @splits = splits
       @next_attempt = next_attempt
       @transaction_type = transaction_type
     end
@@ -116,6 +123,14 @@ module MundiApi
       updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
       attempt_count = hash['attempt_count']
       max_attempts = hash['max_attempts']
+      # Parameter is an array, so we need to iterate through it
+      splits = nil
+      unless hash['splits'].nil?
+        splits = []
+        hash['splits'].each do |structure|
+          splits << (GetSplitResponse.from_hash(structure) if structure)
+        end
+      end
       next_attempt = DateTime.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
@@ -129,6 +144,7 @@ module MundiApi
                                  updated_at,
                                  attempt_count,
                                  max_attempts,
+                                 splits,
                                  next_attempt,
                                  transaction_type)
     end
