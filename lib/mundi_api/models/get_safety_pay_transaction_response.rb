@@ -46,6 +46,7 @@ module MundiApi
                    updated_at = nil,
                    attempt_count = nil,
                    max_attempts = nil,
+                   splits = nil,
                    paid_at = nil,
                    paid_amount = nil,
                    next_attempt = nil,
@@ -64,6 +65,7 @@ module MundiApi
             updated_at,
             attempt_count,
             max_attempts,
+            splits,
             next_attempt,
             transaction_type)
     end
@@ -83,6 +85,14 @@ module MundiApi
       updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
       attempt_count = hash['attempt_count']
       max_attempts = hash['max_attempts']
+      # Parameter is an array, so we need to iterate through it
+      splits = nil
+      unless hash['splits'].nil?
+        splits = []
+        hash['splits'].each do |structure|
+          splits << (GetSplitResponse.from_hash(structure) if structure)
+        end
+      end
       paid_at = DateTime.rfc3339(hash['paid_at']) if hash['paid_at']
       paid_amount = hash['paid_amount']
       next_attempt = DateTime.rfc3339(hash['next_attempt']) if
@@ -100,6 +110,7 @@ module MundiApi
                                           updated_at,
                                           attempt_count,
                                           max_attempts,
+                                          splits,
                                           paid_at,
                                           paid_amount,
                                           next_attempt,

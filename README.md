@@ -8,9 +8,9 @@ This client library is a Ruby gem which can be compiled and used in your Ruby an
 
 1. Open the command line interface or the terminal and navigate to the folder containing the source code.
 2. Run ``` gem build mundi_api.gemspec ``` to build the gem.
-3. Once built, the gem can be installed on the current work environment using ``` gem install mundi_api-0.9.0.gem ```
+3. Once built, the gem can be installed on the current work environment using ``` gem install mundi_api-0.11.0.gem ```
 
-![Building Gem](https://apidocs.io/illustration/ruby?step=buildSDK&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiAPI-Ruby&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0)
+![Building Gem](https://apidocs.io/illustration/ruby?step=buildSDK&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiAPI-Ruby&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0)
 
 ## How to Use
 
@@ -20,41 +20,41 @@ The following section explains how to use the MundiApi Ruby Gem in a new Rails p
 
 Close any existing projects in RubyMine&trade; by selecting ``` File -> Close Project ```. Next, click on ``` Create New Project ``` to create a new project from scratch.
 
-![Create a new project in RubyMine](https://apidocs.io/illustration/ruby?step=createNewProject0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0)
+![Create a new project in RubyMine](https://apidocs.io/illustration/ruby?step=createNewProject0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0)
 
 Next, provide ``` TestApp ``` as the project name, choose ``` Rails Application ``` as the project type, and click ``` OK ```.
 
-![Create a new Rails Application in RubyMine - step 1](https://apidocs.io/illustration/ruby?step=createNewProject1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0)
+![Create a new Rails Application in RubyMine - step 1](https://apidocs.io/illustration/ruby?step=createNewProject1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0)
 
 In the next dialog make sure that correct *Ruby SDK* is being used (minimum 2.0.0) and click ``` OK ```.
 
-![Create a new Rails Application in RubyMine - step 2](https://apidocs.io/illustration/ruby?step=createNewProject2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0)
+![Create a new Rails Application in RubyMine - step 2](https://apidocs.io/illustration/ruby?step=createNewProject2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0)
 
 This will create a new Rails Application project with an existing set of files and folder.
 
 ### 2. Add reference of the gem
 
-In order to use the MundiApi gem in the new project we must add a gem reference. Locate the ```Gemfile``` in the *Project Explorer* window under the ``` TestApp ``` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: ``` gem 'mundi_api', '~> 0.9.0' ```
+In order to use the MundiApi gem in the new project we must add a gem reference. Locate the ```Gemfile``` in the *Project Explorer* window under the ``` TestApp ``` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: ``` gem 'mundi_api', '~> 0.11.0' ```
 
-![Add references of the Gemfile](https://apidocs.io/illustration/ruby?step=addReference&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0)
+![Add references of the Gemfile](https://apidocs.io/illustration/ruby?step=addReference&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0)
 
 ### 3. Adding a new Rails Controller
 
 Once the ``` TestApp ``` project is created, a folder named ``` controllers ``` will be visible in the *Project Explorer* under the following path: ``` TestApp > app > controllers ```. Right click on this folder and select ``` New -> Run Rails Generator... ```.
 
-![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?step=addCode0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0)
+![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?step=addCode0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0)
 
 Selecting the said option will popup a small window where the generator names are displayed. Here, select the ``` controller ``` template.
 
-![Create a new Controller](https://apidocs.io/illustration/ruby?step=addCode1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0)
+![Create a new Controller](https://apidocs.io/illustration/ruby?step=addCode1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0)
 
 Next, a popup window will ask you for a Controller name and included Actions. For controller name provide ``` Hello ``` and include an action named ``` Index ``` and click ``` OK ```.
 
-![Add a new Controller](https://apidocs.io/illustration/ruby?step=addCode2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0)
+![Add a new Controller](https://apidocs.io/illustration/ruby?step=addCode2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0)
 
 A new controller class anmed ``` HelloController ``` will be created in a file named ``` hello_controller.rb ``` containing a method named ``` Index ```. In this method, add code for initialization and a sample for its usage.
 
-![Initialize the library](https://apidocs.io/illustration/ruby?step=addCode3&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0)
+![Initialize the library](https://apidocs.io/illustration/ruby?step=addCode3&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0)
 
 ## How to Test
 
@@ -91,7 +91,7 @@ client = MundiApi::MundiApiClient.new(
 
 The added initlization code can be debugged by putting a breakpoint in the ``` Index ``` method and running the project in debug mode by selecting ``` Run -> Debug 'Development: TestApp' ```.
 
-![Debug the TestApp](https://apidocs.io/illustration/ruby?step=addCode4&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.9.0&initLine=client%2520%253D%2520MundiApiClient.new%2528%2527basic_auth_user_name%2527%252C%2520%2527basic_auth_password%2527%2529)
+![Debug the TestApp](https://apidocs.io/illustration/ruby?step=addCode4&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.11.0&initLine=client%2520%253D%2520MundiApiClient.new%2528%2527basic_auth_user_name%2527%252C%2520%2527basic_auth_password%2527%2529)
 
 
 
@@ -106,6 +106,7 @@ The added initlization code can be debugged by putting a breakpoint in the ``` I
 * [SubscriptionsController](#subscriptions_controller)
 * [OrdersController](#orders_controller)
 * [TokensController](#tokens_controller)
+* [RecipientsController](#recipients_controller)
 
 ## <a name="charges_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ChargesController") ChargesController
 
@@ -375,8 +376,8 @@ def get_charges(page = nil,
 #### Example Usage
 
 ```ruby
-page = 224
-size = 224
+page = 42
+size = 42
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -925,8 +926,8 @@ def get_access_tokens(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 60
-size = 60
+page = 42
+size = 42
 
 result = customers.get_access_tokens(customer_id, page, size)
 
@@ -957,8 +958,8 @@ def get_addresses(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 60
-size = 60
+page = 42
+size = 42
 
 result = customers.get_addresses(customer_id, page, size)
 
@@ -989,8 +990,8 @@ def get_cards(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 19
-size = 19
+page = 42
+size = 42
 
 result = customers.get_cards(customer_id, page, size)
 
@@ -1127,8 +1128,8 @@ def get_invoices(page = nil,
 #### Example Usage
 
 ```ruby
-page = 19
-size = 19
+page = 42
+size = 42
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1441,8 +1442,8 @@ def get_plans(page = nil,
 #### Example Usage
 
 ```ruby
-page = 19
-size = 19
+page = 42
+size = 42
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1873,8 +1874,8 @@ def get_usages(subscription_id,
 ```ruby
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 110
-size = 110
+page = 91
+size = 91
 
 result = subscriptions.get_usages(subscription_id, item_id, page, size)
 
@@ -1951,8 +1952,8 @@ def get_subscriptions(page = nil,
 #### Example Usage
 
 ```ruby
-page = 110
-size = 110
+page = 91
+size = 91
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -2093,8 +2094,8 @@ def get_orders(page = nil,
 #### Example Usage
 
 ```ruby
-page = 110
-size = 110
+page = 91
+size = 91
 code = 'code'
 status = 'status'
 created_since = DateTime.now
@@ -2176,6 +2177,451 @@ public_key = 'public_key'
 request = CreateTokenRequest.new
 
 result = tokens.create_token(public_key, request)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="recipients_controller"></a>![Class: ](https://apidocs.io/img/class.png ".RecipientsController") RecipientsController
+
+### Get singleton instance
+
+The singleton instance of the ``` RecipientsController ``` class can be accessed from the API Client.
+
+```ruby
+recipients = client.recipients
+```
+
+### <a name="create_recipient"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.create_recipient") create_recipient
+
+> Creates a new recipient
+
+
+```ruby
+def create_recipient(request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| request |  ``` Required ```  | Recipient data |
+
+
+#### Example Usage
+
+```ruby
+request = CreateRecipientRequest.new
+
+result = recipients.create_recipient(request)
+
+```
+
+
+### <a name="update_recipient"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.update_recipient") update_recipient
+
+> Updates a recipient
+
+
+```ruby
+def update_recipient(recipient_id,
+                         request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Recipient data |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+request = UpdateRecipientRequest.new
+
+result = recipients.update_recipient(recipient_id, request)
+
+```
+
+
+### <a name="update_recipient_default_bank_account"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.update_recipient_default_bank_account") update_recipient_default_bank_account
+
+> Updates the default bank account from a recipient
+
+
+```ruby
+def update_recipient_default_bank_account(recipient_id,
+                                              request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Bank account data |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+request = UpdateRecipientBankAccountRequest.new
+
+result = recipients.update_recipient_default_bank_account(recipient_id, request)
+
+```
+
+
+### <a name="get_recipient"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_recipient") get_recipient
+
+> Retrieves recipient information
+
+
+```ruby
+def get_recipient(recipient_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipiend id |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+
+result = recipients.get_recipient(recipient_id)
+
+```
+
+
+### <a name="get_recipients"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_recipients") get_recipients
+
+> Retrieves paginated recipients information
+
+
+```ruby
+def get_recipients(page = nil,
+                       size = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```ruby
+page = 91
+size = 91
+
+result = recipients.get_recipients(page, size)
+
+```
+
+
+### <a name="get_balance"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_balance") get_balance
+
+> Get balance information for a recipient
+
+
+```ruby
+def get_balance(recipient_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+
+result = recipients.get_balance(recipient_id)
+
+```
+
+
+### <a name="create_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.create_transfer") create_transfer
+
+> Creates a transfer for a recipient
+
+
+```ruby
+def create_transfer(recipient_id,
+                        request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient Id |
+| request |  ``` Required ```  | Transfer data |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+request = CreateTransferRequest.new
+
+result = recipients.create_transfer(recipient_id, request)
+
+```
+
+
+### <a name="get_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_transfer") get_transfer
+
+> Gets a transfer
+
+
+```ruby
+def get_transfer(recipient_id,
+                     transfer_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| transfer_id |  ``` Required ```  | Transfer id |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+transfer_id = 'transfer_id'
+
+result = recipients.get_transfer(recipient_id, transfer_id)
+
+```
+
+
+### <a name="get_transfers"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_transfers") get_transfers
+
+> Gets a paginated list of transfers for the recipient
+
+
+```ruby
+def get_transfers(recipient_id,
+                      page = nil,
+                      size = nil,
+                      status = nil,
+                      created_since = nil,
+                      created_until = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| status |  ``` Optional ```  | Filter for transfer status |
+| created_since |  ``` Optional ```  | Filter for start range of transfer creation date |
+| created_until |  ``` Optional ```  | Filter for end range of transfer creation date |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+page = 91
+size = 91
+status = 'status'
+created_since = DateTime.now
+created_until = DateTime.now
+
+result = recipients.get_transfers(recipient_id, page, size, status, created_since, created_until)
+
+```
+
+
+### <a name="create_anticipation"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.create_anticipation") create_anticipation
+
+> Creates an anticipation
+
+
+```ruby
+def create_anticipation(recipient_id,
+                            request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Anticipation data |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+request = CreateAnticipationRequest.new
+
+result = recipients.create_anticipation(recipient_id, request)
+
+```
+
+
+### <a name="get_anticipation"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipation") get_anticipation
+
+> Gets an anticipation
+
+
+```ruby
+def get_anticipation(recipient_id,
+                         anticipation_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| anticipation_id |  ``` Required ```  | Anticipation id |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+anticipation_id = 'anticipation_id'
+
+result = recipients.get_anticipation(recipient_id, anticipation_id)
+
+```
+
+
+### <a name="get_anticipation_limits"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipation_limits") get_anticipation_limits
+
+> Gets the anticipation limits for a recipient
+
+
+```ruby
+def get_anticipation_limits(recipient_id,
+                                timeframe,
+                                payment_date); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| timeframe |  ``` Required ```  | Timeframe |
+| payment_date |  ``` Required ```  | Anticipation payment date |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+timeframe = 'timeframe'
+payment_date = DateTime.now
+
+result = recipients.get_anticipation_limits(recipient_id, timeframe, payment_date)
+
+```
+
+
+### <a name="get_anticipations"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipations") get_anticipations
+
+> Retrieves a paginated list of anticipations from a recipient
+
+
+```ruby
+def get_anticipations(recipient_id,
+                          page = nil,
+                          size = nil,
+                          status = nil,
+                          timeframe = nil,
+                          payment_date_since = nil,
+                          payment_date_until = nil,
+                          created_since = nil,
+                          created_until = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| status |  ``` Optional ```  | Filter for anticipation status |
+| timeframe |  ``` Optional ```  | Filter for anticipation timeframe |
+| payment_date_since |  ``` Optional ```  | Filter for start range for anticipation payment date |
+| payment_date_until |  ``` Optional ```  | Filter for end range for anticipation payment date |
+| created_since |  ``` Optional ```  | Filter for start range for anticipation creation date |
+| created_until |  ``` Optional ```  | Filter for end range for anticipation creation date |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+page = 91
+size = 91
+status = 'status'
+timeframe = 'timeframe'
+payment_date_since = DateTime.now
+payment_date_until = DateTime.now
+created_since = DateTime.now
+created_until = DateTime.now
+
+result = recipients.get_anticipations(recipient_id, page, size, status, timeframe, payment_date_since, payment_date_until, created_since, created_until)
+
+```
+
+
+### <a name="update_recipient_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.update_recipient_metadata") update_recipient_metadata
+
+> Updates recipient metadata
+
+
+```ruby
+def update_recipient_metadata(recipient_id,
+                                  request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| request |  ``` Required ```  | Metadata |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+request = UpdateMetadataRequest.new
+
+result = recipients.update_recipient_metadata(recipient_id, request)
 
 ```
 
