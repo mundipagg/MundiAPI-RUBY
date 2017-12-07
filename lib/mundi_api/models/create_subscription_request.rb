@@ -105,6 +105,10 @@ module MundiApi
     # @return [String]
     attr_accessor :card_token
 
+    # Gateway Affiliation code
+    # @return [String]
+    attr_accessor :gateway_affiliation_id
+
     # A mapping from model property names to API property names.
     def self.names
       if @_hash.nil?
@@ -134,6 +138,7 @@ module MundiApi
         @_hash['minimum_price'] = 'minimum_price'
         @_hash['cycles'] = 'cycles'
         @_hash['card_token'] = 'card_token'
+        @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
       end
       @_hash
     end
@@ -162,7 +167,8 @@ module MundiApi
                    start_at = nil,
                    minimum_price = nil,
                    cycles = nil,
-                   card_token = nil)
+                   card_token = nil,
+                   gateway_affiliation_id = nil)
       @customer = customer
       @card = card
       @code = code
@@ -188,6 +194,7 @@ module MundiApi
       @minimum_price = minimum_price
       @cycles = cycles
       @card_token = card_token
+      @gateway_affiliation_id = gateway_affiliation_id
     end
 
     # Creates an instance of the object from a hash.
@@ -237,6 +244,7 @@ module MundiApi
       minimum_price = hash['minimum_price']
       cycles = hash['cycles']
       card_token = hash['card_token']
+      gateway_affiliation_id = hash['gateway_affiliation_id']
 
       # Create object from extracted values.
       CreateSubscriptionRequest.new(customer,
@@ -263,7 +271,8 @@ module MundiApi
                                     start_at,
                                     minimum_price,
                                     cycles,
-                                    card_token)
+                                    card_token,
+                                    gateway_affiliation_id)
     end
   end
 end

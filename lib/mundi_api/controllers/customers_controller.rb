@@ -14,69 +14,6 @@ module MundiApi
       self.class.instance
     end
 
-    # Creates a new customer
-    # @param [CreateCustomerRequest] request Required parameter: Request for
-    # creating a customer
-    # @return GetCustomerResponse response from the API call
-    def create_customer(request)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers'
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetCustomerResponse.from_hash(decoded)
-    end
-
-    # Get a customer
-    # @param [String] customer_id Required parameter: Customer Id
-    # @return GetCustomerResponse response from the API call
-    def get_customer(customer_id)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'customer_id' => customer_id
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetCustomerResponse.from_hash(decoded)
-    end
-
     # Updates a card
     # @param [String] customer_id Required parameter: Customer Id
     # @param [String] card_id Required parameter: Card id
@@ -157,234 +94,14 @@ module MundiApi
       GetAddressResponse.from_hash(decoded)
     end
 
-    # Get a customer's address
-    # @param [String] customer_id Required parameter: Customer id
-    # @param [String] address_id Required parameter: Address Id
-    # @return GetAddressResponse response from the API call
-    def get_address(customer_id,
-                    address_id)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/addresses/{address_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'customer_id' => customer_id,
-        'address_id' => address_id
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetAddressResponse.from_hash(decoded)
-    end
-
-    # Delete a Customer's address
-    # @param [String] customer_id Required parameter: Customer Id
-    # @param [String] address_id Required parameter: Address Id
-    # @return GetAddressResponse response from the API call
-    def delete_address(customer_id,
-                       address_id)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/addresses/{address_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'customer_id' => customer_id,
-        'address_id' => address_id
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.delete(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetAddressResponse.from_hash(decoded)
-    end
-
-    # Delete a customer's card
-    # @param [String] customer_id Required parameter: Customer Id
-    # @param [String] card_id Required parameter: Card Id
-    # @return GetCardResponse response from the API call
-    def delete_card(customer_id,
-                    card_id)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/cards/{card_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'customer_id' => customer_id,
-        'card_id' => card_id
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.delete(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetCardResponse.from_hash(decoded)
-    end
-
-    # Creates a new address for a customer
-    # @param [String] customer_id Required parameter: Customer Id
-    # @param [CreateAddressRequest] request Required parameter: Request for
-    # creating an address
-    # @return GetAddressResponse response from the API call
-    def create_address(customer_id,
-                       request)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/addresses'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'customer_id' => customer_id
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetAddressResponse.from_hash(decoded)
-    end
-
-    # Get a customer's card
-    # @param [String] customer_id Required parameter: Customer id
-    # @param [String] card_id Required parameter: Card id
-    # @return GetCardResponse response from the API call
-    def get_card(customer_id,
-                 card_id)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/cards/{card_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'customer_id' => customer_id,
-        'card_id' => card_id
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetCardResponse.from_hash(decoded)
-    end
-
-    # Creates a new card for a customer
-    # @param [String] customer_id Required parameter: Customer id
-    # @param [CreateCardRequest] request Required parameter: Request for
-    # creating a card
-    # @return GetCardResponse response from the API call
-    def create_card(customer_id,
-                    request)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/cards'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'customer_id' => customer_id
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetCardResponse.from_hash(decoded)
-    end
-
-    # Updates a customer
-    # @param [String] customer_id Required parameter: Customer id
-    # @param [UpdateCustomerRequest] request Required parameter: Request for
-    # updating a customer
+    # Creates a new customer
+    # @param [CreateCustomerRequest] request Required parameter: Request for
+    # creating a customer
     # @return GetCustomerResponse response from the API call
-    def update_customer(customer_id,
-                        request)
+    def create_customer(request)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'customer_id' => customer_id
-      )
+      _query_builder << '/customers'
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -394,7 +111,7 @@ module MundiApi
       }
 
       # Prepare and execute HttpRequest.
-      _request = @http_client.put(
+      _request = @http_client.post(
         _query_url,
         headers: _headers,
         parameters: request.to_json
@@ -406,6 +123,164 @@ module MundiApi
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetCustomerResponse.from_hash(decoded)
+    end
+
+    # Get a customer
+    # @param [String] customer_id Required parameter: Customer Id
+    # @return GetCustomerResponse response from the API call
+    def get_customer(customer_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/customers/{customer_id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'customer_id' => customer_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetCustomerResponse.from_hash(decoded)
+    end
+
+    # Get all access tokens from a customer
+    # @param [String] customer_id Required parameter: Customer Id
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
+    # @return ListAccessTokensResponse response from the API call
+    def get_access_tokens(customer_id,
+                          page = nil,
+                          size = nil)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/customers/{customer_id}/access-tokens'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'customer_id' => customer_id
+      )
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        'page' => page,
+        'size' => size,
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ListAccessTokensResponse.from_hash(decoded)
+    end
+
+    # Gets all adressess from a customer
+    # @param [String] customer_id Required parameter: Customer id
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
+    # @return ListAddressesResponse response from the API call
+    def get_addresses(customer_id,
+                      page = nil,
+                      size = nil)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/customers/{customer_id}/addresses'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'customer_id' => customer_id
+      )
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        'page' => page,
+        'size' => size,
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ListAddressesResponse.from_hash(decoded)
+    end
+
+    # Get all cards from a customer
+    # @param [String] customer_id Required parameter: Customer Id
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
+    # @return ListCardsResponse response from the API call
+    def get_cards(customer_id,
+                  page = nil,
+                  size = nil)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/customers/{customer_id}/cards'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'customer_id' => customer_id
+      )
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        'page' => page,
+        'size' => size,
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ListCardsResponse.from_hash(decoded)
     end
 
     # Delete a Customer's access tokens
@@ -629,26 +504,56 @@ module MundiApi
       GetCustomerResponse.from_hash(decoded)
     end
 
-    # Get all access tokens from a customer
-    # @param [String] customer_id Required parameter: Customer Id
-    # @param [Integer] page Optional parameter: Page number
-    # @param [Integer] size Optional parameter: Page size
-    # @return ListAccessTokensResponse response from the API call
-    def get_access_tokens(customer_id,
-                          page = nil,
-                          size = nil)
+    # Updates a customer
+    # @param [String] customer_id Required parameter: Customer id
+    # @param [UpdateCustomerRequest] request Required parameter: Request for
+    # updating a customer
+    # @return GetCustomerResponse response from the API call
+    def update_customer(customer_id,
+                        request)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/access-tokens'
+      _query_builder << '/customers/{customer_id}'
       _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
         'customer_id' => customer_id
       )
-      _query_builder = APIHelper.append_url_with_query_parameters(
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.put(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetCustomerResponse.from_hash(decoded)
+    end
+
+    # Get a customer's address
+    # @param [String] customer_id Required parameter: Customer id
+    # @param [String] address_id Required parameter: Address Id
+    # @return GetAddressResponse response from the API call
+    def get_address(customer_id,
+                    address_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/customers/{customer_id}/addresses/{address_id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
-        array_serialization: Configuration.array_serialization
+        'customer_id' => customer_id,
+        'address_id' => address_id
       )
       _query_url = APIHelper.clean_url _query_builder
 
@@ -668,17 +573,86 @@ module MundiApi
 
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      ListAccessTokensResponse.from_hash(decoded)
+      GetAddressResponse.from_hash(decoded)
     end
 
-    # Gets all adressess from a customer
-    # @param [String] customer_id Required parameter: Customer id
-    # @param [Integer] page Optional parameter: Page number
-    # @param [Integer] size Optional parameter: Page size
-    # @return ListAddressesResponse response from the API call
-    def get_addresses(customer_id,
-                      page = nil,
-                      size = nil)
+    # Delete a Customer's address
+    # @param [String] customer_id Required parameter: Customer Id
+    # @param [String] address_id Required parameter: Address Id
+    # @return GetAddressResponse response from the API call
+    def delete_address(customer_id,
+                       address_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/customers/{customer_id}/addresses/{address_id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'customer_id' => customer_id,
+        'address_id' => address_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetAddressResponse.from_hash(decoded)
+    end
+
+    # Delete a customer's card
+    # @param [String] customer_id Required parameter: Customer Id
+    # @param [String] card_id Required parameter: Card Id
+    # @return GetCardResponse response from the API call
+    def delete_card(customer_id,
+                    card_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/customers/{customer_id}/cards/{card_id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'customer_id' => customer_id,
+        'card_id' => card_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetCardResponse.from_hash(decoded)
+    end
+
+    # Creates a new address for a customer
+    # @param [String] customer_id Required parameter: Customer Id
+    # @param [CreateAddressRequest] request Required parameter: Request for
+    # creating an address
+    # @return GetAddressResponse response from the API call
+    def create_address(customer_id,
+                       request)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
       _query_builder << '/customers/{customer_id}/addresses'
@@ -686,11 +660,42 @@ module MundiApi
         _query_builder,
         'customer_id' => customer_id
       )
-      _query_builder = APIHelper.append_url_with_query_parameters(
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.post(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetAddressResponse.from_hash(decoded)
+    end
+
+    # Get a customer's card
+    # @param [String] customer_id Required parameter: Customer id
+    # @param [String] card_id Required parameter: Card id
+    # @return GetCardResponse response from the API call
+    def get_card(customer_id,
+                 card_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/customers/{customer_id}/cards/{card_id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
-        array_serialization: Configuration.array_serialization
+        'customer_id' => customer_id,
+        'card_id' => card_id
       )
       _query_url = APIHelper.clean_url _query_builder
 
@@ -710,17 +715,16 @@ module MundiApi
 
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      ListAddressesResponse.from_hash(decoded)
+      GetCardResponse.from_hash(decoded)
     end
 
-    # Get all cards from a customer
-    # @param [String] customer_id Required parameter: Customer Id
-    # @param [Integer] page Optional parameter: Page number
-    # @param [Integer] size Optional parameter: Page size
-    # @return ListCardsResponse response from the API call
-    def get_cards(customer_id,
-                  page = nil,
-                  size = nil)
+    # Creates a new card for a customer
+    # @param [String] customer_id Required parameter: Customer id
+    # @param [CreateCardRequest] request Required parameter: Request for
+    # creating a card
+    # @return GetCardResponse response from the API call
+    def create_card(customer_id,
+                    request)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
       _query_builder << '/customers/{customer_id}/cards'
@@ -728,23 +732,19 @@ module MundiApi
         _query_builder,
         'customer_id' => customer_id
       )
-      _query_builder = APIHelper.append_url_with_query_parameters(
-        _query_builder,
-        'page' => page,
-        'size' => size,
-        array_serialization: Configuration.array_serialization
-      )
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.
-      _request = @http_client.get(
+      _request = @http_client.post(
         _query_url,
-        headers: _headers
+        headers: _headers,
+        parameters: request.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
@@ -752,7 +752,7 @@ module MundiApi
 
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      ListCardsResponse.from_hash(decoded)
+      GetCardResponse.from_hash(decoded)
     end
   end
 end

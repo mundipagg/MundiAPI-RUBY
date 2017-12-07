@@ -41,6 +41,14 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
+    # Line 1 for address
+    # @return [String]
+    attr_accessor :line_1
+
+    # Line 2 for address
+    # @return [String]
+    attr_accessor :line_2
+
     # A mapping from model property names to API property names.
     def self.names
       if @_hash.nil?
@@ -54,6 +62,8 @@ module MundiApi
         @_hash['country'] = 'country'
         @_hash['complement'] = 'complement'
         @_hash['metadata'] = 'metadata'
+        @_hash['line_1'] = 'line_1'
+        @_hash['line_2'] = 'line_2'
       end
       @_hash
     end
@@ -66,7 +76,9 @@ module MundiApi
                    state = nil,
                    country = nil,
                    complement = nil,
-                   metadata = nil)
+                   metadata = nil,
+                   line_1 = nil,
+                   line_2 = nil)
       @street = street
       @number = number
       @zip_code = zip_code
@@ -76,6 +88,8 @@ module MundiApi
       @country = country
       @complement = complement
       @metadata = metadata
+      @line_1 = line_1
+      @line_2 = line_2
     end
 
     # Creates an instance of the object from a hash.
@@ -92,6 +106,8 @@ module MundiApi
       country = hash['country']
       complement = hash['complement']
       metadata = hash['metadata']
+      line_1 = hash['line_1']
+      line_2 = hash['line_2']
 
       # Create object from extracted values.
       CreateAddressRequest.new(street,
@@ -102,7 +118,9 @@ module MundiApi
                                state,
                                country,
                                complement,
-                               metadata)
+                               metadata,
+                               line_1,
+                               line_2)
     end
   end
 end

@@ -16,6 +16,10 @@ module MundiApi
     # @return [UpdatePricingSchemeRequest]
     attr_accessor :pricing_scheme
 
+    # Item name
+    # @return [String]
+    attr_accessor :name
+
     # Number of cycles that the item will be charged
     # @return [Integer]
     attr_accessor :cycles
@@ -35,6 +39,7 @@ module MundiApi
         @_hash['description'] = 'description'
         @_hash['status'] = 'status'
         @_hash['pricing_scheme'] = 'pricing_scheme'
+        @_hash['name'] = 'name'
         @_hash['cycles'] = 'cycles'
         @_hash['quantity'] = 'quantity'
         @_hash['minimum_price'] = 'minimum_price'
@@ -45,12 +50,14 @@ module MundiApi
     def initialize(description = nil,
                    status = nil,
                    pricing_scheme = nil,
+                   name = nil,
                    cycles = nil,
                    quantity = nil,
                    minimum_price = nil)
       @description = description
       @status = status
       @pricing_scheme = pricing_scheme
+      @name = name
       @cycles = cycles
       @quantity = quantity
       @minimum_price = minimum_price
@@ -65,6 +72,7 @@ module MundiApi
       status = hash['status']
       pricing_scheme = UpdatePricingSchemeRequest.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
+      name = hash['name']
       cycles = hash['cycles']
       quantity = hash['quantity']
       minimum_price = hash['minimum_price']
@@ -73,6 +81,7 @@ module MundiApi
       UpdateSubscriptionItemRequest.new(description,
                                         status,
                                         pricing_scheme,
+                                        name,
                                         cycles,
                                         quantity,
                                         minimum_price)

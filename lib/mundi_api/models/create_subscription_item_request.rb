@@ -24,6 +24,10 @@ module MundiApi
     # @return [List of CreateDiscountRequest]
     attr_accessor :discounts
 
+    # Item name
+    # @return [String]
+    attr_accessor :name
+
     # Number of cycles which the item will be charged
     # @return [Integer]
     attr_accessor :cycles
@@ -45,6 +49,7 @@ module MundiApi
         @_hash['id'] = 'id'
         @_hash['plan_item_id'] = 'plan_item_id'
         @_hash['discounts'] = 'discounts'
+        @_hash['name'] = 'name'
         @_hash['cycles'] = 'cycles'
         @_hash['quantity'] = 'quantity'
         @_hash['minimum_price'] = 'minimum_price'
@@ -57,6 +62,7 @@ module MundiApi
                    id = nil,
                    plan_item_id = nil,
                    discounts = nil,
+                   name = nil,
                    cycles = nil,
                    quantity = nil,
                    minimum_price = nil)
@@ -65,6 +71,7 @@ module MundiApi
       @id = id
       @plan_item_id = plan_item_id
       @discounts = discounts
+      @name = name
       @cycles = cycles
       @quantity = quantity
       @minimum_price = minimum_price
@@ -88,6 +95,7 @@ module MundiApi
           discounts << (CreateDiscountRequest.from_hash(structure) if structure)
         end
       end
+      name = hash['name']
       cycles = hash['cycles']
       quantity = hash['quantity']
       minimum_price = hash['minimum_price']
@@ -98,6 +106,7 @@ module MundiApi
                                         id,
                                         plan_item_id,
                                         discounts,
+                                        name,
                                         cycles,
                                         quantity,
                                         minimum_price)
