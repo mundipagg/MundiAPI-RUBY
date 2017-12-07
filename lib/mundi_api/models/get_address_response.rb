@@ -61,7 +61,15 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
-    # TODO: Write general description for this method
+    # Line 1 for address
+    # @return [String]
+    attr_accessor :line_1
+
+    # Line 2 for address
+    # @return [String]
+    attr_accessor :line_2
+
+    # Line 2 for address
     # @return [DateTime]
     attr_accessor :deleted_at
 
@@ -83,6 +91,8 @@ module MundiApi
         @_hash['updated_at'] = 'updated_at'
         @_hash['customer'] = 'customer'
         @_hash['metadata'] = 'metadata'
+        @_hash['line_1'] = 'line_1'
+        @_hash['line_2'] = 'line_2'
         @_hash['deleted_at'] = 'deleted_at'
       end
       @_hash
@@ -102,6 +112,8 @@ module MundiApi
                    updated_at = nil,
                    customer = nil,
                    metadata = nil,
+                   line_1 = nil,
+                   line_2 = nil,
                    deleted_at = nil)
       @id = id
       @street = street
@@ -117,6 +129,8 @@ module MundiApi
       @updated_at = updated_at
       @customer = customer
       @metadata = metadata
+      @line_1 = line_1
+      @line_2 = line_2
       @deleted_at = deleted_at
     end
 
@@ -140,6 +154,8 @@ module MundiApi
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
       metadata = hash['metadata']
+      line_1 = hash['line_1']
+      line_2 = hash['line_2']
       deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.
@@ -157,6 +173,8 @@ module MundiApi
                              updated_at,
                              customer,
                              metadata,
+                             line_1,
+                             line_2,
                              deleted_at)
     end
   end

@@ -57,6 +57,22 @@ module MundiApi
     # @return [List of GetCheckoutPaymentSettingsResponse]
     attr_accessor :checkouts
 
+    # Ip address
+    # @return [String]
+    attr_accessor :ip
+
+    # Session id
+    # @return [String]
+    attr_accessor :session_id
+
+    # Location
+    # @return [GetLocationResponse]
+    attr_accessor :location
+
+    # Device's informations
+    # @return [GetDeviceResponse]
+    attr_accessor :device
+
     # A mapping from model property names to API property names.
     def self.names
       if @_hash.nil?
@@ -74,6 +90,10 @@ module MundiApi
         @_hash['shipping'] = 'shipping'
         @_hash['metadata'] = 'metadata'
         @_hash['checkouts'] = 'checkouts'
+        @_hash['ip'] = 'ip'
+        @_hash['session_id'] = 'session_id'
+        @_hash['location'] = 'location'
+        @_hash['device'] = 'device'
       end
       @_hash
     end
@@ -90,7 +110,11 @@ module MundiApi
                    invoice_url = nil,
                    shipping = nil,
                    metadata = nil,
-                   checkouts = nil)
+                   checkouts = nil,
+                   ip = nil,
+                   session_id = nil,
+                   location = nil,
+                   device = nil)
       @id = id
       @code = code
       @currency = currency
@@ -104,6 +128,10 @@ module MundiApi
       @shipping = shipping
       @metadata = metadata
       @checkouts = checkouts
+      @ip = ip
+      @session_id = session_id
+      @location = location
+      @device = device
     end
 
     # Creates an instance of the object from a hash.
@@ -147,6 +175,11 @@ module MundiApi
           checkouts << (GetCheckoutPaymentSettingsResponse.from_hash(structure) if structure)
         end
       end
+      ip = hash['ip']
+      session_id = hash['session_id']
+      location = GetLocationResponse.from_hash(hash['location']) if
+        hash['location']
+      device = GetDeviceResponse.from_hash(hash['device']) if hash['device']
 
       # Create object from extracted values.
       GetOrderResponse.new(id,
@@ -161,7 +194,11 @@ module MundiApi
                            invoice_url,
                            shipping,
                            metadata,
-                           checkouts)
+                           checkouts,
+                           ip,
+                           session_id,
+                           location,
+                           device)
     end
   end
 end

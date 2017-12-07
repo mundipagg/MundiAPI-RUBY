@@ -36,6 +36,22 @@ module MundiApi
     # @return [Boolean]
     attr_accessor :antifraud_enabled
 
+    # Ip address
+    # @return [String]
+    attr_accessor :ip
+
+    # Session id
+    # @return [String]
+    attr_accessor :session_id
+
+    # Request's location
+    # @return [CreateLocationRequest]
+    attr_accessor :location
+
+    # Device's informations
+    # @return [CreateDeviceRequest]
+    attr_accessor :device
+
     # A mapping from model property names to API property names.
     def self.names
       if @_hash.nil?
@@ -48,6 +64,10 @@ module MundiApi
         @_hash['shipping'] = 'shipping'
         @_hash['metadata'] = 'metadata'
         @_hash['antifraud_enabled'] = 'antifraud_enabled'
+        @_hash['ip'] = 'ip'
+        @_hash['session_id'] = 'session_id'
+        @_hash['location'] = 'location'
+        @_hash['device'] = 'device'
       end
       @_hash
     end
@@ -59,7 +79,11 @@ module MundiApi
                    customer_id = nil,
                    shipping = nil,
                    metadata = nil,
-                   antifraud_enabled = nil)
+                   antifraud_enabled = nil,
+                   ip = nil,
+                   session_id = nil,
+                   location = nil,
+                   device = nil)
       @items = items
       @customer = customer
       @payments = payments
@@ -68,6 +92,10 @@ module MundiApi
       @shipping = shipping
       @metadata = metadata
       @antifraud_enabled = antifraud_enabled
+      @ip = ip
+      @session_id = session_id
+      @location = location
+      @device = device
     end
 
     # Creates an instance of the object from a hash.
@@ -99,6 +127,11 @@ module MundiApi
         hash['shipping']
       metadata = hash['metadata']
       antifraud_enabled = hash['antifraud_enabled']
+      ip = hash['ip']
+      session_id = hash['session_id']
+      location = CreateLocationRequest.from_hash(hash['location']) if
+        hash['location']
+      device = CreateDeviceRequest.from_hash(hash['device']) if hash['device']
 
       # Create object from extracted values.
       CreateOrderRequest.new(items,
@@ -108,7 +141,11 @@ module MundiApi
                              customer_id,
                              shipping,
                              metadata,
-                             antifraud_enabled)
+                             antifraud_enabled,
+                             ip,
+                             session_id,
+                             location,
+                             device)
     end
   end
 end

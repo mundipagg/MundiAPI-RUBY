@@ -31,7 +31,7 @@ module MundiApi
 
     # TODO: Write general description for this method
     # @return [GetPeriodResponse]
-    attr_accessor :current_period
+    attr_accessor :current_cycle
 
     # TODO: Write general description for this method
     # @return [String]
@@ -81,19 +81,23 @@ module MundiApi
     # @return [GetSetupResponse]
     attr_accessor :setup
 
-    # TODO: Write general description for this method
+    # Affiliation Code
+    # @return [String]
+    attr_accessor :gateway_affiliation_id
+
+    # Affiliation Code
     # @return [DateTime]
     attr_accessor :next_billing_at
 
-    # TODO: Write general description for this method
+    # Affiliation Code
     # @return [Integer]
     attr_accessor :billing_day
 
-    # TODO: Write general description for this method
+    # Affiliation Code
     # @return [Integer]
     attr_accessor :minimum_price
 
-    # TODO: Write general description for this method
+    # Affiliation Code
     # @return [DateTime]
     attr_accessor :canceled_at
 
@@ -111,7 +115,7 @@ module MundiApi
         @_hash['interval'] = 'interval'
         @_hash['interval_count'] = 'interval_count'
         @_hash['billing_type'] = 'billing_type'
-        @_hash['current_period'] = 'current_period'
+        @_hash['current_cycle'] = 'current_cycle'
         @_hash['payment_method'] = 'payment_method'
         @_hash['currency'] = 'currency'
         @_hash['installments'] = 'installments'
@@ -124,6 +128,7 @@ module MundiApi
         @_hash['statement_descriptor'] = 'statement_descriptor'
         @_hash['metadata'] = 'metadata'
         @_hash['setup'] = 'setup'
+        @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
         @_hash['next_billing_at'] = 'next_billing_at'
         @_hash['billing_day'] = 'billing_day'
         @_hash['minimum_price'] = 'minimum_price'
@@ -139,7 +144,7 @@ module MundiApi
                    interval = nil,
                    interval_count = nil,
                    billing_type = nil,
-                   current_period = nil,
+                   current_cycle = nil,
                    payment_method = nil,
                    currency = nil,
                    installments = nil,
@@ -152,6 +157,7 @@ module MundiApi
                    statement_descriptor = nil,
                    metadata = nil,
                    setup = nil,
+                   gateway_affiliation_id = nil,
                    next_billing_at = nil,
                    billing_day = nil,
                    minimum_price = nil,
@@ -163,7 +169,7 @@ module MundiApi
       @interval = interval
       @interval_count = interval_count
       @billing_type = billing_type
-      @current_period = current_period
+      @current_cycle = current_cycle
       @payment_method = payment_method
       @currency = currency
       @installments = installments
@@ -176,6 +182,7 @@ module MundiApi
       @statement_descriptor = statement_descriptor
       @metadata = metadata
       @setup = setup
+      @gateway_affiliation_id = gateway_affiliation_id
       @next_billing_at = next_billing_at
       @billing_day = billing_day
       @minimum_price = minimum_price
@@ -194,8 +201,8 @@ module MundiApi
       interval = hash['interval']
       interval_count = hash['interval_count']
       billing_type = hash['billing_type']
-      current_period = GetPeriodResponse.from_hash(hash['current_period']) if
-        hash['current_period']
+      current_cycle = GetPeriodResponse.from_hash(hash['current_cycle']) if
+        hash['current_cycle']
       payment_method = hash['payment_method']
       currency = hash['currency']
       installments = hash['installments']
@@ -216,6 +223,7 @@ module MundiApi
       statement_descriptor = hash['statement_descriptor']
       metadata = hash['metadata']
       setup = GetSetupResponse.from_hash(hash['setup']) if hash['setup']
+      gateway_affiliation_id = hash['gateway_affiliation_id']
       next_billing_at = DateTime.rfc3339(hash['next_billing_at']) if
         hash['next_billing_at']
       billing_day = hash['billing_day']
@@ -238,7 +246,7 @@ module MundiApi
                                   interval,
                                   interval_count,
                                   billing_type,
-                                  current_period,
+                                  current_cycle,
                                   payment_method,
                                   currency,
                                   installments,
@@ -251,6 +259,7 @@ module MundiApi
                                   statement_descriptor,
                                   metadata,
                                   setup,
+                                  gateway_affiliation_id,
                                   next_billing_at,
                                   billing_day,
                                   minimum_price,

@@ -24,6 +24,10 @@ module MundiApi
     # @return [Integer]
     attr_accessor :quantity
 
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :name
+
     # A mapping from model property names to API property names.
     def self.names
       if @_hash.nil?
@@ -33,6 +37,7 @@ module MundiApi
         @_hash['pricing_scheme'] = 'pricing_scheme'
         @_hash['price_bracket'] = 'price_bracket'
         @_hash['quantity'] = 'quantity'
+        @_hash['name'] = 'name'
       end
       @_hash
     end
@@ -41,12 +46,14 @@ module MundiApi
                    description = nil,
                    pricing_scheme = nil,
                    price_bracket = nil,
-                   quantity = nil)
+                   quantity = nil,
+                   name = nil)
       @amount = amount
       @description = description
       @pricing_scheme = pricing_scheme
       @price_bracket = price_bracket
       @quantity = quantity
+      @name = name
     end
 
     # Creates an instance of the object from a hash.
@@ -61,13 +68,15 @@ module MundiApi
       price_bracket = GetPriceBracketResponse.from_hash(hash['price_bracket']) if
         hash['price_bracket']
       quantity = hash['quantity']
+      name = hash['name']
 
       # Create object from extracted values.
       GetInvoiceItemResponse.new(amount,
                                  description,
                                  pricing_scheme,
                                  price_bracket,
-                                 quantity)
+                                 quantity,
+                                 name)
     end
   end
 end
