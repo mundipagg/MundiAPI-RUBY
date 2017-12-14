@@ -32,6 +32,14 @@ module MundiApi
     # @return [List of CreateSplitRequest]
     attr_accessor :split
 
+    # Customer Id
+    # @return [String]
+    attr_accessor :customer_id
+
+    # Customer
+    # @return [CreateCustomerRequest]
+    attr_accessor :customer
+
     # Settings for bank transfer payment
     # @return [CreateBankTransferPaymentRequest]
     attr_accessor :bank_transfer
@@ -59,6 +67,8 @@ module MundiApi
         @_hash['voucher'] = 'voucher'
         @_hash['metadata'] = 'metadata'
         @_hash['split'] = 'split'
+        @_hash['customer_id'] = 'customer_id'
+        @_hash['customer'] = 'customer'
         @_hash['bank_transfer'] = 'bank_transfer'
         @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
         @_hash['amount'] = 'amount'
@@ -74,6 +84,8 @@ module MundiApi
                    voucher = nil,
                    metadata = nil,
                    split = nil,
+                   customer_id = nil,
+                   customer = nil,
                    bank_transfer = nil,
                    gateway_affiliation_id = nil,
                    amount = nil,
@@ -85,6 +97,8 @@ module MundiApi
       @voucher = voucher
       @metadata = metadata
       @split = split
+      @customer_id = customer_id
+      @customer = customer
       @bank_transfer = bank_transfer
       @gateway_affiliation_id = gateway_affiliation_id
       @amount = amount
@@ -113,6 +127,9 @@ module MundiApi
           split << (CreateSplitRequest.from_hash(structure) if structure)
         end
       end
+      customer_id = hash['customer_id']
+      customer = CreateCustomerRequest.from_hash(hash['customer']) if
+        hash['customer']
       bank_transfer = CreateBankTransferPaymentRequest.from_hash(hash['bank_transfer']) if
         hash['bank_transfer']
       gateway_affiliation_id = hash['gateway_affiliation_id']
@@ -128,6 +145,8 @@ module MundiApi
                                voucher,
                                metadata,
                                split,
+                               customer_id,
+                               customer,
                                bank_transfer,
                                gateway_affiliation_id,
                                amount,
