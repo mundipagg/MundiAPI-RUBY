@@ -32,6 +32,10 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
+    # Metadata
+    # @return [Boolean]
+    attr_accessor :closed
+
     # Defines whether the order will go through anti-fraud
     # @return [Boolean]
     attr_accessor :antifraud_enabled
@@ -54,21 +58,20 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['items'] = 'items'
-        @_hash['customer'] = 'customer'
-        @_hash['payments'] = 'payments'
-        @_hash['code'] = 'code'
-        @_hash['customer_id'] = 'customer_id'
-        @_hash['shipping'] = 'shipping'
-        @_hash['metadata'] = 'metadata'
-        @_hash['antifraud_enabled'] = 'antifraud_enabled'
-        @_hash['ip'] = 'ip'
-        @_hash['session_id'] = 'session_id'
-        @_hash['location'] = 'location'
-        @_hash['device'] = 'device'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['items'] = 'items'
+      @_hash['customer'] = 'customer'
+      @_hash['payments'] = 'payments'
+      @_hash['code'] = 'code'
+      @_hash['customer_id'] = 'customer_id'
+      @_hash['shipping'] = 'shipping'
+      @_hash['metadata'] = 'metadata'
+      @_hash['closed'] = 'closed'
+      @_hash['antifraud_enabled'] = 'antifraud_enabled'
+      @_hash['ip'] = 'ip'
+      @_hash['session_id'] = 'session_id'
+      @_hash['location'] = 'location'
+      @_hash['device'] = 'device'
       @_hash
     end
 
@@ -79,6 +82,7 @@ module MundiApi
                    customer_id = nil,
                    shipping = nil,
                    metadata = nil,
+                   closed = true,
                    antifraud_enabled = nil,
                    ip = nil,
                    session_id = nil,
@@ -91,6 +95,7 @@ module MundiApi
       @customer_id = customer_id
       @shipping = shipping
       @metadata = metadata
+      @closed = closed
       @antifraud_enabled = antifraud_enabled
       @ip = ip
       @session_id = session_id
@@ -126,6 +131,7 @@ module MundiApi
       shipping = CreateShippingRequest.from_hash(hash['shipping']) if
         hash['shipping']
       metadata = hash['metadata']
+      closed = hash['closed'] ||= true
       antifraud_enabled = hash['antifraud_enabled']
       ip = hash['ip']
       session_id = hash['session_id']
@@ -141,6 +147,7 @@ module MundiApi
                              customer_id,
                              shipping,
                              metadata,
+                             closed,
                              antifraud_enabled,
                              ip,
                              session_id,

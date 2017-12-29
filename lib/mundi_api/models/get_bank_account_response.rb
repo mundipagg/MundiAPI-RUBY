@@ -67,24 +67,22 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['id'] = 'id'
-        @_hash['holder_name'] = 'holder_name'
-        @_hash['holder_type'] = 'holder_type'
-        @_hash['bank'] = 'bank'
-        @_hash['branch_number'] = 'branch_number'
-        @_hash['branch_check_digit'] = 'branch_check_digit'
-        @_hash['account_number'] = 'account_number'
-        @_hash['account_check_digit'] = 'account_check_digit'
-        @_hash['type'] = 'type'
-        @_hash['status'] = 'status'
-        @_hash['created_at'] = 'created_at'
-        @_hash['updated_at'] = 'updated_at'
-        @_hash['deleted_at'] = 'deleted_at'
-        @_hash['recipient'] = 'recipient'
-        @_hash['metadata'] = 'metadata'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['id'] = 'id'
+      @_hash['holder_name'] = 'holder_name'
+      @_hash['holder_type'] = 'holder_type'
+      @_hash['bank'] = 'bank'
+      @_hash['branch_number'] = 'branch_number'
+      @_hash['branch_check_digit'] = 'branch_check_digit'
+      @_hash['account_number'] = 'account_number'
+      @_hash['account_check_digit'] = 'account_check_digit'
+      @_hash['type'] = 'type'
+      @_hash['status'] = 'status'
+      @_hash['created_at'] = 'created_at'
+      @_hash['updated_at'] = 'updated_at'
+      @_hash['deleted_at'] = 'deleted_at'
+      @_hash['recipient'] = 'recipient'
+      @_hash['metadata'] = 'metadata'
       @_hash
     end
 

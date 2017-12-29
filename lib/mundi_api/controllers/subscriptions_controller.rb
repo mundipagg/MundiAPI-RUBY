@@ -394,8 +394,10 @@ module MundiApi
       )
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'status' => status,
-        'description' => description,
+        {
+          'status' => status,
+          'description' => description
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
@@ -531,18 +533,20 @@ module MundiApi
       _query_builder << '/subscriptions'
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
-        'code' => code,
-        'billing_type' => billing_type,
-        'customer_id' => customer_id,
-        'plan_id' => plan_id,
-        'card_id' => card_id,
-        'status' => status,
-        'next_billing_since' => next_billing_since,
-        'next_billing_until' => next_billing_until,
-        'created_since' => created_since,
-        'created_until' => created_until,
+        {
+          'page' => page,
+          'size' => size,
+          'code' => code,
+          'billing_type' => billing_type,
+          'customer_id' => customer_id,
+          'plan_id' => plan_id,
+          'card_id' => card_id,
+          'status' => status,
+          'next_billing_since' => next_billing_since,
+          'next_billing_until' => next_billing_until,
+          'created_since' => created_since,
+          'created_until' => created_until
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
@@ -697,8 +701,10 @@ module MundiApi
       )
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
+        {
+          'page' => page,
+          'size' => size
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder

@@ -14,11 +14,9 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['number'] = 'number'
-        @_hash['total'] = 'total'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['number'] = 'number'
+      @_hash['total'] = 'total'
       @_hash
     end
 

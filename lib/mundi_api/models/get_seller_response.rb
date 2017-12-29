@@ -41,7 +41,7 @@ module MundiApi
     attr_accessor :address
 
     # Metadata
-    # @return [Object]
+    # @return [Array<String, String>]
     attr_accessor :metadata
 
     # Deleted date
@@ -50,20 +50,18 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['id'] = 'id'
-        @_hash['name'] = 'name'
-        @_hash['code'] = 'code'
-        @_hash['document'] = 'document'
-        @_hash['description'] = 'description'
-        @_hash['status'] = 'Status'
-        @_hash['created_at'] = 'CreatedAt'
-        @_hash['updated_at'] = 'UpdatedAt'
-        @_hash['address'] = 'Address'
-        @_hash['metadata'] = 'Metadata'
-        @_hash['deleted_at'] = 'DeletedAt'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['id'] = 'id'
+      @_hash['name'] = 'name'
+      @_hash['code'] = 'code'
+      @_hash['document'] = 'document'
+      @_hash['description'] = 'description'
+      @_hash['status'] = 'Status'
+      @_hash['created_at'] = 'CreatedAt'
+      @_hash['updated_at'] = 'UpdatedAt'
+      @_hash['address'] = 'Address'
+      @_hash['metadata'] = 'Metadata'
+      @_hash['deleted_at'] = 'DeletedAt'
       @_hash
     end
 

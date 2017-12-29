@@ -2,10 +2,10 @@
 # ( https://apimatic.io ).
 
 module MundiApi
-  # Response model for listing the usages from a subscription item
-  class ListUsagesResponse < BaseModel
-    # The usage objects
-    # @return [List of GetUsageResponse]
+  # ListSellerResponse Model.
+  class ListSellerResponse < BaseModel
+    # The order object
+    # @return [List of GetSellerResponse]
     attr_accessor :data
 
     # Paging object
@@ -36,13 +36,13 @@ module MundiApi
       unless hash['data'].nil?
         data = []
         hash['data'].each do |structure|
-          data << (GetUsageResponse.from_hash(structure) if structure)
+          data << (GetSellerResponse.from_hash(structure) if structure)
         end
       end
       paging = PagingResponse.from_hash(hash['paging']) if hash['paging']
 
       # Create object from extracted values.
-      ListUsagesResponse.new(data,
+      ListSellerResponse.new(data,
                              paging)
     end
   end

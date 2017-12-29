@@ -75,26 +75,24 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['id'] = 'id'
-        @_hash['code'] = 'code'
-        @_hash['gateway_id'] = 'gateway_id'
-        @_hash['amount'] = 'amount'
-        @_hash['status'] = 'status'
-        @_hash['currency'] = 'currency'
-        @_hash['payment_method'] = 'payment_method'
-        @_hash['due_at'] = 'due_at'
-        @_hash['created_at'] = 'created_at'
-        @_hash['updated_at'] = 'updated_at'
-        @_hash['last_transaction'] = 'last_transaction'
-        @_hash['invoice'] = 'invoice'
-        @_hash['order'] = 'order'
-        @_hash['customer'] = 'customer'
-        @_hash['metadata'] = 'metadata'
-        @_hash['paid_at'] = 'paid_at'
-        @_hash['canceled_at'] = 'canceled_at'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['id'] = 'id'
+      @_hash['code'] = 'code'
+      @_hash['gateway_id'] = 'gateway_id'
+      @_hash['amount'] = 'amount'
+      @_hash['status'] = 'status'
+      @_hash['currency'] = 'currency'
+      @_hash['payment_method'] = 'payment_method'
+      @_hash['due_at'] = 'due_at'
+      @_hash['created_at'] = 'created_at'
+      @_hash['updated_at'] = 'updated_at'
+      @_hash['last_transaction'] = 'last_transaction'
+      @_hash['invoice'] = 'invoice'
+      @_hash['order'] = 'order'
+      @_hash['customer'] = 'customer'
+      @_hash['metadata'] = 'metadata'
+      @_hash['paid_at'] = 'paid_at'
+      @_hash['canceled_at'] = 'canceled_at'
       @_hash
     end
 

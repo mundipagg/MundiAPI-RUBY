@@ -81,27 +81,25 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['name'] = 'name'
-        @_hash['description'] = 'description'
-        @_hash['statement_descriptor'] = 'statement_descriptor'
-        @_hash['items'] = 'items'
-        @_hash['shippable'] = 'shippable'
-        @_hash['payment_methods'] = 'payment_methods'
-        @_hash['installments'] = 'installments'
-        @_hash['currency'] = 'currency'
-        @_hash['interval'] = 'interval'
-        @_hash['interval_count'] = 'interval_count'
-        @_hash['billing_days'] = 'billing_days'
-        @_hash['billing_type'] = 'billing_type'
-        @_hash['pricing_scheme'] = 'pricing_scheme'
-        @_hash['metadata'] = 'metadata'
-        @_hash['minimum_price'] = 'minimum_price'
-        @_hash['cycles'] = 'cycles'
-        @_hash['quantity'] = 'quantity'
-        @_hash['trial_period_days'] = 'trial_period_days'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['name'] = 'name'
+      @_hash['description'] = 'description'
+      @_hash['statement_descriptor'] = 'statement_descriptor'
+      @_hash['items'] = 'items'
+      @_hash['shippable'] = 'shippable'
+      @_hash['payment_methods'] = 'payment_methods'
+      @_hash['installments'] = 'installments'
+      @_hash['currency'] = 'currency'
+      @_hash['interval'] = 'interval'
+      @_hash['interval_count'] = 'interval_count'
+      @_hash['billing_days'] = 'billing_days'
+      @_hash['billing_type'] = 'billing_type'
+      @_hash['pricing_scheme'] = 'pricing_scheme'
+      @_hash['metadata'] = 'metadata'
+      @_hash['minimum_price'] = 'minimum_price'
+      @_hash['cycles'] = 'cycles'
+      @_hash['quantity'] = 'quantity'
+      @_hash['trial_period_days'] = 'trial_period_days'
       @_hash
     end
 

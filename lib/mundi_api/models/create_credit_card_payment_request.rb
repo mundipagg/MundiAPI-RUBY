@@ -36,6 +36,14 @@ module MundiApi
     # @return [Boolean]
     attr_accessor :recurrence
 
+    # Indicates whether the extended label (private label) is enabled
+    # @return [Boolean]
+    attr_accessor :extended_limit_enabled
+
+    # Extended Limit Code
+    # @return [String]
+    attr_accessor :extended_limit_code
+
     # Indicates if the operation should be only authorization or auth and
     # capture.
     # @return [Boolean]
@@ -43,18 +51,18 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['installments'] = 'installments'
-        @_hash['statement_descriptor'] = 'statement_descriptor'
-        @_hash['card'] = 'card'
-        @_hash['retries'] = 'retries'
-        @_hash['update_subscription_card'] = 'update_subscription_card'
-        @_hash['card_id'] = 'card_id'
-        @_hash['card_token'] = 'card_token'
-        @_hash['recurrence'] = 'recurrence'
-        @_hash['capture'] = 'capture'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['installments'] = 'installments'
+      @_hash['statement_descriptor'] = 'statement_descriptor'
+      @_hash['card'] = 'card'
+      @_hash['retries'] = 'retries'
+      @_hash['update_subscription_card'] = 'update_subscription_card'
+      @_hash['card_id'] = 'card_id'
+      @_hash['card_token'] = 'card_token'
+      @_hash['recurrence'] = 'recurrence'
+      @_hash['extended_limit_enabled'] = 'extended_limit_enabled'
+      @_hash['extended_limit_code'] = 'extended_limit_code'
+      @_hash['capture'] = 'capture'
       @_hash
     end
 
@@ -66,6 +74,8 @@ module MundiApi
                    card_id = nil,
                    card_token = nil,
                    recurrence = nil,
+                   extended_limit_enabled = nil,
+                   extended_limit_code = nil,
                    capture = true)
       @installments = installments
       @statement_descriptor = statement_descriptor
@@ -75,6 +85,8 @@ module MundiApi
       @card_id = card_id
       @card_token = card_token
       @recurrence = recurrence
+      @extended_limit_enabled = extended_limit_enabled
+      @extended_limit_code = extended_limit_code
       @capture = capture
     end
 
@@ -91,6 +103,8 @@ module MundiApi
       card_id = hash['card_id']
       card_token = hash['card_token']
       recurrence = hash['recurrence']
+      extended_limit_enabled = hash['extended_limit_enabled']
+      extended_limit_code = hash['extended_limit_code']
       capture = hash['capture'] ||= true
 
       # Create object from extracted values.
@@ -102,6 +116,8 @@ module MundiApi
                                          card_id,
                                          card_token,
                                          recurrence,
+                                         extended_limit_enabled,
+                                         extended_limit_code,
                                          capture)
     end
   end

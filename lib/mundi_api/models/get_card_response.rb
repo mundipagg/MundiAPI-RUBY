@@ -67,24 +67,22 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['id'] = 'id'
-        @_hash['last_four_digits'] = 'last_four_digits'
-        @_hash['brand'] = 'brand'
-        @_hash['holder_name'] = 'holder_name'
-        @_hash['exp_month'] = 'exp_month'
-        @_hash['exp_year'] = 'exp_year'
-        @_hash['status'] = 'status'
-        @_hash['created_at'] = 'created_at'
-        @_hash['updated_at'] = 'updated_at'
-        @_hash['billing_address'] = 'billing_address'
-        @_hash['customer'] = 'customer'
-        @_hash['metadata'] = 'metadata'
-        @_hash['type'] = 'type'
-        @_hash['holder_document'] = 'holder_document'
-        @_hash['deleted_at'] = 'deleted_at'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['id'] = 'id'
+      @_hash['last_four_digits'] = 'last_four_digits'
+      @_hash['brand'] = 'brand'
+      @_hash['holder_name'] = 'holder_name'
+      @_hash['exp_month'] = 'exp_month'
+      @_hash['exp_year'] = 'exp_year'
+      @_hash['status'] = 'status'
+      @_hash['created_at'] = 'created_at'
+      @_hash['updated_at'] = 'updated_at'
+      @_hash['billing_address'] = 'billing_address'
+      @_hash['customer'] = 'customer'
+      @_hash['metadata'] = 'metadata'
+      @_hash['type'] = 'type'
+      @_hash['holder_document'] = 'holder_document'
+      @_hash['deleted_at'] = 'deleted_at'
       @_hash
     end
 

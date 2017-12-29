@@ -101,13 +101,15 @@ module MundiApi
       _query_builder << '/orders'
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
-        'code' => code,
-        'status' => status,
-        'created_since' => created_since,
-        'created_until' => created_until,
-        'customer_id' => customer_id,
+        {
+          'page' => page,
+          'size' => size,
+          'code' => code,
+          'status' => status,
+          'created_since' => created_since,
+          'created_until' => created_until,
+          'customer_id' => customer_id
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
@@ -144,6 +146,221 @@ module MundiApi
       _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
         'order_id' => order_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.patch(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetOrderResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] order_id Required parameter: Order Id
+    # @return GetOrderResponse response from the API call
+    def delete_all_order_items(order_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/orders/{orderId}/items'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'orderId' => order_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetOrderResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] order_id Required parameter: Order Id
+    # @param [String] item_id Required parameter: Item Id
+    # @param [UpdateOrderItemRequest] request Required parameter: Item Model
+    # @return GetOrderItemResponse response from the API call
+    def update_order_item(order_id,
+                          item_id,
+                          request)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/orders/{orderId}/items/{itemId}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'orderId' => order_id,
+        'itemId' => item_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.put(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetOrderItemResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] order_id Required parameter: Order Id
+    # @param [String] item_id Required parameter: Item Id
+    # @return GetOrderItemResponse response from the API call
+    def delete_order_item(order_id,
+                          item_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/orders/{orderId}/items/{itemId}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'orderId' => order_id,
+        'itemId' => item_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetOrderItemResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] order_id Required parameter: Order Id
+    # @param [CreateOrderItemRequest] request Required parameter: Order Item
+    # Model
+    # @return GetOrderItemResponse response from the API call
+    def create_order_item(order_id,
+                          request)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/orders/{orderId}/items'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'orderId' => order_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.post(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetOrderItemResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] order_id Required parameter: Order Id
+    # @param [String] item_id Required parameter: Item Id
+    # @return GetOrderItemResponse response from the API call
+    def get_order_item(order_id,
+                       item_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/orders/{orderId}/items/{itemId}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'orderId' => order_id,
+        'itemId' => item_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetOrderItemResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] id Required parameter: Order Id
+    # @param [UpdateOrderStatusRequest] request Required parameter: Update Order
+    # Model
+    # @return GetOrderResponse response from the API call
+    def update_order_status(id,
+                            request)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/{id}/closed'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'id' => id
       )
       _query_url = APIHelper.clean_url _query_builder
 

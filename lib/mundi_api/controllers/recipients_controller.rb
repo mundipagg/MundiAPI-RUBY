@@ -110,11 +110,13 @@ module MundiApi
       )
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
-        'status' => status,
-        'created_since' => created_since,
-        'created_until' => created_until,
+        {
+          'page' => page,
+          'size' => size,
+          'status' => status,
+          'created_since' => created_since,
+          'created_until' => created_until
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
@@ -228,8 +230,10 @@ module MundiApi
       )
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'timeframe' => timeframe,
-        'payment_date' => payment_date,
+        {
+          'timeframe' => timeframe,
+          'payment_date' => payment_date
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
@@ -288,14 +292,16 @@ module MundiApi
       )
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
-        'status' => status,
-        'timeframe' => timeframe,
-        'payment_date_since' => payment_date_since,
-        'payment_date_until' => payment_date_until,
-        'created_since' => created_since,
-        'created_until' => created_until,
+        {
+          'page' => page,
+          'size' => size,
+          'status' => status,
+          'timeframe' => timeframe,
+          'payment_date_since' => payment_date_since,
+          'payment_date_until' => payment_date_until,
+          'created_since' => created_since,
+          'created_until' => created_until
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
@@ -436,8 +442,10 @@ module MundiApi
       _query_builder << '/recipients'
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
+        {
+          'page' => page,
+          'size' => size
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder

@@ -2,36 +2,42 @@
 # ( https://apimatic.io ).
 
 module MundiApi
-  # Request for creating a Setup for a subscription. The setup is an order that
-  # will be created at the subscription creation.
-  class CreateSetupRequest < BaseModel
-    # Setup amount
+  # Update Order item Request
+  class UpdateOrderItemRequest < BaseModel
+    # TODO: Write general description for this method
     # @return [Integer]
     attr_accessor :amount
 
-    # Description
+    # TODO: Write general description for this method
     # @return [String]
     attr_accessor :description
 
-    # Payment data
-    # @return [CreatePaymentRequest]
-    attr_accessor :payment
+    # TODO: Write general description for this method
+    # @return [Integer]
+    attr_accessor :quantity
+
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :category
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['amount'] = 'amount'
       @_hash['description'] = 'description'
-      @_hash['payment'] = 'payment'
+      @_hash['quantity'] = 'quantity'
+      @_hash['category'] = 'category'
       @_hash
     end
 
     def initialize(amount = nil,
                    description = nil,
-                   payment = nil)
+                   quantity = nil,
+                   category = nil)
       @amount = amount
       @description = description
-      @payment = payment
+      @quantity = quantity
+      @category = category
     end
 
     # Creates an instance of the object from a hash.
@@ -41,13 +47,14 @@ module MundiApi
       # Extract variables from the hash.
       amount = hash['amount']
       description = hash['description']
-      payment = CreatePaymentRequest.from_hash(hash['payment']) if
-        hash['payment']
+      quantity = hash['quantity']
+      category = hash['category']
 
       # Create object from extracted values.
-      CreateSetupRequest.new(amount,
-                             description,
-                             payment)
+      UpdateOrderItemRequest.new(amount,
+                                 description,
+                                 quantity,
+                                 category)
     end
   end
 end

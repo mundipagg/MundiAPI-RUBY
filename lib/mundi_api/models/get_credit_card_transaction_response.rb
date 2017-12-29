@@ -53,21 +53,19 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['statement_descriptor'] = 'statement_descriptor'
-        @_hash['acquirer_name'] = 'acquirer_name'
-        @_hash['acquirer_affiliation_code'] = 'acquirer_affiliation_code'
-        @_hash['acquirer_tid'] = 'acquirer_tid'
-        @_hash['acquirer_nsu'] = 'acquirer_nsu'
-        @_hash['acquirer_auth_code'] = 'acquirer_auth_code'
-        @_hash['operation_type'] = 'operation_type'
-        @_hash['card'] = 'card'
-        @_hash['acquirer_message'] = 'acquirer_message'
-        @_hash['acquirer_return_code'] = 'acquirer_return_code'
-        @_hash['installments'] = 'installments'
-        @_hash = super().merge(@_hash)
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['statement_descriptor'] = 'statement_descriptor'
+      @_hash['acquirer_name'] = 'acquirer_name'
+      @_hash['acquirer_affiliation_code'] = 'acquirer_affiliation_code'
+      @_hash['acquirer_tid'] = 'acquirer_tid'
+      @_hash['acquirer_nsu'] = 'acquirer_nsu'
+      @_hash['acquirer_auth_code'] = 'acquirer_auth_code'
+      @_hash['operation_type'] = 'operation_type'
+      @_hash['card'] = 'card'
+      @_hash['acquirer_message'] = 'acquirer_message'
+      @_hash['acquirer_return_code'] = 'acquirer_return_code'
+      @_hash['installments'] = 'installments'
+      @_hash = super().merge(@_hash)
       @_hash
     end
 
