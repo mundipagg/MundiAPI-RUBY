@@ -247,13 +247,15 @@ module MundiApi
       _query_builder << '/plans'
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
-        'name' => name,
-        'status' => status,
-        'billing_type' => billing_type,
-        'created_since' => created_since,
-        'created_until' => created_until,
+        {
+          'page' => page,
+          'size' => size,
+          'name' => name,
+          'status' => status,
+          'billing_type' => billing_type,
+          'created_since' => created_since,
+          'created_until' => created_until
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder

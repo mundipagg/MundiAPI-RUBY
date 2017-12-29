@@ -10,10 +10,8 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
       @_hash
     end
 

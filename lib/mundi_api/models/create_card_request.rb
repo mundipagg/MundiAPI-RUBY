@@ -52,23 +52,26 @@ module MundiApi
     # @return [String]
     attr_accessor :holder_document
 
+    # Indicates whether it is a private label card
+    # @return [Boolean]
+    attr_accessor :private_label
+
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['number'] = 'number'
-        @_hash['holder_name'] = 'holder_name'
-        @_hash['exp_month'] = 'exp_month'
-        @_hash['exp_year'] = 'exp_year'
-        @_hash['cvv'] = 'cvv'
-        @_hash['billing_address'] = 'billing_address'
-        @_hash['brand'] = 'brand'
-        @_hash['billing_address_id'] = 'billing_address_id'
-        @_hash['metadata'] = 'metadata'
-        @_hash['type'] = 'type'
-        @_hash['options'] = 'options'
-        @_hash['holder_document'] = 'holder_document'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['number'] = 'number'
+      @_hash['holder_name'] = 'holder_name'
+      @_hash['exp_month'] = 'exp_month'
+      @_hash['exp_year'] = 'exp_year'
+      @_hash['cvv'] = 'cvv'
+      @_hash['billing_address'] = 'billing_address'
+      @_hash['brand'] = 'brand'
+      @_hash['billing_address_id'] = 'billing_address_id'
+      @_hash['metadata'] = 'metadata'
+      @_hash['type'] = 'type'
+      @_hash['options'] = 'options'
+      @_hash['holder_document'] = 'holder_document'
+      @_hash['private_label'] = 'private_label'
       @_hash
     end
 
@@ -83,7 +86,8 @@ module MundiApi
                    metadata = nil,
                    type = 'credit',
                    options = nil,
-                   holder_document = nil)
+                   holder_document = nil,
+                   private_label = nil)
       @number = number
       @holder_name = holder_name
       @exp_month = exp_month
@@ -96,6 +100,7 @@ module MundiApi
       @type = type
       @options = options
       @holder_document = holder_document
+      @private_label = private_label
     end
 
     # Creates an instance of the object from a hash.
@@ -117,6 +122,7 @@ module MundiApi
       options = CreateCardOptionsRequest.from_hash(hash['options']) if
         hash['options']
       holder_document = hash['holder_document']
+      private_label = hash['private_label']
 
       # Create object from extracted values.
       CreateCardRequest.new(number,
@@ -130,7 +136,8 @@ module MundiApi
                             metadata,
                             type,
                             options,
-                            holder_document)
+                            holder_document,
+                            private_label)
     end
   end
 end

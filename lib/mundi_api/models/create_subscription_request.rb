@@ -109,37 +109,40 @@ module MundiApi
     # @return [String]
     attr_accessor :gateway_affiliation_id
 
+    # Quantity
+    # @return [Integer]
+    attr_accessor :quantity
+
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['customer'] = 'customer'
-        @_hash['card'] = 'card'
-        @_hash['code'] = 'code'
-        @_hash['payment_method'] = 'payment_method'
-        @_hash['billing_type'] = 'billing_type'
-        @_hash['statement_descriptor'] = 'statement_descriptor'
-        @_hash['description'] = 'description'
-        @_hash['currency'] = 'currency'
-        @_hash['interval'] = 'interval'
-        @_hash['interval_count'] = 'interval_count'
-        @_hash['pricing_scheme'] = 'pricing_scheme'
-        @_hash['items'] = 'items'
-        @_hash['shipping'] = 'shipping'
-        @_hash['discounts'] = 'discounts'
-        @_hash['metadata'] = 'metadata'
-        @_hash['setup'] = 'setup'
-        @_hash['plan_id'] = 'plan_id'
-        @_hash['customer_id'] = 'customer_id'
-        @_hash['card_id'] = 'card_id'
-        @_hash['billing_day'] = 'billing_day'
-        @_hash['installments'] = 'installments'
-        @_hash['start_at'] = 'start_at'
-        @_hash['minimum_price'] = 'minimum_price'
-        @_hash['cycles'] = 'cycles'
-        @_hash['card_token'] = 'card_token'
-        @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['customer'] = 'customer'
+      @_hash['card'] = 'card'
+      @_hash['code'] = 'code'
+      @_hash['payment_method'] = 'payment_method'
+      @_hash['billing_type'] = 'billing_type'
+      @_hash['statement_descriptor'] = 'statement_descriptor'
+      @_hash['description'] = 'description'
+      @_hash['currency'] = 'currency'
+      @_hash['interval'] = 'interval'
+      @_hash['interval_count'] = 'interval_count'
+      @_hash['pricing_scheme'] = 'pricing_scheme'
+      @_hash['items'] = 'items'
+      @_hash['shipping'] = 'shipping'
+      @_hash['discounts'] = 'discounts'
+      @_hash['metadata'] = 'metadata'
+      @_hash['setup'] = 'setup'
+      @_hash['plan_id'] = 'plan_id'
+      @_hash['customer_id'] = 'customer_id'
+      @_hash['card_id'] = 'card_id'
+      @_hash['billing_day'] = 'billing_day'
+      @_hash['installments'] = 'installments'
+      @_hash['start_at'] = 'start_at'
+      @_hash['minimum_price'] = 'minimum_price'
+      @_hash['cycles'] = 'cycles'
+      @_hash['card_token'] = 'card_token'
+      @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
+      @_hash['quantity'] = 'quantity'
       @_hash
     end
 
@@ -168,7 +171,8 @@ module MundiApi
                    minimum_price = nil,
                    cycles = nil,
                    card_token = nil,
-                   gateway_affiliation_id = nil)
+                   gateway_affiliation_id = nil,
+                   quantity = nil)
       @customer = customer
       @card = card
       @code = code
@@ -195,6 +199,7 @@ module MundiApi
       @cycles = cycles
       @card_token = card_token
       @gateway_affiliation_id = gateway_affiliation_id
+      @quantity = quantity
     end
 
     # Creates an instance of the object from a hash.
@@ -245,6 +250,7 @@ module MundiApi
       cycles = hash['cycles']
       card_token = hash['card_token']
       gateway_affiliation_id = hash['gateway_affiliation_id']
+      quantity = hash['quantity']
 
       # Create object from extracted values.
       CreateSubscriptionRequest.new(customer,
@@ -272,7 +278,8 @@ module MundiApi
                                     minimum_price,
                                     cycles,
                                     card_token,
-                                    gateway_affiliation_id)
+                                    gateway_affiliation_id,
+                                    quantity)
     end
   end
 end

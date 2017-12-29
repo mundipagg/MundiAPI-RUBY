@@ -58,22 +58,20 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['payment_method'] = 'payment_method'
-        @_hash['credit_card'] = 'credit_card'
-        @_hash['boleto'] = 'boleto'
-        @_hash['currency'] = 'currency'
-        @_hash['voucher'] = 'voucher'
-        @_hash['metadata'] = 'metadata'
-        @_hash['split'] = 'split'
-        @_hash['customer_id'] = 'customer_id'
-        @_hash['customer'] = 'customer'
-        @_hash['bank_transfer'] = 'bank_transfer'
-        @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
-        @_hash['amount'] = 'amount'
-        @_hash['checkout'] = 'checkout'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['payment_method'] = 'payment_method'
+      @_hash['credit_card'] = 'credit_card'
+      @_hash['boleto'] = 'boleto'
+      @_hash['currency'] = 'currency'
+      @_hash['voucher'] = 'voucher'
+      @_hash['metadata'] = 'metadata'
+      @_hash['split'] = 'split'
+      @_hash['customer_id'] = 'customer_id'
+      @_hash['customer'] = 'customer'
+      @_hash['bank_transfer'] = 'bank_transfer'
+      @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
+      @_hash['amount'] = 'amount'
+      @_hash['checkout'] = 'checkout'
       @_hash
     end
 

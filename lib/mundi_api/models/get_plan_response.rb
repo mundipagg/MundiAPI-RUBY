@@ -91,30 +91,28 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['id'] = 'id'
-        @_hash['name'] = 'name'
-        @_hash['description'] = 'description'
-        @_hash['url'] = 'url'
-        @_hash['statement_descriptor'] = 'statement_descriptor'
-        @_hash['interval'] = 'interval'
-        @_hash['interval_count'] = 'interval_count'
-        @_hash['billing_type'] = 'billing_type'
-        @_hash['payment_methods'] = 'payment_methods'
-        @_hash['installments'] = 'installments'
-        @_hash['status'] = 'status'
-        @_hash['currency'] = 'currency'
-        @_hash['created_at'] = 'created_at'
-        @_hash['updated_at'] = 'updated_at'
-        @_hash['items'] = 'items'
-        @_hash['billing_days'] = 'billing_days'
-        @_hash['shippable'] = 'shippable'
-        @_hash['metadata'] = 'metadata'
-        @_hash['trial_period_days'] = 'trial_period_days'
-        @_hash['minimum_price'] = 'minimum_price'
-        @_hash['deleted_at'] = 'deleted_at'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['id'] = 'id'
+      @_hash['name'] = 'name'
+      @_hash['description'] = 'description'
+      @_hash['url'] = 'url'
+      @_hash['statement_descriptor'] = 'statement_descriptor'
+      @_hash['interval'] = 'interval'
+      @_hash['interval_count'] = 'interval_count'
+      @_hash['billing_type'] = 'billing_type'
+      @_hash['payment_methods'] = 'payment_methods'
+      @_hash['installments'] = 'installments'
+      @_hash['status'] = 'status'
+      @_hash['currency'] = 'currency'
+      @_hash['created_at'] = 'created_at'
+      @_hash['updated_at'] = 'updated_at'
+      @_hash['items'] = 'items'
+      @_hash['billing_days'] = 'billing_days'
+      @_hash['shippable'] = 'shippable'
+      @_hash['metadata'] = 'metadata'
+      @_hash['trial_period_days'] = 'trial_period_days'
+      @_hash['minimum_price'] = 'minimum_price'
+      @_hash['deleted_at'] = 'deleted_at'
       @_hash
     end
 

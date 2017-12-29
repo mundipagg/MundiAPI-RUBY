@@ -4,17 +4,25 @@
 module MundiApi
   # Response object for getting an order item
   class GetOrderItemResponse < BaseModel
-    # TODO: Write general description for this method
+    # Id
+    # @return [String]
+    attr_accessor :id
+
+    # Id
     # @return [Integer]
     attr_accessor :amount
 
-    # TODO: Write general description for this method
+    # Id
     # @return [String]
     attr_accessor :description
 
-    # TODO: Write general description for this method
+    # Id
     # @return [Integer]
     attr_accessor :quantity
+
+    # Category
+    # @return [String]
+    attr_accessor :category
 
     # Seller data
     # @return [GetSellerResponse]
@@ -22,23 +30,27 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['amount'] = 'amount'
-        @_hash['description'] = 'description'
-        @_hash['quantity'] = 'quantity'
-        @_hash['get_seller_response'] = 'GetSellerResponse'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['id'] = 'Id'
+      @_hash['amount'] = 'amount'
+      @_hash['description'] = 'description'
+      @_hash['quantity'] = 'quantity'
+      @_hash['category'] = 'category'
+      @_hash['get_seller_response'] = 'GetSellerResponse'
       @_hash
     end
 
-    def initialize(amount = nil,
+    def initialize(id = nil,
+                   amount = nil,
                    description = nil,
                    quantity = nil,
+                   category = nil,
                    get_seller_response = nil)
+      @id = id
       @amount = amount
       @description = description
       @quantity = quantity
+      @category = category
       @get_seller_response = get_seller_response
     end
 
@@ -47,16 +59,20 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
+      id = hash['Id']
       amount = hash['amount']
       description = hash['description']
       quantity = hash['quantity']
+      category = hash['category']
       get_seller_response = GetSellerResponse.from_hash(hash['GetSellerResponse']) if
         hash['GetSellerResponse']
 
       # Create object from extracted values.
-      GetOrderItemResponse.new(amount,
+      GetOrderItemResponse.new(id,
+                               amount,
                                description,
                                quantity,
+                               category,
                                get_seller_response)
     end
   end

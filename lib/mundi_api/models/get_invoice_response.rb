@@ -87,29 +87,27 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['id'] = 'id'
-        @_hash['code'] = 'code'
-        @_hash['url'] = 'url'
-        @_hash['amount'] = 'amount'
-        @_hash['status'] = 'status'
-        @_hash['payment_method'] = 'payment_method'
-        @_hash['created_at'] = 'created_at'
-        @_hash['items'] = 'items'
-        @_hash['customer'] = 'customer'
-        @_hash['charge'] = 'charge'
-        @_hash['installments'] = 'installments'
-        @_hash['billing_address'] = 'billing_address'
-        @_hash['subscription'] = 'subscription'
-        @_hash['cycle'] = 'cycle'
-        @_hash['shipping'] = 'shipping'
-        @_hash['metadata'] = 'metadata'
-        @_hash['due_at'] = 'due_at'
-        @_hash['canceled_at'] = 'canceled_at'
-        @_hash['billing_at'] = 'billing_at'
-        @_hash['seen_at'] = 'seen_at'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['id'] = 'id'
+      @_hash['code'] = 'code'
+      @_hash['url'] = 'url'
+      @_hash['amount'] = 'amount'
+      @_hash['status'] = 'status'
+      @_hash['payment_method'] = 'payment_method'
+      @_hash['created_at'] = 'created_at'
+      @_hash['items'] = 'items'
+      @_hash['customer'] = 'customer'
+      @_hash['charge'] = 'charge'
+      @_hash['installments'] = 'installments'
+      @_hash['billing_address'] = 'billing_address'
+      @_hash['subscription'] = 'subscription'
+      @_hash['cycle'] = 'cycle'
+      @_hash['shipping'] = 'shipping'
+      @_hash['metadata'] = 'metadata'
+      @_hash['due_at'] = 'due_at'
+      @_hash['canceled_at'] = 'canceled_at'
+      @_hash['billing_at'] = 'billing_at'
+      @_hash['seen_at'] = 'seen_at'
       @_hash
     end
 

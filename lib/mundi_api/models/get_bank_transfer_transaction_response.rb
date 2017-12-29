@@ -29,15 +29,13 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['url'] = 'url'
-        @_hash['bank_tid'] = 'bank_tid'
-        @_hash['bank'] = 'bank'
-        @_hash['paid_at'] = 'paid_at'
-        @_hash['paid_amount'] = 'paid_amount'
-        @_hash = super().merge(@_hash)
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['url'] = 'url'
+      @_hash['bank_tid'] = 'bank_tid'
+      @_hash['bank'] = 'bank'
+      @_hash['paid_at'] = 'paid_at'
+      @_hash['paid_amount'] = 'paid_amount'
+      @_hash = super().merge(@_hash)
       @_hash
     end
 

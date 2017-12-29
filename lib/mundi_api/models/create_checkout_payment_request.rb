@@ -30,15 +30,13 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['accepted_payment_methods'] = 'accepted_payment_methods'
-        @_hash['success_url'] = 'success_url'
-        @_hash['default_payment_method'] = 'default_payment_method'
-        @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
-        @_hash['credit_card'] = 'credit_card'
-        @_hash['boleto'] = 'boleto'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['accepted_payment_methods'] = 'accepted_payment_methods'
+      @_hash['success_url'] = 'success_url'
+      @_hash['default_payment_method'] = 'default_payment_method'
+      @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
+      @_hash['credit_card'] = 'credit_card'
+      @_hash['boleto'] = 'boleto'
       @_hash
     end
 

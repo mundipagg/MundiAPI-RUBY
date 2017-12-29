@@ -8,6 +8,10 @@ module MundiApi
     # @return [String]
     attr_accessor :name
 
+    # Metadata
+    # @return [Array<String, String>]
+    attr_accessor :metadata
+
     # Seller's code identification
     # @return [String]
     attr_accessor :code
@@ -21,46 +25,40 @@ module MundiApi
     attr_accessor :document
 
     # Address
-    # @return [String]
+    # @return [CreateAddressRequest]
     attr_accessor :address
 
     # Person type (individual / company)
     # @return [String]
     attr_accessor :type
 
-    # Metadata
-    # @return [CreateCardRequest]
-    attr_accessor :metadata
-
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['name'] = 'name'
-        @_hash['code'] = 'code'
-        @_hash['description'] = 'description'
-        @_hash['document'] = 'document'
-        @_hash['address'] = 'address'
-        @_hash['type'] = 'type'
-        @_hash['metadata'] = 'metadata'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['name'] = 'name'
+      @_hash['metadata'] = 'metadata'
+      @_hash['code'] = 'code'
+      @_hash['description'] = 'description'
+      @_hash['document'] = 'document'
+      @_hash['address'] = 'address'
+      @_hash['type'] = 'type'
       @_hash
     end
 
     def initialize(name = nil,
+                   metadata = nil,
                    code = nil,
                    description = nil,
                    document = nil,
                    address = nil,
-                   type = nil,
-                   metadata = nil)
+                   type = nil)
       @name = name
+      @metadata = metadata
       @code = code
       @description = description
       @document = document
       @address = address
       @type = type
-      @metadata = metadata
     end
 
     # Creates an instance of the object from a hash.
@@ -69,22 +67,22 @@ module MundiApi
 
       # Extract variables from the hash.
       name = hash['name']
+      metadata = hash['metadata']
       code = hash['code']
       description = hash['description']
       document = hash['document']
-      address = hash['address']
+      address = CreateAddressRequest.from_hash(hash['address']) if
+        hash['address']
       type = hash['type']
-      metadata = CreateCardRequest.from_hash(hash['metadata']) if
-        hash['metadata']
 
       # Create object from extracted values.
       CreateSellerRequest.new(name,
+                              metadata,
                               code,
                               description,
                               document,
                               address,
-                              type,
-                              metadata)
+                              type)
     end
   end
 end

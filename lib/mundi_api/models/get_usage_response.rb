@@ -25,21 +25,29 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :created_at
 
+    # Status
+    # @return [String]
+    attr_accessor :status
+
     # Subscription item
     # @return [GetSubscriptionItemResponse]
     attr_accessor :subscription_item
 
+    # Subscription item
+    # @return [DateTime]
+    attr_accessor :deleted_at
+
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['id'] = 'id'
-        @_hash['quantity'] = 'quantity'
-        @_hash['description'] = 'description'
-        @_hash['used_at'] = 'used_at'
-        @_hash['created_at'] = 'created_at'
-        @_hash['subscription_item'] = 'subscription_item'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['id'] = 'id'
+      @_hash['quantity'] = 'quantity'
+      @_hash['description'] = 'description'
+      @_hash['used_at'] = 'used_at'
+      @_hash['created_at'] = 'created_at'
+      @_hash['status'] = 'status'
+      @_hash['subscription_item'] = 'subscription_item'
+      @_hash['deleted_at'] = 'deleted_at'
       @_hash
     end
 
@@ -48,13 +56,17 @@ module MundiApi
                    description = nil,
                    used_at = nil,
                    created_at = nil,
-                   subscription_item = nil)
+                   status = nil,
+                   subscription_item = nil,
+                   deleted_at = nil)
       @id = id
       @quantity = quantity
       @description = description
       @used_at = used_at
       @created_at = created_at
+      @status = status
       @subscription_item = subscription_item
+      @deleted_at = deleted_at
     end
 
     # Creates an instance of the object from a hash.
@@ -67,8 +79,10 @@ module MundiApi
       description = hash['description']
       used_at = DateTime.rfc3339(hash['used_at']) if hash['used_at']
       created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
+      status = hash['status']
       subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item']) if
         hash['subscription_item']
+      deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.
       GetUsageResponse.new(id,
@@ -76,7 +90,9 @@ module MundiApi
                            description,
                            used_at,
                            created_at,
-                           subscription_item)
+                           status,
+                           subscription_item,
+                           deleted_at)
     end
   end
 end

@@ -183,16 +183,18 @@ module MundiApi
       _query_builder << '/invoices'
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
-        'code' => code,
-        'customer_id' => customer_id,
-        'subscription_id' => subscription_id,
-        'created_since' => created_since,
-        'created_until' => created_until,
-        'status' => status,
-        'due_since' => due_since,
-        'due_until' => due_until,
+        {
+          'page' => page,
+          'size' => size,
+          'code' => code,
+          'customer_id' => customer_id,
+          'subscription_id' => subscription_id,
+          'created_since' => created_since,
+          'created_until' => created_until,
+          'status' => status,
+          'due_since' => due_since,
+          'due_until' => due_until
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder

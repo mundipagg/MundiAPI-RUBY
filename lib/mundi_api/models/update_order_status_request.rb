@@ -2,21 +2,21 @@
 # ( https://apimatic.io ).
 
 module MundiApi
-  # Request for creating a new Access Token
-  class CreateAccessTokenRequest < BaseModel
-    # Minutes to expire the token
-    # @return [Integer]
-    attr_accessor :expires_in
+  # UpdateOrderStatusRequest Model.
+  class UpdateOrderStatusRequest < BaseModel
+    # Order status
+    # @return [String]
+    attr_accessor :status
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['expires_in'] = 'expires_in'
+      @_hash['status'] = 'status'
       @_hash
     end
 
-    def initialize(expires_in = nil)
-      @expires_in = expires_in
+    def initialize(status = nil)
+      @status = status
     end
 
     # Creates an instance of the object from a hash.
@@ -24,10 +24,10 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      expires_in = hash['expires_in']
+      status = hash['status']
 
       # Create object from extracted values.
-      CreateAccessTokenRequest.new(expires_in)
+      UpdateOrderStatusRequest.new(status)
     end
   end
 end

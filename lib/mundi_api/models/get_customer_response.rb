@@ -59,22 +59,20 @@ module MundiApi
 
     # A mapping from model property names to API property names.
     def self.names
-      if @_hash.nil?
-        @_hash = {}
-        @_hash['id'] = 'id'
-        @_hash['name'] = 'name'
-        @_hash['email'] = 'email'
-        @_hash['delinquent'] = 'delinquent'
-        @_hash['created_at'] = 'created_at'
-        @_hash['updated_at'] = 'updated_at'
-        @_hash['document'] = 'document'
-        @_hash['type'] = 'type'
-        @_hash['fb_access_token'] = 'fb_access_token'
-        @_hash['address'] = 'address'
-        @_hash['metadata'] = 'metadata'
-        @_hash['phones'] = 'phones'
-        @_hash['fb_id'] = 'fb_id'
-      end
+      @_hash = {} if @_hash.nil?
+      @_hash['id'] = 'id'
+      @_hash['name'] = 'name'
+      @_hash['email'] = 'email'
+      @_hash['delinquent'] = 'delinquent'
+      @_hash['created_at'] = 'created_at'
+      @_hash['updated_at'] = 'updated_at'
+      @_hash['document'] = 'document'
+      @_hash['type'] = 'type'
+      @_hash['fb_access_token'] = 'fb_access_token'
+      @_hash['address'] = 'address'
+      @_hash['metadata'] = 'metadata'
+      @_hash['phones'] = 'phones'
+      @_hash['fb_id'] = 'fb_id'
       @_hash
     end
 

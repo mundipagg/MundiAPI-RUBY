@@ -213,15 +213,17 @@ module MundiApi
       _query_builder << '/charges'
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
-        'page' => page,
-        'size' => size,
-        'code' => code,
-        'status' => status,
-        'payment_method' => payment_method,
-        'customer_id' => customer_id,
-        'order_id' => order_id,
-        'created_since' => created_since,
-        'created_until' => created_until,
+        {
+          'page' => page,
+          'size' => size,
+          'code' => code,
+          'status' => status,
+          'payment_method' => payment_method,
+          'customer_id' => customer_id,
+          'order_id' => order_id,
+          'created_since' => created_since,
+          'created_until' => created_until
+        },
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
