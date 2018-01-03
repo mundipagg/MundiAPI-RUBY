@@ -41,6 +41,10 @@ module MundiApi
     # @return [List of GetSplitResponse]
     attr_accessor :splits
 
+    # Código da transação
+    # @return [String]
+    attr_accessor :id
+
     # Date and time of the next attempt
     # @return [DateTime]
     attr_accessor :next_attempt
@@ -74,6 +78,7 @@ module MundiApi
       @_hash['attempt_count'] = 'attempt_count'
       @_hash['max_attempts'] = 'max_attempts'
       @_hash['splits'] = 'splits'
+      @_hash['id'] = 'id'
       @_hash['next_attempt'] = 'next_attempt'
       @_hash['transaction_type'] = 'transaction_type'
       @_hash
@@ -88,6 +93,7 @@ module MundiApi
                    attempt_count = nil,
                    max_attempts = nil,
                    splits = nil,
+                   id = nil,
                    next_attempt = nil,
                    transaction_type = nil)
       @gateway_id = gateway_id
@@ -99,6 +105,7 @@ module MundiApi
       @attempt_count = attempt_count
       @max_attempts = max_attempts
       @splits = splits
+      @id = id
       @next_attempt = next_attempt
       @transaction_type = transaction_type
     end
@@ -129,6 +136,7 @@ module MundiApi
           splits << (GetSplitResponse.from_hash(structure) if structure)
         end
       end
+      id = hash['id']
       next_attempt = DateTime.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
@@ -143,6 +151,7 @@ module MundiApi
                                  attempt_count,
                                  max_attempts,
                                  splits,
+                                 id,
                                  next_attempt,
                                  transaction_type)
     end

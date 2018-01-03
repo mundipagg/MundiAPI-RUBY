@@ -65,6 +65,7 @@ module MundiApi
                    attempt_count = nil,
                    max_attempts = nil,
                    splits = nil,
+                   id = nil,
                    next_attempt = nil,
                    transaction_type = nil)
       @url = url
@@ -85,6 +86,7 @@ module MundiApi
             attempt_count,
             max_attempts,
             splits,
+            id,
             next_attempt,
             transaction_type)
     end
@@ -118,6 +120,7 @@ module MundiApi
           splits << (GetSplitResponse.from_hash(structure) if structure)
         end
       end
+      id = hash['id']
       next_attempt = DateTime.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
@@ -139,6 +142,7 @@ module MundiApi
                                        attempt_count,
                                        max_attempts,
                                        splits,
+                                       id,
                                        next_attempt,
                                        transaction_type)
     end
