@@ -28,7 +28,11 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
-    # Metadata
+    # Código de referência do cliente no sistema da loja. Max: 52 caracteres
+    # @return [String]
+    attr_accessor :code
+
+    # Código de referência do cliente no sistema da loja. Max: 52 caracteres
     # @return [CreatePhonesRequest]
     attr_accessor :phones
 
@@ -41,6 +45,7 @@ module MundiApi
       @_hash['type'] = 'type'
       @_hash['address'] = 'address'
       @_hash['metadata'] = 'metadata'
+      @_hash['code'] = 'code'
       @_hash['phones'] = 'phones'
       @_hash
     end
@@ -51,6 +56,7 @@ module MundiApi
                    type = nil,
                    address = nil,
                    metadata = nil,
+                   code = nil,
                    phones = nil)
       @name = name
       @email = email
@@ -58,6 +64,7 @@ module MundiApi
       @type = type
       @address = address
       @metadata = metadata
+      @code = code
       @phones = phones
     end
 
@@ -73,6 +80,7 @@ module MundiApi
       address = CreateAddressRequest.from_hash(hash['address']) if
         hash['address']
       metadata = hash['metadata']
+      code = hash['code']
       phones = CreatePhonesRequest.from_hash(hash['phones']) if hash['phones']
 
       # Create object from extracted values.
@@ -82,6 +90,7 @@ module MundiApi
                                 type,
                                 address,
                                 metadata,
+                                code,
                                 phones)
     end
   end

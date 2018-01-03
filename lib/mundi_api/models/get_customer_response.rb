@@ -53,7 +53,11 @@ module MundiApi
     # @return [GetPhonesResponse]
     attr_accessor :phones
 
-    # TODO: Write general description for this method
+    # Código de referência do cliente no sistema da loja. Max: 52 caracteres
+    # @return [String]
+    attr_accessor :code
+
+    # Código de referência do cliente no sistema da loja. Max: 52 caracteres
     # @return [Long]
     attr_accessor :fb_id
 
@@ -72,6 +76,7 @@ module MundiApi
       @_hash['address'] = 'address'
       @_hash['metadata'] = 'metadata'
       @_hash['phones'] = 'phones'
+      @_hash['code'] = 'code'
       @_hash['fb_id'] = 'fb_id'
       @_hash
     end
@@ -88,6 +93,7 @@ module MundiApi
                    address = nil,
                    metadata = nil,
                    phones = nil,
+                   code = nil,
                    fb_id = nil)
       @id = id
       @name = name
@@ -101,6 +107,7 @@ module MundiApi
       @address = address
       @metadata = metadata
       @phones = phones
+      @code = code
       @fb_id = fb_id
     end
 
@@ -122,6 +129,7 @@ module MundiApi
         hash['address']
       metadata = hash['metadata']
       phones = GetPhonesResponse.from_hash(hash['phones']) if hash['phones']
+      code = hash['code']
       fb_id = hash['fb_id']
 
       # Create object from extracted values.
@@ -137,6 +145,7 @@ module MundiApi
                               address,
                               metadata,
                               phones,
+                              code,
                               fb_id)
     end
   end
