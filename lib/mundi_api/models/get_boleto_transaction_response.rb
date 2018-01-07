@@ -13,6 +13,18 @@ module MundiApi
 
     # TODO: Write general description for this method
     # @return [String]
+    attr_accessor :pdf
+
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :line
+
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :qr_code
+
+    # TODO: Write general description for this method
+    # @return [String]
     attr_accessor :bar_code
 
     # TODO: Write general description for this method
@@ -30,6 +42,10 @@ module MundiApi
     # TODO: Write general description for this method
     # @return [String]
     attr_accessor :instructions
+
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :due_at
 
     # TODO: Write general description for this method
     # @return [GetBillingAddressResponse]
@@ -71,11 +87,15 @@ module MundiApi
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['url'] = 'url'
+      @_hash['pdf'] = 'pdf'
+      @_hash['line'] = 'line'
+      @_hash['qr_code'] = 'qr_code'
       @_hash['bar_code'] = 'bar_code'
       @_hash['nosso_numero'] = 'nosso_numero'
       @_hash['bank'] = 'bank'
       @_hash['document_number'] = 'document_number'
       @_hash['instructions'] = 'instructions'
+      @_hash['due_at'] = 'due_at'
       @_hash['billing_address'] = 'billing_address'
       @_hash['qr_code'] = 'qr_code'
       @_hash['line'] = 'line'
@@ -90,11 +110,15 @@ module MundiApi
     end
 
     def initialize(url = nil,
+                   pdf = nil,
+                   line = nil,
+                   qr_code = nil,
                    bar_code = nil,
                    nosso_numero = nil,
                    bank = nil,
                    document_number = nil,
                    instructions = nil,
+                   due_at = nil,
                    billing_address = nil,
                    qr_code = nil,
                    line = nil,
@@ -117,11 +141,15 @@ module MundiApi
                    next_attempt = nil,
                    transaction_type = nil)
       @url = url
+      @pdf = pdf
+      @line = line
+      @qr_code = qr_code
       @bar_code = bar_code
       @nosso_numero = nosso_numero
       @bank = bank
       @document_number = document_number
       @instructions = instructions
+      @due_at = due_at
       @billing_address = billing_address
       @qr_code = qr_code
       @line = line
@@ -153,11 +181,15 @@ module MundiApi
 
       # Extract variables from the hash.
       url = hash['url']
+      pdf = hash['pdf']
+      line = hash['line']
+      qr_code = hash['qr_code']
       bar_code = hash['bar_code']
       nosso_numero = hash['nosso_numero']
       bank = hash['bank']
       document_number = hash['document_number']
       instructions = hash['instructions']
+      due_at = hash['due_at']
       billing_address = GetBillingAddressResponse.from_hash(hash['billing_address']) if
         hash['billing_address']
       qr_code = hash['qr_code']
@@ -191,11 +223,15 @@ module MundiApi
 
       # Create object from extracted values.
       GetBoletoTransactionResponse.new(url,
+                                       pdf,
+                                       line,
+                                       qr_code,
                                        bar_code,
                                        nosso_numero,
                                        bank,
                                        document_number,
                                        instructions,
+                                       due_at,
                                        billing_address,
                                        qr_code,
                                        line,
