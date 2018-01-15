@@ -8,9 +8,9 @@ This client library is a Ruby gem which can be compiled and used in your Ruby an
 
 1. Open the command line interface or the terminal and navigate to the folder containing the source code.
 2. Run ``` gem build mundi_api.gemspec ``` to build the gem.
-3. Once built, the gem can be installed on the current work environment using ``` gem install mundi_api-0.13.3.gem ```
+3. Once built, the gem can be installed on the current work environment using ``` gem install mundi_api-0.13.5.gem ```
 
-![Building Gem](https://apidocs.io/illustration/ruby?step=buildSDK&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiAPI-Ruby&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3)
+![Building Gem](https://apidocs.io/illustration/ruby?step=buildSDK&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiAPI-Ruby&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5)
 
 ## How to Use
 
@@ -20,41 +20,41 @@ The following section explains how to use the MundiApi Ruby Gem in a new Rails p
 
 Close any existing projects in RubyMine&trade; by selecting ``` File -> Close Project ```. Next, click on ``` Create New Project ``` to create a new project from scratch.
 
-![Create a new project in RubyMine](https://apidocs.io/illustration/ruby?step=createNewProject0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3)
+![Create a new project in RubyMine](https://apidocs.io/illustration/ruby?step=createNewProject0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5)
 
 Next, provide ``` TestApp ``` as the project name, choose ``` Rails Application ``` as the project type, and click ``` OK ```.
 
-![Create a new Rails Application in RubyMine - step 1](https://apidocs.io/illustration/ruby?step=createNewProject1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3)
+![Create a new Rails Application in RubyMine - step 1](https://apidocs.io/illustration/ruby?step=createNewProject1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5)
 
 In the next dialog make sure that correct *Ruby SDK* is being used (minimum 2.0.0) and click ``` OK ```.
 
-![Create a new Rails Application in RubyMine - step 2](https://apidocs.io/illustration/ruby?step=createNewProject2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3)
+![Create a new Rails Application in RubyMine - step 2](https://apidocs.io/illustration/ruby?step=createNewProject2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5)
 
 This will create a new Rails Application project with an existing set of files and folder.
 
 ### 2. Add reference of the gem
 
-In order to use the MundiApi gem in the new project we must add a gem reference. Locate the ```Gemfile``` in the *Project Explorer* window under the ``` TestApp ``` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: ``` gem 'mundi_api', '~> 0.13.3' ```
+In order to use the MundiApi gem in the new project we must add a gem reference. Locate the ```Gemfile``` in the *Project Explorer* window under the ``` TestApp ``` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: ``` gem 'mundi_api', '~> 0.13.5' ```
 
-![Add references of the Gemfile](https://apidocs.io/illustration/ruby?step=addReference&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3)
+![Add references of the Gemfile](https://apidocs.io/illustration/ruby?step=addReference&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5)
 
 ### 3. Adding a new Rails Controller
 
 Once the ``` TestApp ``` project is created, a folder named ``` controllers ``` will be visible in the *Project Explorer* under the following path: ``` TestApp > app > controllers ```. Right click on this folder and select ``` New -> Run Rails Generator... ```.
 
-![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?step=addCode0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3)
+![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?step=addCode0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5)
 
 Selecting the said option will popup a small window where the generator names are displayed. Here, select the ``` controller ``` template.
 
-![Create a new Controller](https://apidocs.io/illustration/ruby?step=addCode1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3)
+![Create a new Controller](https://apidocs.io/illustration/ruby?step=addCode1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5)
 
 Next, a popup window will ask you for a Controller name and included Actions. For controller name provide ``` Hello ``` and include an action named ``` Index ``` and click ``` OK ```.
 
-![Add a new Controller](https://apidocs.io/illustration/ruby?step=addCode2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3)
+![Add a new Controller](https://apidocs.io/illustration/ruby?step=addCode2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5)
 
 A new controller class anmed ``` HelloController ``` will be created in a file named ``` hello_controller.rb ``` containing a method named ``` Index ```. In this method, add code for initialization and a sample for its usage.
 
-![Initialize the library](https://apidocs.io/illustration/ruby?step=addCode3&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3)
+![Initialize the library](https://apidocs.io/illustration/ruby?step=addCode3&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5)
 
 ## How to Test
 
@@ -91,7 +91,7 @@ client = MundiApi::MundiApiClient.new(
 
 The added initlization code can be debugged by putting a breakpoint in the ``` Index ``` method and running the project in debug mode by selecting ``` Run -> Debug 'Development: TestApp' ```.
 
-![Debug the TestApp](https://apidocs.io/illustration/ruby?step=addCode4&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.3&initLine=client%2520%253D%2520MundiApiClient.new%2528%2527basic_auth_user_name%2527%252C%2520%2527basic_auth_password%2527%2529)
+![Debug the TestApp](https://apidocs.io/illustration/ruby?step=addCode4&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.5&initLine=client%2520%253D%2520MundiApiClient.new%2528%2527basic_auth_user_name%2527%252C%2520%2527basic_auth_password%2527%2529)
 
 
 
@@ -377,8 +377,8 @@ def get_charges(page = nil,
 #### Example Usage
 
 ```ruby
-page = 142
-size = 142
+page = 103
+size = 103
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -956,8 +956,8 @@ def get_access_tokens(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 142
-size = 142
+page = 195
+size = 195
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -988,8 +988,8 @@ def get_addresses(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 142
-size = 142
+page = 195
+size = 195
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -1020,8 +1020,8 @@ def get_cards(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 142
-size = 142
+page = 195
+size = 195
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -1158,8 +1158,8 @@ def get_invoices(page = nil,
 #### Example Usage
 
 ```ruby
-page = 142
-size = 142
+page = 195
+size = 195
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1530,8 +1530,8 @@ def get_plans(page = nil,
 #### Example Usage
 
 ```ruby
-page = 142
-size = 142
+page = 195
+size = 195
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1962,8 +1962,8 @@ def get_usages(subscription_id,
 ```ruby
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 233
-size = 233
+page = 153
+size = 153
 
 result = subscriptions_controller.get_usages(subscription_id, item_id, page, size)
 
@@ -2040,8 +2040,8 @@ def get_subscriptions(page = nil,
 #### Example Usage
 
 ```ruby
-page = 233
-size = 233
+page = 153
+size = 153
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -2301,8 +2301,8 @@ def get_orders(page = nil,
 #### Example Usage
 
 ```ruby
-page = 233
-size = 233
+page = 153
+size = 153
 code = 'code'
 status = 'status'
 created_since = DateTime.now
@@ -2705,8 +2705,8 @@ def get_recipients(page = nil,
 #### Example Usage
 
 ```ruby
-page = 191
-size = 191
+page = 245
+size = 245
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -2827,8 +2827,8 @@ def get_transfers(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 191
-size = 191
+page = 245
+size = 245
 status = 'status'
 created_since = DateTime.now
 created_until = DateTime.now
@@ -2964,8 +2964,8 @@ def get_anticipations(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 191
-size = 191
+page = 245
+size = 245
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = DateTime.now
@@ -3132,8 +3132,8 @@ def get_sellers(page = nil,
 #### Example Usage
 
 ```ruby
-page = 191
-size = 191
+page = 81
+size = 81
 name = 'name'
 document = 'document'
 code = 'code'

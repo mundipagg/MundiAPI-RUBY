@@ -28,6 +28,10 @@ module MundiApi
     # @return [CreateCheckoutBoletoPaymentRequest]
     attr_accessor :boleto
 
+    # Torna o objeto editável
+    # @return [Boolean]
+    attr_accessor :customer_editable
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -37,6 +41,7 @@ module MundiApi
       @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
       @_hash['credit_card'] = 'credit_card'
       @_hash['boleto'] = 'boleto'
+      @_hash['customer_editable'] = 'customer_editable'
       @_hash
     end
 
@@ -45,13 +50,15 @@ module MundiApi
                    default_payment_method = nil,
                    gateway_affiliation_id = nil,
                    credit_card = nil,
-                   boleto = nil)
+                   boleto = nil,
+                   customer_editable = nil)
       @accepted_payment_methods = accepted_payment_methods
       @success_url = success_url
       @default_payment_method = default_payment_method
       @gateway_affiliation_id = gateway_affiliation_id
       @credit_card = credit_card
       @boleto = boleto
+      @customer_editable = customer_editable
     end
 
     # Creates an instance of the object from a hash.
@@ -67,6 +74,7 @@ module MundiApi
         hash['credit_card']
       boleto = CreateCheckoutBoletoPaymentRequest.from_hash(hash['boleto']) if
         hash['boleto']
+      customer_editable = hash['customer_editable']
 
       # Create object from extracted values.
       CreateCheckoutPaymentRequest.new(accepted_payment_methods,
@@ -74,7 +82,8 @@ module MundiApi
                                        default_payment_method,
                                        gateway_affiliation_id,
                                        credit_card,
-                                       boleto)
+                                       boleto,
+                                       customer_editable)
     end
   end
 end

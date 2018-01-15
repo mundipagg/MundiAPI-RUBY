@@ -58,7 +58,7 @@ module MundiApi
     attr_accessor :closed
 
     # Checkout Payment Settings Response
-    # @return [List of GetCheckoutPaymentSettingsResponse]
+    # @return [List of GetCheckoutPaymentResponse]
     attr_accessor :checkouts
 
     # Ip address
@@ -178,7 +178,7 @@ module MundiApi
       unless hash['checkouts'].nil?
         checkouts = []
         hash['checkouts'].each do |structure|
-          checkouts << (GetCheckoutPaymentSettingsResponse.from_hash(structure) if structure)
+          checkouts << (GetCheckoutPaymentResponse.from_hash(structure) if structure)
         end
       end
       ip = hash['ip']

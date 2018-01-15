@@ -21,6 +21,10 @@ require_relative 'mundi_api/http/auth/basic_auth.rb'
 
 # Models
 require_relative 'mundi_api/models/base_model.rb'
+require_relative 'mundi_api/models/get_checkout_boleto_payment_response.rb'
+require_relative 'mundi_api/models/get_checkout_card_payment_response.rb'
+require_relative 'mundi_api/models' \
+                 '/get_checkout_card_installment_options_response.rb'
 require_relative 'mundi_api/models/create_cancel_charge_request.rb'
 require_relative 'mundi_api/models/list_customers_response.rb'
 require_relative 'mundi_api/models/list_cards_response.rb'
@@ -105,7 +109,6 @@ require_relative 'mundi_api/models' \
                  '/create_checkout_card_installment_option_request.rb'
 require_relative 'mundi_api/models/create_checkout_boleto_payment_request.rb'
 require_relative 'mundi_api/models/create_checkout_card_payment_request.rb'
-require_relative 'mundi_api/models/create_checkout_payment_request.rb'
 require_relative 'mundi_api/models/get_checkout_payment_settings_response.rb'
 require_relative 'mundi_api/models/create_seller_request.rb'
 require_relative 'mundi_api/models/get_seller_response.rb'
@@ -149,7 +152,9 @@ require_relative 'mundi_api/models/list_seller_response.rb'
 require_relative 'mundi_api/models/update_order_status_request.rb'
 require_relative 'mundi_api/models/get_usage_response.rb'
 require_relative 'mundi_api/models/update_customer_request.rb'
+require_relative 'mundi_api/models/get_checkout_payment_response.rb'
 require_relative 'mundi_api/models/get_boleto_transaction_response.rb'
+require_relative 'mundi_api/models/create_checkout_payment_request.rb'
 
 # Exceptions
 require_relative 'mundi_api/exceptions/api_exception.rb'
