@@ -30,6 +30,10 @@ module MundiApi
     # @return [String]
     attr_accessor :billing_address_id
 
+    # Número de identificação do cliente com o banco
+    # @return [String]
+    attr_accessor :nosso_numero
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -39,6 +43,7 @@ module MundiApi
       @_hash['due_at'] = 'due_at'
       @_hash['billing_address'] = 'billing_address'
       @_hash['billing_address_id'] = 'billing_address_id'
+      @_hash['nosso_numero'] = 'nosso_numero'
       @_hash
     end
 
@@ -47,13 +52,15 @@ module MundiApi
                    instructions = nil,
                    due_at = nil,
                    billing_address = nil,
-                   billing_address_id = nil)
+                   billing_address_id = nil,
+                   nosso_numero = nil)
       @retries = retries
       @bank = bank
       @instructions = instructions
       @due_at = due_at
       @billing_address = billing_address
       @billing_address_id = billing_address_id
+      @nosso_numero = nosso_numero
     end
 
     # Creates an instance of the object from a hash.
@@ -68,6 +75,7 @@ module MundiApi
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
       billing_address_id = hash['billing_address_id']
+      nosso_numero = hash['nosso_numero']
 
       # Create object from extracted values.
       CreateBoletoPaymentRequest.new(retries,
@@ -75,7 +83,8 @@ module MundiApi
                                      instructions,
                                      due_at,
                                      billing_address,
-                                     billing_address_id)
+                                     billing_address_id,
+                                     nosso_numero)
     end
   end
 end
