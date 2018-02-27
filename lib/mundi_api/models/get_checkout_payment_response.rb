@@ -65,6 +65,22 @@ module MundiApi
     # @return [GetCheckoutBoletoPaymentResponse]
     attr_accessor :boleto
 
+    # Indica se o billing address poderá ser editado
+    # @return [Boolean]
+    attr_accessor :billing_address_editable
+
+    # Configurações  de entrega
+    # @return [GetShippingResponse]
+    attr_accessor :shipping
+
+    # Indica se possui entrega
+    # @return [Boolean]
+    attr_accessor :shippable
+
+    # Moeda
+    # @return [String]
+    attr_accessor :currency
+
     # Valor em centavos
     # @return [Integer]
     attr_accessor :amount
@@ -72,6 +88,14 @@ module MundiApi
     # Data de cancelamento
     # @return [DateTime]
     attr_accessor :canceled_at
+
+    # Data de fechamento
+    # @return [DateTime]
+    attr_accessor :closed_at
+
+    # Data de expiração
+    # @return [DateTime]
+    attr_accessor :expires_at
 
     # A mapping from model property names to API property names.
     def self.names
@@ -91,8 +115,14 @@ module MundiApi
       @_hash['billingaddress'] = 'billingaddress'
       @_hash['credit_card'] = 'credit_Card'
       @_hash['boleto'] = 'boleto'
+      @_hash['billing_address_editable'] = 'billing_address_editable'
+      @_hash['shipping'] = 'shipping'
+      @_hash['shippable'] = 'shippable'
+      @_hash['currency'] = 'currency'
       @_hash['amount'] = 'amount'
       @_hash['canceled_at'] = 'canceled_at'
+      @_hash['closed_at'] = 'closed_at'
+      @_hash['expires_at'] = 'expires_at'
       @_hash
     end
 
@@ -111,8 +141,14 @@ module MundiApi
                    billingaddress = nil,
                    credit_card = nil,
                    boleto = nil,
+                   billing_address_editable = nil,
+                   shipping = nil,
+                   shippable = nil,
+                   currency = nil,
                    amount = nil,
-                   canceled_at = nil)
+                   canceled_at = nil,
+                   closed_at = nil,
+                   expires_at = nil)
       @id = id
       @default_payment_method = default_payment_method
       @success_url = success_url
@@ -128,8 +164,14 @@ module MundiApi
       @billingaddress = billingaddress
       @credit_card = credit_card
       @boleto = boleto
+      @billing_address_editable = billing_address_editable
+      @shipping = shipping
+      @shippable = shippable
+      @currency = currency
       @amount = amount
       @canceled_at = canceled_at
+      @closed_at = closed_at
+      @expires_at = expires_at
     end
 
     # Creates an instance of the object from a hash.
@@ -156,9 +198,16 @@ module MundiApi
         hash['credit_Card']
       boleto = GetCheckoutBoletoPaymentResponse.from_hash(hash['boleto']) if
         hash['boleto']
+      billing_address_editable = hash['billing_address_editable']
+      shipping = GetShippingResponse.from_hash(hash['shipping']) if
+        hash['shipping']
+      shippable = hash['shippable']
+      currency = hash['currency']
       amount = hash['amount']
       canceled_at = DateTime.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
+      closed_at = DateTime.rfc3339(hash['closed_at']) if hash['closed_at']
+      expires_at = DateTime.rfc3339(hash['expires_at']) if hash['expires_at']
 
       # Create object from extracted values.
       GetCheckoutPaymentResponse.new(id,
@@ -176,8 +225,14 @@ module MundiApi
                                      billingaddress,
                                      credit_card,
                                      boleto,
+                                     billing_address_editable,
+                                     shipping,
+                                     shippable,
+                                     currency,
                                      amount,
-                                     canceled_at)
+                                     canceled_at,
+                                     closed_at,
+                                     expires_at)
     end
   end
 end

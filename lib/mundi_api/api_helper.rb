@@ -89,7 +89,7 @@ module MundiApi
                              elsif array_serialization == 'tsv'
                                "#{seperator}#{key}=#{value.map do |element|
                                  CGI.escape(element.to_s)
-                               end.join('\t')}"
+                               end.join("\t")}"
                              else
                                "#{seperator}#{APIHelper.serialize_array(
                                  key, value, formatting: array_serialization

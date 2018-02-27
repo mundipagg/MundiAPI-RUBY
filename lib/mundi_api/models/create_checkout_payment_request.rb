@@ -12,6 +12,18 @@ module MundiApi
     # @return [String]
     attr_accessor :success_url
 
+    # Pular tela de sucesso pós-pagamento?
+    # @return [Boolean]
+    attr_accessor :skip_checkout_success_page
+
+    # Torna o objeto billing address editável
+    # @return [Boolean]
+    attr_accessor :billing_address_editable
+
+    # Endereço de cobrança
+    # @return [CreateAddressRequest]
+    attr_accessor :billing_address
+
     # Default payment method
     # @return [String]
     attr_accessor :default_payment_method
@@ -32,33 +44,49 @@ module MundiApi
     # @return [Boolean]
     attr_accessor :customer_editable
 
+    # Tempo em minutos para a expiração
+    # @return [Integer]
+    attr_accessor :expires_in
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['accepted_payment_methods'] = 'accepted_payment_methods'
       @_hash['success_url'] = 'success_url'
+      @_hash['skip_checkout_success_page'] = 'skip_checkout_success_page'
+      @_hash['billing_address_editable'] = 'billing_address_editable'
+      @_hash['billing_address'] = 'billing_address'
       @_hash['default_payment_method'] = 'default_payment_method'
       @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
       @_hash['credit_card'] = 'credit_card'
       @_hash['boleto'] = 'boleto'
       @_hash['customer_editable'] = 'customer_editable'
+      @_hash['expires_in'] = 'expires_in'
       @_hash
     end
 
     def initialize(accepted_payment_methods = nil,
                    success_url = nil,
+                   skip_checkout_success_page = nil,
+                   billing_address_editable = nil,
+                   billing_address = nil,
                    default_payment_method = nil,
                    gateway_affiliation_id = nil,
                    credit_card = nil,
                    boleto = nil,
-                   customer_editable = nil)
+                   customer_editable = nil,
+                   expires_in = nil)
       @accepted_payment_methods = accepted_payment_methods
       @success_url = success_url
+      @skip_checkout_success_page = skip_checkout_success_page
+      @billing_address_editable = billing_address_editable
+      @billing_address = billing_address
       @default_payment_method = default_payment_method
       @gateway_affiliation_id = gateway_affiliation_id
       @credit_card = credit_card
       @boleto = boleto
       @customer_editable = customer_editable
+      @expires_in = expires_in
     end
 
     # Creates an instance of the object from a hash.
@@ -68,6 +96,10 @@ module MundiApi
       # Extract variables from the hash.
       accepted_payment_methods = hash['accepted_payment_methods']
       success_url = hash['success_url']
+      skip_checkout_success_page = hash['skip_checkout_success_page']
+      billing_address_editable = hash['billing_address_editable']
+      billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
+        hash['billing_address']
       default_payment_method = hash['default_payment_method']
       gateway_affiliation_id = hash['gateway_affiliation_id']
       credit_card = CreateCheckoutCardPaymentRequest.from_hash(hash['credit_card']) if
@@ -75,15 +107,20 @@ module MundiApi
       boleto = CreateCheckoutBoletoPaymentRequest.from_hash(hash['boleto']) if
         hash['boleto']
       customer_editable = hash['customer_editable']
+      expires_in = hash['expires_in']
 
       # Create object from extracted values.
       CreateCheckoutPaymentRequest.new(accepted_payment_methods,
                                        success_url,
+                                       skip_checkout_success_page,
+                                       billing_address_editable,
+                                       billing_address,
                                        default_payment_method,
                                        gateway_affiliation_id,
                                        credit_card,
                                        boleto,
-                                       customer_editable)
+                                       customer_editable,
+                                       expires_in)
     end
   end
 end

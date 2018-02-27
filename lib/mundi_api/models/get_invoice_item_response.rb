@@ -20,11 +20,15 @@ module MundiApi
     # @return [GetPriceBracketResponse]
     attr_accessor :price_bracket
 
-    # TODO: Write general description for this method
+    # Subscription Item Id
+    # @return [String]
+    attr_accessor :subscription_item_id
+
+    # Subscription Item Id
     # @return [Integer]
     attr_accessor :quantity
 
-    # TODO: Write general description for this method
+    # Subscription Item Id
     # @return [String]
     attr_accessor :name
 
@@ -35,6 +39,7 @@ module MundiApi
       @_hash['description'] = 'description'
       @_hash['pricing_scheme'] = 'pricing_scheme'
       @_hash['price_bracket'] = 'price_bracket'
+      @_hash['subscription_item_id'] = 'subscription_item_id'
       @_hash['quantity'] = 'quantity'
       @_hash['name'] = 'name'
       @_hash
@@ -44,12 +49,14 @@ module MundiApi
                    description = nil,
                    pricing_scheme = nil,
                    price_bracket = nil,
+                   subscription_item_id = nil,
                    quantity = nil,
                    name = nil)
       @amount = amount
       @description = description
       @pricing_scheme = pricing_scheme
       @price_bracket = price_bracket
+      @subscription_item_id = subscription_item_id
       @quantity = quantity
       @name = name
     end
@@ -65,6 +72,7 @@ module MundiApi
         hash['pricing_scheme']
       price_bracket = GetPriceBracketResponse.from_hash(hash['price_bracket']) if
         hash['price_bracket']
+      subscription_item_id = hash['subscription_item_id']
       quantity = hash['quantity']
       name = hash['name']
 
@@ -73,6 +81,7 @@ module MundiApi
                                  description,
                                  pricing_scheme,
                                  price_bracket,
+                                 subscription_item_id,
                                  quantity,
                                  name)
     end
