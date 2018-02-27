@@ -4,30 +4,6 @@
 module MundiApi
   #  mundi_api client class.
   class MundiApiClient
-    # Singleton access to charges controller.
-    # @return [ChargesController] Returns the controller instance.
-    def charges
-      ChargesController.instance
-    end
-
-    # Singleton access to customers controller.
-    # @return [CustomersController] Returns the controller instance.
-    def customers
-      CustomersController.instance
-    end
-
-    # Singleton access to invoices controller.
-    # @return [InvoicesController] Returns the controller instance.
-    def invoices
-      InvoicesController.instance
-    end
-
-    # Singleton access to plans controller.
-    # @return [PlansController] Returns the controller instance.
-    def plans
-      PlansController.instance
-    end
-
     # Singleton access to subscriptions controller.
     # @return [SubscriptionsController] Returns the controller instance.
     def subscriptions
@@ -40,16 +16,40 @@ module MundiApi
       OrdersController.instance
     end
 
-    # Singleton access to tokens controller.
-    # @return [TokensController] Returns the controller instance.
-    def tokens
-      TokensController.instance
+    # Singleton access to plans controller.
+    # @return [PlansController] Returns the controller instance.
+    def plans
+      PlansController.instance
+    end
+
+    # Singleton access to invoices controller.
+    # @return [InvoicesController] Returns the controller instance.
+    def invoices
+      InvoicesController.instance
+    end
+
+    # Singleton access to customers controller.
+    # @return [CustomersController] Returns the controller instance.
+    def customers
+      CustomersController.instance
+    end
+
+    # Singleton access to charges controller.
+    # @return [ChargesController] Returns the controller instance.
+    def charges
+      ChargesController.instance
     end
 
     # Singleton access to recipients controller.
     # @return [RecipientsController] Returns the controller instance.
     def recipients
       RecipientsController.instance
+    end
+
+    # Singleton access to tokens controller.
+    # @return [TokensController] Returns the controller instance.
+    def tokens
+      TokensController.instance
     end
 
     # Singleton access to sellers controller.
