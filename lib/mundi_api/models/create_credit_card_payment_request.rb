@@ -49,6 +49,10 @@ module MundiApi
     # @return [Boolean]
     attr_accessor :capture
 
+    # Customer business segment code
+    # @return [Long]
+    attr_accessor :merchant_category_code
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -63,6 +67,7 @@ module MundiApi
       @_hash['extended_limit_enabled'] = 'extended_limit_enabled'
       @_hash['extended_limit_code'] = 'extended_limit_code'
       @_hash['capture'] = 'capture'
+      @_hash['merchant_category_code'] = 'merchant_category_code'
       @_hash
     end
 
@@ -76,7 +81,8 @@ module MundiApi
                    recurrence = nil,
                    extended_limit_enabled = nil,
                    extended_limit_code = nil,
-                   capture = true)
+                   capture = true,
+                   merchant_category_code = nil)
       @installments = installments
       @statement_descriptor = statement_descriptor
       @card = card
@@ -88,6 +94,7 @@ module MundiApi
       @extended_limit_enabled = extended_limit_enabled
       @extended_limit_code = extended_limit_code
       @capture = capture
+      @merchant_category_code = merchant_category_code
     end
 
     # Creates an instance of the object from a hash.
@@ -106,6 +113,7 @@ module MundiApi
       extended_limit_enabled = hash['extended_limit_enabled']
       extended_limit_code = hash['extended_limit_code']
       capture = hash['capture'] ||= true
+      merchant_category_code = hash['merchant_category_code']
 
       # Create object from extracted values.
       CreateCreditCardPaymentRequest.new(installments,
@@ -118,7 +126,8 @@ module MundiApi
                                          recurrence,
                                          extended_limit_enabled,
                                          extended_limit_code,
-                                         capture)
+                                         capture,
+                                         merchant_category_code)
     end
   end
 end
