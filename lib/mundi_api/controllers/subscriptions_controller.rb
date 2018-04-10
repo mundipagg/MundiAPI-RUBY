@@ -834,5 +834,49 @@ module MundiApi
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetDiscountResponse.from_hash(decoded)
     end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [Integer] page Required parameter: Page number
+    # @param [Integer] size Required parameter: Page size
+    # @return ListDiscountsResponse response from the API call
+    def get_discounts(subscription_id,
+                      page,
+                      size)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/discounts/'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id
+      )
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'page' => page,
+          'size' => size
+        },
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ListDiscountsResponse.from_hash(decoded)
+    end
   end
 end
