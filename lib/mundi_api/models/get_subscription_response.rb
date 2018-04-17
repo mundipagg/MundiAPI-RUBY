@@ -105,6 +105,10 @@ module MundiApi
     # @return [List of GetDiscountResponse]
     attr_accessor :discounts
 
+    # Days until boleto expires
+    # @return [Integer]
+    attr_accessor :boleto_due_days
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -133,6 +137,7 @@ module MundiApi
       @_hash['minimum_price'] = 'minimum_price'
       @_hash['canceled_at'] = 'canceled_at'
       @_hash['discounts'] = 'discounts'
+      @_hash['boleto_due_days'] = 'boleto_due_days'
       @_hash
     end
 
@@ -160,7 +165,8 @@ module MundiApi
                    billing_day = nil,
                    minimum_price = nil,
                    canceled_at = nil,
-                   discounts = nil)
+                   discounts = nil,
+                   boleto_due_days = nil)
       @id = id
       @code = code
       @start_at = start_at
@@ -186,6 +192,7 @@ module MundiApi
       @minimum_price = minimum_price
       @canceled_at = canceled_at
       @discounts = discounts
+      @boleto_due_days = boleto_due_days
     end
 
     # Creates an instance of the object from a hash.
@@ -236,6 +243,7 @@ module MundiApi
           discounts << (GetDiscountResponse.from_hash(structure) if structure)
         end
       end
+      boleto_due_days = hash['boleto_due_days']
 
       # Create object from extracted values.
       GetSubscriptionResponse.new(id,
@@ -262,7 +270,8 @@ module MundiApi
                                   billing_day,
                                   minimum_price,
                                   canceled_at,
-                                  discounts)
+                                  discounts,
+                                  boleto_due_days)
     end
   end
 end

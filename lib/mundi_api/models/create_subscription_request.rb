@@ -113,6 +113,10 @@ module MundiApi
     # @return [Integer]
     attr_accessor :quantity
 
+    # Days until boleto expires
+    # @return [Integer]
+    attr_accessor :boleto_due_days
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -143,6 +147,7 @@ module MundiApi
       @_hash['card_token'] = 'card_token'
       @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
       @_hash['quantity'] = 'quantity'
+      @_hash['boleto_due_days'] = 'boleto_due_days'
       @_hash
     end
 
@@ -172,7 +177,8 @@ module MundiApi
                    cycles = nil,
                    card_token = nil,
                    gateway_affiliation_id = nil,
-                   quantity = nil)
+                   quantity = nil,
+                   boleto_due_days = nil)
       @customer = customer
       @card = card
       @code = code
@@ -200,6 +206,7 @@ module MundiApi
       @card_token = card_token
       @gateway_affiliation_id = gateway_affiliation_id
       @quantity = quantity
+      @boleto_due_days = boleto_due_days
     end
 
     # Creates an instance of the object from a hash.
@@ -251,6 +258,7 @@ module MundiApi
       card_token = hash['card_token']
       gateway_affiliation_id = hash['gateway_affiliation_id']
       quantity = hash['quantity']
+      boleto_due_days = hash['boleto_due_days']
 
       # Create object from extracted values.
       CreateSubscriptionRequest.new(customer,
@@ -279,7 +287,8 @@ module MundiApi
                                     cycles,
                                     card_token,
                                     gateway_affiliation_id,
-                                    quantity)
+                                    quantity,
+                                    boleto_due_days)
     end
   end
 end
