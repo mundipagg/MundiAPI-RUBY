@@ -18,10 +18,6 @@ module MundiApi
     # @return [String]
     attr_accessor :instructions
 
-    # Boleto due date
-    # @return [DateTime]
-    attr_accessor :due_at
-
     # Card's billing address
     # @return [CreateAddressRequest]
     attr_accessor :billing_address
@@ -29,6 +25,10 @@ module MundiApi
     # The address id for the billing address
     # @return [String]
     attr_accessor :billing_address_id
+
+    # Boleto due date
+    # @return [DateTime]
+    attr_accessor :due_at
 
     # Número de identificação do cliente com o banco
     # @return [String]
@@ -40,9 +40,9 @@ module MundiApi
       @_hash['retries'] = 'retries'
       @_hash['bank'] = 'bank'
       @_hash['instructions'] = 'instructions'
-      @_hash['due_at'] = 'due_at'
       @_hash['billing_address'] = 'billing_address'
       @_hash['billing_address_id'] = 'billing_address_id'
+      @_hash['due_at'] = 'due_at'
       @_hash['nosso_numero'] = 'nosso_numero'
       @_hash
     end
@@ -50,16 +50,16 @@ module MundiApi
     def initialize(retries = nil,
                    bank = nil,
                    instructions = nil,
-                   due_at = nil,
                    billing_address = nil,
                    billing_address_id = nil,
+                   due_at = nil,
                    nosso_numero = nil)
       @retries = retries
       @bank = bank
       @instructions = instructions
-      @due_at = due_at
       @billing_address = billing_address
       @billing_address_id = billing_address_id
+      @due_at = due_at
       @nosso_numero = nosso_numero
     end
 
@@ -71,19 +71,19 @@ module MundiApi
       retries = hash['retries']
       bank = hash['bank']
       instructions = hash['instructions']
-      due_at = DateTime.rfc3339(hash['due_at']) if hash['due_at']
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
       billing_address_id = hash['billing_address_id']
+      due_at = DateTime.rfc3339(hash['due_at']) if hash['due_at']
       nosso_numero = hash['nosso_numero']
 
       # Create object from extracted values.
       CreateBoletoPaymentRequest.new(retries,
                                      bank,
                                      instructions,
-                                     due_at,
                                      billing_address,
                                      billing_address_id,
+                                     due_at,
                                      nosso_numero)
     end
   end
