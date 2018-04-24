@@ -11,6 +11,10 @@ module MundiApi
 
     # TODO: Write general description for this method
     # @return [String]
+    attr_accessor :first_six_digits
+
+    # TODO: Write general description for this method
+    # @return [String]
     attr_accessor :last_four_digits
 
     # TODO: Write general description for this method
@@ -69,6 +73,7 @@ module MundiApi
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['id'] = 'id'
+      @_hash['first_six_digits'] = 'first_six_digits'
       @_hash['last_four_digits'] = 'last_four_digits'
       @_hash['brand'] = 'brand'
       @_hash['holder_name'] = 'holder_name'
@@ -87,6 +92,7 @@ module MundiApi
     end
 
     def initialize(id = nil,
+                   first_six_digits = nil,
                    last_four_digits = nil,
                    brand = nil,
                    holder_name = nil,
@@ -102,6 +108,7 @@ module MundiApi
                    holder_document = nil,
                    deleted_at = nil)
       @id = id
+      @first_six_digits = first_six_digits
       @last_four_digits = last_four_digits
       @brand = brand
       @holder_name = holder_name
@@ -124,6 +131,7 @@ module MundiApi
 
       # Extract variables from the hash.
       id = hash['id']
+      first_six_digits = hash['first_six_digits']
       last_four_digits = hash['last_four_digits']
       brand = hash['brand']
       holder_name = hash['holder_name']
@@ -143,6 +151,7 @@ module MundiApi
 
       # Create object from extracted values.
       GetCardResponse.new(id,
+                          first_six_digits,
                           last_four_digits,
                           brand,
                           holder_name,
