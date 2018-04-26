@@ -37,6 +37,10 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :deleted_at
 
+    # Identification code in the client system
+    # @return [String]
+    attr_accessor :code
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -48,6 +52,7 @@ module MundiApi
       @_hash['status'] = 'status'
       @_hash['subscription_item'] = 'subscription_item'
       @_hash['deleted_at'] = 'deleted_at'
+      @_hash['code'] = 'code'
       @_hash
     end
 
@@ -58,7 +63,8 @@ module MundiApi
                    created_at = nil,
                    status = nil,
                    subscription_item = nil,
-                   deleted_at = nil)
+                   deleted_at = nil,
+                   code = nil)
       @id = id
       @quantity = quantity
       @description = description
@@ -67,6 +73,7 @@ module MundiApi
       @status = status
       @subscription_item = subscription_item
       @deleted_at = deleted_at
+      @code = code
     end
 
     # Creates an instance of the object from a hash.
@@ -83,6 +90,7 @@ module MundiApi
       subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item']) if
         hash['subscription_item']
       deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
+      code = hash['code']
 
       # Create object from extracted values.
       GetUsageResponse.new(id,
@@ -92,7 +100,8 @@ module MundiApi
                            created_at,
                            status,
                            subscription_item,
-                           deleted_at)
+                           deleted_at,
+                           code)
     end
   end
 end

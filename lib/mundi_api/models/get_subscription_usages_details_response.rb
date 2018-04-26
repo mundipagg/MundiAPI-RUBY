@@ -20,6 +20,14 @@ module MundiApi
     # @return [List of GetUsageResponse]
     attr_accessor :usages
 
+    # Total discounted value
+    # @return [Integer]
+    attr_accessor :total_discount
+
+    # Total inremented value
+    # @return [Integer]
+    attr_accessor :total_increment
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -27,17 +35,23 @@ module MundiApi
       @_hash['total_amount'] = 'total_amount'
       @_hash['period'] = 'Period'
       @_hash['usages'] = 'Usages'
+      @_hash['total_discount'] = 'total_discount'
+      @_hash['total_increment'] = 'total_increment'
       @_hash
     end
 
     def initialize(subscription_id = nil,
                    total_amount = nil,
                    period = nil,
-                   usages = nil)
+                   usages = nil,
+                   total_discount = nil,
+                   total_increment = nil)
       @subscription_id = subscription_id
       @total_amount = total_amount
       @period = period
       @usages = usages
+      @total_discount = total_discount
+      @total_increment = total_increment
     end
 
     # Creates an instance of the object from a hash.
@@ -56,12 +70,16 @@ module MundiApi
           usages << (GetUsageResponse.from_hash(structure) if structure)
         end
       end
+      total_discount = hash['total_discount']
+      total_increment = hash['total_increment']
 
       # Create object from extracted values.
       GetSubscriptionUsagesDetailsResponse.new(subscription_id,
                                                total_amount,
                                                period,
-                                               usages)
+                                               usages,
+                                               total_discount,
+                                               total_increment)
     end
   end
 end

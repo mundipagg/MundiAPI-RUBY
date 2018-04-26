@@ -69,6 +69,10 @@ module MundiApi
     # @return [CreateSetupRequest]
     attr_accessor :setup
 
+    # Increments
+    # @return [List of CreateIncrementRequest]
+    attr_accessor :increments
+
     # Plan id
     # @return [String]
     attr_accessor :plan_id
@@ -136,6 +140,7 @@ module MundiApi
       @_hash['discounts'] = 'discounts'
       @_hash['metadata'] = 'metadata'
       @_hash['setup'] = 'setup'
+      @_hash['increments'] = 'increments'
       @_hash['plan_id'] = 'plan_id'
       @_hash['customer_id'] = 'customer_id'
       @_hash['card_id'] = 'card_id'
@@ -167,6 +172,7 @@ module MundiApi
                    discounts = nil,
                    metadata = nil,
                    setup = nil,
+                   increments = nil,
                    plan_id = nil,
                    customer_id = nil,
                    card_id = nil,
@@ -195,6 +201,7 @@ module MundiApi
       @discounts = discounts
       @metadata = metadata
       @setup = setup
+      @increments = increments
       @plan_id = plan_id
       @customer_id = customer_id
       @card_id = card_id
@@ -247,6 +254,14 @@ module MundiApi
       end
       metadata = hash['metadata']
       setup = CreateSetupRequest.from_hash(hash['setup']) if hash['setup']
+      # Parameter is an array, so we need to iterate through it
+      increments = nil
+      unless hash['increments'].nil?
+        increments = []
+        hash['increments'].each do |structure|
+          increments << (CreateIncrementRequest.from_hash(structure) if structure)
+        end
+      end
       plan_id = hash['plan_id']
       customer_id = hash['customer_id']
       card_id = hash['card_id']
@@ -277,6 +292,7 @@ module MundiApi
                                     discounts,
                                     metadata,
                                     setup,
+                                    increments,
                                     plan_id,
                                     customer_id,
                                     card_id,

@@ -85,19 +85,23 @@ module MundiApi
     # @return [String]
     attr_accessor :gateway_affiliation_id
 
-    # Affiliation Code
+    # Subscription increments
+    # @return [List of GetIncrementResponse]
+    attr_accessor :increments
+
+    # Subscription increments
     # @return [DateTime]
     attr_accessor :next_billing_at
 
-    # Affiliation Code
+    # Subscription increments
     # @return [Integer]
     attr_accessor :billing_day
 
-    # Affiliation Code
+    # Subscription increments
     # @return [Integer]
     attr_accessor :minimum_price
 
-    # Affiliation Code
+    # Subscription increments
     # @return [DateTime]
     attr_accessor :canceled_at
 
@@ -132,6 +136,7 @@ module MundiApi
       @_hash['metadata'] = 'metadata'
       @_hash['setup'] = 'setup'
       @_hash['gateway_affiliation_id'] = 'gateway_affiliation_id'
+      @_hash['increments'] = 'increments'
       @_hash['next_billing_at'] = 'next_billing_at'
       @_hash['billing_day'] = 'billing_day'
       @_hash['minimum_price'] = 'minimum_price'
@@ -161,6 +166,7 @@ module MundiApi
                    metadata = nil,
                    setup = nil,
                    gateway_affiliation_id = nil,
+                   increments = nil,
                    next_billing_at = nil,
                    billing_day = nil,
                    minimum_price = nil,
@@ -187,6 +193,7 @@ module MundiApi
       @metadata = metadata
       @setup = setup
       @gateway_affiliation_id = gateway_affiliation_id
+      @increments = increments
       @next_billing_at = next_billing_at
       @billing_day = billing_day
       @minimum_price = minimum_price
@@ -229,6 +236,14 @@ module MundiApi
       metadata = hash['metadata']
       setup = GetSetupResponse.from_hash(hash['setup']) if hash['setup']
       gateway_affiliation_id = hash['gateway_affiliation_id']
+      # Parameter is an array, so we need to iterate through it
+      increments = nil
+      unless hash['increments'].nil?
+        increments = []
+        hash['increments'].each do |structure|
+          increments << (GetIncrementResponse.from_hash(structure) if structure)
+        end
+      end
       next_billing_at = DateTime.rfc3339(hash['next_billing_at']) if
         hash['next_billing_at']
       billing_day = hash['billing_day']
@@ -266,6 +281,7 @@ module MundiApi
                                   metadata,
                                   setup,
                                   gateway_affiliation_id,
+                                  increments,
                                   next_billing_at,
                                   billing_day,
                                   minimum_price,
