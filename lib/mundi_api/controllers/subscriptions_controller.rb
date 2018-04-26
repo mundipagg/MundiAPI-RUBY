@@ -920,5 +920,121 @@ module MundiApi
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetSubscriptionUsagesDetailsResponse.from_hash(decoded)
     end
+
+    # Creates a increment
+    # @param [String] subscription_id Required parameter: Subscription id
+    # @param [CreateIncrementRequest] request Required parameter: Request for
+    # creating a increment
+    # @return GetIncrementResponse response from the API call
+    def create_increment(subscription_id,
+                         request)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/increments'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.post(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetIncrementResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [Integer] page Required parameter: Page number
+    # @param [Integer] size Required parameter: Page size
+    # @return ListIncrementsResponse response from the API call
+    def get_increments(subscription_id,
+                       page,
+                       size)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/increments/'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id
+      )
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'page' => page,
+          'size' => size
+        },
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ListIncrementsResponse.from_hash(decoded)
+    end
+
+    # Deletes a increment
+    # @param [String] subscription_id Required parameter: Subscription id
+    # @param [String] increment_id Required parameter: Increment id
+    # @return GetIncrementResponse response from the API call
+    def delete_increment(subscription_id,
+                         increment_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/increments/{increment_id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id,
+        'increment_id' => increment_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetIncrementResponse.from_hash(decoded)
+    end
   end
 end

@@ -3,8 +3,8 @@
 
 require 'date'
 module MundiApi
-  # Response object for getting a discount
-  class GetDiscountResponse < BaseModel
+  # Response object for getting a increment
+  class GetIncrementResponse < BaseModel
     # TODO: Write general description for this method
     # @return [String]
     attr_accessor :id
@@ -15,7 +15,7 @@ module MundiApi
 
     # TODO: Write general description for this method
     # @return [String]
-    attr_accessor :discount_type
+    attr_accessor :increment_type
 
     # TODO: Write general description for this method
     # @return [String]
@@ -46,7 +46,7 @@ module MundiApi
       @_hash = {} if @_hash.nil?
       @_hash['id'] = 'id'
       @_hash['value'] = 'value'
-      @_hash['discount_type'] = 'discount_type'
+      @_hash['increment_type'] = 'increment_type'
       @_hash['status'] = 'status'
       @_hash['created_at'] = 'created_at'
       @_hash['subscription'] = 'subscription'
@@ -58,7 +58,7 @@ module MundiApi
 
     def initialize(id = nil,
                    value = nil,
-                   discount_type = nil,
+                   increment_type = nil,
                    status = nil,
                    created_at = nil,
                    subscription = nil,
@@ -67,7 +67,7 @@ module MundiApi
                    description = nil)
       @id = id
       @value = value
-      @discount_type = discount_type
+      @increment_type = increment_type
       @status = status
       @created_at = created_at
       @subscription = subscription
@@ -83,7 +83,7 @@ module MundiApi
       # Extract variables from the hash.
       id = hash['id']
       value = hash['value']
-      discount_type = hash['discount_type']
+      increment_type = hash['increment_type']
       status = hash['status']
       created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
@@ -93,15 +93,15 @@ module MundiApi
       description = hash['description']
 
       # Create object from extracted values.
-      GetDiscountResponse.new(id,
-                              value,
-                              discount_type,
-                              status,
-                              created_at,
-                              subscription,
-                              cycles,
-                              deleted_at,
-                              description)
+      GetIncrementResponse.new(id,
+                               value,
+                               increment_type,
+                               status,
+                               created_at,
+                               subscription,
+                               cycles,
+                               deleted_at,
+                               description)
     end
   end
 end

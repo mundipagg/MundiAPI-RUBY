@@ -17,21 +17,28 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :used_at
 
+    # Identification code in the client system
+    # @return [String]
+    attr_accessor :code
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['quantity'] = 'quantity'
       @_hash['description'] = 'description'
       @_hash['used_at'] = 'used_at'
+      @_hash['code'] = 'code'
       @_hash
     end
 
     def initialize(quantity = nil,
                    description = nil,
-                   used_at = nil)
+                   used_at = nil,
+                   code = nil)
       @quantity = quantity
       @description = description
       @used_at = used_at
+      @code = code
     end
 
     # Creates an instance of the object from a hash.
@@ -42,11 +49,13 @@ module MundiApi
       quantity = hash['quantity']
       description = hash['description']
       used_at = DateTime.rfc3339(hash['used_at']) if hash['used_at']
+      code = hash['code']
 
       # Create object from extracted values.
       CreateUsageRequest.new(quantity,
                              description,
-                             used_at)
+                             used_at,
+                             code)
     end
   end
 end

@@ -85,6 +85,14 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :seen_at
 
+    # Total discounted value
+    # @return [Integer]
+    attr_accessor :total_discount
+
+    # Total discounted value
+    # @return [Integer]
+    attr_accessor :total_increment
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -108,6 +116,8 @@ module MundiApi
       @_hash['canceled_at'] = 'canceled_at'
       @_hash['billing_at'] = 'billing_at'
       @_hash['seen_at'] = 'seen_at'
+      @_hash['total_discount'] = 'total_discount'
+      @_hash['total_increment'] = 'total_increment'
       @_hash
     end
 
@@ -130,7 +140,9 @@ module MundiApi
                    due_at = nil,
                    canceled_at = nil,
                    billing_at = nil,
-                   seen_at = nil)
+                   seen_at = nil,
+                   total_discount = nil,
+                   total_increment = nil)
       @id = id
       @code = code
       @url = url
@@ -151,6 +163,8 @@ module MundiApi
       @canceled_at = canceled_at
       @billing_at = billing_at
       @seen_at = seen_at
+      @total_discount = total_discount
+      @total_increment = total_increment
     end
 
     # Creates an instance of the object from a hash.
@@ -190,6 +204,8 @@ module MundiApi
         hash['canceled_at']
       billing_at = DateTime.rfc3339(hash['billing_at']) if hash['billing_at']
       seen_at = DateTime.rfc3339(hash['seen_at']) if hash['seen_at']
+      total_discount = hash['total_discount']
+      total_increment = hash['total_increment']
 
       # Create object from extracted values.
       GetInvoiceResponse.new(id,
@@ -211,7 +227,9 @@ module MundiApi
                              due_at,
                              canceled_at,
                              billing_at,
-                             seen_at)
+                             seen_at,
+                             total_discount,
+                             total_increment)
     end
   end
 end

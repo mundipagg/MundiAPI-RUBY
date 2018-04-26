@@ -34,6 +34,10 @@ module MundiApi
     attr_accessor :discounts
 
     # TODO: Write general description for this method
+    # @return [List of GetIncrementResponse]
+    attr_accessor :increments
+
+    # TODO: Write general description for this method
     # @return [GetSubscriptionResponse]
     attr_accessor :subscription
 
@@ -63,6 +67,7 @@ module MundiApi
       @_hash['updated_at'] = 'updated_at'
       @_hash['pricing_scheme'] = 'pricing_scheme'
       @_hash['discounts'] = 'discounts'
+      @_hash['increments'] = 'increments'
       @_hash['subscription'] = 'subscription'
       @_hash['name'] = 'name'
       @_hash['quantity'] = 'quantity'
@@ -78,6 +83,7 @@ module MundiApi
                    updated_at = nil,
                    pricing_scheme = nil,
                    discounts = nil,
+                   increments = nil,
                    subscription = nil,
                    name = nil,
                    quantity = nil,
@@ -90,6 +96,7 @@ module MundiApi
       @updated_at = updated_at
       @pricing_scheme = pricing_scheme
       @discounts = discounts
+      @increments = increments
       @subscription = subscription
       @name = name
       @quantity = quantity
@@ -117,6 +124,14 @@ module MundiApi
           discounts << (GetDiscountResponse.from_hash(structure) if structure)
         end
       end
+      # Parameter is an array, so we need to iterate through it
+      increments = nil
+      unless hash['increments'].nil?
+        increments = []
+        hash['increments'].each do |structure|
+          increments << (GetIncrementResponse.from_hash(structure) if structure)
+        end
+      end
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
       name = hash['name']
@@ -132,6 +147,7 @@ module MundiApi
                                       updated_at,
                                       pricing_scheme,
                                       discounts,
+                                      increments,
                                       subscription,
                                       name,
                                       quantity,
