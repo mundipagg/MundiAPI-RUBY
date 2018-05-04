@@ -56,7 +56,7 @@ module MundiApi
       id = hash['id']
       code = hash['code']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
 

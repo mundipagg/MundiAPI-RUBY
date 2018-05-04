@@ -25,7 +25,7 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      due_at = DateTime.rfc3339(hash['due_at']) if hash['due_at']
+      due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
 
       # Create object from extracted values.
       UpdateChargeDueDateRequest.new(due_at)

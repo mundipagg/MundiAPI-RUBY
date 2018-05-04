@@ -177,8 +177,8 @@ module MundiApi
       installments = hash['installments']
       status = hash['status']
       currency = hash['currency']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?
@@ -192,7 +192,7 @@ module MundiApi
       metadata = hash['metadata']
       trial_period_days = hash['trial_period_days']
       minimum_price = hash['minimum_price']
-      deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
+      deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.
       GetPlanResponse.new(id,

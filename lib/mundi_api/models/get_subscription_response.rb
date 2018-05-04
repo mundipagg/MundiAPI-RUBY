@@ -209,7 +209,7 @@ module MundiApi
       # Extract variables from the hash.
       id = hash['id']
       code = hash['code']
-      start_at = DateTime.rfc3339(hash['start_at']) if hash['start_at']
+      start_at = APIHelper.rfc3339(hash['start_at']) if hash['start_at']
       interval = hash['interval']
       interval_count = hash['interval_count']
       billing_type = hash['billing_type']
@@ -219,8 +219,8 @@ module MundiApi
       currency = hash['currency']
       installments = hash['installments']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
       card = GetCardResponse.from_hash(hash['card']) if hash['card']
@@ -244,11 +244,11 @@ module MundiApi
           increments << (GetIncrementResponse.from_hash(structure) if structure)
         end
       end
-      next_billing_at = DateTime.rfc3339(hash['next_billing_at']) if
+      next_billing_at = APIHelper.rfc3339(hash['next_billing_at']) if
         hash['next_billing_at']
       billing_day = hash['billing_day']
       minimum_price = hash['minimum_price']
-      canceled_at = DateTime.rfc3339(hash['canceled_at']) if
+      canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
       # Parameter is an array, so we need to iterate through it
       discounts = nil

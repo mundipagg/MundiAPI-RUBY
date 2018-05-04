@@ -116,9 +116,9 @@ module MundiApi
       description = hash['description']
       type = hash['type']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
-      deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
+      deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       default_bank_account = GetBankAccountResponse.from_hash(hash['default_bank_account']) if
         hash['default_bank_account']
       # Parameter is an array, so we need to iterate through it

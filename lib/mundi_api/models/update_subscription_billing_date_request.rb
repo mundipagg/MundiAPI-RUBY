@@ -25,7 +25,7 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      next_billing_at = DateTime.rfc3339(hash['next_billing_at']) if
+      next_billing_at = APIHelper.rfc3339(hash['next_billing_at']) if
         hash['next_billing_at']
 
       # Create object from extracted values.

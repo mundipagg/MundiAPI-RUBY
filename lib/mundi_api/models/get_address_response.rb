@@ -147,14 +147,14 @@ module MundiApi
       state = hash['state']
       country = hash['country']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
       metadata = hash['metadata']
       line_1 = hash['line_1']
       line_2 = hash['line_2']
-      deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
+      deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.
       GetAddressResponse.new(id,

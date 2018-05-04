@@ -187,8 +187,8 @@ module MundiApi
       accepted_payment_methods = hash['accepted_payment_methods']
       status = hash['status']
       skip_checkout_success_page = hash['skip_checkout_success_page']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       customer_editable = hash['customer_editable']
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
@@ -204,10 +204,10 @@ module MundiApi
       shippable = hash['shippable']
       currency = hash['currency']
       amount = hash['amount']
-      canceled_at = DateTime.rfc3339(hash['canceled_at']) if
+      canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
-      closed_at = DateTime.rfc3339(hash['closed_at']) if hash['closed_at']
-      expires_at = DateTime.rfc3339(hash['expires_at']) if hash['expires_at']
+      closed_at = APIHelper.rfc3339(hash['closed_at']) if hash['closed_at']
+      expires_at = APIHelper.rfc3339(hash['expires_at']) if hash['expires_at']
 
       # Create object from extracted values.
       GetCheckoutPaymentResponse.new(id,

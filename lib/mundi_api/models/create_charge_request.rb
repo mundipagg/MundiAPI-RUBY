@@ -75,7 +75,7 @@ module MundiApi
       payment = CreatePaymentRequest.from_hash(hash['payment']) if
         hash['payment']
       metadata = hash['metadata']
-      due_at = DateTime.rfc3339(hash['due_at']) if hash['due_at']
+      due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
 
       # Create object from extracted values.
       CreateChargeRequest.new(code,

@@ -56,6 +56,10 @@ module MundiApi
     # @return [CreateDeviceRequest]
     attr_accessor :device
 
+    # Currency
+    # @return [String]
+    attr_accessor :currency
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -72,6 +76,7 @@ module MundiApi
       @_hash['session_id'] = 'session_id'
       @_hash['location'] = 'location'
       @_hash['device'] = 'device'
+      @_hash['currency'] = 'currency'
       @_hash
     end
 
@@ -87,7 +92,8 @@ module MundiApi
                    ip = nil,
                    session_id = nil,
                    location = nil,
-                   device = nil)
+                   device = nil,
+                   currency = nil)
       @items = items
       @customer = customer
       @payments = payments
@@ -101,6 +107,7 @@ module MundiApi
       @session_id = session_id
       @location = location
       @device = device
+      @currency = currency
     end
 
     # Creates an instance of the object from a hash.
@@ -138,6 +145,7 @@ module MundiApi
       location = CreateLocationRequest.from_hash(hash['location']) if
         hash['location']
       device = CreateDeviceRequest.from_hash(hash['device']) if hash['device']
+      currency = hash['currency']
 
       # Create object from extracted values.
       CreateOrderRequest.new(items,
@@ -152,7 +160,8 @@ module MundiApi
                              ip,
                              session_id,
                              location,
-                             device)
+                             device,
+                             currency)
     end
   end
 end

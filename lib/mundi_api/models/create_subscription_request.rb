@@ -267,7 +267,7 @@ module MundiApi
       card_id = hash['card_id']
       billing_day = hash['billing_day']
       installments = hash['installments']
-      start_at = DateTime.rfc3339(hash['start_at']) if hash['start_at']
+      start_at = APIHelper.rfc3339(hash['start_at']) if hash['start_at']
       minimum_price = hash['minimum_price']
       cycles = hash['cycles']
       card_token = hash['card_token']

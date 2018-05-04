@@ -74,7 +74,7 @@ module MundiApi
       billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
         hash['billing_address']
       billing_address_id = hash['billing_address_id']
-      due_at = DateTime.rfc3339(hash['due_at']) if hash['due_at']
+      due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       nosso_numero = hash['nosso_numero']
 
       # Create object from extracted values.

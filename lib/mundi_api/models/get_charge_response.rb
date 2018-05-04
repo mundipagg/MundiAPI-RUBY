@@ -144,9 +144,9 @@ module MundiApi
       status = hash['status']
       currency = hash['currency']
       payment_method = hash['payment_method']
-      due_at = DateTime.rfc3339(hash['due_at']) if hash['due_at']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       last_transaction = GetTransactionResponse.from_hash(hash['last_transaction']) if
         hash['last_transaction']
       invoice = GetInvoiceResponse.from_hash(hash['invoice']) if
@@ -155,8 +155,8 @@ module MundiApi
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
       metadata = hash['metadata']
-      paid_at = DateTime.rfc3339(hash['paid_at']) if hash['paid_at']
-      canceled_at = DateTime.rfc3339(hash['canceled_at']) if
+      paid_at = APIHelper.rfc3339(hash['paid_at']) if hash['paid_at']
+      canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
 
       # Create object from extracted values.

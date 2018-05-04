@@ -55,7 +55,7 @@ module MundiApi
       # Extract variables from the hash.
       id = hash['id']
       type = hash['type']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       expires_at = hash['expires_at']
       card = GetCardTokenResponse.from_hash(hash['card']) if hash['card']
 
