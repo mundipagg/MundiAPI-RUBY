@@ -133,9 +133,9 @@ module MundiApi
       account_check_digit = hash['account_check_digit']
       type = hash['type']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
-      deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
+      deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if
         hash['recipient']
       metadata = hash['metadata']

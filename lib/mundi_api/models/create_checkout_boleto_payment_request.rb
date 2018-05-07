@@ -41,7 +41,7 @@ module MundiApi
       # Extract variables from the hash.
       bank = hash['bank']
       instructions = hash['instructions']
-      due_at = DateTime.rfc3339(hash['due_at']) if hash['due_at']
+      due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
 
       # Create object from extracted values.
       CreateCheckoutBoletoPaymentRequest.new(bank,

@@ -178,7 +178,7 @@ module MundiApi
       amount = hash['amount']
       status = hash['status']
       payment_method = hash['payment_method']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?
@@ -199,11 +199,11 @@ module MundiApi
       shipping = GetShippingResponse.from_hash(hash['shipping']) if
         hash['shipping']
       metadata = hash['metadata']
-      due_at = DateTime.rfc3339(hash['due_at']) if hash['due_at']
-      canceled_at = DateTime.rfc3339(hash['canceled_at']) if
+      due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
+      canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
-      billing_at = DateTime.rfc3339(hash['billing_at']) if hash['billing_at']
-      seen_at = DateTime.rfc3339(hash['seen_at']) if hash['seen_at']
+      billing_at = APIHelper.rfc3339(hash['billing_at']) if hash['billing_at']
+      seen_at = APIHelper.rfc3339(hash['seen_at']) if hash['seen_at']
       total_discount = hash['total_discount']
       total_increment = hash['total_increment']
 

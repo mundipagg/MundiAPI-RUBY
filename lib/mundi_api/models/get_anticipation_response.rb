@@ -94,9 +94,9 @@ module MundiApi
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if
         hash['recipient']
       pgid = hash['pgid']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
-      payment_date = DateTime.rfc3339(hash['payment_date']) if
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
+      payment_date = APIHelper.rfc3339(hash['payment_date']) if
         hash['payment_date']
       status = hash['status']
       timeframe = hash['timeframe']

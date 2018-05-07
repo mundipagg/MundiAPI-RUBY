@@ -70,8 +70,8 @@ module MundiApi
       id = hash['id']
       amount = hash['amount']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       bank_account = GetBankAccountResponse.from_hash(hash['bank_account']) if
         hash['bank_account']
       metadata = hash['metadata']

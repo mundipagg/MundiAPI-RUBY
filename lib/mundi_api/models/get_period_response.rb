@@ -53,10 +53,10 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      start_at = DateTime.rfc3339(hash['start_at']) if hash['start_at']
-      end_at = DateTime.rfc3339(hash['end_at']) if hash['end_at']
+      start_at = APIHelper.rfc3339(hash['start_at']) if hash['start_at']
+      end_at = APIHelper.rfc3339(hash['end_at']) if hash['end_at']
       id = hash['id']
-      billing_at = DateTime.rfc3339(hash['billing_at']) if hash['billing_at']
+      billing_at = APIHelper.rfc3339(hash['billing_at']) if hash['billing_at']
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
 

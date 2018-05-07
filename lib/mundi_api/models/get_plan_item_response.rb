@@ -98,15 +98,15 @@ module MundiApi
       id = hash['id']
       name = hash['name']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme']) if
         hash['pricing_scheme']
       description = hash['description']
       plan = GetPlanResponse.from_hash(hash['plan']) if hash['plan']
       quantity = hash['quantity']
       cycles = hash['cycles']
-      deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
+      deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.
       GetPlanItemResponse.new(id,

@@ -85,11 +85,11 @@ module MundiApi
       value = hash['value']
       discount_type = hash['discount_type']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
       cycles = hash['cycles']
-      deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
+      deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       description = hash['description']
 
       # Create object from extracted values.

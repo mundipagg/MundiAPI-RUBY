@@ -41,7 +41,7 @@ module MundiApi
       # Extract variables from the hash.
       amount = hash['amount']
       timeframe = hash['timeframe']
-      payment_date = DateTime.rfc3339(hash['payment_date']) if
+      payment_date = APIHelper.rfc3339(hash['payment_date']) if
         hash['payment_date']
 
       # Create object from extracted values.

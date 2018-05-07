@@ -61,7 +61,11 @@ module MundiApi
     # @return [String]
     attr_accessor :holder_document
 
-    # Document number for the card's holder
+    # First six digits
+    # @return [String]
+    attr_accessor :first_six_digits
+
+    # First six digits
     # @return [DateTime]
     attr_accessor :deleted_at
 
@@ -82,6 +86,7 @@ module MundiApi
       @_hash['metadata'] = 'metadata'
       @_hash['type'] = 'type'
       @_hash['holder_document'] = 'holder_document'
+      @_hash['first_six_digits'] = 'first_six_digits'
       @_hash['deleted_at'] = 'deleted_at'
       @_hash
     end
@@ -100,6 +105,7 @@ module MundiApi
                    metadata = nil,
                    type = nil,
                    holder_document = nil,
+                   first_six_digits = nil,
                    deleted_at = nil)
       @id = id
       @last_four_digits = last_four_digits
@@ -115,6 +121,7 @@ module MundiApi
       @metadata = metadata
       @type = type
       @holder_document = holder_document
+      @first_six_digits = first_six_digits
       @deleted_at = deleted_at
     end
 
@@ -130,8 +137,8 @@ module MundiApi
       exp_month = hash['exp_month']
       exp_year = hash['exp_year']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       billing_address = GetBillingAddressResponse.from_hash(hash['billing_address']) if
         hash['billing_address']
       customer = GetCustomerResponse.from_hash(hash['customer']) if
@@ -139,7 +146,8 @@ module MundiApi
       metadata = hash['metadata']
       type = hash['type']
       holder_document = hash['holder_document']
-      deleted_at = DateTime.rfc3339(hash['deleted_at']) if hash['deleted_at']
+      first_six_digits = hash['first_six_digits']
+      deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.
       GetCardResponse.new(id,
@@ -156,6 +164,7 @@ module MundiApi
                           metadata,
                           type,
                           holder_document,
+                          first_six_digits,
                           deleted_at)
     end
   end

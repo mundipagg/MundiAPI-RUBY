@@ -158,8 +158,8 @@ module MundiApi
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
       status = hash['status']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       # Parameter is an array, so we need to iterate through it
       charges = nil
       unless hash['charges'].nil?

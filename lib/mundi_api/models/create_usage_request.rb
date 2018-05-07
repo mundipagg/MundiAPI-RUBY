@@ -48,7 +48,7 @@ module MundiApi
       # Extract variables from the hash.
       quantity = hash['quantity']
       description = hash['description']
-      used_at = DateTime.rfc3339(hash['used_at']) if hash['used_at']
+      used_at = APIHelper.rfc3339(hash['used_at']) if hash['used_at']
       code = hash['code']
 
       # Create object from extracted values.

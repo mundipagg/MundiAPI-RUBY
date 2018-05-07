@@ -138,8 +138,8 @@ module MundiApi
       amount = hash['amount']
       status = hash['status']
       success = hash['success']
-      created_at = DateTime.rfc3339(hash['created_at']) if hash['created_at']
-      updated_at = DateTime.rfc3339(hash['updated_at']) if hash['updated_at']
+      created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
+      updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       attempt_count = hash['attempt_count']
       max_attempts = hash['max_attempts']
       # Parameter is an array, so we need to iterate through it
@@ -152,7 +152,7 @@ module MundiApi
       end
       id = hash['id']
       installments = hash['installments']
-      next_attempt = DateTime.rfc3339(hash['next_attempt']) if
+      next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
 
