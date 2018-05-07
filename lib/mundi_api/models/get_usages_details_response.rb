@@ -2,8 +2,8 @@
 # ( https://apimatic.io ).
 
 module MundiApi
-  # GetSubscriptionUsagesDetailsResponse Model.
-  class GetSubscriptionUsagesDetailsResponse < BaseModel
+  # GetUsagesDetailsResponse Model.
+  class GetUsagesDetailsResponse < BaseModel
     # Subscription Identifier
     # @return [String]
     attr_accessor :subscription_id
@@ -17,7 +17,7 @@ module MundiApi
     attr_accessor :period
 
     # Usages Details
-    # @return [List of GetUsageResponse]
+    # @return [ListUsagesDetailsResponse]
     attr_accessor :usages
 
     # Total discounted value
@@ -62,24 +62,18 @@ module MundiApi
       subscription_id = hash['subscription_id']
       total_amount = hash['total_amount']
       period = GetPeriodResponse.from_hash(hash['Period']) if hash['Period']
-      # Parameter is an array, so we need to iterate through it
-      usages = nil
-      unless hash['Usages'].nil?
-        usages = []
-        hash['Usages'].each do |structure|
-          usages << (GetUsageResponse.from_hash(structure) if structure)
-        end
-      end
+      usages = ListUsagesDetailsResponse.from_hash(hash['Usages']) if
+        hash['Usages']
       total_discount = hash['total_discount']
       total_increment = hash['total_increment']
 
       # Create object from extracted values.
-      GetSubscriptionUsagesDetailsResponse.new(subscription_id,
-                                               total_amount,
-                                               period,
-                                               usages,
-                                               total_discount,
-                                               total_increment)
+      GetUsagesDetailsResponse.new(subscription_id,
+                                   total_amount,
+                                   period,
+                                   usages,
+                                   total_discount,
+                                   total_increment)
     end
   end
 end

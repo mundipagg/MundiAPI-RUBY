@@ -832,48 +832,6 @@ module MundiApi
       ListDiscountsResponse.from_hash(decoded)
     end
 
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: Subscription
-    # Identifier
-    # @param [String] cycle_id Optional parameter: Cycle id
-    # @return GetSubscriptionUsagesDetailsResponse response from the API call
-    def get_subscription_usages_details(subscription_id,
-                                        cycle_id = nil)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/usages-details/'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'subscription_id' => subscription_id
-      )
-      _query_builder = APIHelper.append_url_with_query_parameters(
-        _query_builder,
-        {
-          'cycle_id' => cycle_id
-        },
-        array_serialization: Configuration.array_serialization
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetSubscriptionUsagesDetailsResponse.from_hash(decoded)
-    end
-
     # Creates a increment
     # @param [String] subscription_id Required parameter: Subscription id
     # @param [CreateIncrementRequest] request Required parameter: Request for
@@ -913,12 +871,12 @@ module MundiApi
 
     # TODO: type endpoint description here
     # @param [String] subscription_id Required parameter: The subscription id
-    # @param [Integer] page Required parameter: Page number
-    # @param [Integer] size Required parameter: Page size
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
     # @return ListIncrementsResponse response from the API call
     def get_increments(subscription_id,
-                       page,
-                       size)
+                       page = nil,
+                       size = nil)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
       _query_builder << '/subscriptions/{subscription_id}/increments/'
@@ -988,6 +946,54 @@ module MundiApi
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetIncrementResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: Subscription
+    # Identifier
+    # @param [String] cycle_id Optional parameter: Cycle id
+    # @param [Integer] size Optional parameter: Page size
+    # @param [Integer] page Optional parameter: Page number
+    # @return GetUsagesDetailsResponse response from the API call
+    def get_usages_details(subscription_id,
+                           cycle_id = nil,
+                           size = nil,
+                           page = nil)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/usages-details/'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id
+      )
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'cycle_id' => cycle_id,
+          'size' => size,
+          'page' => page
+        },
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetUsagesDetailsResponse.from_hash(decoded)
     end
 
     # Lists all usages from a subscription item
