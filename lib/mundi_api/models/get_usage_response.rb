@@ -41,6 +41,10 @@ module MundiApi
     # @return [String]
     attr_accessor :code
 
+    # Identification group in the client system
+    # @return [String]
+    attr_accessor :group
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -53,6 +57,7 @@ module MundiApi
       @_hash['subscription_item'] = 'subscription_item'
       @_hash['deleted_at'] = 'deleted_at'
       @_hash['code'] = 'code'
+      @_hash['group'] = 'group'
       @_hash
     end
 
@@ -64,7 +69,8 @@ module MundiApi
                    status = nil,
                    subscription_item = nil,
                    deleted_at = nil,
-                   code = nil)
+                   code = nil,
+                   group = nil)
       @id = id
       @quantity = quantity
       @description = description
@@ -74,6 +80,7 @@ module MundiApi
       @subscription_item = subscription_item
       @deleted_at = deleted_at
       @code = code
+      @group = group
     end
 
     # Creates an instance of the object from a hash.
@@ -91,6 +98,7 @@ module MundiApi
         hash['subscription_item']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       code = hash['code']
+      group = hash['group']
 
       # Create object from extracted values.
       GetUsageResponse.new(id,
@@ -101,7 +109,8 @@ module MundiApi
                            status,
                            subscription_item,
                            deleted_at,
-                           code)
+                           code,
+                           group)
     end
   end
 end

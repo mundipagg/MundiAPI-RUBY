@@ -21,6 +21,10 @@ module MundiApi
     # @return [String]
     attr_accessor :code
 
+    # identification group in the client system
+    # @return [String]
+    attr_accessor :group
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -28,17 +32,20 @@ module MundiApi
       @_hash['description'] = 'description'
       @_hash['used_at'] = 'used_at'
       @_hash['code'] = 'code'
+      @_hash['group'] = 'group'
       @_hash
     end
 
     def initialize(quantity = nil,
                    description = nil,
                    used_at = nil,
-                   code = nil)
+                   code = nil,
+                   group = nil)
       @quantity = quantity
       @description = description
       @used_at = used_at
       @code = code
+      @group = group
     end
 
     # Creates an instance of the object from a hash.
@@ -50,12 +57,14 @@ module MundiApi
       description = hash['description']
       used_at = APIHelper.rfc3339(hash['used_at']) if hash['used_at']
       code = hash['code']
+      group = hash['group']
 
       # Create object from extracted values.
       CreateUsageRequest.new(quantity,
                              description,
                              used_at,
-                             code)
+                             code,
+                             group)
     end
   end
 end
