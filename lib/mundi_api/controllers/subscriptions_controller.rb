@@ -672,50 +672,6 @@ module MundiApi
       GetSubscriptionItemResponse.from_hash(decoded)
     end
 
-    # Get Subscription Itens
-    # @param [String] subscription_id Required parameter: Subscription Id
-    # @param [String] status Required parameter: Status
-    # @param [String] description Required parameter: Description
-    # @return ListSubscriptionsResponse response from the API call
-    def get_subscription_items(subscription_id,
-                               status,
-                               description)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'subscription_id' => subscription_id
-      )
-      _query_builder = APIHelper.append_url_with_query_parameters(
-        _query_builder,
-        {
-          'status' => status,
-          'description' => description
-        },
-        array_serialization: Configuration.array_serialization
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      ListSubscriptionsResponse.from_hash(decoded)
-    end
-
     # TODO: type endpoint description here
     # @param [String] subscription_id Required parameter: Example:
     # @param [UpdateSubscriptionAffiliationIdRequest] request Required
@@ -954,11 +910,13 @@ module MundiApi
     # @param [String] cycle_id Optional parameter: Cycle id
     # @param [Integer] size Optional parameter: Page size
     # @param [Integer] page Optional parameter: Page number
+    # @param [String] item_id Optional parameter: Identificador do item
     # @return GetUsagesDetailsResponse response from the API call
     def get_usages_details(subscription_id,
                            cycle_id = nil,
                            size = nil,
-                           page = nil)
+                           page = nil,
+                           item_id = nil)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
       _query_builder << '/subscriptions/{subscription_id}/usages-details/'
@@ -971,7 +929,8 @@ module MundiApi
         {
           'cycle_id' => cycle_id,
           'size' => size,
-          'page' => page
+          'page' => page,
+          'item_id' => item_id
         },
         array_serialization: Configuration.array_serialization
       )
@@ -1003,12 +962,15 @@ module MundiApi
     # @param [Integer] size Optional parameter: Page size
     # @param [String] code Optional parameter: Identification code in the client
     # system
+    # @param [String] group Optional parameter: Identification group in the
+    # client system
     # @return ListUsagesResponse response from the API call
     def get_usages(subscription_id,
                    item_id,
                    page = nil,
                    size = nil,
-                   code = nil)
+                   code = nil,
+                   group = nil)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
       _query_builder << '/subscriptions/{subscription_id}/items/{item_id}/usages'
@@ -1022,7 +984,8 @@ module MundiApi
         {
           'page' => page,
           'size' => size,
-          'code' => code
+          'code' => code,
+          'group' => group
         },
         array_serialization: Configuration.array_serialization
       )
