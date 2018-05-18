@@ -8,9 +8,9 @@ This client library is a Ruby gem which can be compiled and used in your Ruby an
 
 1. Open the command line interface or the terminal and navigate to the folder containing the source code.
 2. Run ``` gem build mundi_api.gemspec ``` to build the gem.
-3. Once built, the gem can be installed on the current work environment using ``` gem install mundi_api-0.13.18.gem ```
+3. Once built, the gem can be installed on the current work environment using ``` gem install mundi_api-0.13.19.gem ```
 
-![Building Gem](https://apidocs.io/illustration/ruby?step=buildSDK&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiAPI-Ruby&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18)
+![Building Gem](https://apidocs.io/illustration/ruby?step=buildSDK&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiAPI-Ruby&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19)
 
 ## How to Use
 
@@ -20,41 +20,41 @@ The following section explains how to use the MundiApi Ruby Gem in a new Rails p
 
 Close any existing projects in RubyMine&trade; by selecting ``` File -> Close Project ```. Next, click on ``` Create New Project ``` to create a new project from scratch.
 
-![Create a new project in RubyMine](https://apidocs.io/illustration/ruby?step=createNewProject0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18)
+![Create a new project in RubyMine](https://apidocs.io/illustration/ruby?step=createNewProject0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19)
 
 Next, provide ``` TestApp ``` as the project name, choose ``` Rails Application ``` as the project type, and click ``` OK ```.
 
-![Create a new Rails Application in RubyMine - step 1](https://apidocs.io/illustration/ruby?step=createNewProject1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18)
+![Create a new Rails Application in RubyMine - step 1](https://apidocs.io/illustration/ruby?step=createNewProject1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19)
 
 In the next dialog make sure that correct *Ruby SDK* is being used (minimum 2.0.0) and click ``` OK ```.
 
-![Create a new Rails Application in RubyMine - step 2](https://apidocs.io/illustration/ruby?step=createNewProject2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18)
+![Create a new Rails Application in RubyMine - step 2](https://apidocs.io/illustration/ruby?step=createNewProject2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19)
 
 This will create a new Rails Application project with an existing set of files and folder.
 
 ### 2. Add reference of the gem
 
-In order to use the MundiApi gem in the new project we must add a gem reference. Locate the ```Gemfile``` in the *Project Explorer* window under the ``` TestApp ``` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: ``` gem 'mundi_api', '~> 0.13.18' ```
+In order to use the MundiApi gem in the new project we must add a gem reference. Locate the ```Gemfile``` in the *Project Explorer* window under the ``` TestApp ``` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: ``` gem 'mundi_api', '~> 0.13.19' ```
 
-![Add references of the Gemfile](https://apidocs.io/illustration/ruby?step=addReference&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18)
+![Add references of the Gemfile](https://apidocs.io/illustration/ruby?step=addReference&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19)
 
 ### 3. Adding a new Rails Controller
 
 Once the ``` TestApp ``` project is created, a folder named ``` controllers ``` will be visible in the *Project Explorer* under the following path: ``` TestApp > app > controllers ```. Right click on this folder and select ``` New -> Run Rails Generator... ```.
 
-![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?step=addCode0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18)
+![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?step=addCode0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19)
 
 Selecting the said option will popup a small window where the generator names are displayed. Here, select the ``` controller ``` template.
 
-![Create a new Controller](https://apidocs.io/illustration/ruby?step=addCode1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18)
+![Create a new Controller](https://apidocs.io/illustration/ruby?step=addCode1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19)
 
 Next, a popup window will ask you for a Controller name and included Actions. For controller name provide ``` Hello ``` and include an action named ``` Index ``` and click ``` OK ```.
 
-![Add a new Controller](https://apidocs.io/illustration/ruby?step=addCode2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18)
+![Add a new Controller](https://apidocs.io/illustration/ruby?step=addCode2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19)
 
 A new controller class anmed ``` HelloController ``` will be created in a file named ``` hello_controller.rb ``` containing a method named ``` Index ```. In this method, add code for initialization and a sample for its usage.
 
-![Initialize the library](https://apidocs.io/illustration/ruby?step=addCode3&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18)
+![Initialize the library](https://apidocs.io/illustration/ruby?step=addCode3&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19)
 
 ## How to Test
 
@@ -91,7 +91,7 @@ client = MundiApi::MundiApiClient.new(
 
 The added initlization code can be debugged by putting a breakpoint in the ``` Index ``` method and running the project in debug mode by selecting ``` Run -> Debug 'Development: TestApp' ```.
 
-![Debug the TestApp](https://apidocs.io/illustration/ruby?step=addCode4&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.18&initLine=client%2520%253D%2520MundiApiClient.new%2528%2527basic_auth_user_name%2527%252C%2520%2527basic_auth_password%2527%2529)
+![Debug the TestApp](https://apidocs.io/illustration/ruby?step=addCode4&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=0.13.19&initLine=client%2520%253D%2520MundiApiClient.new%2528%2527basic_auth_user_name%2527%252C%2520%2527basic_auth_password%2527%2529)
 
 
 
@@ -99,15 +99,891 @@ The added initlization code can be debugged by putting a breakpoint in the ``` I
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
+* [SubscriptionsController](#subscriptions_controller)
 * [ChargesController](#charges_controller)
 * [CustomersController](#customers_controller)
 * [InvoicesController](#invoices_controller)
 * [PlansController](#plans_controller)
-* [SubscriptionsController](#subscriptions_controller)
 * [OrdersController](#orders_controller)
 * [TokensController](#tokens_controller)
 * [RecipientsController](#recipients_controller)
 * [SellersController](#sellers_controller)
+
+## <a name="subscriptions_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubscriptionsController") SubscriptionsController
+
+### Get singleton instance
+
+The singleton instance of the ``` SubscriptionsController ``` class can be accessed from the API Client.
+
+```ruby
+subscriptions_controller = client.subscriptions
+```
+
+### <a name="get_increment_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increment_by_id") get_increment_by_id
+
+> TODO: Add a method description
+
+
+```ruby
+def get_increment_by_id(subscription_id,
+                            increment_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription Id |
+| increment_id |  ``` Required ```  | The increment Id |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+increment_id = 'increment_id'
+
+result = subscriptions_controller.get_increment_by_id(subscription_id, increment_id)
+
+```
+
+
+### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_item") update_subscription_item
+
+> Updates a subscription item
+
+
+```ruby
+def update_subscription_item(subscription_id,
+                                 item_id,
+                                 body); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription Id |
+| item_id |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for updating a subscription item |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+body = UpdateSubscriptionItemRequest.new
+
+result = subscriptions_controller.update_subscription_item(subscription_id, item_id, body)
+
+```
+
+
+### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_usage") create_usage
+
+> Creates a usage
+
+
+```ruby
+def create_usage(subscription_id,
+                     item_id,
+                     body); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription Id |
+| item_id |  ``` Required ```  | Item id |
+| body |  ``` Required ```  | Request for creating a usage |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+body = CreateUsageRequest.new
+
+result = subscriptions_controller.create_usage(subscription_id, item_id, body)
+
+```
+
+
+### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_billing_date") update_subscription_billing_date
+
+> Updates the billing date from a subscription
+
+
+```ruby
+def update_subscription_billing_date(subscription_id,
+                                         request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscription billing date |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionBillingDateRequest.new
+
+result = subscriptions_controller.update_subscription_billing_date(subscription_id, request)
+
+```
+
+
+### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_card") update_subscription_card
+
+> Updates the credit card from a subscription
+
+
+```ruby
+def update_subscription_card(subscription_id,
+                                 request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for updating a card |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionCardRequest.new
+
+result = subscriptions_controller.update_subscription_card(subscription_id, request)
+
+```
+
+
+### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription") create_subscription
+
+> Creates a new subscription
+
+
+```ruby
+def create_subscription(body); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| body |  ``` Required ```  | Request for creating a subscription |
+
+
+#### Example Usage
+
+```ruby
+body = CreateSubscriptionRequest.new
+
+result = subscriptions_controller.create_subscription(body)
+
+```
+
+
+### <a name="create_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription_item") create_subscription_item
+
+> Creates a new Subscription item
+
+
+```ruby
+def create_subscription_item(subscription_id,
+                                 request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a subscription item |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = CreateSubscriptionItemRequest.new
+
+result = subscriptions_controller.create_subscription_item(subscription_id, request)
+
+```
+
+
+### <a name="create_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_discount") create_discount
+
+> Creates a discount
+
+
+```ruby
+def create_discount(subscription_id,
+                        request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a discount |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = CreateDiscountRequest.new
+
+result = subscriptions_controller.create_discount(subscription_id, request)
+
+```
+
+
+### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription") get_subscription
+
+> Gets a subscription
+
+
+```ruby
+def get_subscription(subscription_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+
+result = subscriptions_controller.get_subscription(subscription_id)
+
+```
+
+
+### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_payment_method") update_subscription_payment_method
+
+> Updates the payment method from a subscription
+
+
+```ruby
+def update_subscription_payment_method(subscription_id,
+                                           request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionPaymentMethodRequest.new
+
+result = subscriptions_controller.update_subscription_payment_method(subscription_id, request)
+
+```
+
+
+### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_discount") delete_discount
+
+> Deletes a discount
+
+
+```ruby
+def delete_discount(subscription_id,
+                        discount_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| discount_id |  ``` Required ```  | Discount Id |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+discount_id = 'discount_id'
+
+result = subscriptions_controller.delete_discount(subscription_id, discount_id)
+
+```
+
+
+### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.cancel_subscription") cancel_subscription
+
+> Cancels a subscription
+
+
+```ruby
+def cancel_subscription(subscription_id,
+                            request = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| request |  ``` Optional ```  | Request for cancelling a subscription |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = CreateCancelSubscriptionRequest.new
+
+result = subscriptions_controller.cancel_subscription(subscription_id, request)
+
+```
+
+
+### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_subscription_item") delete_subscription_item
+
+> Deletes a subscription item
+
+
+```ruby
+def delete_subscription_item(subscription_id,
+                                 subscription_item_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| subscription_item_id |  ``` Required ```  | Subscription item id |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+subscription_item_id = 'subscription_item_id'
+
+result = subscriptions_controller.delete_subscription_item(subscription_id, subscription_item_id)
+
+```
+
+
+### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_usage") delete_usage
+
+> Deletes a usage
+
+
+```ruby
+def delete_usage(subscription_id,
+                     item_id,
+                     usage_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| item_id |  ``` Required ```  | The subscription item id |
+| usage_id |  ``` Required ```  | The usage id |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+usage_id = 'usage_id'
+
+result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_id)
+
+```
+
+
+### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_metadata") update_subscription_metadata
+
+> Updates the metadata from a subscription
+
+
+```ruby
+def update_subscription_metadata(subscription_id,
+                                     request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| request |  ``` Required ```  | Request for updating the subscrption metadata |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = UpdateMetadataRequest.new
+
+result = subscriptions_controller.update_subscription_metadata(subscription_id, request)
+
+```
+
+
+### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
+
+> Gets all subscriptions
+
+
+```ruby
+def get_subscriptions(page = nil,
+                          size = nil,
+                          code = nil,
+                          billing_type = nil,
+                          customer_id = nil,
+                          plan_id = nil,
+                          card_id = nil,
+                          status = nil,
+                          next_billing_since = nil,
+                          next_billing_until = nil,
+                          created_since = nil,
+                          created_until = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for subscription's code |
+| billing_type |  ``` Optional ```  | Filter for subscription's billing type |
+| customer_id |  ``` Optional ```  | Filter for subscription's customer id |
+| plan_id |  ``` Optional ```  | Filter for subscription's plan id |
+| card_id |  ``` Optional ```  | Filter for subscription's card id |
+| status |  ``` Optional ```  | Filter for subscription's status |
+| next_billing_since |  ``` Optional ```  | Filter for subscription's next billing date start range |
+| next_billing_until |  ``` Optional ```  | Filter for subscription's next billing date end range |
+| created_since |  ``` Optional ```  | Filter for subscription's creation date start range |
+| created_until |  ``` Optional ```  | Filter for subscriptions creation date end range |
+
+
+#### Example Usage
+
+```ruby
+page = 211
+size = 211
+code = 'code'
+billing_type = 'billing_type'
+customer_id = 'customer_id'
+plan_id = 'plan_id'
+card_id = 'card_id'
+status = 'status'
+next_billing_since = DateTime.now
+next_billing_until = DateTime.now
+created_since = DateTime.now
+created_until = DateTime.now
+
+result = subscriptions_controller.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
+
+```
+
+
+### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_an_usage") create_an_usage
+
+> Create Usage
+
+
+```ruby
+def create_an_usage(subscription_id,
+                        item_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| item_id |  ``` Required ```  | Item id |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+
+result = subscriptions_controller.create_an_usage(subscription_id, item_id)
+
+```
+
+
+### <a name="get_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_item") get_subscription_item
+
+> Get Subscription Item
+
+
+```ruby
+def get_subscription_item(subscription_id,
+                              item_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription Id |
+| item_id |  ``` Required ```  | Item id |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+
+result = subscriptions_controller.get_subscription_item(subscription_id, item_id)
+
+```
+
+
+### <a name="update_subscription_affiliation_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_affiliation_id") update_subscription_affiliation_id
+
+> TODO: Add a method description
+
+
+```ruby
+def update_subscription_affiliation_id(subscription_id,
+                                           request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | TODO: Add a parameter description |
+| request |  ``` Required ```  | Request for updating a subscription affiliation id |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionAffiliationIdRequest.new
+
+result = subscriptions_controller.update_subscription_affiliation_id(subscription_id, request)
+
+```
+
+
+### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
+
+> TODO: Add a method description
+
+
+```ruby
+def get_discount_by_id(subscription_id,
+                           discount_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| discount_id |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+discount_id = 'discountId'
+
+result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
+
+```
+
+
+### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discounts") get_discounts
+
+> TODO: Add a method description
+
+
+```ruby
+def get_discounts(subscription_id,
+                      page,
+                      size); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| page |  ``` Required ```  | Page number |
+| size |  ``` Required ```  | Page size |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+page = 211
+size = 211
+
+result = subscriptions_controller.get_discounts(subscription_id, page, size)
+
+```
+
+
+### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_increment") create_increment
+
+> Creates a increment
+
+
+```ruby
+def create_increment(subscription_id,
+                         request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| request |  ``` Required ```  | Request for creating a increment |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = CreateIncrementRequest.new
+
+result = subscriptions_controller.create_increment(subscription_id, request)
+
+```
+
+
+### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increments") get_increments
+
+> TODO: Add a method description
+
+
+```ruby
+def get_increments(subscription_id,
+                       page = nil,
+                       size = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+page = 211
+size = 211
+
+result = subscriptions_controller.get_increments(subscription_id, page, size)
+
+```
+
+
+### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_increment") delete_increment
+
+> Deletes a increment
+
+
+```ruby
+def delete_increment(subscription_id,
+                         increment_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription id |
+| increment_id |  ``` Required ```  | Increment id |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+increment_id = 'increment_id'
+
+result = subscriptions_controller.delete_increment(subscription_id, increment_id)
+
+```
+
+
+### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages_details") get_usages_details
+
+> TODO: Add a method description
+
+
+```ruby
+def get_usages_details(subscription_id,
+                           cycle_id = nil,
+                           size = nil,
+                           page = nil,
+                           item_id = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription Identifier |
+| cycle_id |  ``` Optional ```  | Cycle id |
+| size |  ``` Optional ```  | Page size |
+| page |  ``` Optional ```  | Page number |
+| item_id |  ``` Optional ```  | Identificador do item |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+cycle_id = 'cycle_id'
+size = 211
+page = 211
+item_id = 'item_id'
+
+result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id)
+
+```
+
+
+### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
+
+> Lists all usages from a subscription item
+
+
+```ruby
+def get_usages(subscription_id,
+                   item_id,
+                   page = nil,
+                   size = nil,
+                   code = nil,
+                   group = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| item_id |  ``` Required ```  | The subscription item id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Identification code in the client system |
+| group |  ``` Optional ```  | Identification group in the client system |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+item_id = 'item_id'
+page = 211
+size = 211
+code = 'code'
+group = 'group'
+
+result = subscriptions_controller.get_usages(subscription_id, item_id, page, size, code, group)
+
+```
+
+
+### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_items") get_subscription_items
+
+> Get Subscription Items
+
+
+```ruby
+def get_subscription_items(subscription_id,
+                               page = nil,
+                               size = nil,
+                               name = nil,
+                               code = nil,
+                               status = nil,
+                               description = nil,
+                               created_since = nil,
+                               created_until = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | The item name |
+| code |  ``` Optional ```  | Identification code in the client system |
+| status |  ``` Optional ```  | The item statis |
+| description |  ``` Optional ```  | The item description |
+| created_since |  ``` Optional ```  | Filter for item's creation date start range |
+| created_until |  ``` Optional ```  | Filter for item's creation date end range |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+page = 211
+size = 211
+name = 'name'
+code = 'code'
+status = 'status'
+description = 'description'
+created_since = 'created_since'
+created_until = 'created_until'
+
+result = subscriptions_controller.get_subscription_items(subscription_id, page, size, name, code, status, description, created_since, created_until)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
 
 ## <a name="charges_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ChargesController") ChargesController
 
@@ -377,8 +1253,8 @@ def get_charges(page = nil,
 #### Example Usage
 
 ```ruby
-page = 91
-size = 91
+page = 211
+size = 211
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -918,8 +1794,8 @@ def get_access_tokens(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 91
-size = 91
+page = 47
+size = 47
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -950,8 +1826,8 @@ def get_addresses(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 91
-size = 91
+page = 47
+size = 47
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -982,8 +1858,8 @@ def get_cards(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 91
-size = 91
+page = 47
+size = 47
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -1161,8 +2037,8 @@ def get_invoices(page = nil,
 #### Example Usage
 
 ```ruby
-page = 91
-size = 91
+page = 6
+size = 6
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -1533,8 +2409,8 @@ def get_plans(page = nil,
 #### Example Usage
 
 ```ruby
-page = 50
-size = 50
+page = 6
+size = 6
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -1542,803 +2418,6 @@ created_since = DateTime.now
 created_until = DateTime.now
 
 result = plans_controller.get_plans(page, size, name, status, billing_type, created_since, created_until)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="subscriptions_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubscriptionsController") SubscriptionsController
-
-### Get singleton instance
-
-The singleton instance of the ``` SubscriptionsController ``` class can be accessed from the API Client.
-
-```ruby
-subscriptions_controller = client.subscriptions
-```
-
-### <a name="update_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_item") update_subscription_item
-
-> Updates a subscription item
-
-
-```ruby
-def update_subscription_item(subscription_id,
-                                 item_id,
-                                 body); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription Id |
-| item_id |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for updating a subscription item |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-body = UpdateSubscriptionItemRequest.new
-
-result = subscriptions_controller.update_subscription_item(subscription_id, item_id, body)
-
-```
-
-
-### <a name="create_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_usage") create_usage
-
-> Creates a usage
-
-
-```ruby
-def create_usage(subscription_id,
-                     item_id,
-                     body); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription Id |
-| item_id |  ``` Required ```  | Item id |
-| body |  ``` Required ```  | Request for creating a usage |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-body = CreateUsageRequest.new
-
-result = subscriptions_controller.create_usage(subscription_id, item_id, body)
-
-```
-
-
-### <a name="update_subscription_billing_date"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_billing_date") update_subscription_billing_date
-
-> Updates the billing date from a subscription
-
-
-```ruby
-def update_subscription_billing_date(subscription_id,
-                                         request); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscription billing date |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionBillingDateRequest.new
-
-result = subscriptions_controller.update_subscription_billing_date(subscription_id, request)
-
-```
-
-
-### <a name="update_subscription_card"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_card") update_subscription_card
-
-> Updates the credit card from a subscription
-
-
-```ruby
-def update_subscription_card(subscription_id,
-                                 request); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating a card |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionCardRequest.new
-
-result = subscriptions_controller.update_subscription_card(subscription_id, request)
-
-```
-
-
-### <a name="create_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription") create_subscription
-
-> Creates a new subscription
-
-
-```ruby
-def create_subscription(body); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| body |  ``` Required ```  | Request for creating a subscription |
-
-
-#### Example Usage
-
-```ruby
-body = CreateSubscriptionRequest.new
-
-result = subscriptions_controller.create_subscription(body)
-
-```
-
-
-### <a name="create_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_subscription_item") create_subscription_item
-
-> Creates a new Subscription item
-
-
-```ruby
-def create_subscription_item(subscription_id,
-                                 request); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a subscription item |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = CreateSubscriptionItemRequest.new
-
-result = subscriptions_controller.create_subscription_item(subscription_id, request)
-
-```
-
-
-### <a name="create_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_discount") create_discount
-
-> Creates a discount
-
-
-```ruby
-def create_discount(subscription_id,
-                        request); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a discount |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = CreateDiscountRequest.new
-
-result = subscriptions_controller.create_discount(subscription_id, request)
-
-```
-
-
-### <a name="get_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription") get_subscription
-
-> Gets a subscription
-
-
-```ruby
-def get_subscription(subscription_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-
-result = subscriptions_controller.get_subscription(subscription_id)
-
-```
-
-
-### <a name="update_subscription_payment_method"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_payment_method") update_subscription_payment_method
-
-> Updates the payment method from a subscription
-
-
-```ruby
-def update_subscription_payment_method(subscription_id,
-                                           request); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for updating the paymentmethod from a subscription |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionPaymentMethodRequest.new
-
-result = subscriptions_controller.update_subscription_payment_method(subscription_id, request)
-
-```
-
-
-### <a name="delete_discount"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_discount") delete_discount
-
-> Deletes a discount
-
-
-```ruby
-def delete_discount(subscription_id,
-                        discount_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| discount_id |  ``` Required ```  | Discount Id |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-discount_id = 'discount_id'
-
-result = subscriptions_controller.delete_discount(subscription_id, discount_id)
-
-```
-
-
-### <a name="cancel_subscription"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.cancel_subscription") cancel_subscription
-
-> Cancels a subscription
-
-
-```ruby
-def cancel_subscription(subscription_id,
-                            request = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| request |  ``` Optional ```  | Request for cancelling a subscription |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = CreateCancelSubscriptionRequest.new
-
-result = subscriptions_controller.cancel_subscription(subscription_id, request)
-
-```
-
-
-### <a name="delete_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_subscription_item") delete_subscription_item
-
-> Deletes a subscription item
-
-
-```ruby
-def delete_subscription_item(subscription_id,
-                                 subscription_item_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| subscription_item_id |  ``` Required ```  | Subscription item id |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-subscription_item_id = 'subscription_item_id'
-
-result = subscriptions_controller.delete_subscription_item(subscription_id, subscription_item_id)
-
-```
-
-
-### <a name="delete_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_usage") delete_usage
-
-> Deletes a usage
-
-
-```ruby
-def delete_usage(subscription_id,
-                     item_id,
-                     usage_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | The subscription id |
-| item_id |  ``` Required ```  | The subscription item id |
-| usage_id |  ``` Required ```  | The usage id |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-usage_id = 'usage_id'
-
-result = subscriptions_controller.delete_usage(subscription_id, item_id, usage_id)
-
-```
-
-
-### <a name="update_subscription_metadata"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_metadata") update_subscription_metadata
-
-> Updates the metadata from a subscription
-
-
-```ruby
-def update_subscription_metadata(subscription_id,
-                                     request); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | The subscription id |
-| request |  ``` Required ```  | Request for updating the subscrption metadata |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = UpdateMetadataRequest.new
-
-result = subscriptions_controller.update_subscription_metadata(subscription_id, request)
-
-```
-
-
-### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
-
-> Gets all subscriptions
-
-
-```ruby
-def get_subscriptions(page = nil,
-                          size = nil,
-                          code = nil,
-                          billing_type = nil,
-                          customer_id = nil,
-                          plan_id = nil,
-                          card_id = nil,
-                          status = nil,
-                          next_billing_since = nil,
-                          next_billing_until = nil,
-                          created_since = nil,
-                          created_until = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Filter for subscription's code |
-| billing_type |  ``` Optional ```  | Filter for subscription's billing type |
-| customer_id |  ``` Optional ```  | Filter for subscription's customer id |
-| plan_id |  ``` Optional ```  | Filter for subscription's plan id |
-| card_id |  ``` Optional ```  | Filter for subscription's card id |
-| status |  ``` Optional ```  | Filter for subscription's status |
-| next_billing_since |  ``` Optional ```  | Filter for subscription's next billing date start range |
-| next_billing_until |  ``` Optional ```  | Filter for subscription's next billing date end range |
-| created_since |  ``` Optional ```  | Filter for subscription's creation date start range |
-| created_until |  ``` Optional ```  | Filter for subscriptions creation date end range |
-
-
-#### Example Usage
-
-```ruby
-page = 141
-size = 141
-code = 'code'
-billing_type = 'billing_type'
-customer_id = 'customer_id'
-plan_id = 'plan_id'
-card_id = 'card_id'
-status = 'status'
-next_billing_since = DateTime.now
-next_billing_until = DateTime.now
-created_since = DateTime.now
-created_until = DateTime.now
-
-result = subscriptions_controller.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
-
-```
-
-
-### <a name="create_an_usage"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_an_usage") create_an_usage
-
-> Create Usage
-
-
-```ruby
-def create_an_usage(subscription_id,
-                        item_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| item_id |  ``` Required ```  | Item id |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-
-result = subscriptions_controller.create_an_usage(subscription_id, item_id)
-
-```
-
-
-### <a name="get_subscription_item"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_item") get_subscription_item
-
-> Get Subscription Item
-
-
-```ruby
-def get_subscription_item(subscription_id,
-                              item_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription Id |
-| item_id |  ``` Required ```  | Item id |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-
-result = subscriptions_controller.get_subscription_item(subscription_id, item_id)
-
-```
-
-
-### <a name="update_subscription_affiliation_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_affiliation_id") update_subscription_affiliation_id
-
-> TODO: Add a method description
-
-
-```ruby
-def update_subscription_affiliation_id(subscription_id,
-                                           request); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | TODO: Add a parameter description |
-| request |  ``` Required ```  | Request for updating a subscription affiliation id |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionAffiliationIdRequest.new
-
-result = subscriptions_controller.update_subscription_affiliation_id(subscription_id, request)
-
-```
-
-
-### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
-
-> TODO: Add a method description
-
-
-```ruby
-def get_discount_by_id(subscription_id,
-                           discount_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | TODO: Add a parameter description |
-| discount_id |  ``` Required ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-discount_id = 'discountId'
-
-result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
-
-```
-
-
-### <a name="get_discounts"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discounts") get_discounts
-
-> TODO: Add a method description
-
-
-```ruby
-def get_discounts(subscription_id,
-                      page,
-                      size); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | The subscription id |
-| page |  ``` Required ```  | Page number |
-| size |  ``` Required ```  | Page size |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-page = 141
-size = 141
-
-result = subscriptions_controller.get_discounts(subscription_id, page, size)
-
-```
-
-
-### <a name="create_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.create_increment") create_increment
-
-> Creates a increment
-
-
-```ruby
-def create_increment(subscription_id,
-                         request); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| request |  ``` Required ```  | Request for creating a increment |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = CreateIncrementRequest.new
-
-result = subscriptions_controller.create_increment(subscription_id, request)
-
-```
-
-
-### <a name="get_increments"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_increments") get_increments
-
-> TODO: Add a method description
-
-
-```ruby
-def get_increments(subscription_id,
-                       page = nil,
-                       size = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | The subscription id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-page = 141
-size = 141
-
-result = subscriptions_controller.get_increments(subscription_id, page, size)
-
-```
-
-
-### <a name="delete_increment"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.delete_increment") delete_increment
-
-> Deletes a increment
-
-
-```ruby
-def delete_increment(subscription_id,
-                         increment_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription id |
-| increment_id |  ``` Required ```  | Increment id |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-increment_id = 'increment_id'
-
-result = subscriptions_controller.delete_increment(subscription_id, increment_id)
-
-```
-
-
-### <a name="get_usages_details"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages_details") get_usages_details
-
-> TODO: Add a method description
-
-
-```ruby
-def get_usages_details(subscription_id,
-                           cycle_id = nil,
-                           size = nil,
-                           page = nil,
-                           item_id = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription Identifier |
-| cycle_id |  ``` Optional ```  | Cycle id |
-| size |  ``` Optional ```  | Page size |
-| page |  ``` Optional ```  | Page number |
-| item_id |  ``` Optional ```  | Identificador do item |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-cycle_id = 'cycle_id'
-size = 141
-page = 141
-item_id = 'item_id'
-
-result = subscriptions_controller.get_usages_details(subscription_id, cycle_id, size, page, item_id)
-
-```
-
-
-### <a name="get_usages"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_usages") get_usages
-
-> Lists all usages from a subscription item
-
-
-```ruby
-def get_usages(subscription_id,
-                   item_id,
-                   page = nil,
-                   size = nil,
-                   code = nil,
-                   group = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | The subscription id |
-| item_id |  ``` Required ```  | The subscription item id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Identification code in the client system |
-| group |  ``` Optional ```  | Identification group in the client system |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-item_id = 'item_id'
-page = 141
-size = 141
-code = 'code'
-group = 'group'
-
-result = subscriptions_controller.get_usages(subscription_id, item_id, page, size, code, group)
 
 ```
 
@@ -2467,8 +2546,8 @@ def get_orders(page = nil,
 #### Example Usage
 
 ```ruby
-page = 141
-size = 141
+page = 6
+size = 6
 code = 'code'
 status = 'status'
 created_since = DateTime.now
@@ -2871,8 +2950,8 @@ def get_recipients(page = nil,
 #### Example Usage
 
 ```ruby
-page = 233
-size = 233
+page = 97
+size = 97
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -2993,8 +3072,8 @@ def get_transfers(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 233
-size = 233
+page = 97
+size = 97
 status = 'status'
 created_since = DateTime.now
 created_until = DateTime.now
@@ -3130,8 +3209,8 @@ def get_anticipations(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 233
-size = 233
+page = 97
+size = 97
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = DateTime.now
@@ -3298,8 +3377,8 @@ def get_sellers(page = nil,
 #### Example Usage
 
 ```ruby
-page = 191
-size = 191
+page = 97
+size = 97
 name = 'name'
 document = 'document'
 code = 'code'

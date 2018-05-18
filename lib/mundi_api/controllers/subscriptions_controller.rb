@@ -14,6 +14,41 @@ module MundiApi
       self.class.instance
     end
 
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: The subscription Id
+    # @param [String] increment_id Required parameter: The increment Id
+    # @return GetIncrementResponse response from the API call
+    def get_increment_by_id(subscription_id,
+                            increment_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/increments/{increment_id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id,
+        'increment_id' => increment_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetIncrementResponse.from_hash(decoded)
+    end
+
     # Updates a subscription item
     # @param [String] subscription_id Required parameter: Subscription Id
     # @param [String] item_id Required parameter: Item id
@@ -710,7 +745,7 @@ module MundiApi
     end
 
     # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: Example:
+    # @param [String] subscription_id Required parameter: The subscription id
     # @param [String] discount_id Required parameter: Example:
     # @return GetDiscountResponse response from the API call
     def get_discount_by_id(subscription_id,
@@ -1008,6 +1043,71 @@ module MundiApi
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListUsagesResponse.from_hash(decoded)
+    end
+
+    # Get Subscription Items
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
+    # @param [String] name Optional parameter: The item name
+    # @param [String] code Optional parameter: Identification code in the client
+    # system
+    # @param [String] status Optional parameter: The item statis
+    # @param [String] description Optional parameter: The item description
+    # @param [String] created_since Optional parameter: Filter for item's
+    # creation date start range
+    # @param [String] created_until Optional parameter: Filter for item's
+    # creation date end range
+    # @return ListSubscriptionItemsResponse response from the API call
+    def get_subscription_items(subscription_id,
+                               page = nil,
+                               size = nil,
+                               name = nil,
+                               code = nil,
+                               status = nil,
+                               description = nil,
+                               created_since = nil,
+                               created_until = nil)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/items'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id
+      )
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'page' => page,
+          'size' => size,
+          'name' => name,
+          'code' => code,
+          'status' => status,
+          'description' => description,
+          'created_since' => created_since,
+          'created_until' => created_until
+        },
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ListSubscriptionItemsResponse.from_hash(decoded)
     end
   end
 end

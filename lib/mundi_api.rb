@@ -170,11 +170,11 @@ require_relative 'mundi_api/configuration.rb'
 
 # Controllers
 require_relative 'mundi_api/controllers/base_controller.rb'
+require_relative 'mundi_api/controllers/subscriptions_controller.rb'
 require_relative 'mundi_api/controllers/charges_controller.rb'
 require_relative 'mundi_api/controllers/customers_controller.rb'
 require_relative 'mundi_api/controllers/invoices_controller.rb'
 require_relative 'mundi_api/controllers/plans_controller.rb'
-require_relative 'mundi_api/controllers/subscriptions_controller.rb'
 require_relative 'mundi_api/controllers/orders_controller.rb'
 require_relative 'mundi_api/controllers/tokens_controller.rb'
 require_relative 'mundi_api/controllers/recipients_controller.rb'
