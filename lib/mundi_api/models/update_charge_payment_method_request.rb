@@ -16,6 +16,10 @@ module MundiApi
     # @return [CreateCreditCardPaymentRequest]
     attr_accessor :credit_card
 
+    # Debit card data
+    # @return [CreateDebitCardPaymentRequest]
+    attr_accessor :debit_card
+
     # Boleto data
     # @return [CreateBoletoPaymentRequest]
     attr_accessor :boleto
@@ -30,6 +34,7 @@ module MundiApi
       @_hash['update_subscription'] = 'update_subscription'
       @_hash['payment_method'] = 'payment_method'
       @_hash['credit_card'] = 'credit_card'
+      @_hash['debit_card'] = 'debit_card'
       @_hash['boleto'] = 'boleto'
       @_hash['voucher'] = 'voucher'
       @_hash
@@ -38,11 +43,13 @@ module MundiApi
     def initialize(update_subscription = nil,
                    payment_method = nil,
                    credit_card = nil,
+                   debit_card = nil,
                    boleto = nil,
                    voucher = nil)
       @update_subscription = update_subscription
       @payment_method = payment_method
       @credit_card = credit_card
+      @debit_card = debit_card
       @boleto = boleto
       @voucher = voucher
     end
@@ -56,6 +63,8 @@ module MundiApi
       payment_method = hash['payment_method']
       credit_card = CreateCreditCardPaymentRequest.from_hash(hash['credit_card']) if
         hash['credit_card']
+      debit_card = CreateDebitCardPaymentRequest.from_hash(hash['debit_card']) if
+        hash['debit_card']
       boleto = CreateBoletoPaymentRequest.from_hash(hash['boleto']) if
         hash['boleto']
       voucher = CreateVoucherPaymentRequest.from_hash(hash['voucher']) if
@@ -65,6 +74,7 @@ module MundiApi
       UpdateChargePaymentMethodRequest.new(update_subscription,
                                            payment_method,
                                            credit_card,
+                                           debit_card,
                                            boleto,
                                            voucher)
     end

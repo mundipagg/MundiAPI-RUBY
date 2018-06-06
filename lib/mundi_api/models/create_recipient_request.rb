@@ -32,6 +32,10 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
+    # Receiver Transfer Information
+    # @return [CreateTransferSettingsRequest]
+    attr_accessor :transfer_settings
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -42,6 +46,7 @@ module MundiApi
       @_hash['type'] = 'type'
       @_hash['default_bank_account'] = 'default_bank_account'
       @_hash['metadata'] = 'metadata'
+      @_hash['transfer_settings'] = 'transfer_settings'
       @_hash
     end
 
@@ -51,7 +56,8 @@ module MundiApi
                    document = nil,
                    type = nil,
                    default_bank_account = nil,
-                   metadata = nil)
+                   metadata = nil,
+                   transfer_settings = nil)
       @name = name
       @email = email
       @description = description
@@ -59,6 +65,7 @@ module MundiApi
       @type = type
       @default_bank_account = default_bank_account
       @metadata = metadata
+      @transfer_settings = transfer_settings
     end
 
     # Creates an instance of the object from a hash.
@@ -74,6 +81,8 @@ module MundiApi
       default_bank_account = CreateBankAccountRequest.from_hash(hash['default_bank_account']) if
         hash['default_bank_account']
       metadata = hash['metadata']
+      transfer_settings = CreateTransferSettingsRequest.from_hash(hash['transfer_settings']) if
+        hash['transfer_settings']
 
       # Create object from extracted values.
       CreateRecipientRequest.new(name,
@@ -82,7 +91,8 @@ module MundiApi
                                  document,
                                  type,
                                  default_bank_account,
-                                 metadata)
+                                 metadata,
+                                 transfer_settings)
     end
   end
 end
