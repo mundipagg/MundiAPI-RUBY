@@ -26,10 +26,6 @@ module MundiApi
     attr_accessor :created_at
 
     # TODO: Write general description for this method
-    # @return [GetSubscriptionResponse]
-    attr_accessor :subscription
-
-    # TODO: Write general description for this method
     # @return [Integer]
     attr_accessor :cycles
 
@@ -41,6 +37,14 @@ module MundiApi
     # @return [String]
     attr_accessor :description
 
+    # TODO: Write general description for this method
+    # @return [GetSubscriptionResponse]
+    attr_accessor :subscription
+
+    # The Subscription Item
+    # @return [GetSubscriptionItemResponse]
+    attr_accessor :subscription_item
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -49,10 +53,11 @@ module MundiApi
       @_hash['increment_type'] = 'increment_type'
       @_hash['status'] = 'status'
       @_hash['created_at'] = 'created_at'
-      @_hash['subscription'] = 'subscription'
       @_hash['cycles'] = 'cycles'
       @_hash['deleted_at'] = 'deleted_at'
       @_hash['description'] = 'description'
+      @_hash['subscription'] = 'subscription'
+      @_hash['subscription_item'] = 'subscription_item'
       @_hash
     end
 
@@ -61,19 +66,21 @@ module MundiApi
                    increment_type = nil,
                    status = nil,
                    created_at = nil,
-                   subscription = nil,
                    cycles = nil,
                    deleted_at = nil,
-                   description = nil)
+                   description = nil,
+                   subscription = nil,
+                   subscription_item = nil)
       @id = id
       @value = value
       @increment_type = increment_type
       @status = status
       @created_at = created_at
-      @subscription = subscription
       @cycles = cycles
       @deleted_at = deleted_at
       @description = description
+      @subscription = subscription
+      @subscription_item = subscription_item
     end
 
     # Creates an instance of the object from a hash.
@@ -86,11 +93,13 @@ module MundiApi
       increment_type = hash['increment_type']
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
-      subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
-        hash['subscription']
       cycles = hash['cycles']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       description = hash['description']
+      subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
+        hash['subscription']
+      subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item']) if
+        hash['subscription_item']
 
       # Create object from extracted values.
       GetIncrementResponse.new(id,
@@ -98,10 +107,11 @@ module MundiApi
                                increment_type,
                                status,
                                created_at,
-                               subscription,
                                cycles,
                                deleted_at,
-                               description)
+                               description,
+                               subscription,
+                               subscription_item)
     end
   end
 end

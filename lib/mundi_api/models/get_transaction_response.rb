@@ -45,6 +45,10 @@ module MundiApi
     # @return [String]
     attr_accessor :id
 
+    # The Gateway Response
+    # @return [GetGatewayResponseResponse]
+    attr_accessor :gateway_response
+
     # Date and time of the next attempt
     # @return [DateTime]
     attr_accessor :next_attempt
@@ -62,6 +66,7 @@ module MundiApi
         @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse.method(:from_hash)
         @_discriminators['safetypay'] = GetSafetyPayTransactionResponse.method(:from_hash)
         @_discriminators['boleto'] = GetBoletoTransactionResponse.method(:from_hash)
+        @_discriminators['debit_card'] = GetDebitCardTransactionResponse.method(:from_hash)
       end
       @_discriminators
     end
@@ -79,6 +84,7 @@ module MundiApi
       @_hash['max_attempts'] = 'max_attempts'
       @_hash['splits'] = 'splits'
       @_hash['id'] = 'id'
+      @_hash['gateway_response'] = 'gateway_response'
       @_hash['next_attempt'] = 'next_attempt'
       @_hash['transaction_type'] = 'transaction_type'
       @_hash
@@ -94,6 +100,7 @@ module MundiApi
                    max_attempts = nil,
                    splits = nil,
                    id = nil,
+                   gateway_response = nil,
                    next_attempt = nil,
                    transaction_type = nil)
       @gateway_id = gateway_id
@@ -106,6 +113,7 @@ module MundiApi
       @max_attempts = max_attempts
       @splits = splits
       @id = id
+      @gateway_response = gateway_response
       @next_attempt = next_attempt
       @transaction_type = transaction_type
     end
@@ -137,6 +145,8 @@ module MundiApi
         end
       end
       id = hash['id']
+      gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response']) if
+        hash['gateway_response']
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
@@ -152,6 +162,7 @@ module MundiApi
                                  max_attempts,
                                  splits,
                                  id,
+                                 gateway_response,
                                  next_attempt,
                                  transaction_type)
     end

@@ -46,6 +46,7 @@ module MundiApi
                    max_attempts = nil,
                    splits = nil,
                    id = nil,
+                   gateway_response = nil,
                    paid_at = nil,
                    paid_amount = nil,
                    next_attempt = nil,
@@ -66,6 +67,7 @@ module MundiApi
             max_attempts,
             splits,
             id,
+            gateway_response,
             next_attempt,
             transaction_type)
     end
@@ -94,6 +96,8 @@ module MundiApi
         end
       end
       id = hash['id']
+      gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response']) if
+        hash['gateway_response']
       paid_at = APIHelper.rfc3339(hash['paid_at']) if hash['paid_at']
       paid_amount = hash['paid_amount']
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
@@ -113,6 +117,7 @@ module MundiApi
                                           max_attempts,
                                           splits,
                                           id,
+                                          gateway_response,
                                           paid_at,
                                           paid_amount,
                                           next_attempt,

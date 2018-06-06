@@ -4,11 +4,6 @@
 module MundiApi
   # The settings for creating a voucher payment
   class CreateVoucherPaymentRequest < BaseModel
-    # Indicates if the operation should be only authorization or auth and
-    # capture.
-    # @return [Boolean]
-    attr_accessor :capture
-
     # The text that will be shown on the voucher's statement
     # @return [String]
     attr_accessor :statement_descriptor
@@ -28,7 +23,6 @@ module MundiApi
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['capture'] = 'capture'
       @_hash['statement_descriptor'] = 'statement_descriptor'
       @_hash['card_id'] = 'card_id'
       @_hash['card_token'] = 'card_token'
@@ -36,12 +30,10 @@ module MundiApi
       @_hash
     end
 
-    def initialize(capture = nil,
-                   statement_descriptor = nil,
+    def initialize(statement_descriptor = nil,
                    card_id = nil,
                    card_token = nil,
                    card = nil)
-      @capture = capture
       @statement_descriptor = statement_descriptor
       @card_id = card_id
       @card_token = card_token
@@ -53,15 +45,13 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      capture = hash['capture']
       statement_descriptor = hash['statement_descriptor']
       card_id = hash['card_id']
       card_token = hash['card_token']
       card = CreateCardRequest.from_hash(hash['Card']) if hash['Card']
 
       # Create object from extracted values.
-      CreateVoucherPaymentRequest.new(capture,
-                                      statement_descriptor,
+      CreateVoucherPaymentRequest.new(statement_descriptor,
                                       card_id,
                                       card_token,
                                       card)
