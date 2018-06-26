@@ -64,8 +64,9 @@ module MundiApi
       description = hash['description']
       quantity = hash['quantity']
       category = hash['category']
-      get_seller_response = GetSellerResponse.from_hash(hash['GetSellerResponse']) if
-        hash['GetSellerResponse']
+      if hash['GetSellerResponse']
+        get_seller_response = GetSellerResponse.from_hash(hash['GetSellerResponse'])
+      end
 
       # Create object from extracted values.
       GetOrderItemResponse.new(id,

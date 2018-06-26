@@ -63,8 +63,9 @@ module MundiApi
       exp_month = hash['exp_month']
       exp_year = hash['exp_year']
       billing_address_id = hash['billing_address_id']
-      billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
-        hash['billing_address']
+      if hash['billing_address']
+        billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
+      end
       metadata = hash['metadata']
 
       # Create object from extracted values.

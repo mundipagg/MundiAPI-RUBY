@@ -81,8 +81,9 @@ module MundiApi
 
       # Extract variables from the hash.
       description = hash['description']
-      pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme']) if
-        hash['pricing_scheme']
+      if hash['pricing_scheme']
+        pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme'])
+      end
       id = hash['id']
       plan_item_id = hash['plan_item_id']
       # Parameter is an array, so we need to iterate through it

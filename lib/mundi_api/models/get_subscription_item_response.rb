@@ -114,8 +114,9 @@ module MundiApi
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
-      pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme']) if
-        hash['pricing_scheme']
+      if hash['pricing_scheme']
+        pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme'])
+      end
       # Parameter is an array, so we need to iterate through it
       discounts = nil
       unless hash['discounts'].nil?

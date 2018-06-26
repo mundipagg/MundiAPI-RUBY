@@ -147,8 +147,9 @@ module MundiApi
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
-      last_transaction = GetTransactionResponse.from_hash(hash['last_transaction']) if
-        hash['last_transaction']
+      if hash['last_transaction']
+        last_transaction = GetTransactionResponse.from_hash(hash['last_transaction'])
+      end
       invoice = GetInvoiceResponse.from_hash(hash['invoice']) if
         hash['invoice']
       order = GetOrderResponse.from_hash(hash['order']) if hash['order']

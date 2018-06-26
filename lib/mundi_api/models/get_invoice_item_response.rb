@@ -68,10 +68,12 @@ module MundiApi
       # Extract variables from the hash.
       amount = hash['amount']
       description = hash['description']
-      pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme']) if
-        hash['pricing_scheme']
-      price_bracket = GetPriceBracketResponse.from_hash(hash['price_bracket']) if
-        hash['price_bracket']
+      if hash['pricing_scheme']
+        pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme'])
+      end
+      if hash['price_bracket']
+        price_bracket = GetPriceBracketResponse.from_hash(hash['price_bracket'])
+      end
       subscription_item_id = hash['subscription_item_id']
       quantity = hash['quantity']
       name = hash['name']

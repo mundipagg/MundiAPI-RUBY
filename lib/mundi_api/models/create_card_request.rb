@@ -113,8 +113,9 @@ module MundiApi
       exp_month = hash['exp_month']
       exp_year = hash['exp_year']
       cvv = hash['cvv']
-      billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
-        hash['billing_address']
+      if hash['billing_address']
+        billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
+      end
       brand = hash['brand']
       billing_address_id = hash['billing_address_id']
       metadata = hash['metadata']

@@ -232,8 +232,9 @@ module MundiApi
       currency = hash['currency']
       interval = hash['interval']
       interval_count = hash['interval_count']
-      pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme']) if
-        hash['pricing_scheme']
+      if hash['pricing_scheme']
+        pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme'])
+      end
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?

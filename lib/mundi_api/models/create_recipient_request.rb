@@ -78,11 +78,13 @@ module MundiApi
       description = hash['description']
       document = hash['document']
       type = hash['type']
-      default_bank_account = CreateBankAccountRequest.from_hash(hash['default_bank_account']) if
-        hash['default_bank_account']
+      if hash['default_bank_account']
+        default_bank_account = CreateBankAccountRequest.from_hash(hash['default_bank_account'])
+      end
       metadata = hash['metadata']
-      transfer_settings = CreateTransferSettingsRequest.from_hash(hash['transfer_settings']) if
-        hash['transfer_settings']
+      if hash['transfer_settings']
+        transfer_settings = CreateTransferSettingsRequest.from_hash(hash['transfer_settings'])
+      end
 
       # Create object from extracted values.
       CreateRecipientRequest.new(name,

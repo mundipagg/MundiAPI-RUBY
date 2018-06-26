@@ -139,8 +139,9 @@ module MundiApi
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
-      billing_address = GetBillingAddressResponse.from_hash(hash['billing_address']) if
-        hash['billing_address']
+      if hash['billing_address']
+        billing_address = GetBillingAddressResponse.from_hash(hash['billing_address'])
+      end
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
       metadata = hash['metadata']

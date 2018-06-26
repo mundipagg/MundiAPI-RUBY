@@ -194,8 +194,9 @@ module MundiApi
         hash['customer']
       billingaddress = GetAddressResponse.from_hash(hash['billingaddress']) if
         hash['billingaddress']
-      credit_card = GetCheckoutCardPaymentResponse.from_hash(hash['credit_Card']) if
-        hash['credit_Card']
+      if hash['credit_Card']
+        credit_card = GetCheckoutCardPaymentResponse.from_hash(hash['credit_Card'])
+      end
       boleto = GetCheckoutBoletoPaymentResponse.from_hash(hash['boleto']) if
         hash['boleto']
       billing_address_editable = hash['billing_address_editable']

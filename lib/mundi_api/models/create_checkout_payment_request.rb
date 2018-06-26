@@ -98,12 +98,14 @@ module MundiApi
       success_url = hash['success_url']
       skip_checkout_success_page = hash['skip_checkout_success_page']
       billing_address_editable = hash['billing_address_editable']
-      billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
-        hash['billing_address']
+      if hash['billing_address']
+        billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
+      end
       default_payment_method = hash['default_payment_method']
       gateway_affiliation_id = hash['gateway_affiliation_id']
-      credit_card = CreateCheckoutCardPaymentRequest.from_hash(hash['credit_card']) if
-        hash['credit_card']
+      if hash['credit_card']
+        credit_card = CreateCheckoutCardPaymentRequest.from_hash(hash['credit_card'])
+      end
       boleto = CreateCheckoutBoletoPaymentRequest.from_hash(hash['boleto']) if
         hash['boleto']
       customer_editable = hash['customer_editable']

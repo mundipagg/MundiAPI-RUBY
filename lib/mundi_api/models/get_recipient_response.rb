@@ -119,8 +119,9 @@ module MundiApi
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
-      default_bank_account = GetBankAccountResponse.from_hash(hash['default_bank_account']) if
-        hash['default_bank_account']
+      if hash['default_bank_account']
+        default_bank_account = GetBankAccountResponse.from_hash(hash['default_bank_account'])
+      end
       # Parameter is an array, so we need to iterate through it
       gateway_recipients = nil
       unless hash['gateway_recipients'].nil?

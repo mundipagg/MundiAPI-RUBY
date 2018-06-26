@@ -71,8 +71,9 @@ module MundiApi
       retries = hash['retries']
       bank = hash['bank']
       instructions = hash['instructions']
-      billing_address = CreateAddressRequest.from_hash(hash['billing_address']) if
-        hash['billing_address']
+      if hash['billing_address']
+        billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
+      end
       billing_address_id = hash['billing_address_id']
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       nosso_numero = hash['nosso_numero']

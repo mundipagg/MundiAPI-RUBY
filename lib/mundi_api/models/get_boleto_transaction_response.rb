@@ -160,8 +160,9 @@ module MundiApi
       bank = hash['bank']
       document_number = hash['document_number']
       instructions = hash['instructions']
-      billing_address = GetBillingAddressResponse.from_hash(hash['billing_address']) if
-        hash['billing_address']
+      if hash['billing_address']
+        billing_address = GetBillingAddressResponse.from_hash(hash['billing_address'])
+      end
       qr_code = hash['qr_code']
       line = hash['line']
       pdf_password = hash['pdf_password']
@@ -185,8 +186,9 @@ module MundiApi
         end
       end
       id = hash['id']
-      gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response']) if
-        hash['gateway_response']
+      if hash['gateway_response']
+        gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response'])
+      end
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       paid_at = APIHelper.rfc3339(hash['paid_at']) if hash['paid_at']
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
