@@ -32,8 +32,9 @@ module MundiApi
 
       # Extract variables from the hash.
       type = hash['type']
-      threed_secure = Create3DSAuthentiticationRequest.from_hash(hash['threed_secure']) if
-        hash['threed_secure']
+      if hash['threed_secure']
+        threed_secure = Create3DSAuthentiticationRequest.from_hash(hash['threed_secure'])
+      end
 
       # Create object from extracted values.
       CreatePaymentAuthentiticationRequest.new(type,

@@ -98,8 +98,9 @@ module MundiApi
       description = hash['description']
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
-      subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item']) if
-        hash['subscription_item']
+      if hash['subscription_item']
+        subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item'])
+      end
 
       # Create object from extracted values.
       GetDiscountResponse.new(id,

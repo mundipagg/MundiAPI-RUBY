@@ -61,10 +61,12 @@ module MundiApi
       # Extract variables from the hash.
       update_subscription = hash['update_subscription']
       payment_method = hash['payment_method']
-      credit_card = CreateCreditCardPaymentRequest.from_hash(hash['credit_card']) if
-        hash['credit_card']
-      debit_card = CreateDebitCardPaymentRequest.from_hash(hash['debit_card']) if
-        hash['debit_card']
+      if hash['credit_card']
+        credit_card = CreateCreditCardPaymentRequest.from_hash(hash['credit_card'])
+      end
+      if hash['debit_card']
+        debit_card = CreateDebitCardPaymentRequest.from_hash(hash['debit_card'])
+      end
       boleto = CreateBoletoPaymentRequest.from_hash(hash['boleto']) if
         hash['boleto']
       voucher = CreateVoucherPaymentRequest.from_hash(hash['voucher']) if

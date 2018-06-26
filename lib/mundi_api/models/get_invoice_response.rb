@@ -191,8 +191,9 @@ module MundiApi
         hash['customer']
       charge = GetChargeResponse.from_hash(hash['charge']) if hash['charge']
       installments = hash['installments']
-      billing_address = GetBillingAddressResponse.from_hash(hash['billing_address']) if
-        hash['billing_address']
+      if hash['billing_address']
+        billing_address = GetBillingAddressResponse.from_hash(hash['billing_address'])
+      end
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
       cycle = GetPeriodResponse.from_hash(hash['cycle']) if hash['cycle']

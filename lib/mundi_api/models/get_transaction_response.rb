@@ -67,6 +67,7 @@ module MundiApi
         @_discriminators['safetypay'] = GetSafetyPayTransactionResponse.method(:from_hash)
         @_discriminators['boleto'] = GetBoletoTransactionResponse.method(:from_hash)
         @_discriminators['debit_card'] = GetDebitCardTransactionResponse.method(:from_hash)
+        @_discriminators['cash'] = GetCashTransactionResponse.method(:from_hash)
       end
       @_discriminators
     end
@@ -145,8 +146,9 @@ module MundiApi
         end
       end
       id = hash['id']
-      gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response']) if
-        hash['gateway_response']
+      if hash['gateway_response']
+        gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response'])
+      end
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']

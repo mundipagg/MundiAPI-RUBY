@@ -62,8 +62,9 @@ module MundiApi
       name = hash['name']
       description = hash['description']
       status = hash['status']
-      pricing_scheme = UpdatePricingSchemeRequest.from_hash(hash['pricing_scheme']) if
-        hash['pricing_scheme']
+      if hash['pricing_scheme']
+        pricing_scheme = UpdatePricingSchemeRequest.from_hash(hash['pricing_scheme'])
+      end
       quantity = hash['quantity']
       cycles = hash['cycles']
 

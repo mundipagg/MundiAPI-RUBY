@@ -112,8 +112,9 @@ module MundiApi
       extended_limit_enabled = hash['extended_limit_enabled']
       extended_limit_code = hash['extended_limit_code']
       merchant_category_code = hash['merchant_category_code']
-      authentication = CreatePaymentAuthentiticationRequest.from_hash(hash['authentication']) if
-        hash['authentication']
+      if hash['authentication']
+        authentication = CreatePaymentAuthentiticationRequest.from_hash(hash['authentication'])
+      end
       token = CreateCardPaymentTokenRequest.from_hash(hash['token']) if
         hash['token']
 

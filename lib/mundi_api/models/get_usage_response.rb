@@ -94,8 +94,9 @@ module MundiApi
       used_at = APIHelper.rfc3339(hash['used_at']) if hash['used_at']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       status = hash['status']
-      subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item']) if
-        hash['subscription_item']
+      if hash['subscription_item']
+        subscription_item = GetSubscriptionItemResponse.from_hash(hash['subscription_item'])
+      end
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       code = hash['code']
       group = hash['group']

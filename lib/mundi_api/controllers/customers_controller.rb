@@ -765,5 +765,40 @@ module MundiApi
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListCustomersResponse.from_hash(decoded)
     end
+
+    # Renew a card
+    # @param [String] customer_id Required parameter: Customer id
+    # @param [String] card_id Required parameter: Card Id
+    # @return GetCardResponse response from the API call
+    def renew_card(customer_id,
+                   card_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/customers/{customer_id}/cards/{card_id}/renew'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'customer_id' => customer_id,
+        'card_id' => card_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.post(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetCardResponse.from_hash(decoded)
+    end
   end
 end

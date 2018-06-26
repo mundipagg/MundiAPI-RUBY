@@ -104,8 +104,9 @@ module MundiApi
         end
       end
       id = hash['id']
-      gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response']) if
-        hash['gateway_response']
+      if hash['gateway_response']
+        gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response'])
+      end
       paid_at = APIHelper.rfc3339(hash['paid_at']) if hash['paid_at']
       paid_amount = hash['paid_amount']
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if

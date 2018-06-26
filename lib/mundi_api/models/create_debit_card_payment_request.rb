@@ -71,8 +71,9 @@ module MundiApi
       card_id = hash['card_id']
       card_token = hash['card_token']
       recurrence = hash['recurrence']
-      authentication = CreatePaymentAuthentiticationRequest.from_hash(hash['authentication']) if
-        hash['authentication']
+      if hash['authentication']
+        authentication = CreatePaymentAuthentiticationRequest.from_hash(hash['authentication'])
+      end
       token = CreateCardPaymentTokenRequest.from_hash(hash['token']) if
         hash['token']
 

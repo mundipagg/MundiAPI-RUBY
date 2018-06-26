@@ -165,8 +165,9 @@ module MundiApi
       interval_count = hash['interval_count']
       billing_days = hash['billing_days']
       billing_type = hash['billing_type']
-      pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme']) if
-        hash['pricing_scheme']
+      if hash['pricing_scheme']
+        pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme'])
+      end
       metadata = hash['metadata']
       minimum_price = hash['minimum_price']
       cycles = hash['cycles']
