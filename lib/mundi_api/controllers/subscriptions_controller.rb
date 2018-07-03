@@ -1109,5 +1109,79 @@ module MundiApi
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListSubscriptionItemsResponse.from_hash(decoded)
     end
+
+    # Updates the boleto due days from a subscription
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @param [UpdateSubscriptionDueDaysRequest] request Required parameter:
+    # Example:
+    # @return GetSubscriptionResponse response from the API call
+    def update_subscription_due_days(subscription_id,
+                                     request)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/boleto-due-days'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.patch(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetSubscriptionResponse.from_hash(decoded)
+    end
+
+    # Atualização do valor mínimo da assinatura
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @param [UpdateSubscriptionMinimumPriceRequest] request Required parameter:
+    # Request da requisição com o valor mínimo que será configurado
+    # @return GetSubscriptionResponse response from the API call
+    def update_subscription_minium_price(subscription_id,
+                                         request)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/minimum_price'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.patch(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetSubscriptionResponse.from_hash(decoded)
+    end
   end
 end
