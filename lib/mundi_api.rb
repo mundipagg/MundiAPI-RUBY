@@ -175,6 +175,8 @@ require_relative 'mundi_api/models/get_transaction_response.rb'
 require_relative 'mundi_api/models/create_cash_payment_request.rb'
 require_relative 'mundi_api/models/create_confirm_payment_request.rb'
 require_relative 'mundi_api/models/get_cash_transaction_response.rb'
+require_relative 'mundi_api/models/update_subscription_due_days_request.rb'
+require_relative 'mundi_api/models/update_subscription_minimum_price_request.rb'
 
 # Exceptions
 require_relative 'mundi_api/exceptions/api_exception.rb'
