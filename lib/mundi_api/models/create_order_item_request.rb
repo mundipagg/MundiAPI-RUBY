@@ -28,6 +28,10 @@ module MundiApi
     # @return [String]
     attr_accessor :seller_id
 
+    # The item code passed by the client
+    # @return [String]
+    attr_accessor :code
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -37,6 +41,7 @@ module MundiApi
       @_hash['category'] = 'category'
       @_hash['seller'] = 'seller'
       @_hash['seller_id'] = 'seller_id'
+      @_hash['code'] = 'code'
       @_hash
     end
 
@@ -45,13 +50,15 @@ module MundiApi
                    quantity = nil,
                    category = nil,
                    seller = nil,
-                   seller_id = nil)
+                   seller_id = nil,
+                   code = nil)
       @amount = amount
       @description = description
       @quantity = quantity
       @category = category
       @seller = seller
       @seller_id = seller_id
+      @code = code
     end
 
     # Creates an instance of the object from a hash.
@@ -65,6 +72,7 @@ module MundiApi
       category = hash['category']
       seller = CreateSellerRequest.from_hash(hash['seller']) if hash['seller']
       seller_id = hash['seller_id']
+      code = hash['code']
 
       # Create object from extracted values.
       CreateOrderItemRequest.new(amount,
@@ -72,7 +80,8 @@ module MundiApi
                                  quantity,
                                  category,
                                  seller,
-                                 seller_id)
+                                 seller_id,
+                                 code)
     end
   end
 end
