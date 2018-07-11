@@ -8,15 +8,22 @@ module MundiApi
     # @return [Integer]
     attr_accessor :amount
 
+    # The split rules request
+    # @return [List of CreateCancelChargeSplitRulesRequest]
+    attr_accessor :split_rules
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['amount'] = 'amount'
+      @_hash['split_rules'] = 'split_rules'
       @_hash
     end
 
-    def initialize(amount = nil)
+    def initialize(amount = nil,
+                   split_rules = nil)
       @amount = amount
+      @split_rules = split_rules
     end
 
     # Creates an instance of the object from a hash.
@@ -25,9 +32,18 @@ module MundiApi
 
       # Extract variables from the hash.
       amount = hash['amount']
+      # Parameter is an array, so we need to iterate through it
+      split_rules = nil
+      unless hash['split_rules'].nil?
+        split_rules = []
+        hash['split_rules'].each do |structure|
+          split_rules << (CreateCancelChargeSplitRulesRequest.from_hash(structure) if structure)
+        end
+      end
 
       # Create object from extracted values.
-      CreateCancelChargeRequest.new(amount)
+      CreateCancelChargeRequest.new(amount,
+                                    split_rules)
     end
   end
 end
