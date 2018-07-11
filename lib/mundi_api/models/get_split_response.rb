@@ -16,21 +16,28 @@ module MundiApi
     # @return [GetRecipientResponse]
     attr_accessor :recipient
 
+    # The split rule gateway id
+    # @return [String]
+    attr_accessor :gateway_id
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['type'] = 'type'
       @_hash['amount'] = 'amount'
       @_hash['recipient'] = 'recipient'
+      @_hash['gateway_id'] = 'gateway_id'
       @_hash
     end
 
     def initialize(type = nil,
                    amount = nil,
-                   recipient = nil)
+                   recipient = nil,
+                   gateway_id = nil)
       @type = type
       @amount = amount
       @recipient = recipient
+      @gateway_id = gateway_id
     end
 
     # Creates an instance of the object from a hash.
@@ -42,11 +49,13 @@ module MundiApi
       amount = hash['amount']
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if
         hash['recipient']
+      gateway_id = hash['gateway_id']
 
       # Create object from extracted values.
       GetSplitResponse.new(type,
                            amount,
-                           recipient)
+                           recipient,
+                           gateway_id)
     end
   end
 end
