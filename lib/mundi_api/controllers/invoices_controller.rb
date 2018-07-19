@@ -14,38 +14,6 @@ module MundiApi
       self.class.instance
     end
 
-    # Gets an invoice
-    # @param [String] invoice_id Required parameter: Invoice Id
-    # @return GetInvoiceResponse response from the API call
-    def get_invoice(invoice_id)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices/{invoice_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'invoice_id' => invoice_id
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetInvoiceResponse.from_hash(decoded)
-    end
-
     # Cancels an invoice
     # @param [String] invoice_id Required parameter: Invoice id
     # @return GetInvoiceResponse response from the API call
@@ -78,16 +46,83 @@ module MundiApi
       GetInvoiceResponse.from_hash(decoded)
     end
 
-    # Updates the metadata from an invoice
-    # @param [String] invoice_id Required parameter: The invoice id
-    # @param [UpdateMetadataRequest] request Required parameter: Request for
-    # updating the invoice metadata
+    # Gets an invoice
+    # @param [String] invoice_id Required parameter: Invoice Id
     # @return GetInvoiceResponse response from the API call
-    def update_invoice_metadata(invoice_id,
-                                request)
+    def get_invoice(invoice_id)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices/{invoice_id}/metadata'
+      _query_builder << '/invoices/{invoice_id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'invoice_id' => invoice_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetInvoiceResponse.from_hash(decoded)
+    end
+
+    # Create an Invoice
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @param [String] cycle_id Required parameter: Cycle Id
+    # @return GetInvoiceResponse response from the API call
+    def create_invoice(subscription_id,
+                       cycle_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id,
+        'cycle_id' => cycle_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.post(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetInvoiceResponse.from_hash(decoded)
+    end
+
+    # Updates the status from an invoice
+    # @param [String] invoice_id Required parameter: Invoice Id
+    # @param [UpdateInvoiceStatusRequest] request Required parameter: Request
+    # for updating an invoice's status
+    # @return GetInvoiceResponse response from the API call
+    def update_invoice_status(invoice_id,
+                              request)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/invoices/{invoice_id}/status'
       _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
         'invoice_id' => invoice_id
@@ -183,51 +218,16 @@ module MundiApi
       ListInvoicesResponse.from_hash(decoded)
     end
 
-    # Create an Invoice
-    # @param [String] subscription_id Required parameter: Subscription Id
-    # @param [String] cycle_id Required parameter: Cycle Id
+    # Updates the metadata from an invoice
+    # @param [String] invoice_id Required parameter: The invoice id
+    # @param [UpdateMetadataRequest] request Required parameter: Request for
+    # updating the invoice metadata
     # @return GetInvoiceResponse response from the API call
-    def create_invoice(subscription_id,
-                       cycle_id)
+    def update_invoice_metadata(invoice_id,
+                                request)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'subscription_id' => subscription_id,
-        'cycle_id' => cycle_id
-      )
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.post(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetInvoiceResponse.from_hash(decoded)
-    end
-
-    # Updates the status from an invoice
-    # @param [String] invoice_id Required parameter: Invoice Id
-    # @param [UpdateInvoiceStatusRequest] request Required parameter: Request
-    # for updating an invoice's status
-    # @return GetInvoiceResponse response from the API call
-    def update_invoice_status(invoice_id,
-                              request)
-      # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices/{invoice_id}/status'
+      _query_builder << '/invoices/{invoice_id}/metadata'
       _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
         'invoice_id' => invoice_id
