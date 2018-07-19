@@ -15,25 +15,27 @@ module MundiApi
     end
 
     # TODO: type endpoint description here
-    # @param [CreateSellerRequest] request Required parameter: Seller Model
+    # @param [String] id Required parameter: Seller Id
     # @return GetSellerResponse response from the API call
-    def create_seller(request)
+    def get_seller_by_id(id)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/sellers/'
+      _query_builder << '/sellers/{id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'id' => id
+      )
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'accept' => 'application/json'
       }
 
       # Prepare and execute HttpRequest.
-      _request = @http_client.post(
+      _request = @http_client.get(
         _query_url,
-        headers: _headers,
-        parameters: request.to_json
+        headers: _headers
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
@@ -77,27 +79,25 @@ module MundiApi
     end
 
     # TODO: type endpoint description here
-    # @param [String] id Required parameter: Seller Id
+    # @param [CreateSellerRequest] request Required parameter: Seller Model
     # @return GetSellerResponse response from the API call
-    def get_seller_by_id(id)
+    def create_seller(request)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/sellers/{id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
-        'id' => id
-      )
+      _query_builder << '/sellers/'
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
       }
 
       # Prepare and execute HttpRequest.
-      _request = @http_client.get(
+      _request = @http_client.post(
         _query_url,
-        headers: _headers
+        headers: _headers,
+        parameters: request.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
