@@ -8,6 +8,10 @@ module MundiApi
     # @return [List of String]
     attr_accessor :accepted_payment_methods
 
+    # Accepted Multi Payment Methods
+    # @return [List of Object]
+    attr_accessor :accepted_multi_payment_methods
+
     # Success url
     # @return [String]
     attr_accessor :success_url
@@ -52,6 +56,7 @@ module MundiApi
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['accepted_payment_methods'] = 'accepted_payment_methods'
+      @_hash['accepted_multi_payment_methods'] = 'accepted_multi_payment_methods'
       @_hash['success_url'] = 'success_url'
       @_hash['skip_checkout_success_page'] = 'skip_checkout_success_page'
       @_hash['billing_address_editable'] = 'billing_address_editable'
@@ -66,6 +71,7 @@ module MundiApi
     end
 
     def initialize(accepted_payment_methods = nil,
+                   accepted_multi_payment_methods = nil,
                    success_url = nil,
                    skip_checkout_success_page = nil,
                    billing_address_editable = nil,
@@ -77,6 +83,7 @@ module MundiApi
                    customer_editable = nil,
                    expires_in = nil)
       @accepted_payment_methods = accepted_payment_methods
+      @accepted_multi_payment_methods = accepted_multi_payment_methods
       @success_url = success_url
       @skip_checkout_success_page = skip_checkout_success_page
       @billing_address_editable = billing_address_editable
@@ -95,6 +102,7 @@ module MundiApi
 
       # Extract variables from the hash.
       accepted_payment_methods = hash['accepted_payment_methods']
+      accepted_multi_payment_methods = hash['accepted_multi_payment_methods']
       success_url = hash['success_url']
       skip_checkout_success_page = hash['skip_checkout_success_page']
       billing_address_editable = hash['billing_address_editable']
@@ -113,6 +121,7 @@ module MundiApi
 
       # Create object from extracted values.
       CreateCheckoutPaymentRequest.new(accepted_payment_methods,
+                                       accepted_multi_payment_methods,
                                        success_url,
                                        skip_checkout_success_page,
                                        billing_address_editable,
