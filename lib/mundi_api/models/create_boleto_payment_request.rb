@@ -26,11 +26,15 @@ module MundiApi
     # @return [String]
     attr_accessor :billing_address_id
 
+    # Boleto identification
+    # @return [String]
+    attr_accessor :document_number
+
     # Boleto due date
     # @return [DateTime]
     attr_accessor :due_at
 
-    # Número de identificação do cliente com o banco
+    # Customer identification number with the bank
     # @return [String]
     attr_accessor :nosso_numero
 
@@ -42,6 +46,7 @@ module MundiApi
       @_hash['instructions'] = 'instructions'
       @_hash['billing_address'] = 'billing_address'
       @_hash['billing_address_id'] = 'billing_address_id'
+      @_hash['document_number'] = 'document_number'
       @_hash['due_at'] = 'due_at'
       @_hash['nosso_numero'] = 'nosso_numero'
       @_hash
@@ -52,6 +57,7 @@ module MundiApi
                    instructions = nil,
                    billing_address = nil,
                    billing_address_id = nil,
+                   document_number = nil,
                    due_at = nil,
                    nosso_numero = nil)
       @retries = retries
@@ -59,6 +65,7 @@ module MundiApi
       @instructions = instructions
       @billing_address = billing_address
       @billing_address_id = billing_address_id
+      @document_number = document_number
       @due_at = due_at
       @nosso_numero = nosso_numero
     end
@@ -75,6 +82,7 @@ module MundiApi
         billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
       end
       billing_address_id = hash['billing_address_id']
+      document_number = hash['document_number']
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       nosso_numero = hash['nosso_numero']
 
@@ -84,6 +92,7 @@ module MundiApi
                                      instructions,
                                      billing_address,
                                      billing_address_id,
+                                     document_number,
                                      due_at,
                                      nosso_numero)
     end

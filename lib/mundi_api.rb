@@ -178,6 +178,7 @@ require_relative 'mundi_api/models/create_cancel_charge_split_rules_request.rb'
 require_relative 'mundi_api/models/create_checkout_payment_request.rb'
 require_relative 'mundi_api/models/create_shipping_request.rb'
 require_relative 'mundi_api/models/get_shipping_response.rb'
+require_relative 'mundi_api/models/update_subscription_start_date_request.rb'
 
 # Exceptions
 require_relative 'mundi_api/exceptions/api_exception.rb'

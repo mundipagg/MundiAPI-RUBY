@@ -49,16 +49,16 @@ module MundiApi
       GetIncrementResponse.from_hash(decoded)
     end
 
-    # Updates the billing date from a subscription
+    # Updates the start at date from a subscription
     # @param [String] subscription_id Required parameter: The subscription id
-    # @param [UpdateSubscriptionBillingDateRequest] request Required parameter:
-    # Request for updating the subscription billing date
+    # @param [UpdateSubscriptionStartDateRequest] request Required parameter:
+    # Request for updating the subscription start date
     # @return GetSubscriptionResponse response from the API call
-    def update_subscription_billing_date(subscription_id,
-                                         request)
+    def update_subscription_start_at(subscription_id,
+                                     request)
       # Prepare query url.
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/billing-date'
+      _query_builder << '/subscriptions/{subscription_id}/start-at'
       _query_builder = APIHelper.append_url_with_template_parameters(
         _query_builder,
         'subscription_id' => subscription_id
