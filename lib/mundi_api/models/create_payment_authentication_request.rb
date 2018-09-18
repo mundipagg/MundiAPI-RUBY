@@ -4,35 +4,28 @@
 # ( https://apimatic.io ).
 
 module MundiApi
-  # Split
-  class CreateSplitRequest < BaseModel
-    # Split type
+  # The payment authentication request
+  class CreatePaymentAuthenticationRequest < BaseModel
+    # The Authentication type
     # @return [String]
     attr_accessor :type
 
-    # Amount
-    # @return [Integer]
-    attr_accessor :amount
-
-    # Recipient id
-    # @return [String]
-    attr_accessor :recipient_id
+    # The 3D-S authentication object
+    # @return [CreateThreeDSecureRequest]
+    attr_accessor :threed_secure
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['type'] = 'type'
-      @_hash['amount'] = 'amount'
-      @_hash['recipient_id'] = 'recipient_id'
+      @_hash['threed_secure'] = 'threed_secure'
       @_hash
     end
 
     def initialize(type = nil,
-                   amount = nil,
-                   recipient_id = nil)
+                   threed_secure = nil)
       @type = type
-      @amount = amount
-      @recipient_id = recipient_id
+      @threed_secure = threed_secure
     end
 
     # Creates an instance of the object from a hash.
@@ -41,13 +34,13 @@ module MundiApi
 
       # Extract variables from the hash.
       type = hash['type']
-      amount = hash['amount']
-      recipient_id = hash['recipient_id']
+      if hash['threed_secure']
+        threed_secure = CreateThreeDSecureRequest.from_hash(hash['threed_secure'])
+      end
 
       # Create object from extracted values.
-      CreateSplitRequest.new(type,
-                             amount,
-                             recipient_id)
+      CreatePaymentAuthenticationRequest.new(type,
+                                             threed_secure)
     end
   end
 end
