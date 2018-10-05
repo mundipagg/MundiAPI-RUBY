@@ -18,21 +18,28 @@ module MundiApi
     # @return [String]
     attr_accessor :recipient_id
 
+    # The split options request
+    # @return [CreateSplitOptionsRequest]
+    attr_accessor :options
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['type'] = 'type'
       @_hash['amount'] = 'amount'
       @_hash['recipient_id'] = 'recipient_id'
+      @_hash['options'] = 'options'
       @_hash
     end
 
     def initialize(type = nil,
                    amount = nil,
-                   recipient_id = nil)
+                   recipient_id = nil,
+                   options = nil)
       @type = type
       @amount = amount
       @recipient_id = recipient_id
+      @options = options
     end
 
     # Creates an instance of the object from a hash.
@@ -43,11 +50,14 @@ module MundiApi
       type = hash['type']
       amount = hash['amount']
       recipient_id = hash['recipient_id']
+      options = CreateSplitOptionsRequest.from_hash(hash['options']) if
+        hash['options']
 
       # Create object from extracted values.
       CreateSplitRequest.new(type,
                              amount,
-                             recipient_id)
+                             recipient_id,
+                             options)
     end
   end
 end

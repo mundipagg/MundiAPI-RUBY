@@ -117,7 +117,6 @@ require_relative 'mundi_api/models/create_anticipation_request.rb'
 require_relative 'mundi_api/models/list_anticipation_response.rb'
 require_relative 'mundi_api/models/get_anticipation_limit_response.rb'
 require_relative 'mundi_api/models/get_anticipation_limits_response.rb'
-require_relative 'mundi_api/models/create_split_request.rb'
 require_relative 'mundi_api/models/get_device_response.rb'
 require_relative 'mundi_api/models/create_device_request.rb'
 require_relative 'mundi_api/models/get_location_response.rb'
@@ -188,6 +187,10 @@ require_relative 'mundi_api/models/create_checkout_credit_card_payment' \
 require_relative 'mundi_api/models/get_payment_authentication_response.rb'
 require_relative 'mundi_api/models/get_checkout_debit_card_payment_response.rb'
 require_relative 'mundi_api/models/get_credit_card_transaction_response.rb'
+require_relative 'mundi_api/models/create_split_request.rb'
+require_relative 'mundi_api/models/create_split_options_request.rb'
+require_relative 'mundi_api/models/update_current_cycle_end_date_request.rb'
+require_relative 'mundi_api/models/create_checkout_bank_transfer_request.rb'
 
 # Exceptions
 require_relative 'mundi_api/exceptions/api_exception.rb'

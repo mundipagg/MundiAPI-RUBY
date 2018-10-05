@@ -38,25 +38,29 @@ module MundiApi
     # @return [CreateCheckoutBoletoPaymentRequest]
     attr_accessor :boleto
 
-    # Torna o objeto editável
+    # Customer is editable?
     # @return [Boolean]
     attr_accessor :customer_editable
 
-    # Tempo em minutos para a expiração
+    # Time in minutes for expiration
     # @return [Integer]
     attr_accessor :expires_in
 
-    # Pular tela de sucesso pós-pagamento?
+    # Skip postpay success screen?
     # @return [Boolean]
     attr_accessor :skip_checkout_success_page
 
-    # Torna o objeto billing address editável
+    # Billing Address is editable?
     # @return [Boolean]
     attr_accessor :billing_address_editable
 
-    # Endereço de cobrança
+    # Billing Address
     # @return [CreateAddressRequest]
     attr_accessor :billing_address
+
+    # Bank Transfer payment request
+    # @return [CreateCheckoutBankTransferRequest]
+    attr_accessor :bank_transfer
 
     # A mapping from model property names to API property names.
     def self.names
@@ -75,6 +79,7 @@ module MundiApi
       @_hash['skip_checkout_success_page'] = 'skip_checkout_success_page'
       @_hash['billing_address_editable'] = 'billing_address_editable'
       @_hash['billing_address'] = 'billing_address'
+      @_hash['bank_transfer'] = 'bank_transfer'
       @_hash
     end
 
@@ -84,6 +89,7 @@ module MundiApi
                    skip_checkout_success_page = nil,
                    billing_address_editable = nil,
                    billing_address = nil,
+                   bank_transfer = nil,
                    default_payment_method = nil,
                    gateway_affiliation_id = nil,
                    credit_card = nil,
@@ -104,6 +110,7 @@ module MundiApi
       @skip_checkout_success_page = skip_checkout_success_page
       @billing_address_editable = billing_address_editable
       @billing_address = billing_address
+      @bank_transfer = bank_transfer
     end
 
     # Creates an instance of the object from a hash.
@@ -118,6 +125,9 @@ module MundiApi
       billing_address_editable = hash['billing_address_editable']
       if hash['billing_address']
         billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
+      end
+      if hash['bank_transfer']
+        bank_transfer = CreateCheckoutBankTransferRequest.from_hash(hash['bank_transfer'])
       end
       default_payment_method = hash['default_payment_method']
       gateway_affiliation_id = hash['gateway_affiliation_id']
@@ -139,6 +149,7 @@ module MundiApi
                                        skip_checkout_success_page,
                                        billing_address_editable,
                                        billing_address,
+                                       bank_transfer,
                                        default_payment_method,
                                        gateway_affiliation_id,
                                        credit_card,
