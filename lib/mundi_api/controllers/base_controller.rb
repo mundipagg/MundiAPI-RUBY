@@ -13,7 +13,7 @@ module MundiApi
       @http_call_back = http_call_back
 
       @global_headers = {
-        'user-agent' => 'MundiSDK – Ruby 0.13.38'
+        'user-agent' => 'MundiSDK - Ruby 0.13.40'
       }
     end
 

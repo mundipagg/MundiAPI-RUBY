@@ -69,6 +69,10 @@ module MundiApi
     # @return [String]
     attr_accessor :type
 
+    # TODO: Write general description for this method
+    # @return [DateTime]
+    attr_accessor :credit_at
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -87,6 +91,7 @@ module MundiApi
       @_hash['paid_at'] = 'paid_at'
       @_hash['paid_amount'] = 'paid_amount'
       @_hash['type'] = 'type'
+      @_hash['credit_at'] = 'credit_at'
       @_hash = super().merge(@_hash)
       @_hash
     end
@@ -117,6 +122,7 @@ module MundiApi
                    gateway_response = nil,
                    due_at = nil,
                    paid_at = nil,
+                   credit_at = nil,
                    next_attempt = nil,
                    transaction_type = nil)
       @url = url
@@ -134,6 +140,7 @@ module MundiApi
       @paid_at = paid_at
       @paid_amount = paid_amount
       @type = type
+      @credit_at = credit_at
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -193,6 +200,7 @@ module MundiApi
       end
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       paid_at = APIHelper.rfc3339(hash['paid_at']) if hash['paid_at']
+      credit_at = APIHelper.rfc3339(hash['credit_at']) if hash['credit_at']
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
@@ -224,6 +232,7 @@ module MundiApi
                                        gateway_response,
                                        due_at,
                                        paid_at,
+                                       credit_at,
                                        next_attempt,
                                        transaction_type)
     end
