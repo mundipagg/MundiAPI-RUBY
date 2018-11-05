@@ -5,7 +5,7 @@
 
 module MundiApi
   # The ApplePay Token Payment Request
-  class ApplePayRequest < BaseModel
+  class CreateApplePayRequest < BaseModel
     # The token version
     # @return [String]
     attr_accessor :version
@@ -14,8 +14,8 @@ module MundiApi
     # @return [String]
     attr_accessor :data
 
-    # The apple pay header request
-    # @return [ApplePayHeaderRequest]
+    # The ApplePay header request
+    # @return [CreateApplePayHeaderRequest]
     attr_accessor :header
 
     # Detached PKCS #7 signature, Base64 encoded as string
@@ -56,17 +56,17 @@ module MundiApi
       # Extract variables from the hash.
       version = hash['version']
       data = hash['data']
-      header = ApplePayHeaderRequest.from_hash(hash['header']) if
+      header = CreateApplePayHeaderRequest.from_hash(hash['header']) if
         hash['header']
       signature = hash['signature']
       merchant_identifier = hash['merchant_identifier']
 
       # Create object from extracted values.
-      ApplePayRequest.new(version,
-                          data,
-                          header,
-                          signature,
-                          merchant_identifier)
+      CreateApplePayRequest.new(version,
+                                data,
+                                header,
+                                signature,
+                                merchant_identifier)
     end
   end
 end

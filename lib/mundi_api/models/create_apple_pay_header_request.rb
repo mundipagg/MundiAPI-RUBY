@@ -4,8 +4,8 @@
 # ( https://apimatic.io ).
 
 module MundiApi
-  # The apple pay header request
-  class ApplePayHeaderRequest < BaseModel
+  # The ApplePay header request
+  class CreateApplePayHeaderRequest < BaseModel
     # SHA–256 hash, Base64 string codified
     # @return [String]
     attr_accessor :public_key_hash
@@ -45,9 +45,9 @@ module MundiApi
       transaction_id = hash['transaction_id']
 
       # Create object from extracted values.
-      ApplePayHeaderRequest.new(ephemeral_public_key,
-                                public_key_hash,
-                                transaction_id)
+      CreateApplePayHeaderRequest.new(ephemeral_public_key,
+                                      public_key_hash,
+                                      transaction_id)
     end
   end
 end

@@ -256,5 +256,72 @@ module MundiApi
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetInvoiceResponse.from_hash(decoded)
     end
+
+    # Remove a usage from an invoice
+    # @param [String] invoice_id Required parameter: Invoice Id
+    # @param [String] usage_id Required parameter: Usage Id
+    # @return GetInvoiceResponse response from the API call
+    def remove_invoice_usage(invoice_id,
+                             usage_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/invoices/{invoice_id}/usages/{usage_id}'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'invoice_id' => invoice_id,
+        'usage_id' => usage_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetInvoiceResponse.from_hash(decoded)
+    end
+
+    # Remove usages from an invoice
+    # @param [String] invoice_id Required parameter: Invoice Id
+    # @return GetInvoiceResponse response from the API call
+    def remove_invoice_usages(invoice_id)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/invoices/{invoice_id}/usages'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'invoice_id' => invoice_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetInvoiceResponse.from_hash(decoded)
+    end
   end
 end

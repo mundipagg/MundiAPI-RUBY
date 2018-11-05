@@ -1263,5 +1263,37 @@ module MundiApi
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetSubscriptionItemResponse.from_hash(decoded)
     end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @param [UpdateCurrentCycleStatusRequest] request Required parameter:
+    # Request for updating the end date of the subscription current status
+    # @return void response from the API call
+    def update_current_cycle_status(subscription_id,
+                                    request)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/subscriptions/{subscription_id}/cycle-status'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'subscription_id' => subscription_id
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.patch(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+    end
   end
 end

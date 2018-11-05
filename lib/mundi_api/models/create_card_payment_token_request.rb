@@ -10,22 +10,29 @@ module MundiApi
     # @return [String]
     attr_accessor :type
 
-    # The apple pay authentication request
-    # @return [ApplePayRequest]
+    # The ApplePay authentication request
+    # @return [CreateApplePayRequest]
     attr_accessor :apple_pay
+
+    # The GooglePay authentication request
+    # @return [CreateGooglePayRequest]
+    attr_accessor :google_pay
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['type'] = 'type'
       @_hash['apple_pay'] = 'apple_pay'
+      @_hash['google_pay'] = 'google_pay'
       @_hash
     end
 
     def initialize(type = nil,
-                   apple_pay = nil)
+                   apple_pay = nil,
+                   google_pay = nil)
       @type = type
       @apple_pay = apple_pay
+      @google_pay = google_pay
     end
 
     # Creates an instance of the object from a hash.
@@ -34,12 +41,15 @@ module MundiApi
 
       # Extract variables from the hash.
       type = hash['type']
-      apple_pay = ApplePayRequest.from_hash(hash['apple_pay']) if
+      apple_pay = CreateApplePayRequest.from_hash(hash['apple_pay']) if
         hash['apple_pay']
+      google_pay = CreateGooglePayRequest.from_hash(hash['google_pay']) if
+        hash['google_pay']
 
       # Create object from extracted values.
       CreateCardPaymentTokenRequest.new(type,
-                                        apple_pay)
+                                        apple_pay,
+                                        google_pay)
     end
   end
 end
