@@ -60,6 +60,12 @@ module MundiApi
       SellersController.instance
     end
 
+    # Singleton access to transactions controller.
+    # @return [TransactionsController] Returns the controller instance.
+    def transactions
+      TransactionsController.instance
+    end
+
     # Returns the configuration class for easy access.
     # @return [Configuration] Returns the actual configuration class.
     def config

@@ -433,5 +433,49 @@ module MundiApi
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetChargeResponse.from_hash(decoded)
     end
+
+    # TODO: type endpoint description here
+    # @param [String] charge_id Required parameter: Charge Id
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
+    # @return ListChargeTransactionsResponse response from the API call
+    def get_charge_transactions(charge_id,
+                                page = nil,
+                                size = nil)
+      # Prepare query url.
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << '/charges/{charge_id}/transactions'
+      _query_builder = APIHelper.append_url_with_template_parameters(
+        _query_builder,
+        'charge_id' => charge_id
+      )
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'page' => page,
+          'size' => size
+        },
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ListChargeTransactionsResponse.from_hash(decoded)
+    end
   end
 end

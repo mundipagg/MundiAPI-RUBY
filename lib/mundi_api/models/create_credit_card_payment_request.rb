@@ -55,6 +55,10 @@ module MundiApi
     # @return [CreateCardPaymentTokenRequest]
     attr_accessor :token
 
+    # Indicates whether a particular payment will enter the offline retry flow
+    # @return [Boolean]
+    attr_accessor :auto_recovery
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -70,6 +74,7 @@ module MundiApi
       @_hash['merchant_category_code'] = 'merchant_category_code'
       @_hash['authentication'] = 'authentication'
       @_hash['token'] = 'token'
+      @_hash['auto_recovery'] = 'auto_recovery'
       @_hash
     end
 
@@ -84,7 +89,8 @@ module MundiApi
                    extended_limit_code = nil,
                    merchant_category_code = nil,
                    authentication = nil,
-                   token = nil)
+                   token = nil,
+                   auto_recovery = nil)
       @installments = installments
       @statement_descriptor = statement_descriptor
       @card = card
@@ -97,6 +103,7 @@ module MundiApi
       @merchant_category_code = merchant_category_code
       @authentication = authentication
       @token = token
+      @auto_recovery = auto_recovery
     end
 
     # Creates an instance of the object from a hash.
@@ -119,6 +126,7 @@ module MundiApi
       end
       token = CreateCardPaymentTokenRequest.from_hash(hash['token']) if
         hash['token']
+      auto_recovery = hash['auto_recovery']
 
       # Create object from extracted values.
       CreateCreditCardPaymentRequest.new(installments,
@@ -132,7 +140,8 @@ module MundiApi
                                          extended_limit_code,
                                          merchant_category_code,
                                          authentication,
-                                         token)
+                                         token,
+                                         auto_recovery)
     end
   end
 end

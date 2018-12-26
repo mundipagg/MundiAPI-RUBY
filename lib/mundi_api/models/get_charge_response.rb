@@ -79,6 +79,10 @@ module MundiApi
     # @return [Integer]
     attr_accessor :canceled_amount
 
+    # Paid amount
+    # @return [Integer]
+    attr_accessor :paid_amount
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -100,6 +104,7 @@ module MundiApi
       @_hash['paid_at'] = 'paid_at'
       @_hash['canceled_at'] = 'canceled_at'
       @_hash['canceled_amount'] = 'canceled_amount'
+      @_hash['paid_amount'] = 'paid_amount'
       @_hash
     end
 
@@ -119,6 +124,7 @@ module MundiApi
                    customer = nil,
                    metadata = nil,
                    canceled_amount = nil,
+                   paid_amount = nil,
                    paid_at = nil,
                    canceled_at = nil)
       @id = id
@@ -139,6 +145,7 @@ module MundiApi
       @paid_at = paid_at
       @canceled_at = canceled_at
       @canceled_amount = canceled_amount
+      @paid_amount = paid_amount
     end
 
     # Creates an instance of the object from a hash.
@@ -166,6 +173,7 @@ module MundiApi
         hash['customer']
       metadata = hash['metadata']
       canceled_amount = hash['canceled_amount']
+      paid_amount = hash['paid_amount']
       paid_at = APIHelper.rfc3339(hash['paid_at']) if hash['paid_at']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
@@ -187,6 +195,7 @@ module MundiApi
                             customer,
                             metadata,
                             canceled_amount,
+                            paid_amount,
                             paid_at,
                             canceled_at)
     end
