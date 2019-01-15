@@ -24,12 +24,13 @@ module MundiApi
     def update_charge_card(charge_id,
                            request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/charges/{charge_id}/card'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/charges/{charge_id}/card'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -61,12 +62,13 @@ module MundiApi
     def update_charge_payment_method(charge_id,
                                      request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/charges/{charge_id}/payment-method'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/charges/{charge_id}/payment-method'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -96,8 +98,9 @@ module MundiApi
     # @return GetChargeResponse response from the API call
     def create_charge(request)
       # Prepare query url.
+      _path_url = '/Charges'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/Charges'
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -126,12 +129,13 @@ module MundiApi
     # @return GetChargeResponse response from the API call
     def get_charge(charge_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/charges/{charge_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/charges/{charge_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -158,12 +162,13 @@ module MundiApi
     # @return GetChargeResponse response from the API call
     def retry_charge(charge_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/charges/{charge_id}/retry'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/charges/{charge_id}/retry'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -211,8 +216,9 @@ module MundiApi
                     created_since = nil,
                     created_until = nil)
       # Prepare query url.
+      _path_url = '/charges'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/charges'
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -257,12 +263,13 @@ module MundiApi
     def update_charge_metadata(charge_id,
                                request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/Charges/{charge_id}/metadata'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/Charges/{charge_id}/metadata'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -294,12 +301,13 @@ module MundiApi
     def cancel_charge(charge_id,
                       request = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/charges/{charge_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/charges/{charge_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -331,12 +339,13 @@ module MundiApi
     def capture_charge(charge_id,
                        request = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/charges/{charge_id}/capture'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/charges/{charge_id}/capture'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -368,12 +377,13 @@ module MundiApi
     def update_charge_due_date(charge_id,
                                request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/Charges/{charge_id}/due-date'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/Charges/{charge_id}/due-date'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -405,12 +415,13 @@ module MundiApi
     def confirm_payment(charge_id,
                         request = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/charges/{charge_id}/confirm-payment'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/charges/{charge_id}/confirm-payment'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -443,12 +454,13 @@ module MundiApi
                                 page = nil,
                                 size = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/charges/{charge_id}/transactions'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/charges/{charge_id}/transactions'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'charge_id' => charge_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {

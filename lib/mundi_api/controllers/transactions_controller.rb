@@ -21,12 +21,13 @@ module MundiApi
     # @return GetTransactionResponse response from the API call
     def get_transaction(transaction_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/transactions/{transaction_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/transactions/{transaction_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'transaction_id' => transaction_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.

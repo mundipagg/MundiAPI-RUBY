@@ -23,13 +23,14 @@ module MundiApi
     def get_token(id,
                   public_key)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/tokens/{id}?appId={public_key}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/tokens/{id}?appId={public_key}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'id' => id,
         'public_key' => public_key
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -58,12 +59,13 @@ module MundiApi
     def create_token(public_key,
                      request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/tokens?appId={public_key}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/tokens?appId={public_key}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'public_key' => public_key
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.

@@ -23,13 +23,14 @@ module MundiApi
     def get_increment_by_id(subscription_id,
                             increment_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/increments/{increment_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/increments/{increment_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'increment_id' => increment_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -59,12 +60,13 @@ module MundiApi
     def update_subscription_start_at(subscription_id,
                                      request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/start-at'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/start-at'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -96,12 +98,13 @@ module MundiApi
     def update_subscription_card(subscription_id,
                                  request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/card'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/card'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -135,13 +138,14 @@ module MundiApi
                                  item_id,
                                  body)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items/{item_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/items/{item_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'item_id' => item_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -175,13 +179,14 @@ module MundiApi
                      item_id,
                      body)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items/{item_id}/usages'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/items/{item_id}/usages'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'item_id' => item_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -210,12 +215,13 @@ module MundiApi
     # @return GetSubscriptionResponse response from the API call
     def get_subscription(subscription_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -245,12 +251,13 @@ module MundiApi
     def update_subscription_payment_method(subscription_id,
                                            request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/payment-method'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/payment-method'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -280,8 +287,9 @@ module MundiApi
     # @return GetSubscriptionResponse response from the API call
     def create_subscription(body)
       # Prepare query url.
+      _path_url = '/subscriptions'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions'
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -313,12 +321,13 @@ module MundiApi
     def create_subscription_item(subscription_id,
                                  request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/items'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -350,12 +359,13 @@ module MundiApi
     def create_discount(subscription_id,
                         request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/discounts'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/discounts'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -386,13 +396,14 @@ module MundiApi
     def get_subscription_item(subscription_id,
                               item_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items/{item_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/items/{item_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'item_id' => item_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -422,12 +433,13 @@ module MundiApi
     def update_subscription_affiliation_id(subscription_id,
                                            request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/gateway-affiliation-id'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/gateway-affiliation-id'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -458,13 +470,14 @@ module MundiApi
     def create_an_usage(subscription_id,
                         item_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items/{item_id}/usages'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/items/{item_id}/usages'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'item_id' => item_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -522,8 +535,9 @@ module MundiApi
                           created_since = nil,
                           created_until = nil)
       # Prepare query url.
+      _path_url = '/subscriptions'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions'
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -571,12 +585,13 @@ module MundiApi
     def update_subscription_metadata(subscription_id,
                                      request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/Subscriptions/{subscription_id}/metadata'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/Subscriptions/{subscription_id}/metadata'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -608,13 +623,14 @@ module MundiApi
     def delete_subscription_item(subscription_id,
                                  subscription_item_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items/{subscription_item_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/items/{subscription_item_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'subscription_item_id' => subscription_item_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -645,14 +661,15 @@ module MundiApi
                      item_id,
                      usage_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/items/{item_id}/usages/{usage_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'item_id' => item_id,
         'usage_id' => usage_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -681,13 +698,14 @@ module MundiApi
     def delete_discount(subscription_id,
                         discount_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/discounts/{discount_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/discounts/{discount_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'discount_id' => discount_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -717,12 +735,13 @@ module MundiApi
     def cancel_subscription(subscription_id,
                             request = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -753,13 +772,14 @@ module MundiApi
     def get_discount_by_id(subscription_id,
                            discount_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/discounts/{discountId}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/discounts/{discountId}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'discountId' => discount_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -790,12 +810,13 @@ module MundiApi
                       page,
                       size)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/discounts/'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/discounts/'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -833,12 +854,13 @@ module MundiApi
     def create_increment(subscription_id,
                          request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/increments'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/increments'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -871,12 +893,13 @@ module MundiApi
                        page = nil,
                        size = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/increments/'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/increments/'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -913,13 +936,14 @@ module MundiApi
     def delete_increment(subscription_id,
                          increment_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/increments/{increment_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/increments/{increment_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'increment_id' => increment_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -958,12 +982,13 @@ module MundiApi
                            item_id = nil,
                            group = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/usages-details/'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/usages-details/'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -1013,13 +1038,14 @@ module MundiApi
                    code = nil,
                    group = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items/{item_id}/usages'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/items/{item_id}/usages'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'item_id' => item_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -1075,12 +1101,13 @@ module MundiApi
                                created_since = nil,
                                created_until = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/items'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/items'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -1124,12 +1151,13 @@ module MundiApi
     def update_subscription_due_days(subscription_id,
                                      request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/boleto-due-days'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/boleto-due-days'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -1161,12 +1189,13 @@ module MundiApi
     def update_subscription_minium_price(subscription_id,
                                          request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/minimum_price'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/minimum_price'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -1198,12 +1227,13 @@ module MundiApi
     def update_subscription_billing_date(subscription_id,
                                          request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/billing-date'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/billing-date'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -1235,12 +1265,13 @@ module MundiApi
     def update_current_cycle_end_date(subscription_id,
                                       request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/cycle-end-date'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/cycle-end-date'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -1272,12 +1303,13 @@ module MundiApi
     def update_current_cycle_status(subscription_id,
                                     request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/cycle-status'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/cycle-status'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.

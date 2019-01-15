@@ -21,12 +21,13 @@ module MundiApi
     # @return GetInvoiceResponse response from the API call
     def cancel_invoice(invoice_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices/{invoice_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/invoices/{invoice_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'invoice_id' => invoice_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -53,12 +54,13 @@ module MundiApi
     # @return GetInvoiceResponse response from the API call
     def get_invoice(invoice_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices/{invoice_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/invoices/{invoice_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'invoice_id' => invoice_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -87,13 +89,14 @@ module MundiApi
     def create_invoice(subscription_id,
                        cycle_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'subscription_id' => subscription_id,
         'cycle_id' => cycle_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -123,12 +126,13 @@ module MundiApi
     def update_invoice_status(invoice_id,
                               request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices/{invoice_id}/status'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/invoices/{invoice_id}/status'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'invoice_id' => invoice_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -181,8 +185,9 @@ module MundiApi
                      due_since = nil,
                      due_until = nil)
       # Prepare query url.
+      _path_url = '/invoices'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices'
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -228,12 +233,13 @@ module MundiApi
     def update_invoice_metadata(invoice_id,
                                 request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices/{invoice_id}/metadata'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/invoices/{invoice_id}/metadata'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'invoice_id' => invoice_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -264,13 +270,14 @@ module MundiApi
     def remove_invoice_usage(invoice_id,
                              usage_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices/{invoice_id}/usages/{usage_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/invoices/{invoice_id}/usages/{usage_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'invoice_id' => invoice_id,
         'usage_id' => usage_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -297,12 +304,13 @@ module MundiApi
     # @return GetInvoiceResponse response from the API call
     def remove_invoice_usages(invoice_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/invoices/{invoice_id}/usages'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/invoices/{invoice_id}/usages'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'invoice_id' => invoice_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.

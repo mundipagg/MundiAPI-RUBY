@@ -23,12 +23,13 @@ module MundiApi
     def update_recipient_metadata(recipient_id,
                                   request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/metadata'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/metadata'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -59,13 +60,14 @@ module MundiApi
     def get_transfer(recipient_id,
                      transfer_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/transfers/{transfer_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/transfers/{transfer_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id,
         'transfer_id' => transfer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -104,12 +106,13 @@ module MundiApi
                       created_since = nil,
                       created_until = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/transfers'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/transfers'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -150,12 +153,13 @@ module MundiApi
     def create_anticipation(recipient_id,
                             request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/anticipations'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/anticipations'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -186,13 +190,14 @@ module MundiApi
     def get_anticipation(recipient_id,
                          anticipation_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/anticipations/{anticipation_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/anticipations/{anticipation_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id,
         'anticipation_id' => anticipation_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -224,12 +229,13 @@ module MundiApi
                                 timeframe,
                                 payment_date)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/anticipation_limits'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/anticipation_limits'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -286,12 +292,13 @@ module MundiApi
                           created_since = nil,
                           created_until = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/anticipations'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/anticipations'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -335,12 +342,13 @@ module MundiApi
     def update_recipient(recipient_id,
                          request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -372,12 +380,13 @@ module MundiApi
     def update_recipient_default_bank_account(recipient_id,
                                               request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/default-bank-account'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/default-bank-account'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -406,12 +415,13 @@ module MundiApi
     # @return GetRecipientResponse response from the API call
     def get_recipient(recipient_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -440,8 +450,9 @@ module MundiApi
     def get_recipients(page = nil,
                        size = nil)
       # Prepare query url.
+      _path_url = '/recipients'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients'
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -476,12 +487,13 @@ module MundiApi
     # @return GetBalanceResponse response from the API call
     def get_balance(recipient_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/balance'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/balance'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -510,12 +522,13 @@ module MundiApi
     def create_transfer(recipient_id,
                         request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/transfers'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/transfers'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -545,8 +558,9 @@ module MundiApi
     # @return GetRecipientResponse response from the API call
     def create_recipient(request)
       # Prepare query url.
+      _path_url = '/recipients'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients'
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -578,12 +592,13 @@ module MundiApi
     def update_recipient_transfer_settings(recipient_id,
                                            request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/recipients/{recipient_id}/transfer-settings'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/recipients/{recipient_id}/transfer-settings'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'recipient_id' => recipient_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.

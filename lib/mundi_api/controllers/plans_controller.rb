@@ -24,12 +24,13 @@ module MundiApi
     def create_plan_item(plan_id,
                          request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/plans/{plan_id}/items'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/plans/{plan_id}/items'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'plan_id' => plan_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -63,13 +64,14 @@ module MundiApi
                          plan_item_id,
                          body)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/plans/{plan_id}/items/{plan_item_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/plans/{plan_id}/items/{plan_item_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'plan_id' => plan_id,
         'plan_item_id' => plan_item_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -98,12 +100,13 @@ module MundiApi
     # @return GetPlanResponse response from the API call
     def get_plan(plan_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/plans/{plan_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/plans/{plan_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'plan_id' => plan_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -130,12 +133,13 @@ module MundiApi
     # @return GetPlanResponse response from the API call
     def delete_plan(plan_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/plans/{plan_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/plans/{plan_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'plan_id' => plan_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -165,12 +169,13 @@ module MundiApi
     def update_plan(plan_id,
                     request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/plans/{plan_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/plans/{plan_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'plan_id' => plan_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -200,8 +205,9 @@ module MundiApi
     # @return GetPlanResponse response from the API call
     def create_plan(body)
       # Prepare query url.
+      _path_url = '/plans'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/plans'
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -245,8 +251,9 @@ module MundiApi
                   created_since = nil,
                   created_until = nil)
       # Prepare query url.
+      _path_url = '/plans'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/plans'
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -289,12 +296,13 @@ module MundiApi
     def update_plan_metadata(plan_id,
                              request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/Plans/{plan_id}/metadata'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/Plans/{plan_id}/metadata'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'plan_id' => plan_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -325,13 +333,14 @@ module MundiApi
     def get_plan_item(plan_id,
                       plan_item_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/plans/{plan_id}/items/{plan_item_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/plans/{plan_id}/items/{plan_item_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'plan_id' => plan_id,
         'plan_item_id' => plan_item_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -360,13 +369,14 @@ module MundiApi
     def delete_plan_item(plan_id,
                          plan_item_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/plans/{plan_id}/items/{plan_item_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/plans/{plan_id}/items/{plan_item_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'plan_id' => plan_id,
         'plan_item_id' => plan_item_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.

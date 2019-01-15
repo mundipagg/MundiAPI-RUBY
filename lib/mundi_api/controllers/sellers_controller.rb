@@ -21,12 +21,13 @@ module MundiApi
     # @return GetSellerResponse response from the API call
     def get_seller_by_id(id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/sellers/{id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/sellers/{id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'id' => id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -53,12 +54,13 @@ module MundiApi
     # @return GetSellerResponse response from the API call
     def delete_seller(seller_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/sellers/{sellerId}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/sellers/{sellerId}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'sellerId' => seller_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -85,8 +87,9 @@ module MundiApi
     # @return GetSellerResponse response from the API call
     def create_seller(request)
       # Prepare query url.
+      _path_url = '/sellers/'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/sellers/'
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -131,8 +134,9 @@ module MundiApi
                     created_since = nil,
                     created_until = nil)
       # Prepare query url.
+      _path_url = '/sellers'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/sellers'
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -177,12 +181,13 @@ module MundiApi
     def update_seller(id,
                       request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/sellers/{id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/sellers/{id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'id' => id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -214,12 +219,13 @@ module MundiApi
     def update_seller_metadata(seller_id,
                                request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/sellers/{seller_id}/metadata'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/sellers/{seller_id}/metadata'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'seller_id' => seller_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'mundi_api'
-  s.version = '0.13.42'
+  s.version = '0.13.43'
   s.summary = 'mundi_api'
   s.description = 'Mundipagg API'
   s.authors = ['APIMatic SDK Generator']

@@ -26,13 +26,14 @@ module MundiApi
                     card_id,
                     request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/cards/{card_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/cards/{card_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id,
         'card_id' => card_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -66,13 +67,14 @@ module MundiApi
                        address_id,
                        request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/addresses/{address_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/addresses/{address_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id,
         'address_id' => address_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -102,8 +104,9 @@ module MundiApi
     # @return GetCustomerResponse response from the API call
     def create_customer(request)
       # Prepare query url.
+      _path_url = '/customers'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers'
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -132,12 +135,13 @@ module MundiApi
     # @return GetCustomerResponse response from the API call
     def get_customer(customer_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -168,12 +172,13 @@ module MundiApi
                           page = nil,
                           size = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/access-tokens'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/access-tokens'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -212,12 +217,13 @@ module MundiApi
                       page = nil,
                       size = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/addresses'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/addresses'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -256,12 +262,13 @@ module MundiApi
                   page = nil,
                   size = nil)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/cards'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/cards'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -296,12 +303,13 @@ module MundiApi
     # @return ListAccessTokensResponse response from the API call
     def delete_access_tokens(customer_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/access-tokens/'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/access-tokens/'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -330,13 +338,14 @@ module MundiApi
     def get_access_token(customer_id,
                          token_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/access-tokens/{token_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/access-tokens/{token_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id,
         'token_id' => token_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -366,12 +375,13 @@ module MundiApi
     def create_access_token(customer_id,
                             request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/access-tokens'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/access-tokens'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -402,13 +412,14 @@ module MundiApi
     def delete_access_token(customer_id,
                             token_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/access-tokens/{token_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/access-tokens/{token_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id,
         'token_id' => token_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -438,12 +449,13 @@ module MundiApi
     def update_customer_metadata(customer_id,
                                  request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/Customers/{customer_id}/metadata'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/Customers/{customer_id}/metadata'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -475,12 +487,13 @@ module MundiApi
     def update_customer(customer_id,
                         request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -511,13 +524,14 @@ module MundiApi
     def get_address(customer_id,
                     address_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/addresses/{address_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/addresses/{address_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id,
         'address_id' => address_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -546,13 +560,14 @@ module MundiApi
     def delete_address(customer_id,
                        address_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/addresses/{address_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/addresses/{address_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id,
         'address_id' => address_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -581,13 +596,14 @@ module MundiApi
     def delete_card(customer_id,
                     card_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/cards/{card_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/cards/{card_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id,
         'card_id' => card_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -617,12 +633,13 @@ module MundiApi
     def create_address(customer_id,
                        request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/addresses'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/addresses'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -653,13 +670,14 @@ module MundiApi
     def get_card(customer_id,
                  card_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/cards/{card_id}'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/cards/{card_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id,
         'card_id' => card_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -689,12 +707,13 @@ module MundiApi
     def create_card(customer_id,
                     request)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/cards'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/cards'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.
@@ -733,8 +752,9 @@ module MundiApi
                       email = nil,
                       code = nil)
       # Prepare query url.
+      _path_url = '/customers'
       _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers'
+      _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
         {
@@ -775,13 +795,14 @@ module MundiApi
     def renew_card(customer_id,
                    card_id)
       # Prepare query url.
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << '/customers/{customer_id}/cards/{card_id}/renew'
-      _query_builder = APIHelper.append_url_with_template_parameters(
-        _query_builder,
+      _path_url = '/customers/{customer_id}/cards/{card_id}/renew'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
         'customer_id' => customer_id,
         'card_id' => card_id
       )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
 
       # Prepare headers.

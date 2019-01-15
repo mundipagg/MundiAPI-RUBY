@@ -30,8 +30,6 @@ require_relative 'mundi_api/models/get_checkout_card_installment_options' \
 require_relative 'mundi_api/models/update_subscription_billing_date_request.rb'
 require_relative 'mundi_api/models/list_subscription_items_response.rb'
 require_relative 'mundi_api/models/list_usages_response.rb'
-require_relative 'mundi_api/models/update_subscription_payment_method' \
-                 '_request.rb'
 require_relative 'mundi_api/models/create_card_options_request.rb'
 require_relative 'mundi_api/models/update_subscription_card_request.rb'
 require_relative 'mundi_api/models/list_order_response.rb'
@@ -198,6 +196,8 @@ require_relative 'mundi_api/models/update_current_cycle_status_request.rb'
 require_relative 'mundi_api/models/create_google_pay_request.rb'
 require_relative 'mundi_api/models/create_google_pay_header_request.rb'
 require_relative 'mundi_api/models/create_card_payment_token_request.rb'
+require_relative 'mundi_api/models/update_subscription_payment_method' \
+                 '_request.rb'
 
 # Exceptions
 require_relative 'mundi_api/exceptions/api_exception.rb'
