@@ -196,6 +196,7 @@ require_relative 'mundi_api/models/update_current_cycle_status_request.rb'
 require_relative 'mundi_api/models/create_google_pay_request.rb'
 require_relative 'mundi_api/models/create_google_pay_header_request.rb'
 require_relative 'mundi_api/models/create_card_payment_token_request.rb'
+require_relative 'mundi_api/models/create_invoice_request.rb'
 require_relative 'mundi_api/models/update_subscription_payment_method' \
                  '_request.rb'
 

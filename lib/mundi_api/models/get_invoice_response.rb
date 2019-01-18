@@ -95,6 +95,10 @@ module MundiApi
     # @return [Integer]
     attr_accessor :total_increment
 
+    # Subscription Id
+    # @return [String]
+    attr_accessor :subscription_id
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -120,6 +124,7 @@ module MundiApi
       @_hash['seen_at'] = 'seen_at'
       @_hash['total_discount'] = 'total_discount'
       @_hash['total_increment'] = 'total_increment'
+      @_hash['subscription_id'] = 'subscription_id'
       @_hash
     end
 
@@ -139,6 +144,7 @@ module MundiApi
                    cycle = nil,
                    shipping = nil,
                    metadata = nil,
+                   subscription_id = nil,
                    due_at = nil,
                    canceled_at = nil,
                    billing_at = nil,
@@ -167,6 +173,7 @@ module MundiApi
       @seen_at = seen_at
       @total_discount = total_discount
       @total_increment = total_increment
+      @subscription_id = subscription_id
     end
 
     # Creates an instance of the object from a hash.
@@ -202,6 +209,7 @@ module MundiApi
       shipping = GetShippingResponse.from_hash(hash['shipping']) if
         hash['shipping']
       metadata = hash['metadata']
+      subscription_id = hash['subscription_id']
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
@@ -227,6 +235,7 @@ module MundiApi
                              cycle,
                              shipping,
                              metadata,
+                             subscription_id,
                              due_at,
                              canceled_at,
                              billing_at,
