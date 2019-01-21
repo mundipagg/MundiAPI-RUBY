@@ -39,6 +39,10 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :estimated_delivery_date
 
+    # Shipping type
+    # @return [String]
+    attr_accessor :type
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -50,6 +54,7 @@ module MundiApi
       @_hash['address'] = 'address'
       @_hash['max_delivery_date'] = 'max_delivery_date'
       @_hash['estimated_delivery_date'] = 'estimated_delivery_date'
+      @_hash['type'] = 'type'
       @_hash
     end
 
@@ -59,6 +64,7 @@ module MundiApi
                    recipient_phone = nil,
                    address_id = nil,
                    address = nil,
+                   type = nil,
                    max_delivery_date = nil,
                    estimated_delivery_date = nil)
       @amount = amount
@@ -69,6 +75,7 @@ module MundiApi
       @address = address
       @max_delivery_date = max_delivery_date
       @estimated_delivery_date = estimated_delivery_date
+      @type = type
     end
 
     # Creates an instance of the object from a hash.
@@ -83,6 +90,7 @@ module MundiApi
       address_id = hash['address_id']
       address = CreateAddressRequest.from_hash(hash['address']) if
         hash['address']
+      type = hash['type']
       max_delivery_date = APIHelper.rfc3339(hash['max_delivery_date']) if
         hash['max_delivery_date']
       estimated_delivery_date = APIHelper.rfc3339(hash['estimated_delivery_date']) if
@@ -95,6 +103,7 @@ module MundiApi
                                 recipient_phone,
                                 address_id,
                                 address,
+                                type,
                                 max_delivery_date,
                                 estimated_delivery_date)
     end

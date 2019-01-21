@@ -30,6 +30,14 @@ module MundiApi
     # @return [CreateVoucherPaymentRequest]
     attr_accessor :voucher
 
+    # Cash data
+    # @return [CreateCashPaymentRequest]
+    attr_accessor :cash
+
+    # Bank Transfer data
+    # @return [CreateBankTransferPaymentRequest]
+    attr_accessor :bank_transfer
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -39,6 +47,8 @@ module MundiApi
       @_hash['debit_card'] = 'debit_card'
       @_hash['boleto'] = 'boleto'
       @_hash['voucher'] = 'voucher'
+      @_hash['cash'] = 'cash'
+      @_hash['bank_transfer'] = 'bank_transfer'
       @_hash
     end
 
@@ -47,13 +57,17 @@ module MundiApi
                    credit_card = nil,
                    debit_card = nil,
                    boleto = nil,
-                   voucher = nil)
+                   voucher = nil,
+                   cash = nil,
+                   bank_transfer = nil)
       @update_subscription = update_subscription
       @payment_method = payment_method
       @credit_card = credit_card
       @debit_card = debit_card
       @boleto = boleto
       @voucher = voucher
+      @cash = cash
+      @bank_transfer = bank_transfer
     end
 
     # Creates an instance of the object from a hash.
@@ -73,6 +87,10 @@ module MundiApi
         hash['boleto']
       voucher = CreateVoucherPaymentRequest.from_hash(hash['voucher']) if
         hash['voucher']
+      cash = CreateCashPaymentRequest.from_hash(hash['cash']) if hash['cash']
+      if hash['bank_transfer']
+        bank_transfer = CreateBankTransferPaymentRequest.from_hash(hash['bank_transfer'])
+      end
 
       # Create object from extracted values.
       UpdateChargePaymentMethodRequest.new(update_subscription,
@@ -80,7 +98,9 @@ module MundiApi
                                            credit_card,
                                            debit_card,
                                            boleto,
-                                           voucher)
+                                           voucher,
+                                           cash,
+                                           bank_transfer)
     end
   end
 end
