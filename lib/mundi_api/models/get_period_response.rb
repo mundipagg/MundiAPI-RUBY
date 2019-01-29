@@ -27,6 +27,26 @@ module MundiApi
     # @return [GetSubscriptionResponse]
     attr_accessor :subscription
 
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :status
+
+    # TODO: Write general description for this method
+    # @return [Integer]
+    attr_accessor :duration
+
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :created_at
+
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :updated_at
+
+    # TODO: Write general description for this method
+    # @return [Integer]
+    attr_accessor :cycle
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -35,6 +55,11 @@ module MundiApi
       @_hash['id'] = 'id'
       @_hash['billing_at'] = 'billing_at'
       @_hash['subscription'] = 'subscription'
+      @_hash['status'] = 'status'
+      @_hash['duration'] = 'duration'
+      @_hash['created_at'] = 'created_at'
+      @_hash['updated_at'] = 'updated_at'
+      @_hash['cycle'] = 'cycle'
       @_hash
     end
 
@@ -42,12 +67,22 @@ module MundiApi
                    end_at = nil,
                    id = nil,
                    billing_at = nil,
-                   subscription = nil)
+                   subscription = nil,
+                   status = nil,
+                   duration = nil,
+                   created_at = nil,
+                   updated_at = nil,
+                   cycle = nil)
       @start_at = start_at
       @end_at = end_at
       @id = id
       @billing_at = billing_at
       @subscription = subscription
+      @status = status
+      @duration = duration
+      @created_at = created_at
+      @updated_at = updated_at
+      @cycle = cycle
     end
 
     # Creates an instance of the object from a hash.
@@ -61,13 +96,23 @@ module MundiApi
       billing_at = APIHelper.rfc3339(hash['billing_at']) if hash['billing_at']
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
+      status = hash['status']
+      duration = hash['duration']
+      created_at = hash['created_at']
+      updated_at = hash['updated_at']
+      cycle = hash['cycle']
 
       # Create object from extracted values.
       GetPeriodResponse.new(start_at,
                             end_at,
                             id,
                             billing_at,
-                            subscription)
+                            subscription,
+                            status,
+                            duration,
+                            created_at,
+                            updated_at,
+                            cycle)
     end
   end
 end
