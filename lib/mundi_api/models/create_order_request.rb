@@ -62,6 +62,10 @@ module MundiApi
     # @return [String]
     attr_accessor :currency
 
+    # Currency
+    # @return [CreateAntifraudRequest]
+    attr_accessor :antifraud
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -79,6 +83,7 @@ module MundiApi
       @_hash['device'] = 'device'
       @_hash['closed'] = 'closed'
       @_hash['currency'] = 'currency'
+      @_hash['antifraud'] = 'antifraud'
       @_hash
     end
 
@@ -90,6 +95,7 @@ module MundiApi
                    shipping = nil,
                    metadata = nil,
                    closed = true,
+                   antifraud = nil,
                    antifraud_enabled = nil,
                    ip = nil,
                    session_id = nil,
@@ -110,6 +116,7 @@ module MundiApi
       @device = device
       @closed = closed
       @currency = currency
+      @antifraud = antifraud
     end
 
     # Creates an instance of the object from a hash.
@@ -141,6 +148,8 @@ module MundiApi
         hash['shipping']
       metadata = hash['metadata']
       closed = hash['closed'] ||= true
+      antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if
+        hash['antifraud']
       antifraud_enabled = hash['antifraud_enabled']
       ip = hash['ip']
       session_id = hash['session_id']
@@ -158,6 +167,7 @@ module MundiApi
                              shipping,
                              metadata,
                              closed,
+                             antifraud,
                              antifraud_enabled,
                              ip,
                              session_id,

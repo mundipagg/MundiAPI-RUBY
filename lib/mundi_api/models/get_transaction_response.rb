@@ -59,6 +59,10 @@ module MundiApi
     # @return [GetGatewayResponseResponse]
     attr_accessor :gateway_response
 
+    # The Gateway Response
+    # @return [GetAntifraudResponse]
+    attr_accessor :antifraud_response
+
     # Discriminators mapping.
     def self.discriminators
       if @_discriminators.nil?
@@ -90,6 +94,7 @@ module MundiApi
       @_hash['transaction_type'] = 'transaction_type'
       @_hash['id'] = 'id'
       @_hash['gateway_response'] = 'gateway_response'
+      @_hash['antifraud_response'] = 'antifraud_response'
       @_hash
     end
 
@@ -104,6 +109,7 @@ module MundiApi
                    splits = nil,
                    id = nil,
                    gateway_response = nil,
+                   antifraud_response = nil,
                    next_attempt = nil,
                    transaction_type = nil)
       @gateway_id = gateway_id
@@ -119,6 +125,7 @@ module MundiApi
       @transaction_type = transaction_type
       @id = id
       @gateway_response = gateway_response
+      @antifraud_response = antifraud_response
     end
 
     # Creates an instance of the object from a hash.
@@ -151,6 +158,9 @@ module MundiApi
       if hash['gateway_response']
         gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response'])
       end
+      if hash['antifraud_response']
+        antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response'])
+      end
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
@@ -167,6 +177,7 @@ module MundiApi
                                  splits,
                                  id,
                                  gateway_response,
+                                 antifraud_response,
                                  next_attempt,
                                  transaction_type)
     end

@@ -123,6 +123,10 @@ module MundiApi
     # @return [List of CreateIncrementRequest]
     attr_accessor :increments
 
+    # Increments
+    # @return [CreatePeriodRequest]
+    attr_accessor :period
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -155,6 +159,7 @@ module MundiApi
       @_hash['quantity'] = 'quantity'
       @_hash['boleto_due_days'] = 'boleto_due_days'
       @_hash['increments'] = 'increments'
+      @_hash['period'] = 'period'
       @_hash
     end
 
@@ -186,7 +191,8 @@ module MundiApi
                    card_token = nil,
                    gateway_affiliation_id = nil,
                    quantity = nil,
-                   boleto_due_days = nil)
+                   boleto_due_days = nil,
+                   period = nil)
       @customer = customer
       @card = card
       @code = code
@@ -216,6 +222,7 @@ module MundiApi
       @quantity = quantity
       @boleto_due_days = boleto_due_days
       @increments = increments
+      @period = period
     end
 
     # Creates an instance of the object from a hash.
@@ -277,6 +284,7 @@ module MundiApi
       gateway_affiliation_id = hash['gateway_affiliation_id']
       quantity = hash['quantity']
       boleto_due_days = hash['boleto_due_days']
+      period = CreatePeriodRequest.from_hash(hash['period']) if hash['period']
 
       # Create object from extracted values.
       CreateSubscriptionRequest.new(customer,
@@ -307,7 +315,8 @@ module MundiApi
                                     card_token,
                                     gateway_affiliation_id,
                                     quantity,
-                                    boleto_due_days)
+                                    boleto_due_days,
+                                    period)
     end
   end
 end

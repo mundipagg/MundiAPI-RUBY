@@ -33,6 +33,7 @@ module MundiApi
                    splits = nil,
                    id = nil,
                    gateway_response = nil,
+                   antifraud_response = nil,
                    next_attempt = nil,
                    transaction_type = nil)
       @description = description
@@ -49,6 +50,7 @@ module MundiApi
             splits,
             id,
             gateway_response,
+            antifraud_response,
             next_attempt,
             transaction_type)
     end
@@ -79,6 +81,9 @@ module MundiApi
       if hash['gateway_response']
         gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response'])
       end
+      if hash['antifraud_response']
+        antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response'])
+      end
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
@@ -96,6 +101,7 @@ module MundiApi
                                      splits,
                                      id,
                                      gateway_response,
+                                     antifraud_response,
                                      next_attempt,
                                      transaction_type)
     end
