@@ -103,6 +103,10 @@ module MundiApi
     # @return [GetCheckoutDebitCardPaymentResponse]
     attr_accessor :debit_card
 
+    # Bank transfer payment response
+    # @return [GetCheckoutBankTransferPaymentResponse]
+    attr_accessor :bank_transfer
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -121,7 +125,7 @@ module MundiApi
       @_hash['customer_editable'] = 'customer_editable'
       @_hash['customer'] = 'customer'
       @_hash['billingaddress'] = 'billingaddress'
-      @_hash['credit_card'] = 'credit_Card'
+      @_hash['credit_card'] = 'credit_card'
       @_hash['boleto'] = 'boleto'
       @_hash['billing_address_editable'] = 'billing_address_editable'
       @_hash['shipping'] = 'shipping'
@@ -130,6 +134,7 @@ module MundiApi
       @_hash['expires_at'] = 'expires_at'
       @_hash['currency'] = 'currency'
       @_hash['debit_card'] = 'debit_card'
+      @_hash['bank_transfer'] = 'bank_transfer'
       @_hash
     end
 
@@ -156,7 +161,8 @@ module MundiApi
                    canceled_at = nil,
                    closed_at = nil,
                    expires_at = nil,
-                   debit_card = nil)
+                   debit_card = nil,
+                   bank_transfer = nil)
       @id = id
       @amount = amount
       @default_payment_method = default_payment_method
@@ -181,6 +187,7 @@ module MundiApi
       @expires_at = expires_at
       @currency = currency
       @debit_card = debit_card
+      @bank_transfer = bank_transfer
     end
 
     # Creates an instance of the object from a hash.
@@ -203,8 +210,8 @@ module MundiApi
         hash['customer']
       billingaddress = GetAddressResponse.from_hash(hash['billingaddress']) if
         hash['billingaddress']
-      if hash['credit_Card']
-        credit_card = GetCheckoutCreditCardPaymentResponse.from_hash(hash['credit_Card'])
+      if hash['credit_card']
+        credit_card = GetCheckoutCreditCardPaymentResponse.from_hash(hash['credit_card'])
       end
       boleto = GetCheckoutBoletoPaymentResponse.from_hash(hash['boleto']) if
         hash['boleto']
@@ -220,6 +227,9 @@ module MundiApi
       expires_at = APIHelper.rfc3339(hash['expires_at']) if hash['expires_at']
       if hash['debit_card']
         debit_card = GetCheckoutDebitCardPaymentResponse.from_hash(hash['debit_card'])
+      end
+      if hash['bank_transfer']
+        bank_transfer = GetCheckoutBankTransferPaymentResponse.from_hash(hash['bank_transfer'])
       end
 
       # Create object from extracted values.
@@ -246,7 +256,8 @@ module MundiApi
                                      canceled_at,
                                      closed_at,
                                      expires_at,
-                                     debit_card)
+                                     debit_card,
+                                     bank_transfer)
     end
   end
 end

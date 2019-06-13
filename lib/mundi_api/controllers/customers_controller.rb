@@ -98,38 +98,6 @@ module MundiApi
       GetAddressResponse.from_hash(decoded)
     end
 
-    # Creates a new customer
-    # @param [CreateCustomerRequest] request Required parameter: Request for
-    # creating a customer
-    # @return GetCustomerResponse response from the API call
-    def create_customer(request)
-      # Prepare query url.
-      _path_url = '/customers'
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
-      }
-
-      # Prepare and execute HttpRequest.
-      _request = @http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetCustomerResponse.from_hash(decoded)
-    end
-
     # Get a customer
     # @param [String] customer_id Required parameter: Customer Id
     # @return GetCustomerResponse response from the API call
@@ -822,6 +790,38 @@ module MundiApi
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetCardResponse.from_hash(decoded)
+    end
+
+    # Creates a new customer
+    # @param [CreateCustomerRequest] request Required parameter: Request for
+    # creating a customer
+    # @return GetCustomerResponse response from the API call
+    def create_customer(request)
+      # Prepare query url.
+      _path_url = '/customers'
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+
+      # Prepare and execute HttpRequest.
+      _request = @http_client.post(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetCustomerResponse.from_hash(decoded)
     end
   end
 end
