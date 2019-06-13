@@ -38,6 +38,10 @@ module MundiApi
     # @return [String]
     attr_accessor :code
 
+    # Gênero do cliente
+    # @return [String]
+    attr_accessor :gender
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -49,6 +53,7 @@ module MundiApi
       @_hash['metadata'] = 'metadata'
       @_hash['phones'] = 'phones'
       @_hash['code'] = 'code'
+      @_hash['gender'] = 'gender'
       @_hash
     end
 
@@ -58,8 +63,9 @@ module MundiApi
                    type = nil,
                    address = nil,
                    metadata = nil,
+                   phones = nil,
                    code = nil,
-                   phones = nil)
+                   gender = nil)
       @name = name
       @email = email
       @document = document
@@ -68,6 +74,7 @@ module MundiApi
       @metadata = metadata
       @phones = phones
       @code = code
+      @gender = gender
     end
 
     # Creates an instance of the object from a hash.
@@ -82,8 +89,9 @@ module MundiApi
       address = CreateAddressRequest.from_hash(hash['address']) if
         hash['address']
       metadata = hash['metadata']
-      code = hash['code']
       phones = CreatePhonesRequest.from_hash(hash['phones']) if hash['phones']
+      code = hash['code']
+      gender = hash['gender']
 
       # Create object from extracted values.
       UpdateCustomerRequest.new(name,
@@ -92,8 +100,9 @@ module MundiApi
                                 type,
                                 address,
                                 metadata,
+                                phones,
                                 code,
-                                phones)
+                                gender)
     end
   end
 end

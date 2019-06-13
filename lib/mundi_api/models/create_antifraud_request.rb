@@ -11,7 +11,7 @@ module MundiApi
     attr_accessor :type
 
     # TODO: Write general description for this method
-    # @return [ClearSaleRequest]
+    # @return [CreateClearSaleRequest]
     attr_accessor :clearsale
 
     # A mapping from model property names to API property names.
@@ -34,7 +34,7 @@ module MundiApi
 
       # Extract variables from the hash.
       type = hash['type']
-      clearsale = ClearSaleRequest.from_hash(hash['clearsale']) if
+      clearsale = CreateClearSaleRequest.from_hash(hash['clearsale']) if
         hash['clearsale']
 
       # Create object from extracted values.

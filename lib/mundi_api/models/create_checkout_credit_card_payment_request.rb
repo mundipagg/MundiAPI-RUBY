@@ -18,21 +18,28 @@ module MundiApi
     # @return [CreatePaymentAuthenticationRequest]
     attr_accessor :authentication
 
+    # Authorize and capture?
+    # @return [Boolean]
+    attr_accessor :capture
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['statement_descriptor'] = 'statement_descriptor'
       @_hash['installments'] = 'installments'
       @_hash['authentication'] = 'authentication'
+      @_hash['capture'] = 'capture'
       @_hash
     end
 
     def initialize(statement_descriptor = nil,
                    installments = nil,
-                   authentication = nil)
+                   authentication = nil,
+                   capture = nil)
       @statement_descriptor = statement_descriptor
       @installments = installments
       @authentication = authentication
+      @capture = capture
     end
 
     # Creates an instance of the object from a hash.
@@ -52,11 +59,13 @@ module MundiApi
       if hash['authentication']
         authentication = CreatePaymentAuthenticationRequest.from_hash(hash['authentication'])
       end
+      capture = hash['capture']
 
       # Create object from extracted values.
       CreateCheckoutCreditCardPaymentRequest.new(statement_descriptor,
                                                  installments,
-                                                 authentication)
+                                                 authentication,
+                                                 capture)
     end
   end
 end

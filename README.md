@@ -538,8 +538,8 @@ def get_subscriptions(page = nil,
 #### Example Usage
 
 ```ruby
-page = 199
-size = 199
+page = 176
+size = 176
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -757,8 +757,8 @@ def get_discounts(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id'
-page = 35
-size = 35
+page = 134
+size = 134
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -818,8 +818,8 @@ def get_increments(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id'
-page = 35
-size = 35
+page = 134
+size = 134
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -886,8 +886,8 @@ def get_usages_details(subscription_id,
 ```ruby
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 35
-page = 35
+size = 134
+page = 134
 item_id = 'item_id'
 group = 'group'
 
@@ -927,8 +927,8 @@ def get_usages(subscription_id,
 ```ruby
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 35
-size = 35
+page = 134
+size = 134
 code = 'code'
 group = 'group'
 
@@ -973,8 +973,8 @@ def get_subscription_items(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id'
-page = 35
-size = 35
+page = 134
+size = 134
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1314,8 +1314,8 @@ def get_orders(page = nil,
 #### Example Usage
 
 ```ruby
-page = 35
-size = 35
+page = 134
+size = 134
 code = 'code'
 status = 'status'
 created_since = DateTime.now
@@ -1741,8 +1741,8 @@ def get_plans(page = nil,
 #### Example Usage
 
 ```ruby
-page = 127
-size = 127
+page = 134
+size = 134
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2003,8 +2003,8 @@ def get_invoices(page = nil,
 #### Example Usage
 
 ```ruby
-page = 127
-size = 127
+page = 134
+size = 134
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2150,32 +2150,6 @@ result = customers_controller.update_address(customer_id, address_id, request)
 ```
 
 
-### <a name="create_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.create_customer") create_customer
-
-> Creates a new customer
-
-
-```ruby
-def create_customer(request); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| request |  ``` Required ```  | Request for creating a customer |
-
-
-#### Example Usage
-
-```ruby
-request = CreateCustomerRequest.new
-
-result = customers_controller.create_customer(request)
-
-```
-
-
 ### <a name="get_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_customer") get_customer
 
 > Get a customer
@@ -2226,8 +2200,8 @@ def get_access_tokens(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 127
-size = 127
+page = 134
+size = 134
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -2258,8 +2232,8 @@ def get_addresses(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 127
-size = 127
+page = 134
+size = 134
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -2290,8 +2264,8 @@ def get_cards(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 127
-size = 127
+page = 134
+size = 134
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -2713,6 +2687,32 @@ result = customers_controller.renew_card(customer_id, card_id)
 ```
 
 
+### <a name="create_customer"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.create_customer") create_customer
+
+> Creates a new customer
+
+
+```ruby
+def create_customer(request); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| request |  ``` Required ```  | Request for creating a customer |
+
+
+#### Example Usage
+
+```ruby
+request = CreateCustomerRequest.new
+
+result = customers_controller.create_customer(request)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="charges_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ChargesController") ChargesController
@@ -2896,8 +2896,8 @@ def get_charges(page = nil,
 #### Example Usage
 
 ```ruby
-page = 85
-size = 85
+page = 226
+size = 226
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -3080,8 +3080,8 @@ def get_charge_transactions(charge_id,
 
 ```ruby
 charge_id = 'charge_id'
-page = 85
-size = 85
+page = 226
+size = 226
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -3188,8 +3188,8 @@ def get_transfers(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 85
-size = 85
+page = 226
+size = 226
 status = 'status'
 created_since = DateTime.now
 created_until = DateTime.now
@@ -3325,8 +3325,8 @@ def get_anticipations(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 85
-size = 85
+page = 226
+size = 226
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = DateTime.now
@@ -3444,8 +3444,8 @@ def get_recipients(page = nil,
 #### Example Usage
 
 ```ruby
-page = 85
-size = 85
+page = 226
+size = 226
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3761,8 +3761,8 @@ def get_sellers(page = nil,
 #### Example Usage
 
 ```ruby
-page = 177
-size = 177
+page = 226
+size = 226
 name = 'name'
 document = 'document'
 code = 'code'
