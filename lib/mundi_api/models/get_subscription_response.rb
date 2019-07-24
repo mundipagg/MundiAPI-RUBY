@@ -154,14 +154,12 @@ module MundiApi
                    interval = nil,
                    interval_count = nil,
                    billing_type = nil,
-                   current_cycle = nil,
                    payment_method = nil,
                    currency = nil,
                    installments = nil,
                    status = nil,
                    created_at = nil,
                    updated_at = nil,
-                   customer = nil,
                    card = nil,
                    items = nil,
                    statement_descriptor = nil,
@@ -169,6 +167,8 @@ module MundiApi
                    setup = nil,
                    gateway_affiliation_id = nil,
                    increments = nil,
+                   current_cycle = nil,
+                   customer = nil,
                    next_billing_at = nil,
                    billing_day = nil,
                    minimum_price = nil,
@@ -215,16 +215,12 @@ module MundiApi
       interval = hash['interval']
       interval_count = hash['interval_count']
       billing_type = hash['billing_type']
-      current_cycle = GetPeriodResponse.from_hash(hash['current_cycle']) if
-        hash['current_cycle']
       payment_method = hash['payment_method']
       currency = hash['currency']
       installments = hash['installments']
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
       card = GetCardResponse.from_hash(hash['card']) if hash['card']
       # Parameter is an array, so we need to iterate through it
       items = nil
@@ -246,6 +242,10 @@ module MundiApi
           increments << (GetIncrementResponse.from_hash(structure) if structure)
         end
       end
+      current_cycle = GetPeriodResponse.from_hash(hash['current_cycle']) if
+        hash['current_cycle']
+      customer = GetCustomerResponse.from_hash(hash['customer']) if
+        hash['customer']
       next_billing_at = APIHelper.rfc3339(hash['next_billing_at']) if
         hash['next_billing_at']
       billing_day = hash['billing_day']
@@ -269,14 +269,12 @@ module MundiApi
                                   interval,
                                   interval_count,
                                   billing_type,
-                                  current_cycle,
                                   payment_method,
                                   currency,
                                   installments,
                                   status,
                                   created_at,
                                   updated_at,
-                                  customer,
                                   card,
                                   items,
                                   statement_descriptor,
@@ -284,6 +282,8 @@ module MundiApi
                                   setup,
                                   gateway_affiliation_id,
                                   increments,
+                                  current_cycle,
+                                  customer,
                                   next_billing_at,
                                   billing_day,
                                   minimum_price,

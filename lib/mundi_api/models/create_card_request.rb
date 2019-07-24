@@ -88,8 +88,8 @@ module MundiApi
                    metadata = nil,
                    type = 'credit',
                    options = nil,
-                   holder_document = nil,
-                   private_label = nil)
+                   private_label = nil,
+                   holder_document = nil)
       @number = number
       @holder_name = holder_name
       @exp_month = exp_month
@@ -124,8 +124,8 @@ module MundiApi
       type = hash['type'] ||= 'credit'
       options = CreateCardOptionsRequest.from_hash(hash['options']) if
         hash['options']
-      holder_document = hash['holder_document']
       private_label = hash['private_label']
+      holder_document = hash['holder_document']
 
       # Create object from extracted values.
       CreateCardRequest.new(number,
@@ -139,8 +139,8 @@ module MundiApi
                             metadata,
                             type,
                             options,
-                            holder_document,
-                            private_label)
+                            private_label,
+                            holder_document)
     end
   end
 end

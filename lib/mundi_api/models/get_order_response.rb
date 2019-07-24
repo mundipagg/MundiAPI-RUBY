@@ -107,7 +107,6 @@ module MundiApi
                    code = nil,
                    currency = nil,
                    items = nil,
-                   customer = nil,
                    status = nil,
                    created_at = nil,
                    updated_at = nil,
@@ -116,6 +115,7 @@ module MundiApi
                    shipping = nil,
                    metadata = nil,
                    closed = nil,
+                   customer = nil,
                    checkouts = nil,
                    ip = nil,
                    session_id = nil,
@@ -157,8 +157,6 @@ module MundiApi
           items << (GetOrderItemResponse.from_hash(structure) if structure)
         end
       end
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
@@ -175,6 +173,8 @@ module MundiApi
         hash['shipping']
       metadata = hash['metadata']
       closed = hash['closed']
+      customer = GetCustomerResponse.from_hash(hash['customer']) if
+        hash['customer']
       # Parameter is an array, so we need to iterate through it
       checkouts = nil
       unless hash['checkouts'].nil?
@@ -194,7 +194,6 @@ module MundiApi
                            code,
                            currency,
                            items,
-                           customer,
                            status,
                            created_at,
                            updated_at,
@@ -203,6 +202,7 @@ module MundiApi
                            shipping,
                            metadata,
                            closed,
+                           customer,
                            checkouts,
                            ip,
                            session_id,

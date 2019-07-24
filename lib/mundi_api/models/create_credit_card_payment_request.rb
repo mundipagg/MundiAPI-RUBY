@@ -51,9 +51,9 @@ module MundiApi
     # @return [CreatePaymentAuthenticationRequest]
     attr_accessor :authentication
 
-    # The Credit card payment token request
+    # The Credit card payment contactless request
     # @return [CreateCardPaymentTokenRequest]
-    attr_accessor :token
+    attr_accessor :contactless
 
     # Indicates whether a particular payment will enter the offline retry flow
     # @return [Boolean]
@@ -73,7 +73,7 @@ module MundiApi
       @_hash['extended_limit_code'] = 'extended_limit_code'
       @_hash['merchant_category_code'] = 'merchant_category_code'
       @_hash['authentication'] = 'authentication'
-      @_hash['token'] = 'token'
+      @_hash['contactless'] = 'contactless'
       @_hash['auto_recovery'] = 'auto_recovery'
       @_hash
     end
@@ -89,7 +89,7 @@ module MundiApi
                    extended_limit_code = nil,
                    merchant_category_code = nil,
                    authentication = nil,
-                   token = nil,
+                   contactless = nil,
                    auto_recovery = nil)
       @installments = installments
       @statement_descriptor = statement_descriptor
@@ -102,7 +102,7 @@ module MundiApi
       @extended_limit_code = extended_limit_code
       @merchant_category_code = merchant_category_code
       @authentication = authentication
-      @token = token
+      @contactless = contactless
       @auto_recovery = auto_recovery
     end
 
@@ -124,8 +124,9 @@ module MundiApi
       if hash['authentication']
         authentication = CreatePaymentAuthenticationRequest.from_hash(hash['authentication'])
       end
-      token = CreateCardPaymentTokenRequest.from_hash(hash['token']) if
-        hash['token']
+      if hash['contactless']
+        contactless = CreateCardPaymentTokenRequest.from_hash(hash['contactless'])
+      end
       auto_recovery = hash['auto_recovery']
 
       # Create object from extracted values.
@@ -140,7 +141,7 @@ module MundiApi
                                          extended_limit_code,
                                          merchant_category_code,
                                          authentication,
-                                         token,
+                                         contactless,
                                          auto_recovery)
     end
   end

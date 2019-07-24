@@ -29,12 +29,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -43,7 +41,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetTransactionResponse.from_hash(decoded)

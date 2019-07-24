@@ -118,13 +118,13 @@ module MundiApi
                    due_at = nil,
                    created_at = nil,
                    updated_at = nil,
+                   metadata = nil,
+                   canceled_amount = nil,
+                   paid_amount = nil,
                    last_transaction = nil,
                    invoice = nil,
                    order = nil,
                    customer = nil,
-                   metadata = nil,
-                   canceled_amount = nil,
-                   paid_amount = nil,
                    paid_at = nil,
                    canceled_at = nil)
       @id = id
@@ -163,6 +163,9 @@ module MundiApi
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
+      metadata = hash['metadata']
+      canceled_amount = hash['canceled_amount']
+      paid_amount = hash['paid_amount']
       if hash['last_transaction']
         last_transaction = GetTransactionResponse.from_hash(hash['last_transaction'])
       end
@@ -171,9 +174,6 @@ module MundiApi
       order = GetOrderResponse.from_hash(hash['order']) if hash['order']
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
-      metadata = hash['metadata']
-      canceled_amount = hash['canceled_amount']
-      paid_amount = hash['paid_amount']
       paid_at = APIHelper.rfc3339(hash['paid_at']) if hash['paid_at']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
@@ -189,13 +189,13 @@ module MundiApi
                             due_at,
                             created_at,
                             updated_at,
+                            metadata,
+                            canceled_amount,
+                            paid_amount,
                             last_transaction,
                             invoice,
                             order,
                             customer,
-                            metadata,
-                            canceled_amount,
-                            paid_amount,
                             paid_at,
                             canceled_at)
     end

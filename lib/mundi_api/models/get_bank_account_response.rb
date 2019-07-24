@@ -101,8 +101,8 @@ module MundiApi
                    created_at = nil,
                    updated_at = nil,
                    deleted_at = nil,
-                   recipient = nil,
-                   metadata = nil)
+                   metadata = nil,
+                   recipient = nil)
       @id = id
       @holder_name = holder_name
       @holder_type = holder_type
@@ -138,9 +138,9 @@ module MundiApi
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
+      metadata = hash['metadata']
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if
         hash['recipient']
-      metadata = hash['metadata']
 
       # Create object from extracted values.
       GetBankAccountResponse.new(id,
@@ -156,8 +156,8 @@ module MundiApi
                                  created_at,
                                  updated_at,
                                  deleted_at,
-                                 recipient,
-                                 metadata)
+                                 metadata,
+                                 recipient)
     end
   end
 end
