@@ -92,16 +92,16 @@ module MundiApi
                    payments = nil,
                    code = nil,
                    customer_id = nil,
-                   shipping = nil,
                    metadata = nil,
                    closed = true,
-                   antifraud = nil,
+                   shipping = nil,
                    antifraud_enabled = nil,
                    ip = nil,
                    session_id = nil,
                    location = nil,
                    device = nil,
-                   currency = nil)
+                   currency = nil,
+                   antifraud = nil)
       @items = items
       @customer = customer
       @payments = payments
@@ -144,12 +144,10 @@ module MundiApi
       end
       code = hash['code']
       customer_id = hash['customer_id']
-      shipping = CreateShippingRequest.from_hash(hash['shipping']) if
-        hash['shipping']
       metadata = hash['metadata']
       closed = hash['closed'] ||= true
-      antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if
-        hash['antifraud']
+      shipping = CreateShippingRequest.from_hash(hash['shipping']) if
+        hash['shipping']
       antifraud_enabled = hash['antifraud_enabled']
       ip = hash['ip']
       session_id = hash['session_id']
@@ -157,6 +155,8 @@ module MundiApi
         hash['location']
       device = CreateDeviceRequest.from_hash(hash['device']) if hash['device']
       currency = hash['currency']
+      antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if
+        hash['antifraud']
 
       # Create object from extracted values.
       CreateOrderRequest.new(items,
@@ -164,16 +164,16 @@ module MundiApi
                              payments,
                              code,
                              customer_id,
-                             shipping,
                              metadata,
                              closed,
-                             antifraud,
+                             shipping,
                              antifraud_enabled,
                              ip,
                              session_id,
                              location,
                              device,
-                             currency)
+                             currency,
+                             antifraud)
     end
   end
 end

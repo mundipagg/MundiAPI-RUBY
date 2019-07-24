@@ -110,10 +110,10 @@ module MundiApi
                    status = nil,
                    created_at = nil,
                    updated_at = nil,
-                   customer = nil,
                    metadata = nil,
                    line_1 = nil,
                    line_2 = nil,
+                   customer = nil,
                    deleted_at = nil)
       @id = id
       @street = street
@@ -151,11 +151,11 @@ module MundiApi
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
       metadata = hash['metadata']
       line_1 = hash['line_1']
       line_2 = hash['line_2']
+      customer = GetCustomerResponse.from_hash(hash['customer']) if
+        hash['customer']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.
@@ -171,10 +171,10 @@ module MundiApi
                              status,
                              created_at,
                              updated_at,
-                             customer,
                              metadata,
                              line_1,
                              line_2,
+                             customer,
                              deleted_at)
     end
   end

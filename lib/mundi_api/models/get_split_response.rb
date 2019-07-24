@@ -34,8 +34,8 @@ module MundiApi
 
     def initialize(type = nil,
                    amount = nil,
-                   recipient = nil,
-                   gateway_id = nil)
+                   gateway_id = nil,
+                   recipient = nil)
       @type = type
       @amount = amount
       @recipient = recipient
@@ -49,15 +49,15 @@ module MundiApi
       # Extract variables from the hash.
       type = hash['type']
       amount = hash['amount']
+      gateway_id = hash['gateway_id']
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if
         hash['recipient']
-      gateway_id = hash['gateway_id']
 
       # Create object from extracted values.
       GetSplitResponse.new(type,
                            amount,
-                           recipient,
-                           gateway_id)
+                           gateway_id,
+                           recipient)
     end
   end
 end

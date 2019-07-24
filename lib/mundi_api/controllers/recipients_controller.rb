@@ -19,9 +19,11 @@ module MundiApi
     # Updates recipient metadata
     # @param [String] recipient_id Required parameter: Recipient id
     # @param [UpdateMetadataRequest] request Required parameter: Metadata
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetRecipientResponse response from the API call
     def update_recipient_metadata(recipient_id,
-                                  request)
+                                  request,
+                                  idempotency_key = nil)
       # Prepare query url.
       _path_url = '/recipients/{recipient_id}/metadata'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -31,13 +33,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
@@ -47,7 +48,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetRecipientResponse.from_hash(decoded)
@@ -69,12 +69,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -83,7 +81,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetTransferResponse.from_hash(decoded)
@@ -125,12 +122,10 @@ module MundiApi
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -139,7 +134,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListTransferResponse.from_hash(decoded)
@@ -149,9 +143,11 @@ module MundiApi
     # @param [String] recipient_id Required parameter: Recipient id
     # @param [CreateAnticipationRequest] request Required parameter:
     # Anticipation data
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetAnticipationResponse response from the API call
     def create_anticipation(recipient_id,
-                            request)
+                            request,
+                            idempotency_key = nil)
       # Prepare query url.
       _path_url = '/recipients/{recipient_id}/anticipations'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -161,13 +157,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
@@ -177,7 +172,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetAnticipationResponse.from_hash(decoded)
@@ -199,12 +193,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -213,7 +205,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetAnticipationResponse.from_hash(decoded)
@@ -245,12 +236,10 @@ module MundiApi
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -259,7 +248,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetAnticipationLimitResponse.from_hash(decoded)
@@ -314,12 +302,10 @@ module MundiApi
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -328,7 +314,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListAnticipationResponse.from_hash(decoded)
@@ -338,9 +323,11 @@ module MundiApi
     # @param [String] recipient_id Required parameter: Recipient id
     # @param [UpdateRecipientRequest] request Required parameter: Recipient
     # data
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetRecipientResponse response from the API call
     def update_recipient(recipient_id,
-                         request)
+                         request,
+                         idempotency_key = nil)
       # Prepare query url.
       _path_url = '/recipients/{recipient_id}'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -350,13 +337,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.put(
         _query_url,
@@ -366,7 +352,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetRecipientResponse.from_hash(decoded)
@@ -376,9 +361,11 @@ module MundiApi
     # @param [String] recipient_id Required parameter: Recipient id
     # @param [UpdateRecipientBankAccountRequest] request Required parameter:
     # Bank account data
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetRecipientResponse response from the API call
     def update_recipient_default_bank_account(recipient_id,
-                                              request)
+                                              request,
+                                              idempotency_key = nil)
       # Prepare query url.
       _path_url = '/recipients/{recipient_id}/default-bank-account'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -388,13 +375,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
@@ -404,7 +390,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetRecipientResponse.from_hash(decoded)
@@ -423,12 +408,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -437,7 +420,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetRecipientResponse.from_hash(decoded)
@@ -462,12 +444,10 @@ module MundiApi
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -476,7 +456,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListRecipientResponse.from_hash(decoded)
@@ -495,12 +474,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -509,7 +486,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetBalanceResponse.from_hash(decoded)
@@ -518,9 +494,11 @@ module MundiApi
     # Creates a transfer for a recipient
     # @param [String] recipient_id Required parameter: Recipient Id
     # @param [CreateTransferRequest] request Required parameter: Transfer data
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetTransferResponse response from the API call
     def create_transfer(recipient_id,
-                        request)
+                        request,
+                        idempotency_key = nil)
       # Prepare query url.
       _path_url = '/recipients/{recipient_id}/transfers'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -530,13 +508,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
@@ -546,7 +523,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetTransferResponse.from_hash(decoded)
@@ -555,20 +531,21 @@ module MundiApi
     # Creates a new recipient
     # @param [CreateRecipientRequest] request Required parameter: Recipient
     # data
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetRecipientResponse response from the API call
-    def create_recipient(request)
+    def create_recipient(request,
+                         idempotency_key = nil)
       # Prepare query url.
       _path_url = '/recipients'
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
@@ -578,7 +555,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetRecipientResponse.from_hash(decoded)
@@ -588,9 +564,11 @@ module MundiApi
     # @param [String] recipient_id Required parameter: Recipient Identificator
     # @param [UpdateTransferSettingsRequest] request Required parameter:
     # Example:
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetRecipientResponse response from the API call
     def update_recipient_transfer_settings(recipient_id,
-                                           request)
+                                           request,
+                                           idempotency_key = nil)
       # Prepare query url.
       _path_url = '/recipients/{recipient_id}/transfer-settings'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -600,13 +578,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
@@ -616,7 +593,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetRecipientResponse.from_hash(decoded)

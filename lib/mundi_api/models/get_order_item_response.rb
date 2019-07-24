@@ -30,6 +30,10 @@ module MundiApi
     # @return [String]
     attr_accessor :category
 
+    # Code
+    # @return [String]
+    attr_accessor :code
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -39,6 +43,7 @@ module MundiApi
       @_hash['quantity'] = 'quantity'
       @_hash['get_seller_response'] = 'GetSellerResponse'
       @_hash['category'] = 'category'
+      @_hash['code'] = 'code'
       @_hash
     end
 
@@ -47,6 +52,7 @@ module MundiApi
                    description = nil,
                    quantity = nil,
                    category = nil,
+                   code = nil,
                    get_seller_response = nil)
       @id = id
       @amount = amount
@@ -54,6 +60,7 @@ module MundiApi
       @quantity = quantity
       @get_seller_response = get_seller_response
       @category = category
+      @code = code
     end
 
     # Creates an instance of the object from a hash.
@@ -66,6 +73,7 @@ module MundiApi
       description = hash['description']
       quantity = hash['quantity']
       category = hash['category']
+      code = hash['code']
       if hash['GetSellerResponse']
         get_seller_response = GetSellerResponse.from_hash(hash['GetSellerResponse'])
       end
@@ -76,6 +84,7 @@ module MundiApi
                                description,
                                quantity,
                                category,
+                               code,
                                get_seller_response)
     end
   end

@@ -29,12 +29,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -43,7 +41,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetSellerResponse.from_hash(decoded)
@@ -51,8 +48,10 @@ module MundiApi
 
     # TODO: type endpoint description here
     # @param [String] seller_id Required parameter: Seller Id
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetSellerResponse response from the API call
-    def delete_seller(seller_id)
+    def delete_seller(seller_id,
+                      idempotency_key = nil)
       # Prepare query url.
       _path_url = '/sellers/{sellerId}'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -62,12 +61,11 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.delete(
         _query_url,
@@ -76,7 +74,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetSellerResponse.from_hash(decoded)
@@ -84,20 +81,21 @@ module MundiApi
 
     # TODO: type endpoint description here
     # @param [CreateSellerRequest] request Required parameter: Seller Model
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetSellerResponse response from the API call
-    def create_seller(request)
+    def create_seller(request,
+                      idempotency_key = nil)
       # Prepare query url.
       _path_url = '/sellers/'
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
@@ -107,7 +105,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetSellerResponse.from_hash(decoded)
@@ -153,12 +150,10 @@ module MundiApi
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -167,7 +162,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListSellerResponse.from_hash(decoded)
@@ -177,9 +171,11 @@ module MundiApi
     # @param [String] id Required parameter: Example:
     # @param [UpdateSellerRequest] request Required parameter: Update Seller
     # model
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetSellerResponse response from the API call
     def update_seller(id,
-                      request)
+                      request,
+                      idempotency_key = nil)
       # Prepare query url.
       _path_url = '/sellers/{id}'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -189,13 +185,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.put(
         _query_url,
@@ -205,7 +200,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetSellerResponse.from_hash(decoded)
@@ -215,9 +209,11 @@ module MundiApi
     # @param [String] seller_id Required parameter: Seller Id
     # @param [UpdateMetadataRequest] request Required parameter: Request for
     # updating the charge metadata
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetSellerResponse response from the API call
     def update_seller_metadata(seller_id,
-                               request)
+                               request,
+                               idempotency_key = nil)
       # Prepare query url.
       _path_url = '/sellers/{seller_id}/metadata'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -227,13 +223,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
@@ -243,7 +238,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetSellerResponse.from_hash(decoded)

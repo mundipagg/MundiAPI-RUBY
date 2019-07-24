@@ -66,13 +66,13 @@ module MundiApi
     def initialize(id = nil,
                    requested_amount = nil,
                    approved_amount = nil,
-                   recipient = nil,
                    pgid = nil,
                    created_at = nil,
                    updated_at = nil,
                    payment_date = nil,
                    status = nil,
-                   timeframe = nil)
+                   timeframe = nil,
+                   recipient = nil)
       @id = id
       @requested_amount = requested_amount
       @approved_amount = approved_amount
@@ -93,8 +93,6 @@ module MundiApi
       id = hash['id']
       requested_amount = hash['requested_amount']
       approved_amount = hash['approved_amount']
-      recipient = GetRecipientResponse.from_hash(hash['recipient']) if
-        hash['recipient']
       pgid = hash['pgid']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
@@ -102,18 +100,20 @@ module MundiApi
         hash['payment_date']
       status = hash['status']
       timeframe = hash['timeframe']
+      recipient = GetRecipientResponse.from_hash(hash['recipient']) if
+        hash['recipient']
 
       # Create object from extracted values.
       GetAnticipationResponse.new(id,
                                   requested_amount,
                                   approved_amount,
-                                  recipient,
                                   pgid,
                                   created_at,
                                   updated_at,
                                   payment_date,
                                   status,
-                                  timeframe)
+                                  timeframe,
+                                  recipient)
     end
   end
 end

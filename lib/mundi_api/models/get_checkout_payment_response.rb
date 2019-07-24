@@ -149,7 +149,6 @@ module MundiApi
                    created_at = nil,
                    updated_at = nil,
                    customer_editable = nil,
-                   customer = nil,
                    billingaddress = nil,
                    credit_card = nil,
                    boleto = nil,
@@ -159,6 +158,7 @@ module MundiApi
                    currency = nil,
                    amount = nil,
                    canceled_at = nil,
+                   customer = nil,
                    closed_at = nil,
                    expires_at = nil,
                    debit_card = nil,
@@ -206,8 +206,6 @@ module MundiApi
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       customer_editable = hash['customer_editable']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
       billingaddress = GetAddressResponse.from_hash(hash['billingaddress']) if
         hash['billingaddress']
       if hash['credit_card']
@@ -223,6 +221,8 @@ module MundiApi
       amount = hash['amount']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
+      customer = GetCustomerResponse.from_hash(hash['customer']) if
+        hash['customer']
       closed_at = APIHelper.rfc3339(hash['closed_at']) if hash['closed_at']
       expires_at = APIHelper.rfc3339(hash['expires_at']) if hash['expires_at']
       if hash['debit_card']
@@ -244,7 +244,6 @@ module MundiApi
                                      created_at,
                                      updated_at,
                                      customer_editable,
-                                     customer,
                                      billingaddress,
                                      credit_card,
                                      boleto,
@@ -254,6 +253,7 @@ module MundiApi
                                      currency,
                                      amount,
                                      canceled_at,
+                                     customer,
                                      closed_at,
                                      expires_at,
                                      debit_card,

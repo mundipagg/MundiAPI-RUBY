@@ -18,8 +18,10 @@ module MundiApi
 
     # Cancels an invoice
     # @param [String] invoice_id Required parameter: Invoice id
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetInvoiceResponse response from the API call
-    def cancel_invoice(invoice_id)
+    def cancel_invoice(invoice_id,
+                       idempotency_key = nil)
       # Prepare query url.
       _path_url = '/invoices/{invoice_id}'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -29,12 +31,11 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.delete(
         _query_url,
@@ -43,7 +44,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetInvoiceResponse.from_hash(decoded)
@@ -62,12 +62,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -76,7 +74,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetInvoiceResponse.from_hash(decoded)
@@ -86,10 +83,12 @@ module MundiApi
     # @param [String] subscription_id Required parameter: Subscription Id
     # @param [String] cycle_id Required parameter: Cycle Id
     # @param [CreateInvoiceRequest] request Optional parameter: Example:
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetInvoiceResponse response from the API call
     def create_invoice(subscription_id,
                        cycle_id,
-                       request = nil)
+                       request = nil,
+                       idempotency_key = nil)
       # Prepare query url.
       _path_url = '/subscriptions/{subscription_id}/cycles/{cycle_id}/pay'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -100,13 +99,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
@@ -116,7 +114,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetInvoiceResponse.from_hash(decoded)
@@ -126,9 +123,11 @@ module MundiApi
     # @param [String] invoice_id Required parameter: Invoice Id
     # @param [UpdateInvoiceStatusRequest] request Required parameter: Request
     # for updating an invoice's status
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetInvoiceResponse response from the API call
     def update_invoice_status(invoice_id,
-                              request)
+                              request,
+                              idempotency_key = nil)
       # Prepare query url.
       _path_url = '/invoices/{invoice_id}/status'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -138,13 +137,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
@@ -154,7 +152,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetInvoiceResponse.from_hash(decoded)
@@ -209,12 +206,10 @@ module MundiApi
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -223,7 +218,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListInvoicesResponse.from_hash(decoded)
@@ -233,9 +227,11 @@ module MundiApi
     # @param [String] invoice_id Required parameter: The invoice id
     # @param [UpdateMetadataRequest] request Required parameter: Request for
     # updating the invoice metadata
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetInvoiceResponse response from the API call
     def update_invoice_metadata(invoice_id,
-                                request)
+                                request,
+                                idempotency_key = nil)
       # Prepare query url.
       _path_url = '/invoices/{invoice_id}/metadata'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -245,13 +241,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
@@ -261,7 +256,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetInvoiceResponse.from_hash(decoded)
@@ -280,12 +274,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -294,7 +286,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetInvoiceResponse.from_hash(decoded)

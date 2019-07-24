@@ -103,11 +103,11 @@ module MundiApi
                    created_at = nil,
                    updated_at = nil,
                    billing_address = nil,
-                   customer = nil,
                    metadata = nil,
                    type = nil,
                    holder_document = nil,
                    first_six_digits = nil,
+                   customer = nil,
                    deleted_at = nil)
       @id = id
       @last_four_digits = last_four_digits
@@ -144,12 +144,12 @@ module MundiApi
       if hash['billing_address']
         billing_address = GetBillingAddressResponse.from_hash(hash['billing_address'])
       end
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
       metadata = hash['metadata']
       type = hash['type']
       holder_document = hash['holder_document']
       first_six_digits = hash['first_six_digits']
+      customer = GetCustomerResponse.from_hash(hash['customer']) if
+        hash['customer']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.
@@ -163,11 +163,11 @@ module MundiApi
                           created_at,
                           updated_at,
                           billing_address,
-                          customer,
                           metadata,
                           type,
                           holder_document,
                           first_six_digits,
+                          customer,
                           deleted_at)
     end
   end

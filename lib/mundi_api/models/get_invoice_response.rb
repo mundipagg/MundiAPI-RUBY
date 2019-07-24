@@ -136,15 +136,15 @@ module MundiApi
                    payment_method = nil,
                    created_at = nil,
                    items = nil,
-                   customer = nil,
                    charge = nil,
                    installments = nil,
                    billing_address = nil,
                    subscription = nil,
-                   cycle = nil,
                    shipping = nil,
                    metadata = nil,
                    subscription_id = nil,
+                   customer = nil,
+                   cycle = nil,
                    due_at = nil,
                    canceled_at = nil,
                    billing_at = nil,
@@ -196,8 +196,6 @@ module MundiApi
           items << (GetInvoiceItemResponse.from_hash(structure) if structure)
         end
       end
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
       charge = GetChargeResponse.from_hash(hash['charge']) if hash['charge']
       installments = hash['installments']
       if hash['billing_address']
@@ -205,11 +203,13 @@ module MundiApi
       end
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
-      cycle = GetPeriodResponse.from_hash(hash['cycle']) if hash['cycle']
       shipping = GetShippingResponse.from_hash(hash['shipping']) if
         hash['shipping']
       metadata = hash['metadata']
       subscription_id = hash['subscription_id']
+      customer = GetCustomerResponse.from_hash(hash['customer']) if
+        hash['customer']
+      cycle = GetPeriodResponse.from_hash(hash['cycle']) if hash['cycle']
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
@@ -227,15 +227,15 @@ module MundiApi
                              payment_method,
                              created_at,
                              items,
-                             customer,
                              charge,
                              installments,
                              billing_address,
                              subscription,
-                             cycle,
                              shipping,
                              metadata,
                              subscription_id,
+                             customer,
+                             cycle,
                              due_at,
                              canceled_at,
                              billing_at,

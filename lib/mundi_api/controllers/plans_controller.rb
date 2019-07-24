@@ -20,9 +20,11 @@ module MundiApi
     # @param [String] plan_id Required parameter: Plan id
     # @param [CreatePlanItemRequest] request Required parameter: Request for
     # creating a plan item
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetPlanItemResponse response from the API call
     def create_plan_item(plan_id,
-                         request)
+                         request,
+                         idempotency_key = nil)
       # Prepare query url.
       _path_url = '/plans/{plan_id}/items'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -32,13 +34,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
@@ -48,7 +49,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetPlanItemResponse.from_hash(decoded)
@@ -59,10 +59,12 @@ module MundiApi
     # @param [String] plan_item_id Required parameter: Plan item id
     # @param [UpdatePlanItemRequest] body Required parameter: Request for
     # updating the plan item
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetPlanItemResponse response from the API call
     def update_plan_item(plan_id,
                          plan_item_id,
-                         body)
+                         body,
+                         idempotency_key = nil)
       # Prepare query url.
       _path_url = '/plans/{plan_id}/items/{plan_item_id}'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -73,13 +75,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.put(
         _query_url,
@@ -89,7 +90,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetPlanItemResponse.from_hash(decoded)
@@ -108,12 +108,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -122,7 +120,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetPlanResponse.from_hash(decoded)
@@ -130,8 +127,10 @@ module MundiApi
 
     # Deletes a plan
     # @param [String] plan_id Required parameter: Plan id
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetPlanResponse response from the API call
-    def delete_plan(plan_id)
+    def delete_plan(plan_id,
+                    idempotency_key = nil)
       # Prepare query url.
       _path_url = '/plans/{plan_id}'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -141,12 +140,11 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.delete(
         _query_url,
@@ -155,7 +153,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetPlanResponse.from_hash(decoded)
@@ -165,9 +162,11 @@ module MundiApi
     # @param [String] plan_id Required parameter: Plan id
     # @param [UpdatePlanRequest] request Required parameter: Request for
     # updating a plan
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetPlanResponse response from the API call
     def update_plan(plan_id,
-                    request)
+                    request,
+                    idempotency_key = nil)
       # Prepare query url.
       _path_url = '/plans/{plan_id}'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -177,13 +176,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.put(
         _query_url,
@@ -193,7 +191,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetPlanResponse.from_hash(decoded)
@@ -202,20 +199,21 @@ module MundiApi
     # Creates a new plan
     # @param [CreatePlanRequest] body Required parameter: Request for creating a
     # plan
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetPlanResponse response from the API call
-    def create_plan(body)
+    def create_plan(body,
+                    idempotency_key = nil)
       # Prepare query url.
       _path_url = '/plans'
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
@@ -225,7 +223,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetPlanResponse.from_hash(decoded)
@@ -268,12 +265,10 @@ module MundiApi
         array_serialization: Configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -282,7 +277,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListPlansResponse.from_hash(decoded)
@@ -292,9 +286,11 @@ module MundiApi
     # @param [String] plan_id Required parameter: The plan id
     # @param [UpdateMetadataRequest] request Required parameter: Request for
     # updating the plan metadata
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetPlanResponse response from the API call
     def update_plan_metadata(plan_id,
-                             request)
+                             request,
+                             idempotency_key = nil)
       # Prepare query url.
       _path_url = '/Plans/{plan_id}/metadata'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -304,13 +300,12 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
@@ -320,7 +315,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetPlanResponse.from_hash(decoded)
@@ -342,12 +336,10 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
         'accept' => 'application/json'
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
         _query_url,
@@ -356,7 +348,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetPlanItemResponse.from_hash(decoded)
@@ -365,9 +356,11 @@ module MundiApi
     # Removes an item from a plan
     # @param [String] plan_id Required parameter: Plan id
     # @param [String] plan_item_id Required parameter: Plan item id
+    # @param [String] idempotency_key Optional parameter: Example:
     # @return GetPlanItemResponse response from the API call
     def delete_plan_item(plan_id,
-                         plan_item_id)
+                         plan_item_id,
+                         idempotency_key = nil)
       # Prepare query url.
       _path_url = '/plans/{plan_id}/items/{plan_item_id}'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -378,12 +371,11 @@ module MundiApi
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
-
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'idempotency-key' => idempotency_key
       }
-
       # Prepare and execute HttpRequest.
       _request = @http_client.delete(
         _query_url,
@@ -392,7 +384,6 @@ module MundiApi
       BasicAuth.apply(_request)
       _context = execute_request(_request)
       validate_response(_context)
-
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetPlanItemResponse.from_hash(decoded)
