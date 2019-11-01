@@ -66,6 +66,12 @@ module MundiApi
       TransactionsController.instance
     end
 
+    # Singleton access to transfers controller.
+    # @return [TransfersController] Returns the controller instance.
+    def transfers
+      TransfersController.instance
+    end
+
     # Returns the configuration class for easy access.
     # @return [Configuration] Returns the actual configuration class.
     def config
