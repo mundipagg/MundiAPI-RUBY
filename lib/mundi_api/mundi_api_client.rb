@@ -79,11 +79,12 @@ module MundiApi
     end
 
     # Initializer with authentication and configuration parameters.
-    def initialize(basic_auth_user_name: nil, basic_auth_password: nil)
+    def initialize(basic_auth_user_name: nil, basic_auth_password: nil, secret_key: nil)
       Configuration.basic_auth_user_name = basic_auth_user_name if
         basic_auth_user_name
       Configuration.basic_auth_password = basic_auth_password if
         basic_auth_password
+      Configuration.basic_auth_user_name = secret_key if secret_key
     end
   end
 end
