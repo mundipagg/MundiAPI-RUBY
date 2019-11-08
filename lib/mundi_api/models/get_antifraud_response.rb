@@ -22,6 +22,10 @@ module MundiApi
     # @return [String]
     attr_accessor :provider_name
 
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :score
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -29,17 +33,20 @@ module MundiApi
       @_hash['return_code'] = 'return_code'
       @_hash['return_message'] = 'return_message'
       @_hash['provider_name'] = 'provider_name'
+      @_hash['score'] = 'score'
       @_hash
     end
 
     def initialize(status = nil,
                    return_code = nil,
                    return_message = nil,
-                   provider_name = nil)
+                   provider_name = nil,
+                   score = nil)
       @status = status
       @return_code = return_code
       @return_message = return_message
       @provider_name = provider_name
+      @score = score
     end
 
     # Creates an instance of the object from a hash.
@@ -51,12 +58,14 @@ module MundiApi
       return_code = hash['return_code']
       return_message = hash['return_message']
       provider_name = hash['provider_name']
+      score = hash['score']
 
       # Create object from extracted values.
       GetAntifraudResponse.new(status,
                                return_code,
                                return_message,
-                               provider_name)
+                               provider_name,
+                               score)
     end
   end
 end
