@@ -113,7 +113,8 @@ module MundiApi
                    gateway_response = nil,
                    antifraud_response = nil,
                    next_attempt = nil,
-                   transaction_type = nil)
+                   transaction_type = nil,
+                   metadata = nil)
       @statement_descriptor = statement_descriptor
       @acquirer_name = acquirer_name
       @acquirer_affiliation_code = acquirer_affiliation_code
@@ -143,7 +144,8 @@ module MundiApi
             gateway_response,
             antifraud_response,
             next_attempt,
-            transaction_type)
+            transaction_type,
+            metadata)
     end
 
     # Creates an instance of the object from a hash.
@@ -191,6 +193,7 @@ module MundiApi
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
+      metadata = hash['metadata']
 
       # Create object from extracted values.
       GetDebitCardTransactionResponse.new(statement_descriptor,
@@ -220,7 +223,8 @@ module MundiApi
                                           gateway_response,
                                           antifraud_response,
                                           next_attempt,
-                                          transaction_type)
+                                          transaction_type,
+                                          metadata)
     end
   end
 end

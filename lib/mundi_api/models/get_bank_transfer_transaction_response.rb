@@ -59,7 +59,8 @@ module MundiApi
                    paid_at = nil,
                    paid_amount = nil,
                    next_attempt = nil,
-                   transaction_type = nil)
+                   transaction_type = nil,
+                   metadata = nil)
       @url = url
       @bank_tid = bank_tid
       @bank = bank
@@ -80,7 +81,8 @@ module MundiApi
             gateway_response,
             antifraud_response,
             next_attempt,
-            transaction_type)
+            transaction_type,
+            metadata)
     end
 
     # Creates an instance of the object from a hash.
@@ -119,6 +121,7 @@ module MundiApi
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
+      metadata = hash['metadata']
 
       # Create object from extracted values.
       GetBankTransferTransactionResponse.new(url,
@@ -139,7 +142,8 @@ module MundiApi
                                              paid_at,
                                              paid_amount,
                                              next_attempt,
-                                             transaction_type)
+                                             transaction_type,
+                                             metadata)
     end
   end
 end

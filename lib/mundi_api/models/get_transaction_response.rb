@@ -63,16 +63,20 @@ module MundiApi
     # @return [GetAntifraudResponse]
     attr_accessor :antifraud_response
 
+    # The Gateway Response
+    # @return [Array<String, String>]
+    attr_accessor :metadata
+
     # Discriminators mapping.
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
-        @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse.method(:from_hash)
-        @_discriminators['debit_card'] = GetDebitCardTransactionResponse.method(:from_hash)
         @_discriminators['voucher'] = GetVoucherTransactionResponse.method(:from_hash)
-        @_discriminators['boleto'] = GetBoletoTransactionResponse.method(:from_hash)
-        @_discriminators['cash'] = GetCashTransactionResponse.method(:from_hash)
+        @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse.method(:from_hash)
         @_discriminators['safetypay'] = GetSafetyPayTransactionResponse.method(:from_hash)
+        @_discriminators['boleto'] = GetBoletoTransactionResponse.method(:from_hash)
+        @_discriminators['debit_card'] = GetDebitCardTransactionResponse.method(:from_hash)
+        @_discriminators['cash'] = GetCashTransactionResponse.method(:from_hash)
         @_discriminators['credit_card'] = GetCreditCardTransactionResponse.method(:from_hash)
       end
       @_discriminators
@@ -95,6 +99,7 @@ module MundiApi
       @_hash['id'] = 'id'
       @_hash['gateway_response'] = 'gateway_response'
       @_hash['antifraud_response'] = 'antifraud_response'
+      @_hash['metadata'] = 'metadata'
       @_hash
     end
 
@@ -111,7 +116,8 @@ module MundiApi
                    gateway_response = nil,
                    antifraud_response = nil,
                    next_attempt = nil,
-                   transaction_type = nil)
+                   transaction_type = nil,
+                   metadata = nil)
       @gateway_id = gateway_id
       @amount = amount
       @status = status
@@ -126,6 +132,7 @@ module MundiApi
       @id = id
       @gateway_response = gateway_response
       @antifraud_response = antifraud_response
+      @metadata = metadata
     end
 
     # Creates an instance of the object from a hash.
@@ -164,6 +171,7 @@ module MundiApi
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
+      metadata = hash['metadata']
 
       # Create object from extracted values.
       GetTransactionResponse.new(gateway_id,
@@ -179,7 +187,8 @@ module MundiApi
                                  gateway_response,
                                  antifraud_response,
                                  next_attempt,
-                                 transaction_type)
+                                 transaction_type,
+                                 metadata)
     end
   end
 end
