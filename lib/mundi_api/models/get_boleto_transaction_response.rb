@@ -125,7 +125,8 @@ module MundiApi
                    paid_at = nil,
                    credit_at = nil,
                    next_attempt = nil,
-                   transaction_type = nil)
+                   transaction_type = nil,
+                   metadata = nil)
       @url = url
       @bar_code = bar_code
       @nosso_numero = nosso_numero
@@ -157,7 +158,8 @@ module MundiApi
             gateway_response,
             antifraud_response,
             next_attempt,
-            transaction_type)
+            transaction_type,
+            metadata)
     end
 
     # Creates an instance of the object from a hash.
@@ -209,6 +211,7 @@ module MundiApi
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
+      metadata = hash['metadata']
 
       # Create object from extracted values.
       GetBoletoTransactionResponse.new(url,
@@ -240,7 +243,8 @@ module MundiApi
                                        paid_at,
                                        credit_at,
                                        next_attempt,
-                                       transaction_type)
+                                       transaction_type,
+                                       metadata)
     end
   end
 end
