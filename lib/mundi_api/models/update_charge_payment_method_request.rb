@@ -38,6 +38,10 @@ module MundiApi
     # @return [CreateBankTransferPaymentRequest]
     attr_accessor :bank_transfer
 
+    # Bank Transfer data
+    # @return [CreatePrivateLabelPaymentRequest]
+    attr_accessor :private_label
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -49,6 +53,7 @@ module MundiApi
       @_hash['voucher'] = 'voucher'
       @_hash['cash'] = 'cash'
       @_hash['bank_transfer'] = 'bank_transfer'
+      @_hash['private_label'] = 'private_label'
       @_hash
     end
 
@@ -59,7 +64,8 @@ module MundiApi
                    boleto = nil,
                    voucher = nil,
                    cash = nil,
-                   bank_transfer = nil)
+                   bank_transfer = nil,
+                   private_label = nil)
       @update_subscription = update_subscription
       @payment_method = payment_method
       @credit_card = credit_card
@@ -68,6 +74,7 @@ module MundiApi
       @voucher = voucher
       @cash = cash
       @bank_transfer = bank_transfer
+      @private_label = private_label
     end
 
     # Creates an instance of the object from a hash.
@@ -91,6 +98,9 @@ module MundiApi
       if hash['bank_transfer']
         bank_transfer = CreateBankTransferPaymentRequest.from_hash(hash['bank_transfer'])
       end
+      if hash['private_label']
+        private_label = CreatePrivateLabelPaymentRequest.from_hash(hash['private_label'])
+      end
 
       # Create object from extracted values.
       UpdateChargePaymentMethodRequest.new(update_subscription,
@@ -100,7 +110,8 @@ module MundiApi
                                            boleto,
                                            voucher,
                                            cash,
-                                           bank_transfer)
+                                           bank_transfer,
+                                           private_label)
     end
   end
 end

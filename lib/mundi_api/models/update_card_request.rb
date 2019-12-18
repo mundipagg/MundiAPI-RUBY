@@ -30,6 +30,10 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
+    # Metadata
+    # @return [String]
+    attr_accessor :label
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -39,6 +43,7 @@ module MundiApi
       @_hash['billing_address_id'] = 'billing_address_id'
       @_hash['billing_address'] = 'billing_address'
       @_hash['metadata'] = 'metadata'
+      @_hash['label'] = 'label'
       @_hash
     end
 
@@ -47,13 +52,15 @@ module MundiApi
                    exp_year = nil,
                    billing_address_id = nil,
                    billing_address = nil,
-                   metadata = nil)
+                   metadata = nil,
+                   label = nil)
       @holder_name = holder_name
       @exp_month = exp_month
       @exp_year = exp_year
       @billing_address_id = billing_address_id
       @billing_address = billing_address
       @metadata = metadata
+      @label = label
     end
 
     # Creates an instance of the object from a hash.
@@ -69,6 +76,7 @@ module MundiApi
         billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
       end
       metadata = hash['metadata']
+      label = hash['label']
 
       # Create object from extracted values.
       UpdateCardRequest.new(holder_name,
@@ -76,7 +84,8 @@ module MundiApi
                             exp_year,
                             billing_address_id,
                             billing_address,
-                            metadata)
+                            metadata,
+                            label)
     end
   end
 end

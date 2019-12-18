@@ -58,6 +58,10 @@ module MundiApi
     # @return [Boolean]
     attr_accessor :private_label
 
+    # Indicates whether it is a private label card
+    # @return [String]
+    attr_accessor :label
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -74,6 +78,7 @@ module MundiApi
       @_hash['options'] = 'options'
       @_hash['holder_document'] = 'holder_document'
       @_hash['private_label'] = 'private_label'
+      @_hash['label'] = 'label'
       @_hash
     end
 
@@ -89,6 +94,7 @@ module MundiApi
                    type = 'credit',
                    options = nil,
                    private_label = nil,
+                   label = nil,
                    holder_document = nil)
       @number = number
       @holder_name = holder_name
@@ -103,6 +109,7 @@ module MundiApi
       @options = options
       @holder_document = holder_document
       @private_label = private_label
+      @label = label
     end
 
     # Creates an instance of the object from a hash.
@@ -125,6 +132,7 @@ module MundiApi
       options = CreateCardOptionsRequest.from_hash(hash['options']) if
         hash['options']
       private_label = hash['private_label']
+      label = hash['label']
       holder_document = hash['holder_document']
 
       # Create object from extracted values.
@@ -140,6 +148,7 @@ module MundiApi
                             type,
                             options,
                             private_label,
+                            label,
                             holder_document)
     end
   end

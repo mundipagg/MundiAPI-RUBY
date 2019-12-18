@@ -71,13 +71,14 @@ module MundiApi
     def self.discriminators
       if @_discriminators.nil?
         @_discriminators = {}
-        @_discriminators['voucher'] = GetVoucherTransactionResponse.method(:from_hash)
         @_discriminators['bank_transfer'] = GetBankTransferTransactionResponse.method(:from_hash)
-        @_discriminators['safetypay'] = GetSafetyPayTransactionResponse.method(:from_hash)
-        @_discriminators['boleto'] = GetBoletoTransactionResponse.method(:from_hash)
         @_discriminators['debit_card'] = GetDebitCardTransactionResponse.method(:from_hash)
+        @_discriminators['voucher'] = GetVoucherTransactionResponse.method(:from_hash)
+        @_discriminators['boleto'] = GetBoletoTransactionResponse.method(:from_hash)
         @_discriminators['cash'] = GetCashTransactionResponse.method(:from_hash)
+        @_discriminators['safetypay'] = GetSafetyPayTransactionResponse.method(:from_hash)
         @_discriminators['credit_card'] = GetCreditCardTransactionResponse.method(:from_hash)
+        @_discriminators['private_label'] = GetPrivateLabelTransactionResponse.method(:from_hash)
       end
       @_discriminators
     end
