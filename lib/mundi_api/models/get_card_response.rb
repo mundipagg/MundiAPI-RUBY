@@ -71,6 +71,10 @@ module MundiApi
     # @return [String]
     attr_accessor :first_six_digits
 
+    # First six digits
+    # @return [String]
+    attr_accessor :label
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -90,6 +94,7 @@ module MundiApi
       @_hash['holder_document'] = 'holder_document'
       @_hash['deleted_at'] = 'deleted_at'
       @_hash['first_six_digits'] = 'first_six_digits'
+      @_hash['label'] = 'label'
       @_hash
     end
 
@@ -107,6 +112,7 @@ module MundiApi
                    type = nil,
                    holder_document = nil,
                    first_six_digits = nil,
+                   label = nil,
                    customer = nil,
                    deleted_at = nil)
       @id = id
@@ -125,6 +131,7 @@ module MundiApi
       @holder_document = holder_document
       @deleted_at = deleted_at
       @first_six_digits = first_six_digits
+      @label = label
     end
 
     # Creates an instance of the object from a hash.
@@ -148,6 +155,7 @@ module MundiApi
       type = hash['type']
       holder_document = hash['holder_document']
       first_six_digits = hash['first_six_digits']
+      label = hash['label']
       customer = GetCustomerResponse.from_hash(hash['customer']) if
         hash['customer']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
@@ -167,6 +175,7 @@ module MundiApi
                           type,
                           holder_document,
                           first_six_digits,
+                          label,
                           customer,
                           deleted_at)
     end
