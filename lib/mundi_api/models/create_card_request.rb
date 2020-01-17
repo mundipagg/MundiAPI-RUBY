@@ -62,6 +62,14 @@ module MundiApi
     # @return [String]
     attr_accessor :label
 
+    # Identifier
+    # @return [String]
+    attr_accessor :id
+
+    # token identifier
+    # @return [String]
+    attr_accessor :token
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -79,6 +87,8 @@ module MundiApi
       @_hash['holder_document'] = 'holder_document'
       @_hash['private_label'] = 'private_label'
       @_hash['label'] = 'label'
+      @_hash['id'] = 'id'
+      @_hash['token'] = 'token'
       @_hash
     end
 
@@ -95,7 +105,9 @@ module MundiApi
                    options = nil,
                    private_label = nil,
                    label = nil,
-                   holder_document = nil)
+                   holder_document = nil,
+                   id = nil,
+                   token = nil)
       @number = number
       @holder_name = holder_name
       @exp_month = exp_month
@@ -110,6 +122,8 @@ module MundiApi
       @holder_document = holder_document
       @private_label = private_label
       @label = label
+      @id = id
+      @token = token
     end
 
     # Creates an instance of the object from a hash.
@@ -134,6 +148,8 @@ module MundiApi
       private_label = hash['private_label']
       label = hash['label']
       holder_document = hash['holder_document']
+      id = hash['id']
+      token = hash['token']
 
       # Create object from extracted values.
       CreateCardRequest.new(number,
@@ -149,7 +165,9 @@ module MundiApi
                             options,
                             private_label,
                             label,
-                            holder_document)
+                            holder_document,
+                            id,
+                            token)
     end
   end
 end

@@ -10,15 +10,29 @@ module MundiApi
     # @return [String]
     attr_accessor :url
 
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :usage_report_url
+
+    # TODO: Write general description for this method
+    # @return [String]
+    attr_accessor :grouped_report_url
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['url'] = 'url'
+      @_hash['usage_report_url'] = 'usage_report_url'
+      @_hash['grouped_report_url'] = 'grouped_report_url'
       @_hash
     end
 
-    def initialize(url = nil)
+    def initialize(url = nil,
+                   usage_report_url = nil,
+                   grouped_report_url = nil)
       @url = url
+      @usage_report_url = usage_report_url
+      @grouped_report_url = grouped_report_url
     end
 
     # Creates an instance of the object from a hash.
@@ -27,9 +41,13 @@ module MundiApi
 
       # Extract variables from the hash.
       url = hash['url']
+      usage_report_url = hash['usage_report_url']
+      grouped_report_url = hash['grouped_report_url']
 
       # Create object from extracted values.
-      GetUsageReportResponse.new(url)
+      GetUsageReportResponse.new(url,
+                                 usage_report_url,
+                                 grouped_report_url)
     end
   end
 end
