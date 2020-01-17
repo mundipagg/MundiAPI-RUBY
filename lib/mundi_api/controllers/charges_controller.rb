@@ -16,6 +16,114 @@ module MundiApi
       self.class.instance
     end
 
+    # Updates the card from a charge
+    # @param [String] charge_id Required parameter: Charge id
+    # @param [UpdateChargeCardRequest] request Required parameter: Request for
+    # updating a charge's card
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return GetChargeResponse response from the API call
+    def update_charge_card(charge_id,
+                           request,
+                           idempotency_key = nil)
+      # Prepare query url.
+      _path_url = '/charges/{charge_id}/card'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'charge_id' => charge_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.patch(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetChargeResponse.from_hash(decoded)
+    end
+
+    # Updates a charge's payment method
+    # @param [String] charge_id Required parameter: Charge id
+    # @param [UpdateChargePaymentMethodRequest] request Required parameter:
+    # Request for updating the payment method from a charge
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return GetChargeResponse response from the API call
+    def update_charge_payment_method(charge_id,
+                                     request,
+                                     idempotency_key = nil)
+      # Prepare query url.
+      _path_url = '/charges/{charge_id}/payment-method'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'charge_id' => charge_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.patch(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetChargeResponse.from_hash(decoded)
+    end
+
+    # Creates a new charge
+    # @param [CreateChargeRequest] request Required parameter: Request for
+    # creating a charge
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return GetChargeResponse response from the API call
+    def create_charge(request,
+                      idempotency_key = nil)
+      # Prepare query url.
+      _path_url = '/Charges'
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.post(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetChargeResponse.from_hash(decoded)
+    end
+
     # Get a charge from its id
     # @param [String] charge_id Required parameter: Charge id
     # @return GetChargeResponse response from the API call
@@ -46,17 +154,14 @@ module MundiApi
       GetChargeResponse.from_hash(decoded)
     end
 
-    # TODO: type endpoint description here
-    # @param [String] charge_id Required parameter: Example:
-    # @param [CreateConfirmPaymentRequest] request Optional parameter: Request
-    # for confirm payment
+    # Retries a charge
+    # @param [String] charge_id Required parameter: Charge id
     # @param [String] idempotency_key Optional parameter: Example:
     # @return GetChargeResponse response from the API call
-    def confirm_payment(charge_id,
-                        request = nil,
-                        idempotency_key = nil)
+    def retry_charge(charge_id,
+                     idempotency_key = nil)
       # Prepare query url.
-      _path_url = '/charges/{charge_id}/confirm-payment'
+      _path_url = '/charges/{charge_id}/retry'
       _path_url = APIHelper.append_url_with_template_parameters(
         _path_url,
         'charge_id' => charge_id
@@ -67,52 +172,12 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
         'idempotency-key' => idempotency_key
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
-    end
-
-    # Updates the card from a charge
-    # @param [String] charge_id Required parameter: Charge id
-    # @param [UpdateChargeCardRequest] request Required parameter: Request for
-    # updating a charge's card
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
-    def update_charge_card(charge_id,
-                           request,
-                           idempotency_key = nil)
-      # Prepare query url.
-      _path_url = '/charges/{charge_id}/card'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'charge_id' => charge_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.patch(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
+        headers: _headers
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
@@ -184,115 +249,6 @@ module MundiApi
       ListChargesResponse.from_hash(decoded)
     end
 
-    # Cancel a charge
-    # @param [String] charge_id Required parameter: Charge id
-    # @param [CreateCancelChargeRequest] request Optional parameter: Request for
-    # cancelling a charge
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
-    def cancel_charge(charge_id,
-                      request = nil,
-                      idempotency_key = nil)
-      # Prepare query url.
-      _path_url = '/charges/{charge_id}'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'charge_id' => charge_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.delete(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
-    end
-
-    # Retries a charge
-    # @param [String] charge_id Required parameter: Charge id
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
-    def retry_charge(charge_id,
-                     idempotency_key = nil)
-      # Prepare query url.
-      _path_url = '/charges/{charge_id}/retry'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'charge_id' => charge_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'idempotency-key' => idempotency_key
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.post(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
-    end
-
-    # Updates a charge's payment method
-    # @param [String] charge_id Required parameter: Charge id
-    # @param [UpdateChargePaymentMethodRequest] request Required parameter:
-    # Request for updating the payment method from a charge
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
-    def update_charge_payment_method(charge_id,
-                                     request,
-                                     idempotency_key = nil)
-      # Prepare query url.
-      _path_url = '/charges/{charge_id}/payment-method'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'charge_id' => charge_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.patch(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
-    end
-
     # Updates the metadata from a charge
     # @param [String] charge_id Required parameter: The charge id
     # @param [UpdateMetadataRequest] request Required parameter: Request for
@@ -319,6 +275,44 @@ module MundiApi
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetChargeResponse.from_hash(decoded)
+    end
+
+    # Cancel a charge
+    # @param [String] charge_id Required parameter: Charge id
+    # @param [CreateCancelChargeRequest] request Optional parameter: Request for
+    # cancelling a charge
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return GetChargeResponse response from the API call
+    def cancel_charge(charge_id,
+                      request = nil,
+                      idempotency_key = nil)
+      # Prepare query url.
+      _path_url = '/charges/{charge_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'charge_id' => charge_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
         _query_url,
         headers: _headers,
         parameters: request.to_json
@@ -407,15 +401,21 @@ module MundiApi
       GetChargeResponse.from_hash(decoded)
     end
 
-    # Creates a new charge
-    # @param [CreateChargeRequest] request Required parameter: Request for
-    # creating a charge
+    # TODO: type endpoint description here
+    # @param [String] charge_id Required parameter: Example:
+    # @param [CreateConfirmPaymentRequest] request Optional parameter: Request
+    # for confirm payment
     # @param [String] idempotency_key Optional parameter: Example:
     # @return GetChargeResponse response from the API call
-    def create_charge(request,
-                      idempotency_key = nil)
+    def confirm_payment(charge_id,
+                        request = nil,
+                        idempotency_key = nil)
       # Prepare query url.
-      _path_url = '/Charges'
+      _path_url = '/charges/{charge_id}/confirm-payment'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'charge_id' => charge_id
+      )
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
