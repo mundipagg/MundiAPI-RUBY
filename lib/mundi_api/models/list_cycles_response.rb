@@ -7,7 +7,7 @@ module MundiApi
   # Response object for listing subscription cycles
   class ListCyclesResponse < BaseModel
     # The subscription cycles objects
-    # @return [GetPeriodResponse]
+    # @return [List of GetPeriodResponse]
     attr_accessor :data
 
     # Paging object
@@ -33,7 +33,14 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      data = GetPeriodResponse.from_hash(hash['data']) if hash['data']
+      # Parameter is an array, so we need to iterate through it
+      data = nil
+      unless hash['data'].nil?
+        data = []
+        hash['data'].each do |structure|
+          data << (GetPeriodResponse.from_hash(structure) if structure)
+        end
+      end
       paging = PagingResponse.from_hash(hash['paging']) if hash['paging']
 
       # Create object from extracted values.
