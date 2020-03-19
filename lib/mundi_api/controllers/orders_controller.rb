@@ -6,16 +6,6 @@
 module MundiApi
   # OrdersController
   class OrdersController < BaseController
-    @instance = OrdersController.new
-
-    class << self
-      attr_accessor :instance
-    end
-
-    def instance
-      self.class.instance
-    end
-
     # Gets an order
     # @param [String] order_id Required parameter: Order id
     # @return GetOrderResponse response from the API call
@@ -26,7 +16,7 @@ module MundiApi
         _path_url,
         'order_id' => order_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -38,7 +28,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -55,7 +45,7 @@ module MundiApi
                      idempotency_key = nil)
       # Prepare query url.
       _path_url = '/orders'
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -70,7 +60,7 @@ module MundiApi
         headers: _headers,
         parameters: body.to_json
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -99,7 +89,7 @@ module MundiApi
                    customer_id = nil)
       # Prepare query url.
       _path_url = '/orders'
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
@@ -112,7 +102,7 @@ module MundiApi
           'created_until' => created_until,
           'customer_id' => customer_id
         },
-        array_serialization: Configuration.array_serialization
+        array_serialization: configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -124,7 +114,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -147,7 +137,7 @@ module MundiApi
         _path_url,
         'order_id' => order_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -162,7 +152,7 @@ module MundiApi
         headers: _headers,
         parameters: request.to_json
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -182,7 +172,7 @@ module MundiApi
         _path_url,
         'orderId' => order_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -195,7 +185,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -220,7 +210,7 @@ module MundiApi
         'orderId' => order_id,
         'itemId' => item_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -235,7 +225,7 @@ module MundiApi
         headers: _headers,
         parameters: request.to_json
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -258,7 +248,7 @@ module MundiApi
         'orderId' => order_id,
         'itemId' => item_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -271,7 +261,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -294,7 +284,7 @@ module MundiApi
         _path_url,
         'orderId' => order_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -309,7 +299,7 @@ module MundiApi
         headers: _headers,
         parameters: request.to_json
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -330,7 +320,7 @@ module MundiApi
         'orderId' => order_id,
         'itemId' => item_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -342,7 +332,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -365,7 +355,7 @@ module MundiApi
         _path_url,
         'id' => id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -380,7 +370,7 @@ module MundiApi
         headers: _headers,
         parameters: request.to_json
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.

@@ -6,84 +6,82 @@
 module MundiApi
   #  mundi_api client class.
   class MundiApiClient
-    # Singleton access to subscriptions controller.
-    # @return [SubscriptionsController] Returns the controller instance.
+    # Access to subscriptions controller.
+    # @return [SubscriptionsController] Returns a controller object.
     def subscriptions
-      SubscriptionsController.instance
+      SubscriptionsController.new(configuration: @configuration)
     end
 
-    # Singleton access to orders controller.
-    # @return [OrdersController] Returns the controller instance.
+    # Access to orders controller.
+    # @return [OrdersController] Returns a controller object.
     def orders
-      OrdersController.instance
+      OrdersController.new(configuration: @configuration)
     end
 
-    # Singleton access to plans controller.
-    # @return [PlansController] Returns the controller instance.
+    # Access to plans controller.
+    # @return [PlansController] Returns a controller object.
     def plans
-      PlansController.instance
+      PlansController.new(configuration: @configuration)
     end
 
-    # Singleton access to invoices controller.
-    # @return [InvoicesController] Returns the controller instance.
+    # Access to invoices controller.
+    # @return [InvoicesController] Returns a controller object.
     def invoices
-      InvoicesController.instance
+      InvoicesController.new(configuration: @configuration)
     end
 
-    # Singleton access to customers controller.
-    # @return [CustomersController] Returns the controller instance.
+    # Access to customers controller.
+    # @return [CustomersController] Returns a controller object.
     def customers
-      CustomersController.instance
+      CustomersController.new(configuration: @configuration)
     end
 
-    # Singleton access to charges controller.
-    # @return [ChargesController] Returns the controller instance.
+    # Access to charges controller.
+    # @return [ChargesController] Returns a controller object.
     def charges
-      ChargesController.instance
+      ChargesController.new(configuration: @configuration)
     end
 
-    # Singleton access to recipients controller.
-    # @return [RecipientsController] Returns the controller instance.
+    # Access to recipients controller.
+    # @return [RecipientsController] Returns a controller object.
     def recipients
-      RecipientsController.instance
+      RecipientsController.new(configuration: @configuration)
     end
 
-    # Singleton access to tokens controller.
-    # @return [TokensController] Returns the controller instance.
+    # Access to tokens controller.
+    # @return [TokensController] Returns a controller object.
     def tokens
-      TokensController.instance
+      TokensController.new(configuration: @configuration)
     end
 
-    # Singleton access to sellers controller.
-    # @return [SellersController] Returns the controller instance.
+    # Access to sellers controller.
+    # @return [SellersController] Returns a controller object.
     def sellers
-      SellersController.instance
+      SellersController.new(configuration: @configuration)
     end
 
-    # Singleton access to transactions controller.
-    # @return [TransactionsController] Returns the controller instance.
+    # Access to transactions controller.
+    # @return [TransactionsController] Returns a controller object.
     def transactions
-      TransactionsController.instance
+      TransactionsController.new(configuration: @configuration)
     end
 
-    # Singleton access to transfers controller.
-    # @return [TransfersController] Returns the controller instance.
+    # Access to transfers controller.
+    # @return [TransfersController] Returns a controller object.
     def transfers
-      TransfersController.instance
+      TransfersController.new(configuration: @configuration)
     end
 
-    # Returns the configuration class for easy access.
-    # @return [Configuration] Returns the actual configuration class.
+    # Returns the configuration object for easy access.
+    # @return [Configuration] Returns a configuration instance.
     def config
-      Configuration
+      @configuration
     end
 
     # Initializer with authentication and configuration parameters.
     def initialize(basic_auth_user_name: nil, basic_auth_password: nil)
-      Configuration.basic_auth_user_name = basic_auth_user_name if
-        basic_auth_user_name
-      Configuration.basic_auth_password = basic_auth_password if
-        basic_auth_password
+      @configuration = Configuration.new(basic_auth_user_name,
+                                         basic_auth_password)
     end
   end
 end

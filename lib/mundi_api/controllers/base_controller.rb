@@ -6,11 +6,13 @@
 module MundiApi
   # Base controller.
   class BaseController
-    attr_accessor :http_client, :http_call_back
+    attr_accessor :http_client, :http_call_back, :configuration
 
-    def initialize(http_client: nil, http_call_back: nil)
+    def initialize(http_client: nil, http_call_back: nil, configuration:)
       @http_client = http_client || FaradayClient.new
       @http_call_back = http_call_back
+
+      @configuration = configuration
 
       @global_headers = {
         'user-agent' => 'MundiSDK - Ruby 0.16.9'

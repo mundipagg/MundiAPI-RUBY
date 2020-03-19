@@ -6,16 +6,6 @@
 module MundiApi
   # TransactionsController
   class TransactionsController < BaseController
-    @instance = TransactionsController.new
-
-    class << self
-      attr_accessor :instance
-    end
-
-    def instance
-      self.class.instance
-    end
-
     # TODO: type endpoint description here
     # @param [String] transaction_id Required parameter: Example:
     # @return GetTransactionResponse response from the API call
@@ -26,7 +16,7 @@ module MundiApi
         _path_url,
         'transaction_id' => transaction_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -38,7 +28,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.

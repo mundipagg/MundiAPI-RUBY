@@ -6,16 +6,6 @@
 module MundiApi
   # InvoicesController
   class InvoicesController < BaseController
-    @instance = InvoicesController.new
-
-    class << self
-      attr_accessor :instance
-    end
-
-    def instance
-      self.class.instance
-    end
-
     # Cancels an invoice
     # @param [String] invoice_id Required parameter: Invoice id
     # @param [String] idempotency_key Optional parameter: Example:
@@ -28,7 +18,7 @@ module MundiApi
         _path_url,
         'invoice_id' => invoice_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -41,7 +31,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -59,7 +49,7 @@ module MundiApi
         _path_url,
         'invoice_id' => invoice_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -71,7 +61,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -96,7 +86,7 @@ module MundiApi
         'subscription_id' => subscription_id,
         'cycle_id' => cycle_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -111,7 +101,7 @@ module MundiApi
         headers: _headers,
         parameters: request.to_json
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -134,7 +124,7 @@ module MundiApi
         _path_url,
         'invoice_id' => invoice_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -149,7 +139,7 @@ module MundiApi
         headers: _headers,
         parameters: request.to_json
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -187,7 +177,7 @@ module MundiApi
                      due_until = nil)
       # Prepare query url.
       _path_url = '/invoices'
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_builder = APIHelper.append_url_with_query_parameters(
         _query_builder,
@@ -203,7 +193,7 @@ module MundiApi
           'due_since' => due_since,
           'due_until' => due_until
         },
-        array_serialization: Configuration.array_serialization
+        array_serialization: configuration.array_serialization
       )
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -215,7 +205,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -238,7 +228,7 @@ module MundiApi
         _path_url,
         'invoice_id' => invoice_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -253,7 +243,7 @@ module MundiApi
         headers: _headers,
         parameters: request.to_json
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -271,7 +261,7 @@ module MundiApi
         _path_url,
         'subscription_id' => subscription_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -283,7 +273,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.

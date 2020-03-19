@@ -6,23 +6,13 @@
 module MundiApi
   # TransfersController
   class TransfersController < BaseController
-    @instance = TransfersController.new
-
-    class << self
-      attr_accessor :instance
-    end
-
-    def instance
-      self.class.instance
-    end
-
     # TODO: type endpoint description here
     # @param [CreateTransfer] request Required parameter: Example:
     # @return GetTransfer response from the API call
     def create_transfer(request)
       # Prepare query url.
       _path_url = '/transfers/recipients'
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -36,7 +26,7 @@ module MundiApi
         headers: _headers,
         parameters: request.to_json
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -54,7 +44,7 @@ module MundiApi
         _path_url,
         'transfer_id' => transfer_id
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -66,7 +56,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.
@@ -79,7 +69,7 @@ module MundiApi
     def get_transfers
       # Prepare query url.
       _path_url = '/transfers'
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -91,7 +81,7 @@ module MundiApi
         _query_url,
         headers: _headers
       )
-      BasicAuth.apply(_request)
+      _request = BasicAuth.apply(_request, configuration)
       _context = execute_request(_request)
       validate_response(_context)
       # Return appropriate response type.

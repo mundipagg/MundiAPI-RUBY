@@ -11,12 +11,13 @@ module MundiApi
     # Add basic authentication to the request.
     # @param [HttpRequest] The HttpRequest object to which authentication will
     # be added.
-    def self.apply(http_request)
-      username = Configuration.basic_auth_user_name
-      password = Configuration.basic_auth_password
+    def self.apply(http_request, configuration)
+      username = configuration.basic_auth_user_name
+      password = configuration.basic_auth_password
       value = Base64.strict_encode64("#{username}:#{password}")
       header_value = "Basic #{value}"
       http_request.headers['Authorization'] = header_value
+      http_request
     end
   end
 end

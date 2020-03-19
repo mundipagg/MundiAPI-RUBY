@@ -6,16 +6,6 @@
 module MundiApi
   # TokensController
   class TokensController < BaseController
-    @instance = TokensController.new
-
-    class << self
-      attr_accessor :instance
-    end
-
-    def instance
-      self.class.instance
-    end
-
     # Gets a token from its id
     # @param [String] id Required parameter: Token id
     # @param [String] public_key Required parameter: Public key
@@ -29,7 +19,7 @@ module MundiApi
         'id' => id,
         'public_key' => public_key
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
@@ -63,7 +53,7 @@ module MundiApi
         _path_url,
         'public_key' => public_key
       )
-      _query_builder = Configuration.base_uri.dup
+      _query_builder = configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
