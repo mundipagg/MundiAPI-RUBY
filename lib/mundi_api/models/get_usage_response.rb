@@ -47,6 +47,10 @@ module MundiApi
     # @return [String]
     attr_accessor :group
 
+    # Field used in item scheme type 'Percent'
+    # @return [Integer]
+    attr_accessor :amount
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -60,6 +64,7 @@ module MundiApi
       @_hash['subscription_item'] = 'subscription_item'
       @_hash['code'] = 'code'
       @_hash['group'] = 'group'
+      @_hash['amount'] = 'amount'
       @_hash
     end
 
@@ -72,7 +77,8 @@ module MundiApi
                    subscription_item = nil,
                    deleted_at = nil,
                    code = nil,
-                   group = nil)
+                   group = nil,
+                   amount = nil)
       @id = id
       @quantity = quantity
       @description = description
@@ -83,6 +89,7 @@ module MundiApi
       @subscription_item = subscription_item
       @code = code
       @group = group
+      @amount = amount
     end
 
     # Creates an instance of the object from a hash.
@@ -102,6 +109,7 @@ module MundiApi
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       code = hash['code']
       group = hash['group']
+      amount = hash['amount']
 
       # Create object from extracted values.
       GetUsageResponse.new(id,
@@ -113,7 +121,8 @@ module MundiApi
                            subscription_item,
                            deleted_at,
                            code,
-                           group)
+                           group,
+                           amount)
     end
   end
 end

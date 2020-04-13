@@ -37,7 +37,7 @@ module MundiApi
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
-      @_hash['id'] = 'Id'
+      @_hash['id'] = 'id'
       @_hash['amount'] = 'amount'
       @_hash['description'] = 'description'
       @_hash['quantity'] = 'quantity'
@@ -68,7 +68,7 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      id = hash['Id']
+      id = hash['id']
       amount = hash['amount']
       description = hash['description']
       quantity = hash['quantity']
