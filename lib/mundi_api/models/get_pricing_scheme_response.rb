@@ -22,6 +22,10 @@ module MundiApi
     # @return [Integer]
     attr_accessor :minimum_price
 
+    # percentual value used in pricing_scheme Percent
+    # @return [Float]
+    attr_accessor :percentage
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -29,17 +33,20 @@ module MundiApi
       @_hash['scheme_type'] = 'scheme_type'
       @_hash['price_brackets'] = 'price_brackets'
       @_hash['minimum_price'] = 'minimum_price'
+      @_hash['percentage'] = 'percentage'
       @_hash
     end
 
     def initialize(price = nil,
                    scheme_type = nil,
                    price_brackets = nil,
-                   minimum_price = nil)
+                   minimum_price = nil,
+                   percentage = nil)
       @price = price
       @scheme_type = scheme_type
       @price_brackets = price_brackets
       @minimum_price = minimum_price
+      @percentage = percentage
     end
 
     # Creates an instance of the object from a hash.
@@ -58,12 +65,14 @@ module MundiApi
         end
       end
       minimum_price = hash['minimum_price']
+      percentage = hash['percentage']
 
       # Create object from extracted values.
       GetPricingSchemeResponse.new(price,
                                    scheme_type,
                                    price_brackets,
-                                   minimum_price)
+                                   minimum_price,
+                                   percentage)
     end
   end
 end

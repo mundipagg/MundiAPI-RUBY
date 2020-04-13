@@ -15,7 +15,7 @@ module MundiApi
 
     # TODO: Write general description for this method
     # @return [String]
-    attr_accessor :bar_code
+    attr_accessor :barcode
 
     # TODO: Write general description for this method
     # @return [String]
@@ -77,7 +77,7 @@ module MundiApi
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['url'] = 'url'
-      @_hash['bar_code'] = 'bar_code'
+      @_hash['barcode'] = 'barcode'
       @_hash['nosso_numero'] = 'nosso_numero'
       @_hash['bank'] = 'bank'
       @_hash['document_number'] = 'document_number'
@@ -97,7 +97,7 @@ module MundiApi
     end
 
     def initialize(url = nil,
-                   bar_code = nil,
+                   barcode = nil,
                    nosso_numero = nil,
                    bank = nil,
                    document_number = nil,
@@ -128,7 +128,7 @@ module MundiApi
                    transaction_type = nil,
                    metadata = nil)
       @url = url
-      @bar_code = bar_code
+      @barcode = barcode
       @nosso_numero = nosso_numero
       @bank = bank
       @document_number = document_number
@@ -168,7 +168,7 @@ module MundiApi
 
       # Extract variables from the hash.
       url = hash['url']
-      bar_code = hash['bar_code']
+      barcode = hash['barcode']
       nosso_numero = hash['nosso_numero']
       bank = hash['bank']
       document_number = hash['document_number']
@@ -215,7 +215,7 @@ module MundiApi
 
       # Create object from extracted values.
       GetBoletoTransactionResponse.new(url,
-                                       bar_code,
+                                       barcode,
                                        nosso_numero,
                                        bank,
                                        document_number,
