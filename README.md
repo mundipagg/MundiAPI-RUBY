@@ -569,8 +569,8 @@ def get_subscriptions(page = nil,
 #### Example Usage
 
 ```ruby
-page = 75
-size = 75
+page = 48
+size = 48
 code = 'code'
 billing_type = 'billing_type'
 customer_id = 'customer_id'
@@ -803,8 +803,8 @@ def get_discounts(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id'
-page = 75
-size = 75
+page = 48
+size = 48
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -867,8 +867,8 @@ def get_increments(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id'
-page = 75
-size = 75
+page = 48
+size = 48
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -938,8 +938,8 @@ def get_usages_details(subscription_id,
 ```ruby
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 75
-page = 75
+size = 48
+page = 48
 item_id = 'item_id'
 group = 'group'
 
@@ -979,8 +979,8 @@ def get_usages(subscription_id,
 ```ruby
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 117
-size = 117
+page = 48
+size = 48
 code = 'code'
 group = 'group'
 
@@ -1025,8 +1025,8 @@ def get_subscription_items(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id'
-page = 117
-size = 117
+page = 48
+size = 48
 name = 'name'
 code = 'code'
 status = 'status'
@@ -1416,8 +1416,8 @@ def get_orders(page = nil,
 #### Example Usage
 
 ```ruby
-page = 117
-size = 117
+page = 140
+size = 140
 code = 'code'
 status = 'status'
 created_since = DateTime.now
@@ -1876,8 +1876,8 @@ def get_plans(page = nil,
 #### Example Usage
 
 ```ruby
-page = 117
-size = 117
+page = 140
+size = 140
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -2153,8 +2153,8 @@ def get_invoices(page = nil,
 #### Example Usage
 
 ```ruby
-page = 117
-size = 117
+page = 140
+size = 140
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -2359,8 +2359,8 @@ def get_access_tokens(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 117
-size = 117
+page = 140
+size = 140
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -2391,8 +2391,8 @@ def get_addresses(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 117
-size = 117
+page = 140
+size = 140
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -2423,8 +2423,8 @@ def get_cards(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 117
-size = 117
+page = 140
+size = 140
 
 result = customers_controller.get_cards(customer_id, page, size)
 
@@ -3097,8 +3097,8 @@ def get_charges(page = nil,
 #### Example Usage
 
 ```ruby
-page = 26
-size = 26
+page = 231
+size = 231
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -3296,8 +3296,8 @@ def get_charge_transactions(charge_id,
 
 ```ruby
 charge_id = 'charge_id'
-page = 26
-size = 26
+page = 231
+size = 231
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -3439,8 +3439,8 @@ def get_transfers(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 26
-size = 26
+page = 231
+size = 231
 status = 'status'
 created_since = DateTime.now
 created_until = DateTime.now
@@ -3579,8 +3579,8 @@ def get_anticipations(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 26
-size = 26
+page = 231
+size = 231
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = DateTime.now
@@ -3704,8 +3704,8 @@ def get_recipients(page = nil,
 #### Example Usage
 
 ```ruby
-page = 26
-size = 26
+page = 231
+size = 231
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -3919,8 +3919,8 @@ def get_withdrawals(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 26
-size = 26
+page = 231
+size = 231
 status = 'status'
 created_since = DateTime.now
 created_until = DateTime.now
@@ -4138,8 +4138,8 @@ def get_sellers(page = nil,
 #### Example Usage
 
 ```ruby
-page = 26
-size = 26
+page = 231
+size = 231
 name = 'name'
 document = 'document'
 code = 'code'
