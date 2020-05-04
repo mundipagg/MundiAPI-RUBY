@@ -39,6 +39,10 @@ module MundiApi
     # @return [CreateAntifraudRequest]
     attr_accessor :antifraud
 
+    # Order Id
+    # @return [String]
+    attr_accessor :order_id
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -50,6 +54,7 @@ module MundiApi
       @_hash['metadata'] = 'metadata'
       @_hash['due_at'] = 'due_at'
       @_hash['antifraud'] = 'antifraud'
+      @_hash['order_id'] = 'order_id'
       @_hash
     end
 
@@ -60,6 +65,7 @@ module MundiApi
                    payment = nil,
                    metadata = nil,
                    antifraud = nil,
+                   order_id = nil,
                    due_at = nil)
       @code = code
       @amount = amount
@@ -69,6 +75,7 @@ module MundiApi
       @metadata = metadata
       @due_at = due_at
       @antifraud = antifraud
+      @order_id = order_id
     end
 
     # Creates an instance of the object from a hash.
@@ -86,6 +93,7 @@ module MundiApi
       metadata = hash['metadata']
       antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if
         hash['antifraud']
+      order_id = hash['order_id']
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
 
       # Create object from extracted values.
@@ -96,6 +104,7 @@ module MundiApi
                               payment,
                               metadata,
                               antifraud,
+                              order_id,
                               due_at)
     end
   end

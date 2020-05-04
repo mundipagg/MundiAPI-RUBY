@@ -15,18 +15,32 @@ module MundiApi
     # @return [Integer]
     attr_accessor :amount
 
+    # Splits
+    # @return [List of CreateSplitRequest]
+    attr_accessor :split
+
+    # Splits
+    # @return [String]
+    attr_accessor :operation_reference
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['code'] = 'code'
       @_hash['amount'] = 'amount'
+      @_hash['split'] = 'split'
+      @_hash['operation_reference'] = 'operation_reference'
       @_hash
     end
 
     def initialize(code = nil,
-                   amount = nil)
+                   operation_reference = nil,
+                   amount = nil,
+                   split = nil)
       @code = code
       @amount = amount
+      @split = split
+      @operation_reference = operation_reference
     end
 
     # Creates an instance of the object from a hash.
@@ -35,11 +49,22 @@ module MundiApi
 
       # Extract variables from the hash.
       code = hash['code']
+      operation_reference = hash['operation_reference']
       amount = hash['amount']
+      # Parameter is an array, so we need to iterate through it
+      split = nil
+      unless hash['split'].nil?
+        split = []
+        hash['split'].each do |structure|
+          split << (CreateSplitRequest.from_hash(structure) if structure)
+        end
+      end
 
       # Create object from extracted values.
       CreateCaptureChargeRequest.new(code,
-                                     amount)
+                                     operation_reference,
+                                     amount,
+                                     split)
     end
   end
 end
