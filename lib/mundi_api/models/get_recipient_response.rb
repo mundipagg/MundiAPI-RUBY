@@ -59,6 +59,10 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
+    # Metadata
+    # @return [GetAutomaticAnticipationResponse]
+    attr_accessor :automatic_anticipation_settings
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -75,6 +79,8 @@ module MundiApi
       @_hash['default_bank_account'] = 'default_bank_account'
       @_hash['gateway_recipients'] = 'gateway_recipients'
       @_hash['metadata'] = 'metadata'
+      @_hash['automatic_anticipation_settings'] =
+        'automatic_anticipation_settings'
       @_hash
     end
 
@@ -90,7 +96,8 @@ module MundiApi
                    deleted_at = nil,
                    default_bank_account = nil,
                    gateway_recipients = nil,
-                   metadata = nil)
+                   metadata = nil,
+                   automatic_anticipation_settings = nil)
       @id = id
       @name = name
       @email = email
@@ -104,6 +111,7 @@ module MundiApi
       @default_bank_account = default_bank_account
       @gateway_recipients = gateway_recipients
       @metadata = metadata
+      @automatic_anticipation_settings = automatic_anticipation_settings
     end
 
     # Creates an instance of the object from a hash.
@@ -133,6 +141,9 @@ module MundiApi
         end
       end
       metadata = hash['metadata']
+      if hash['automatic_anticipation_settings']
+        automatic_anticipation_settings = GetAutomaticAnticipationResponse.from_hash(hash['automatic_anticipation_settings'])
+      end
 
       # Create object from extracted values.
       GetRecipientResponse.new(id,
@@ -147,7 +158,8 @@ module MundiApi
                                deleted_at,
                                default_bank_account,
                                gateway_recipients,
-                               metadata)
+                               metadata,
+                               automatic_anticipation_settings)
     end
   end
 end
