@@ -93,6 +93,7 @@ module MundiApi
                    id = nil,
                    gateway_response = nil,
                    antifraud_response = nil,
+                   split = nil,
                    installments = nil,
                    next_attempt = nil,
                    transaction_type = nil,
@@ -122,6 +123,7 @@ module MundiApi
             id,
             gateway_response,
             antifraud_response,
+            split,
             next_attempt,
             transaction_type,
             metadata)
@@ -165,6 +167,14 @@ module MundiApi
       if hash['antifraud_response']
         antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response'])
       end
+      # Parameter is an array, so we need to iterate through it
+      split = nil
+      unless hash['split'].nil?
+        split = []
+        hash['split'].each do |structure|
+          split << (GetSplitResponse.from_hash(structure) if structure)
+        end
+      end
       installments = hash['installments']
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
@@ -194,6 +204,7 @@ module MundiApi
                                              id,
                                              gateway_response,
                                              antifraud_response,
+                                             split,
                                              installments,
                                              next_attempt,
                                              transaction_type,

@@ -4,18 +4,18 @@
 # https://apimatic.io ).
 
 module MundiApi
-  # The Split Options Request
-  class CreateSplitOptionsRequest < BaseModel
-    # Liable options
+  # GetSplitOptionsResponse Model.
+  class GetSplitOptionsResponse < BaseModel
+    # TODO: Write general description for this method
     # @return [Boolean]
     attr_accessor :liable
 
-    # Charge processing fee
+    # TODO: Write general description for this method
     # @return [Boolean]
     attr_accessor :charge_processing_fee
 
-    # Charge processing fee
-    # @return [Boolean]
+    # TODO: Write general description for this method
+    # @return [String]
     attr_accessor :charge_remainder_fee
 
     # A mapping from model property names to API property names.
@@ -45,9 +45,9 @@ module MundiApi
       charge_remainder_fee = hash['charge_remainder_fee']
 
       # Create object from extracted values.
-      CreateSplitOptionsRequest.new(liable,
-                                    charge_processing_fee,
-                                    charge_remainder_fee)
+      GetSplitOptionsResponse.new(liable,
+                                  charge_processing_fee,
+                                  charge_remainder_fee)
     end
   end
 end
