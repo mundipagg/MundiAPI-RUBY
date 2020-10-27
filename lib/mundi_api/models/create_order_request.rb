@@ -66,6 +66,10 @@ module MundiApi
     # @return [CreateAntifraudRequest]
     attr_accessor :antifraud
 
+    # SubMerchant
+    # @return [CreateSubMerchantRequest]
+    attr_accessor :submerchant
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -84,6 +88,7 @@ module MundiApi
       @_hash['closed'] = 'closed'
       @_hash['currency'] = 'currency'
       @_hash['antifraud'] = 'antifraud'
+      @_hash['submerchant'] = 'submerchant'
       @_hash
     end
 
@@ -101,7 +106,8 @@ module MundiApi
                    location = nil,
                    device = nil,
                    currency = nil,
-                   antifraud = nil)
+                   antifraud = nil,
+                   submerchant = nil)
       @items = items
       @customer = customer
       @payments = payments
@@ -117,6 +123,7 @@ module MundiApi
       @closed = closed
       @currency = currency
       @antifraud = antifraud
+      @submerchant = submerchant
     end
 
     # Creates an instance of the object from a hash.
@@ -157,6 +164,8 @@ module MundiApi
       currency = hash['currency']
       antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if
         hash['antifraud']
+      submerchant = CreateSubMerchantRequest.from_hash(hash['submerchant']) if
+        hash['submerchant']
 
       # Create object from extracted values.
       CreateOrderRequest.new(items,
@@ -173,7 +182,8 @@ module MundiApi
                              location,
                              device,
                              currency,
-                             antifraud)
+                             antifraud,
+                             submerchant)
     end
   end
 end
