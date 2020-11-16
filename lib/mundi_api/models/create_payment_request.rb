@@ -70,6 +70,10 @@ module MundiApi
     # @return [CreatePrivateLabelPaymentRequest]
     attr_accessor :private_label
 
+    # Settings for pix payment
+    # @return [CreatePixPaymentRequest]
+    attr_accessor :pix
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -89,6 +93,7 @@ module MundiApi
       @_hash['metadata'] = 'metadata'
       @_hash['cash'] = 'cash'
       @_hash['private_label'] = 'private_label'
+      @_hash['pix'] = 'pix'
       @_hash
     end
 
@@ -107,7 +112,8 @@ module MundiApi
                    customer_id = nil,
                    customer = nil,
                    metadata = nil,
-                   cash = nil)
+                   cash = nil,
+                   pix = nil)
       @payment_method = payment_method
       @credit_card = credit_card
       @debit_card = debit_card
@@ -124,6 +130,7 @@ module MundiApi
       @metadata = metadata
       @cash = cash
       @private_label = private_label
+      @pix = pix
     end
 
     # Creates an instance of the object from a hash.
@@ -166,6 +173,7 @@ module MundiApi
         hash['customer']
       metadata = hash['metadata']
       cash = CreateCashPaymentRequest.from_hash(hash['cash']) if hash['cash']
+      pix = CreatePixPaymentRequest.from_hash(hash['pix']) if hash['pix']
 
       # Create object from extracted values.
       CreatePaymentRequest.new(payment_method,
@@ -183,7 +191,8 @@ module MundiApi
                                customer_id,
                                customer,
                                metadata,
-                               cash)
+                               cash,
+                               pix)
     end
   end
 end
