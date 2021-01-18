@@ -236,6 +236,7 @@ require_relative 'mundi_api/models/create_sub_merchant_request.rb'
 require_relative 'mundi_api/models/get_pix_transaction_response.rb'
 require_relative 'mundi_api/models/pix_additional_information.rb'
 require_relative 'mundi_api/models/create_pix_payment_request.rb'
+require_relative 'mundi_api/models/get_transfer_settings_response.rb'
 
 # Exceptions
 require_relative 'mundi_api/exceptions/api_exception.rb'

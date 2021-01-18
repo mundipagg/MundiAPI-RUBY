@@ -63,6 +63,10 @@ module MundiApi
     # @return [GetAutomaticAnticipationResponse]
     attr_accessor :automatic_anticipation_settings
 
+    # Metadata
+    # @return [GetTransferSettingsResponse]
+    attr_accessor :transfer_settings
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -81,6 +85,7 @@ module MundiApi
       @_hash['metadata'] = 'metadata'
       @_hash['automatic_anticipation_settings'] =
         'automatic_anticipation_settings'
+      @_hash['transfer_settings'] = 'transfer_settings'
       @_hash
     end
 
@@ -97,7 +102,8 @@ module MundiApi
                    default_bank_account = nil,
                    gateway_recipients = nil,
                    metadata = nil,
-                   automatic_anticipation_settings = nil)
+                   automatic_anticipation_settings = nil,
+                   transfer_settings = nil)
       @id = id
       @name = name
       @email = email
@@ -112,6 +118,7 @@ module MundiApi
       @gateway_recipients = gateway_recipients
       @metadata = metadata
       @automatic_anticipation_settings = automatic_anticipation_settings
+      @transfer_settings = transfer_settings
     end
 
     # Creates an instance of the object from a hash.
@@ -144,6 +151,9 @@ module MundiApi
       if hash['automatic_anticipation_settings']
         automatic_anticipation_settings = GetAutomaticAnticipationResponse.from_hash(hash['automatic_anticipation_settings'])
       end
+      if hash['transfer_settings']
+        transfer_settings = GetTransferSettingsResponse.from_hash(hash['transfer_settings'])
+      end
 
       # Create object from extracted values.
       GetRecipientResponse.new(id,
@@ -159,7 +169,8 @@ module MundiApi
                                default_bank_account,
                                gateway_recipients,
                                metadata,
-                               automatic_anticipation_settings)
+                               automatic_anticipation_settings,
+                               transfer_settings)
     end
   end
 end
