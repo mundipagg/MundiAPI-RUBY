@@ -63,6 +63,10 @@ module MundiApi
     # @return [String]
     attr_accessor :code
 
+    # Código de referência do cliente no sistema da loja. Max: 52 caracteres
+    # @return [String]
+    attr_accessor :document_type
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -80,6 +84,7 @@ module MundiApi
       @_hash['phones'] = 'phones'
       @_hash['fb_id'] = 'fb_id'
       @_hash['code'] = 'code'
+      @_hash['document_type'] = 'document_type'
       @_hash
     end
 
@@ -96,6 +101,7 @@ module MundiApi
                    metadata = nil,
                    phones = nil,
                    code = nil,
+                   document_type = nil,
                    fb_id = nil)
       @id = id
       @name = name
@@ -111,6 +117,7 @@ module MundiApi
       @phones = phones
       @fb_id = fb_id
       @code = code
+      @document_type = document_type
     end
 
     # Creates an instance of the object from a hash.
@@ -132,6 +139,7 @@ module MundiApi
       metadata = hash['metadata']
       phones = GetPhonesResponse.from_hash(hash['phones']) if hash['phones']
       code = hash['code']
+      document_type = hash['document_type']
       fb_id = hash['fb_id']
 
       # Create object from extracted values.
@@ -148,6 +156,7 @@ module MundiApi
                               metadata,
                               phones,
                               code,
+                              document_type,
                               fb_id)
     end
   end
