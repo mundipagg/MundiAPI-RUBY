@@ -18,21 +18,35 @@ module MundiApi
     # @return [GetRecipientResponse]
     attr_accessor :recipient
 
+    # Recipient
+    # @return [Integer]
+    attr_accessor :waiting_funds_amount
+
+    # Recipient
+    # @return [Integer]
+    attr_accessor :transferred_amount
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['currency'] = 'currency'
       @_hash['available_amount'] = 'available_amount'
       @_hash['recipient'] = 'recipient'
+      @_hash['waiting_funds_amount'] = 'waiting_funds_amount'
+      @_hash['transferred_amount'] = 'transferred_amount'
       @_hash
     end
 
     def initialize(currency = nil,
                    available_amount = nil,
+                   waiting_funds_amount = nil,
+                   transferred_amount = nil,
                    recipient = nil)
       @currency = currency
       @available_amount = available_amount
       @recipient = recipient
+      @waiting_funds_amount = waiting_funds_amount
+      @transferred_amount = transferred_amount
     end
 
     # Creates an instance of the object from a hash.
@@ -42,12 +56,16 @@ module MundiApi
       # Extract variables from the hash.
       currency = hash['currency']
       available_amount = hash['available_amount']
+      waiting_funds_amount = hash['waiting_funds_amount']
+      transferred_amount = hash['transferred_amount']
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if
         hash['recipient']
 
       # Create object from extracted values.
       GetBalanceResponse.new(currency,
                              available_amount,
+                             waiting_funds_amount,
+                             transferred_amount,
                              recipient)
     end
   end
