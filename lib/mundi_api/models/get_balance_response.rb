@@ -11,7 +11,7 @@ module MundiApi
     attr_accessor :currency
 
     # Amount available for transferring
-    # @return [Integer]
+    # @return [Long]
     attr_accessor :available_amount
 
     # Recipient
@@ -19,11 +19,11 @@ module MundiApi
     attr_accessor :recipient
 
     # Recipient
-    # @return [Integer]
+    # @return [Long]
     attr_accessor :waiting_funds_amount
 
     # Recipient
-    # @return [Integer]
+    # @return [Long]
     attr_accessor :transferred_amount
 
     # A mapping from model property names to API property names.
