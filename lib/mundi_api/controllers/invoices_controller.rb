@@ -174,6 +174,8 @@ module MundiApi
     # date start range
     # @param [DateTime] due_until Optional parameter: Filter for Invoice's due
     # date end range
+    # @param [String] customer_document Optional parameter: Fillter for
+    # invoice's document
     # @return ListInvoicesResponse response from the API call
     def get_invoices(page = nil,
                      size = nil,
@@ -184,7 +186,8 @@ module MundiApi
                      created_until = nil,
                      status = nil,
                      due_since = nil,
-                     due_until = nil)
+                     due_until = nil,
+                     customer_document = nil)
       # Prepare query url.
       _path_url = '/invoices'
       _query_builder = Configuration.base_uri.dup
@@ -201,7 +204,8 @@ module MundiApi
           'created_until' => created_until,
           'status' => status,
           'due_since' => due_since,
-          'due_until' => due_until
+          'due_until' => due_until,
+          'customer_document' => customer_document
         },
         array_serialization: Configuration.array_serialization
       )
