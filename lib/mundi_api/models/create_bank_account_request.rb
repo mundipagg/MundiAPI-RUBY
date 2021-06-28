@@ -46,6 +46,10 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
+    # Pix key
+    # @return [String]
+    attr_accessor :pix_key
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -59,6 +63,7 @@ module MundiApi
       @_hash['account_check_digit'] = 'account_check_digit'
       @_hash['type'] = 'type'
       @_hash['metadata'] = 'metadata'
+      @_hash['pix_key'] = 'pix_key'
       @_hash
     end
 
@@ -71,7 +76,8 @@ module MundiApi
                    account_number = nil,
                    account_check_digit = nil,
                    type = nil,
-                   metadata = nil)
+                   metadata = nil,
+                   pix_key = nil)
       @holder_name = holder_name
       @holder_type = holder_type
       @holder_document = holder_document
@@ -82,6 +88,7 @@ module MundiApi
       @account_check_digit = account_check_digit
       @type = type
       @metadata = metadata
+      @pix_key = pix_key
     end
 
     # Creates an instance of the object from a hash.
@@ -99,6 +106,7 @@ module MundiApi
       account_check_digit = hash['account_check_digit']
       type = hash['type']
       metadata = hash['metadata']
+      pix_key = hash['pix_key']
 
       # Create object from extracted values.
       CreateBankAccountRequest.new(holder_name,
@@ -110,7 +118,8 @@ module MundiApi
                                    account_number,
                                    account_check_digit,
                                    type,
-                                   metadata)
+                                   metadata,
+                                   pix_key)
     end
   end
 end

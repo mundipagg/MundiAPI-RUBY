@@ -38,6 +38,14 @@ module MundiApi
     # @return [CreateTransferSettingsRequest]
     attr_accessor :transfer_settings
 
+    # Recipient code
+    # @return [String]
+    attr_accessor :code
+
+    # Payment mode
+    # @return [String]
+    attr_accessor :payment_mode
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -49,6 +57,8 @@ module MundiApi
       @_hash['default_bank_account'] = 'default_bank_account'
       @_hash['metadata'] = 'metadata'
       @_hash['transfer_settings'] = 'transfer_settings'
+      @_hash['code'] = 'code'
+      @_hash['payment_mode'] = 'payment_mode'
       @_hash
     end
 
@@ -59,6 +69,8 @@ module MundiApi
                    type = nil,
                    default_bank_account = nil,
                    metadata = nil,
+                   code = nil,
+                   payment_mode = 'bank_transfer',
                    transfer_settings = nil)
       @name = name
       @email = email
@@ -68,6 +80,8 @@ module MundiApi
       @default_bank_account = default_bank_account
       @metadata = metadata
       @transfer_settings = transfer_settings
+      @code = code
+      @payment_mode = payment_mode
     end
 
     # Creates an instance of the object from a hash.
@@ -84,6 +98,8 @@ module MundiApi
         default_bank_account = CreateBankAccountRequest.from_hash(hash['default_bank_account'])
       end
       metadata = hash['metadata']
+      code = hash['code']
+      payment_mode = hash['payment_mode'] ||= 'bank_transfer'
       if hash['transfer_settings']
         transfer_settings = CreateTransferSettingsRequest.from_hash(hash['transfer_settings'])
       end
@@ -96,6 +112,8 @@ module MundiApi
                                  type,
                                  default_bank_account,
                                  metadata,
+                                 code,
+                                 payment_mode,
                                  transfer_settings)
     end
   end
