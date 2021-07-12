@@ -67,6 +67,14 @@ module MundiApi
     # @return [GetTransferSettingsResponse]
     attr_accessor :transfer_settings
 
+    # Recipient code
+    # @return [String]
+    attr_accessor :code
+
+    # Payment mode
+    # @return [String]
+    attr_accessor :payment_mode
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -86,6 +94,8 @@ module MundiApi
       @_hash['automatic_anticipation_settings'] =
         'automatic_anticipation_settings'
       @_hash['transfer_settings'] = 'transfer_settings'
+      @_hash['code'] = 'code'
+      @_hash['payment_mode'] = 'payment_mode'
       @_hash
     end
 
@@ -102,6 +112,8 @@ module MundiApi
                    default_bank_account = nil,
                    gateway_recipients = nil,
                    metadata = nil,
+                   code = nil,
+                   payment_mode = 'bank_transfer',
                    automatic_anticipation_settings = nil,
                    transfer_settings = nil)
       @id = id
@@ -119,6 +131,8 @@ module MundiApi
       @metadata = metadata
       @automatic_anticipation_settings = automatic_anticipation_settings
       @transfer_settings = transfer_settings
+      @code = code
+      @payment_mode = payment_mode
     end
 
     # Creates an instance of the object from a hash.
@@ -148,6 +162,8 @@ module MundiApi
         end
       end
       metadata = hash['metadata']
+      code = hash['code']
+      payment_mode = hash['payment_mode'] ||= 'bank_transfer'
       if hash['automatic_anticipation_settings']
         automatic_anticipation_settings = GetAutomaticAnticipationResponse.from_hash(hash['automatic_anticipation_settings'])
       end
@@ -169,6 +185,8 @@ module MundiApi
                                default_bank_account,
                                gateway_recipients,
                                metadata,
+                               code,
+                               payment_mode,
                                automatic_anticipation_settings,
                                transfer_settings)
     end

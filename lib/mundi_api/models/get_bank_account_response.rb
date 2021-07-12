@@ -5,7 +5,7 @@
 
 require 'date'
 module MundiApi
-  # GetBankAccountResponse Model.
+  # Response object to bank account
   class GetBankAccountResponse < BaseModel
     # Id
     # @return [String]
@@ -67,6 +67,10 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
+    # Pix Key
+    # @return [String]
+    attr_accessor :pix_key
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -85,6 +89,7 @@ module MundiApi
       @_hash['deleted_at'] = 'deleted_at'
       @_hash['recipient'] = 'recipient'
       @_hash['metadata'] = 'metadata'
+      @_hash['pix_key'] = 'pix_key'
       @_hash
     end
 
@@ -102,6 +107,7 @@ module MundiApi
                    updated_at = nil,
                    deleted_at = nil,
                    metadata = nil,
+                   pix_key = nil,
                    recipient = nil)
       @id = id
       @holder_name = holder_name
@@ -118,6 +124,7 @@ module MundiApi
       @deleted_at = deleted_at
       @recipient = recipient
       @metadata = metadata
+      @pix_key = pix_key
     end
 
     # Creates an instance of the object from a hash.
@@ -139,6 +146,7 @@ module MundiApi
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       metadata = hash['metadata']
+      pix_key = hash['pix_key']
       recipient = GetRecipientResponse.from_hash(hash['recipient']) if
         hash['recipient']
 
@@ -157,6 +165,7 @@ module MundiApi
                                  updated_at,
                                  deleted_at,
                                  metadata,
+                                 pix_key,
                                  recipient)
     end
   end
