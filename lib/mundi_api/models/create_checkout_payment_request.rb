@@ -62,6 +62,10 @@ module MundiApi
     # @return [CreateCheckoutBankTransferRequest]
     attr_accessor :bank_transfer
 
+    # Accepted Brands
+    # @return [List of String]
+    attr_accessor :accepted_brands
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -80,6 +84,7 @@ module MundiApi
       @_hash['billing_address_editable'] = 'billing_address_editable'
       @_hash['billing_address'] = 'billing_address'
       @_hash['bank_transfer'] = 'bank_transfer'
+      @_hash['accepted_brands'] = 'accepted_brands'
       @_hash
     end
 
@@ -90,6 +95,7 @@ module MundiApi
                    billing_address_editable = nil,
                    billing_address = nil,
                    bank_transfer = nil,
+                   accepted_brands = nil,
                    default_payment_method = nil,
                    gateway_affiliation_id = nil,
                    credit_card = nil,
@@ -111,6 +117,7 @@ module MundiApi
       @billing_address_editable = billing_address_editable
       @billing_address = billing_address
       @bank_transfer = bank_transfer
+      @accepted_brands = accepted_brands
     end
 
     # Creates an instance of the object from a hash.
@@ -129,6 +136,7 @@ module MundiApi
       if hash['bank_transfer']
         bank_transfer = CreateCheckoutBankTransferRequest.from_hash(hash['bank_transfer'])
       end
+      accepted_brands = hash['accepted_brands']
       default_payment_method = hash['default_payment_method']
       gateway_affiliation_id = hash['gateway_affiliation_id']
       if hash['credit_card']
@@ -150,6 +158,7 @@ module MundiApi
                                        billing_address_editable,
                                        billing_address,
                                        bank_transfer,
+                                       accepted_brands,
                                        default_payment_method,
                                        gateway_affiliation_id,
                                        credit_card,

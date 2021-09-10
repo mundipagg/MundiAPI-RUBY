@@ -107,6 +107,10 @@ module MundiApi
     # @return [GetCheckoutBankTransferPaymentResponse]
     attr_accessor :bank_transfer
 
+    # Accepted Brands
+    # @return [List of String]
+    attr_accessor :accepted_brands
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -135,6 +139,7 @@ module MundiApi
       @_hash['currency'] = 'currency'
       @_hash['debit_card'] = 'debit_card'
       @_hash['bank_transfer'] = 'bank_transfer'
+      @_hash['accepted_brands'] = 'accepted_brands'
       @_hash
     end
 
@@ -156,6 +161,7 @@ module MundiApi
                    shipping = nil,
                    shippable = nil,
                    currency = nil,
+                   accepted_brands = nil,
                    amount = nil,
                    canceled_at = nil,
                    customer = nil,
@@ -188,6 +194,7 @@ module MundiApi
       @currency = currency
       @debit_card = debit_card
       @bank_transfer = bank_transfer
+      @accepted_brands = accepted_brands
     end
 
     # Creates an instance of the object from a hash.
@@ -218,6 +225,7 @@ module MundiApi
         hash['shipping']
       shippable = hash['shippable']
       currency = hash['currency']
+      accepted_brands = hash['accepted_brands']
       amount = hash['amount']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
@@ -251,6 +259,7 @@ module MundiApi
                                      shipping,
                                      shippable,
                                      currency,
+                                     accepted_brands,
                                      amount,
                                      canceled_at,
                                      customer,
