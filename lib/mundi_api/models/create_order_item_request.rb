@@ -18,14 +18,6 @@ module MundiApi
     # @return [Integer]
     attr_accessor :quantity
 
-    # Item seller
-    # @return [CreateSellerRequest]
-    attr_accessor :seller
-
-    # seller identificator
-    # @return [String]
-    attr_accessor :seller_id
-
     # Category
     # @return [String]
     attr_accessor :category
@@ -40,8 +32,6 @@ module MundiApi
       @_hash['amount'] = 'amount'
       @_hash['description'] = 'description'
       @_hash['quantity'] = 'quantity'
-      @_hash['seller'] = 'seller'
-      @_hash['seller_id'] = 'seller_id'
       @_hash['category'] = 'category'
       @_hash['code'] = 'code'
       @_hash
@@ -51,14 +41,10 @@ module MundiApi
                    description = nil,
                    quantity = nil,
                    category = nil,
-                   seller = nil,
-                   seller_id = nil,
                    code = nil)
       @amount = amount
       @description = description
       @quantity = quantity
-      @seller = seller
-      @seller_id = seller_id
       @category = category
       @code = code
     end
@@ -72,8 +58,6 @@ module MundiApi
       description = hash['description']
       quantity = hash['quantity']
       category = hash['category']
-      seller = CreateSellerRequest.from_hash(hash['seller']) if hash['seller']
-      seller_id = hash['seller_id']
       code = hash['code']
 
       # Create object from extracted values.
@@ -81,8 +65,6 @@ module MundiApi
                                  description,
                                  quantity,
                                  category,
-                                 seller,
-                                 seller_id,
                                  code)
     end
   end

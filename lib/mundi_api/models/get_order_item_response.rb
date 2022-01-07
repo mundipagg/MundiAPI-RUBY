@@ -22,10 +22,6 @@ module MundiApi
     # @return [Integer]
     attr_accessor :quantity
 
-    # Seller data
-    # @return [GetSellerResponse]
-    attr_accessor :get_seller_response
-
     # Category
     # @return [String]
     attr_accessor :category
@@ -41,7 +37,6 @@ module MundiApi
       @_hash['amount'] = 'amount'
       @_hash['description'] = 'description'
       @_hash['quantity'] = 'quantity'
-      @_hash['get_seller_response'] = 'GetSellerResponse'
       @_hash['category'] = 'category'
       @_hash['code'] = 'code'
       @_hash
@@ -52,13 +47,11 @@ module MundiApi
                    description = nil,
                    quantity = nil,
                    category = nil,
-                   code = nil,
-                   get_seller_response = nil)
+                   code = nil)
       @id = id
       @amount = amount
       @description = description
       @quantity = quantity
-      @get_seller_response = get_seller_response
       @category = category
       @code = code
     end
@@ -74,9 +67,6 @@ module MundiApi
       quantity = hash['quantity']
       category = hash['category']
       code = hash['code']
-      if hash['GetSellerResponse']
-        get_seller_response = GetSellerResponse.from_hash(hash['GetSellerResponse'])
-      end
 
       # Create object from extracted values.
       GetOrderItemResponse.new(id,
@@ -84,8 +74,7 @@ module MundiApi
                                description,
                                quantity,
                                category,
-                               code,
-                               get_seller_response)
+                               code)
     end
   end
 end

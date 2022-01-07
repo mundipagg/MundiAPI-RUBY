@@ -42,12 +42,6 @@ module MundiApi
       OrdersController.instance
     end
 
-    # Singleton access to sellers controller.
-    # @return [SellersController] Returns the controller instance.
-    def sellers
-      SellersController.instance
-    end
-
     # Singleton access to tokens controller.
     # @return [TokensController] Returns the controller instance.
     def tokens

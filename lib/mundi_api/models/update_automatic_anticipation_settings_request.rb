@@ -24,7 +24,7 @@ module MundiApi
 
     # TODO: Write general description for this method
     # @return [Integer]
-    attr_reader :days
+    attr_accessor :days
 
     # A mapping from model property names to API property names.
     def self.names
