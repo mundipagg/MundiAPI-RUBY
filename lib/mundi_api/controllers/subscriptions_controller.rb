@@ -1445,5 +1445,40 @@ module MundiApi
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetUsageReportResponse.from_hash(decoded)
     end
+
+    # TODO: type endpoint description here
+    # @param [String] id Required parameter: Subscription's id
+    # @param [UpdateSubscriptionSplitRequest] request Required parameter:
+    # Example:
+    # @return GetSubscriptionResponse response from the API call
+    def update_split_subscription(id,
+                                  request)
+      # Prepare query url.
+      _path_url = '/subscriptions/{id}/split'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'id' => id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8'
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.patch(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetSubscriptionResponse.from_hash(decoded)
+    end
   end
 end

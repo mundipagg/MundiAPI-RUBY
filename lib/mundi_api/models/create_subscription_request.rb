@@ -131,6 +131,10 @@ module MundiApi
     # @return [CreateSubMerchantRequest]
     attr_accessor :submerchant
 
+    # Subscription's split
+    # @return [CreateSubscriptionSplitRequest]
+    attr_accessor :split
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -165,6 +169,7 @@ module MundiApi
       @_hash['increments'] = 'increments'
       @_hash['period'] = 'period'
       @_hash['submerchant'] = 'submerchant'
+      @_hash['split'] = 'split'
       @_hash
     end
 
@@ -198,7 +203,8 @@ module MundiApi
                    quantity = nil,
                    boleto_due_days = nil,
                    period = nil,
-                   submerchant = nil)
+                   submerchant = nil,
+                   split = nil)
       @customer = customer
       @card = card
       @code = code
@@ -230,6 +236,7 @@ module MundiApi
       @increments = increments
       @period = period
       @submerchant = submerchant
+      @split = split
     end
 
     # Creates an instance of the object from a hash.
@@ -294,6 +301,8 @@ module MundiApi
       period = CreatePeriodRequest.from_hash(hash['period']) if hash['period']
       submerchant = CreateSubMerchantRequest.from_hash(hash['submerchant']) if
         hash['submerchant']
+      split = CreateSubscriptionSplitRequest.from_hash(hash['split']) if
+        hash['split']
 
       # Create object from extracted values.
       CreateSubscriptionRequest.new(customer,
@@ -326,7 +335,8 @@ module MundiApi
                                     quantity,
                                     boleto_due_days,
                                     period,
-                                    submerchant)
+                                    submerchant,
+                                    split)
     end
   end
 end

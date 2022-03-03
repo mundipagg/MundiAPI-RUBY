@@ -115,6 +115,10 @@ module MundiApi
     # @return [Integer]
     attr_accessor :boleto_due_days
 
+    # Subscription's split response
+    # @return [GetSubscriptionSplitResponse]
+    attr_accessor :split
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -145,6 +149,7 @@ module MundiApi
       @_hash['discounts'] = 'discounts'
       @_hash['increments'] = 'increments'
       @_hash['boleto_due_days'] = 'boleto_due_days'
+      @_hash['split'] = 'split'
       @_hash
     end
 
@@ -167,6 +172,7 @@ module MundiApi
                    setup = nil,
                    gateway_affiliation_id = nil,
                    increments = nil,
+                   split = nil,
                    current_cycle = nil,
                    customer = nil,
                    next_billing_at = nil,
@@ -202,6 +208,7 @@ module MundiApi
       @discounts = discounts
       @increments = increments
       @boleto_due_days = boleto_due_days
+      @split = split
     end
 
     # Creates an instance of the object from a hash.
@@ -242,6 +249,8 @@ module MundiApi
           increments << (GetIncrementResponse.from_hash(structure) if structure)
         end
       end
+      split = GetSubscriptionSplitResponse.from_hash(hash['split']) if
+        hash['split']
       current_cycle = GetPeriodResponse.from_hash(hash['current_cycle']) if
         hash['current_cycle']
       customer = GetCustomerResponse.from_hash(hash['customer']) if
@@ -282,6 +291,7 @@ module MundiApi
                                   setup,
                                   gateway_affiliation_id,
                                   increments,
+                                  split,
                                   current_cycle,
                                   customer,
                                   next_billing_at,
