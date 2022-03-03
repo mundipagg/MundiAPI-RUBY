@@ -232,6 +232,12 @@ require_relative 'mundi_api/models/get_pix_transaction_response.rb'
 require_relative 'mundi_api/models/pix_additional_information.rb'
 require_relative 'mundi_api/models/create_pix_payment_request.rb'
 require_relative 'mundi_api/models/get_transfer_settings_response.rb'
+require_relative 'mundi_api/models/create_subscription_split_request.rb'
+require_relative 'mundi_api/models/get_subscription_split_response.rb'
+require_relative 'mundi_api/models/update_subscription_split_request.rb'
+require_relative 'mundi_api/models/cancel_split_request.rb'
+require_relative 'mundi_api/models/get_pix_payer_response.rb'
+require_relative 'mundi_api/models/get_pix_bank_account_response.rb'
 
 # Exceptions
 require_relative 'mundi_api/exceptions/api_exception.rb'
