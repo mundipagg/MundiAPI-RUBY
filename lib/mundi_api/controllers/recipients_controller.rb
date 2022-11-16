@@ -362,6 +362,49 @@ module MundiApi
       GetRecipientResponse.from_hash(decoded)
     end
 
+    # Gets the anticipation limits for a recipient
+    # @param [String] recipient_id Required parameter: Recipient id
+    # @param [String] timeframe Required parameter: Timeframe
+    # @param [DateTime] payment_date Required parameter: Anticipation payment
+    # date
+    # @return GetAnticipationLimitResponse response from the API call
+    def get_anticipation_limits(recipient_id,
+                                timeframe,
+                                payment_date)
+      # Prepare query url.
+      _path_url = '/recipients/{recipient_id}/anticipation_limits'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'recipient_id' => recipient_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'timeframe' => timeframe,
+          'payment_date' => payment_date
+        },
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetAnticipationLimitResponse.from_hash(decoded)
+    end
+
     # Gets a transfer
     # @param [String] recipient_id Required parameter: Recipient id
     # @param [String] transfer_id Required parameter: Transfer id
@@ -553,49 +596,6 @@ module MundiApi
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetTransferResponse.from_hash(decoded)
-    end
-
-    # Gets the anticipation limits for a recipient
-    # @param [String] recipient_id Required parameter: Recipient id
-    # @param [String] timeframe Required parameter: Timeframe
-    # @param [DateTime] payment_date Required parameter: Anticipation payment
-    # date
-    # @return GetAnticipationLimitResponse response from the API call
-    def get_anticipation_limits(recipient_id,
-                                timeframe,
-                                payment_date)
-      # Prepare query url.
-      _path_url = '/recipients/{recipient_id}/anticipation_limits'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'recipient_id' => recipient_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_builder = APIHelper.append_url_with_query_parameters(
-        _query_builder,
-        {
-          'timeframe' => timeframe,
-          'payment_date' => payment_date
-        },
-        array_serialization: Configuration.array_serialization
-      )
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetAnticipationLimitResponse.from_hash(decoded)
     end
 
     # TODO: type endpoint description here

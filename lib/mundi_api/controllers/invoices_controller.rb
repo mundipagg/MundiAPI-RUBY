@@ -192,39 +192,6 @@ module MundiApi
       GetInvoiceResponse.from_hash(decoded)
     end
 
-    # Cancels an invoice
-    # @param [String] invoice_id Required parameter: Invoice id
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetInvoiceResponse response from the API call
-    def cancel_invoice(invoice_id,
-                       idempotency_key = nil)
-      # Prepare query url.
-      _path_url = '/invoices/{invoice_id}'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'invoice_id' => invoice_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'idempotency-key' => idempotency_key
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.delete(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetInvoiceResponse.from_hash(decoded)
-    end
-
     # Gets all invoices
     # @param [Integer] page Optional parameter: Page number
     # @param [Integer] size Optional parameter: Page size
@@ -293,6 +260,39 @@ module MundiApi
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListInvoicesResponse.from_hash(decoded)
+    end
+
+    # Cancels an invoice
+    # @param [String] invoice_id Required parameter: Invoice id
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return GetInvoiceResponse response from the API call
+    def cancel_invoice(invoice_id,
+                       idempotency_key = nil)
+      # Prepare query url.
+      _path_url = '/invoices/{invoice_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'invoice_id' => invoice_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'idempotency-key' => idempotency_key
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetInvoiceResponse.from_hash(decoded)
     end
   end
 end

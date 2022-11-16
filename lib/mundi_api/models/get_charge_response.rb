@@ -83,6 +83,14 @@ module MundiApi
     # @return [Integer]
     attr_accessor :paid_amount
 
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrency_cycle
+
+    # interest and fine paid
+    # @return [Integer]
+    attr_accessor :interest_and_fine_paid
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -105,6 +113,8 @@ module MundiApi
       @_hash['canceled_at'] = 'canceled_at'
       @_hash['canceled_amount'] = 'canceled_amount'
       @_hash['paid_amount'] = 'paid_amount'
+      @_hash['recurrency_cycle'] = 'recurrency_cycle'
+      @_hash['interest_and_fine_paid'] = 'interest_and_fine_paid'
       @_hash
     end
 
@@ -126,7 +136,9 @@ module MundiApi
                    order = nil,
                    customer = nil,
                    paid_at = nil,
-                   canceled_at = nil)
+                   canceled_at = nil,
+                   recurrency_cycle = nil,
+                   interest_and_fine_paid = nil)
       @id = id
       @code = code
       @gateway_id = gateway_id
@@ -146,6 +158,8 @@ module MundiApi
       @canceled_at = canceled_at
       @canceled_amount = canceled_amount
       @paid_amount = paid_amount
+      @recurrency_cycle = recurrency_cycle
+      @interest_and_fine_paid = interest_and_fine_paid
     end
 
     # Creates an instance of the object from a hash.
@@ -177,6 +191,8 @@ module MundiApi
       paid_at = APIHelper.rfc3339(hash['paid_at']) if hash['paid_at']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
+      recurrency_cycle = hash['recurrency_cycle']
+      interest_and_fine_paid = hash['interest_and_fine_paid']
 
       # Create object from extracted values.
       GetChargeResponse.new(id,
@@ -197,7 +213,9 @@ module MundiApi
                             order,
                             customer,
                             paid_at,
-                            canceled_at)
+                            canceled_at,
+                            recurrency_cycle,
+                            interest_and_fine_paid)
     end
   end
 end
