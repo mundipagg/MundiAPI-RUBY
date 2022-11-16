@@ -63,6 +63,10 @@ module MundiApi
     # @return [String]
     attr_accessor :operation_type
 
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrency_cycle
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -80,6 +84,7 @@ module MundiApi
       @_hash['contactless'] = 'contactless'
       @_hash['auto_recovery'] = 'auto_recovery'
       @_hash['operation_type'] = 'operation_type'
+      @_hash['recurrency_cycle'] = 'recurrency_cycle'
       @_hash
     end
 
@@ -96,7 +101,8 @@ module MundiApi
                    authentication = nil,
                    contactless = nil,
                    auto_recovery = nil,
-                   operation_type = nil)
+                   operation_type = nil,
+                   recurrency_cycle = nil)
       @installments = installments
       @statement_descriptor = statement_descriptor
       @card = card
@@ -111,6 +117,7 @@ module MundiApi
       @contactless = contactless
       @auto_recovery = auto_recovery
       @operation_type = operation_type
+      @recurrency_cycle = recurrency_cycle
     end
 
     # Creates an instance of the object from a hash.
@@ -136,6 +143,7 @@ module MundiApi
       end
       auto_recovery = hash['auto_recovery']
       operation_type = hash['operation_type']
+      recurrency_cycle = hash['recurrency_cycle']
 
       # Create object from extracted values.
       CreateCreditCardPaymentRequest.new(installments,
@@ -151,7 +159,8 @@ module MundiApi
                                          authentication,
                                          contactless,
                                          auto_recovery,
-                                         operation_type)
+                                         operation_type,
+                                         recurrency_cycle)
     end
   end
 end

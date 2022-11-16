@@ -8,9 +8,9 @@ This client library is a Ruby gem which can be compiled and used in your Ruby an
 
 1. Open the command line interface or the terminal and navigate to the folder containing the source code.
 2. Run ``` gem build mundi_api.gemspec ``` to build the gem.
-3. Once built, the gem can be installed on the current work environment using ``` gem install mundi_api-2.3.0.gem ```
+3. Once built, the gem can be installed on the current work environment using ``` gem install mundi_api-2.5.0.gem ```
 
-![Building Gem](https://apidocs.io/illustration/ruby?step=buildSDK&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiAPI-Ruby&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0)
+![Building Gem](https://apidocs.io/illustration/ruby?step=buildSDK&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiAPI-Ruby&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0)
 
 ## How to Use
 
@@ -20,41 +20,41 @@ The following section explains how to use the MundiApi Ruby Gem in a new Rails p
 
 Close any existing projects in RubyMine&trade; by selecting ``` File -> Close Project ```. Next, click on ``` Create New Project ``` to create a new project from scratch.
 
-![Create a new project in RubyMine](https://apidocs.io/illustration/ruby?step=createNewProject0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0)
+![Create a new project in RubyMine](https://apidocs.io/illustration/ruby?step=createNewProject0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0)
 
 Next, provide ``` TestApp ``` as the project name, choose ``` Rails Application ``` as the project type, and click ``` OK ```.
 
-![Create a new Rails Application in RubyMine - step 1](https://apidocs.io/illustration/ruby?step=createNewProject1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0)
+![Create a new Rails Application in RubyMine - step 1](https://apidocs.io/illustration/ruby?step=createNewProject1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0)
 
 In the next dialog make sure that correct *Ruby SDK* is being used (minimum 2.0.0) and click ``` OK ```.
 
-![Create a new Rails Application in RubyMine - step 2](https://apidocs.io/illustration/ruby?step=createNewProject2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0)
+![Create a new Rails Application in RubyMine - step 2](https://apidocs.io/illustration/ruby?step=createNewProject2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0)
 
 This will create a new Rails Application project with an existing set of files and folder.
 
 ### 2. Add reference of the gem
 
-In order to use the MundiApi gem in the new project we must add a gem reference. Locate the ```Gemfile``` in the *Project Explorer* window under the ``` TestApp ``` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: ``` gem 'mundi_api', '~> 2.3.0' ```
+In order to use the MundiApi gem in the new project we must add a gem reference. Locate the ```Gemfile``` in the *Project Explorer* window under the ``` TestApp ``` project node. The file contains references to all gems being used in the project. Here, add the reference to the library gem by adding the following line: ``` gem 'mundi_api', '~> 2.5.0' ```
 
-![Add references of the Gemfile](https://apidocs.io/illustration/ruby?step=addReference&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0)
+![Add references of the Gemfile](https://apidocs.io/illustration/ruby?step=addReference&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0)
 
 ### 3. Adding a new Rails Controller
 
 Once the ``` TestApp ``` project is created, a folder named ``` controllers ``` will be visible in the *Project Explorer* under the following path: ``` TestApp > app > controllers ```. Right click on this folder and select ``` New -> Run Rails Generator... ```.
 
-![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?step=addCode0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0)
+![Run Rails Generator on Controllers Folder](https://apidocs.io/illustration/ruby?step=addCode0&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0)
 
 Selecting the said option will popup a small window where the generator names are displayed. Here, select the ``` controller ``` template.
 
-![Create a new Controller](https://apidocs.io/illustration/ruby?step=addCode1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0)
+![Create a new Controller](https://apidocs.io/illustration/ruby?step=addCode1&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0)
 
 Next, a popup window will ask you for a Controller name and included Actions. For controller name provide ``` Hello ``` and include an action named ``` Index ``` and click ``` OK ```.
 
-![Add a new Controller](https://apidocs.io/illustration/ruby?step=addCode2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0)
+![Add a new Controller](https://apidocs.io/illustration/ruby?step=addCode2&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0)
 
 A new controller class anmed ``` HelloController ``` will be created in a file named ``` hello_controller.rb ``` containing a method named ``` Index ```. In this method, add code for initialization and a sample for its usage.
 
-![Initialize the library](https://apidocs.io/illustration/ruby?step=addCode3&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0)
+![Initialize the library](https://apidocs.io/illustration/ruby?step=addCode3&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0)
 
 ## How to Test
 
@@ -91,7 +91,7 @@ client = MundiApi::MundiApiClient.new(
 
 The added initlization code can be debugged by putting a breakpoint in the ``` Index ``` method and running the project in debug mode by selecting ``` Run -> Debug 'Development: TestApp' ```.
 
-![Debug the TestApp](https://apidocs.io/illustration/ruby?step=addCode4&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.3.0&initLine=client%2520%253D%2520MundiApiClient.new%2528%2527basic_auth_user_name%2527%252C%2520%2527basic_auth_password%2527%2529)
+![Debug the TestApp](https://apidocs.io/illustration/ruby?step=addCode4&workspaceFolder=MundiAPI-Ruby&workspaceName=MundiApi&projectName=mundi_api&gemName=mundi_api&gemVer=2.5.0&initLine=client%2520%253D%2520MundiApiClient.new%2528%2527basic_auth_user_name%2527%252C%2520%2527basic_auth_password%2527%2529)
 
 
 
@@ -260,8 +260,8 @@ def get_addresses(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 202
-size = 202
+page = 172
+size = 172
 
 result = customers_controller.get_addresses(customer_id, page, size)
 
@@ -478,8 +478,8 @@ def get_access_tokens(customer_id,
 
 ```ruby
 customer_id = 'customer_id'
-page = 202
-size = 202
+page = 172
+size = 172
 
 result = customers_controller.get_access_tokens(customer_id, page, size)
 
@@ -585,111 +585,6 @@ result = customers_controller.update_card(customer_id, card_id, request, idempot
 ```
 
 
-### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_cards") get_cards
-
-> Get all cards from a customer
-
-
-```ruby
-def get_cards(customer_id,
-                  page = nil,
-                  size = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customer_id |  ``` Required ```  | Customer Id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-
-
-#### Example Usage
-
-```ruby
-customer_id = 'customer_id'
-page = 202
-size = 202
-
-result = customers_controller.get_cards(customer_id, page, size)
-
-```
-
-
-### <a name="delete_card"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.delete_card") delete_card
-
-> Delete a customer's card
-
-
-```ruby
-def delete_card(customer_id,
-                    card_id,
-                    idempotency_key = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| customer_id |  ``` Required ```  | Customer Id |
-| card_id |  ``` Required ```  | Card Id |
-| idempotency_key |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```ruby
-customer_id = 'customer_id'
-card_id = 'card_id'
-idempotency_key = 'idempotency-key'
-
-result = customers_controller.delete_card(customer_id, card_id, idempotency_key)
-
-```
-
-
-### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_customers") get_customers
-
-> Get all Customers
-
-
-```ruby
-def get_customers(name = nil,
-                      document = nil,
-                      page = 1,
-                      size = 10,
-                      email = nil,
-                      code = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| name |  ``` Optional ```  | Name of the Customer |
-| document |  ``` Optional ```  | Document of the Customer |
-| page |  ``` Optional ```  ``` DefaultValue ```  | Current page the the search |
-| size |  ``` Optional ```  ``` DefaultValue ```  | Quantity pages of the search |
-| email |  ``` Optional ```  | Customer's email |
-| code |  ``` Optional ```  | Customer's code |
-
-
-#### Example Usage
-
-```ruby
-name = 'name'
-document = 'document'
-page = 1
-size = 10
-email = 'email'
-code = 'Code'
-
-result = customers_controller.get_customers(name, document, page, size, email, code)
-
-```
-
-
 ### <a name="delete_access_token"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.delete_access_token") delete_access_token
 
 > Delete a customer's access token
@@ -779,6 +674,111 @@ customer_id = 'customer_id'
 card_id = 'card_id'
 
 result = customers_controller.get_card(customer_id, card_id)
+
+```
+
+
+### <a name="get_cards"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_cards") get_cards
+
+> Get all cards from a customer
+
+
+```ruby
+def get_cards(customer_id,
+                  page = nil,
+                  size = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customer_id |  ``` Required ```  | Customer Id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+
+
+#### Example Usage
+
+```ruby
+customer_id = 'customer_id'
+page = 214
+size = 214
+
+result = customers_controller.get_cards(customer_id, page, size)
+
+```
+
+
+### <a name="delete_card"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.delete_card") delete_card
+
+> Delete a customer's card
+
+
+```ruby
+def delete_card(customer_id,
+                    card_id,
+                    idempotency_key = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| customer_id |  ``` Required ```  | Customer Id |
+| card_id |  ``` Required ```  | Card Id |
+| idempotency_key |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```ruby
+customer_id = 'customer_id'
+card_id = 'card_id'
+idempotency_key = 'idempotency-key'
+
+result = customers_controller.delete_card(customer_id, card_id, idempotency_key)
+
+```
+
+
+### <a name="get_customers"></a>![Method: ](https://apidocs.io/img/method.png ".CustomersController.get_customers") get_customers
+
+> Get all Customers
+
+
+```ruby
+def get_customers(name = nil,
+                      document = nil,
+                      page = 1,
+                      size = 10,
+                      email = nil,
+                      code = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| name |  ``` Optional ```  | Name of the Customer |
+| document |  ``` Optional ```  | Document of the Customer |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Current page the the search |
+| size |  ``` Optional ```  ``` DefaultValue ```  | Quantity pages of the search |
+| email |  ``` Optional ```  | Customer's email |
+| code |  ``` Optional ```  | Customer's code |
+
+
+#### Example Usage
+
+```ruby
+name = 'name'
+document = 'document'
+page = 1
+size = 10
+email = 'email'
+code = 'Code'
+
+result = customers_controller.get_customers(name, document, page, size, email, code)
 
 ```
 
@@ -920,8 +920,8 @@ def get_charges(page = nil,
 #### Example Usage
 
 ```ruby
-page = 202
-size = 202
+page = 214
+size = 214
 code = 'code'
 status = 'status'
 payment_method = 'payment_method'
@@ -1177,8 +1177,8 @@ def get_charge_transactions(charge_id,
 
 ```ruby
 charge_id = 'charge_id'
-page = 202
-size = 202
+page = 214
+size = 214
 
 result = charges_controller.get_charge_transactions(charge_id, page, size)
 
@@ -1343,8 +1343,8 @@ def get_recipients(page = nil,
 #### Example Usage
 
 ```ruby
-page = 202
-size = 202
+page = 214
+size = 214
 
 result = recipients_controller.get_recipients(page, size)
 
@@ -1413,8 +1413,8 @@ def get_anticipations(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 202
-size = 202
+page = 214
+size = 214
 status = 'status'
 timeframe = 'timeframe'
 payment_date_since = DateTime.now
@@ -1517,6 +1517,38 @@ result = recipients_controller.get_recipient(recipient_id)
 ```
 
 
+### <a name="get_anticipation_limits"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipation_limits") get_anticipation_limits
+
+> Gets the anticipation limits for a recipient
+
+
+```ruby
+def get_anticipation_limits(recipient_id,
+                                timeframe,
+                                payment_date); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recipient_id |  ``` Required ```  | Recipient id |
+| timeframe |  ``` Required ```  | Timeframe |
+| payment_date |  ``` Required ```  | Anticipation payment date |
+
+
+#### Example Usage
+
+```ruby
+recipient_id = 'recipient_id'
+timeframe = 'timeframe'
+payment_date = DateTime.now
+
+result = recipients_controller.get_anticipation_limits(recipient_id, timeframe, payment_date)
+
+```
+
+
 ### <a name="get_transfer"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_transfer") get_transfer
 
 > Gets a transfer
@@ -1576,8 +1608,8 @@ def get_transfers(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 202
-size = 202
+page = 214
+size = 214
 status = 'status'
 created_since = DateTime.now
 created_until = DateTime.now
@@ -1680,38 +1712,6 @@ result = recipients_controller.create_transfer(recipient_id, request, idempotenc
 ```
 
 
-### <a name="get_anticipation_limits"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.get_anticipation_limits") get_anticipation_limits
-
-> Gets the anticipation limits for a recipient
-
-
-```ruby
-def get_anticipation_limits(recipient_id,
-                                timeframe,
-                                payment_date); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recipient_id |  ``` Required ```  | Recipient id |
-| timeframe |  ``` Required ```  | Timeframe |
-| payment_date |  ``` Required ```  | Anticipation payment date |
-
-
-#### Example Usage
-
-```ruby
-recipient_id = 'recipient_id'
-timeframe = 'timeframe'
-payment_date = DateTime.now
-
-result = recipients_controller.get_anticipation_limits(recipient_id, timeframe, payment_date)
-
-```
-
-
 ### <a name="create_withdraw"></a>![Method: ](https://apidocs.io/img/method.png ".RecipientsController.create_withdraw") create_withdraw
 
 > TODO: Add a method description
@@ -1800,8 +1800,8 @@ def get_withdrawals(recipient_id,
 
 ```ruby
 recipient_id = 'recipient_id'
-page = 202
-size = 202
+page = 214
+size = 214
 status = 'status'
 created_since = DateTime.now
 created_until = DateTime.now
@@ -2226,8 +2226,8 @@ def get_usages_details(subscription_id,
 ```ruby
 subscription_id = 'subscription_id'
 cycle_id = 'cycle_id'
-size = 39
-page = 39
+size = 214
+page = 214
 item_id = 'item_id'
 group = 'group'
 
@@ -2417,8 +2417,8 @@ def get_increments(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id'
-page = 39
-size = 39
+page = 214
+size = 214
 
 result = subscriptions_controller.get_increments(subscription_id, page, size)
 
@@ -2527,8 +2527,8 @@ def get_usages(subscription_id,
 ```ruby
 subscription_id = 'subscription_id'
 item_id = 'item_id'
-page = 39
-size = 39
+page = 122
+size = 122
 code = 'code'
 group = 'group'
 used_since = DateTime.now
@@ -2631,6 +2631,176 @@ page = 'page'
 size = 'size'
 
 result = subscriptions_controller.get_subscription_cycles(subscription_id, page, size)
+
+```
+
+
+### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
+
+> Gets all subscriptions
+
+
+```ruby
+def get_subscriptions(page = nil,
+                          size = nil,
+                          code = nil,
+                          billing_type = nil,
+                          customer_id = nil,
+                          plan_id = nil,
+                          card_id = nil,
+                          status = nil,
+                          next_billing_since = nil,
+                          next_billing_until = nil,
+                          created_since = nil,
+                          created_until = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| code |  ``` Optional ```  | Filter for subscription's code |
+| billing_type |  ``` Optional ```  | Filter for subscription's billing type |
+| customer_id |  ``` Optional ```  | Filter for subscription's customer id |
+| plan_id |  ``` Optional ```  | Filter for subscription's plan id |
+| card_id |  ``` Optional ```  | Filter for subscription's card id |
+| status |  ``` Optional ```  | Filter for subscription's status |
+| next_billing_since |  ``` Optional ```  | Filter for subscription's next billing date start range |
+| next_billing_until |  ``` Optional ```  | Filter for subscription's next billing date end range |
+| created_since |  ``` Optional ```  | Filter for subscription's creation date start range |
+| created_until |  ``` Optional ```  | Filter for subscriptions creation date end range |
+
+
+#### Example Usage
+
+```ruby
+page = 122
+size = 122
+code = 'code'
+billing_type = 'billing_type'
+customer_id = 'customer_id'
+plan_id = 'plan_id'
+card_id = 'card_id'
+status = 'status'
+next_billing_since = DateTime.now
+next_billing_until = DateTime.now
+created_since = DateTime.now
+created_until = DateTime.now
+
+result = subscriptions_controller.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
+
+```
+
+
+### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
+
+> TODO: Add a method description
+
+
+```ruby
+def get_discount_by_id(subscription_id,
+                           discount_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| discount_id |  ``` Required ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+discount_id = 'discountId'
+
+result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
+
+```
+
+
+### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_items") get_subscription_items
+
+> Get Subscription Items
+
+
+```ruby
+def get_subscription_items(subscription_id,
+                               page = nil,
+                               size = nil,
+                               name = nil,
+                               code = nil,
+                               status = nil,
+                               description = nil,
+                               created_since = nil,
+                               created_until = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | The subscription id |
+| page |  ``` Optional ```  | Page number |
+| size |  ``` Optional ```  | Page size |
+| name |  ``` Optional ```  | The item name |
+| code |  ``` Optional ```  | Identification code in the client system |
+| status |  ``` Optional ```  | The item statis |
+| description |  ``` Optional ```  | The item description |
+| created_since |  ``` Optional ```  | Filter for item's creation date start range |
+| created_until |  ``` Optional ```  | Filter for item's creation date end range |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+page = 122
+size = 122
+name = 'name'
+code = 'code'
+status = 'status'
+description = 'description'
+created_since = 'created_since'
+created_until = 'created_until'
+
+result = subscriptions_controller.get_subscription_items(subscription_id, page, size, name, code, status, description, created_since, created_until)
+
+```
+
+
+### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_minium_price") update_subscription_minium_price
+
+> Atualização do valor mínimo da assinatura
+
+
+```ruby
+def update_subscription_minium_price(subscription_id,
+                                         request,
+                                         idempotency_key = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| subscription_id |  ``` Required ```  | Subscription Id |
+| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
+| idempotency_key |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```ruby
+subscription_id = 'subscription_id'
+request = UpdateSubscriptionMinimumPriceRequest.new
+idempotency_key = 'idempotency-key'
+
+result = subscriptions_controller.update_subscription_minium_price(subscription_id, request, idempotency_key)
 
 ```
 
@@ -2845,8 +3015,8 @@ def get_discounts(subscription_id,
 
 ```ruby
 subscription_id = 'subscription_id'
-page = 39
-size = 39
+page = 122
+size = 122
 
 result = subscriptions_controller.get_discounts(subscription_id, page, size)
 
@@ -2881,176 +3051,6 @@ request = CreateIncrementRequest.new
 idempotency_key = 'idempotency-key'
 
 result = subscriptions_controller.create_increment(subscription_id, request, idempotency_key)
-
-```
-
-
-### <a name="get_subscriptions"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscriptions") get_subscriptions
-
-> Gets all subscriptions
-
-
-```ruby
-def get_subscriptions(page = nil,
-                          size = nil,
-                          code = nil,
-                          billing_type = nil,
-                          customer_id = nil,
-                          plan_id = nil,
-                          card_id = nil,
-                          status = nil,
-                          next_billing_since = nil,
-                          next_billing_until = nil,
-                          created_since = nil,
-                          created_until = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| code |  ``` Optional ```  | Filter for subscription's code |
-| billing_type |  ``` Optional ```  | Filter for subscription's billing type |
-| customer_id |  ``` Optional ```  | Filter for subscription's customer id |
-| plan_id |  ``` Optional ```  | Filter for subscription's plan id |
-| card_id |  ``` Optional ```  | Filter for subscription's card id |
-| status |  ``` Optional ```  | Filter for subscription's status |
-| next_billing_since |  ``` Optional ```  | Filter for subscription's next billing date start range |
-| next_billing_until |  ``` Optional ```  | Filter for subscription's next billing date end range |
-| created_since |  ``` Optional ```  | Filter for subscription's creation date start range |
-| created_until |  ``` Optional ```  | Filter for subscriptions creation date end range |
-
-
-#### Example Usage
-
-```ruby
-page = 39
-size = 39
-code = 'code'
-billing_type = 'billing_type'
-customer_id = 'customer_id'
-plan_id = 'plan_id'
-card_id = 'card_id'
-status = 'status'
-next_billing_since = DateTime.now
-next_billing_until = DateTime.now
-created_since = DateTime.now
-created_until = DateTime.now
-
-result = subscriptions_controller.get_subscriptions(page, size, code, billing_type, customer_id, plan_id, card_id, status, next_billing_since, next_billing_until, created_since, created_until)
-
-```
-
-
-### <a name="get_discount_by_id"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_discount_by_id") get_discount_by_id
-
-> TODO: Add a method description
-
-
-```ruby
-def get_discount_by_id(subscription_id,
-                           discount_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | The subscription id |
-| discount_id |  ``` Required ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-discount_id = 'discountId'
-
-result = subscriptions_controller.get_discount_by_id(subscription_id, discount_id)
-
-```
-
-
-### <a name="get_subscription_items"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.get_subscription_items") get_subscription_items
-
-> Get Subscription Items
-
-
-```ruby
-def get_subscription_items(subscription_id,
-                               page = nil,
-                               size = nil,
-                               name = nil,
-                               code = nil,
-                               status = nil,
-                               description = nil,
-                               created_since = nil,
-                               created_until = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | The subscription id |
-| page |  ``` Optional ```  | Page number |
-| size |  ``` Optional ```  | Page size |
-| name |  ``` Optional ```  | The item name |
-| code |  ``` Optional ```  | Identification code in the client system |
-| status |  ``` Optional ```  | The item statis |
-| description |  ``` Optional ```  | The item description |
-| created_since |  ``` Optional ```  | Filter for item's creation date start range |
-| created_until |  ``` Optional ```  | Filter for item's creation date end range |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-page = 39
-size = 39
-name = 'name'
-code = 'code'
-status = 'status'
-description = 'description'
-created_since = 'created_since'
-created_until = 'created_until'
-
-result = subscriptions_controller.get_subscription_items(subscription_id, page, size, name, code, status, description, created_since, created_until)
-
-```
-
-
-### <a name="update_subscription_minium_price"></a>![Method: ](https://apidocs.io/img/method.png ".SubscriptionsController.update_subscription_minium_price") update_subscription_minium_price
-
-> Atualização do valor mínimo da assinatura
-
-
-```ruby
-def update_subscription_minium_price(subscription_id,
-                                         request,
-                                         idempotency_key = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subscription_id |  ``` Required ```  | Subscription Id |
-| request |  ``` Required ```  | Request da requisição com o valor mínimo que será configurado |
-| idempotency_key |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```ruby
-subscription_id = 'subscription_id'
-request = UpdateSubscriptionMinimumPriceRequest.new
-idempotency_key = 'idempotency-key'
-
-result = subscriptions_controller.update_subscription_minium_price(subscription_id, request, idempotency_key)
 
 ```
 
@@ -3276,35 +3276,6 @@ result = invoices_controller.update_invoice_metadata(invoice_id, request, idempo
 ```
 
 
-### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.cancel_invoice") cancel_invoice
-
-> Cancels an invoice
-
-
-```ruby
-def cancel_invoice(invoice_id,
-                       idempotency_key = nil); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| invoice_id |  ``` Required ```  | Invoice id |
-| idempotency_key |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-#### Example Usage
-
-```ruby
-invoice_id = 'invoice_id'
-idempotency_key = 'idempotency-key'
-
-result = invoices_controller.cancel_invoice(invoice_id, idempotency_key)
-
-```
-
-
 ### <a name="get_invoices"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.get_invoices") get_invoices
 
 > Gets all invoices
@@ -3344,8 +3315,8 @@ def get_invoices(page = nil,
 #### Example Usage
 
 ```ruby
-page = 39
-size = 39
+page = 122
+size = 122
 code = 'code'
 customer_id = 'customer_id'
 subscription_id = 'subscription_id'
@@ -3357,6 +3328,35 @@ due_until = DateTime.now
 customer_document = 'customer_document'
 
 result = invoices_controller.get_invoices(page, size, code, customer_id, subscription_id, created_since, created_until, status, due_since, due_until, customer_document)
+
+```
+
+
+### <a name="cancel_invoice"></a>![Method: ](https://apidocs.io/img/method.png ".InvoicesController.cancel_invoice") cancel_invoice
+
+> Cancels an invoice
+
+
+```ruby
+def cancel_invoice(invoice_id,
+                       idempotency_key = nil); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| invoice_id |  ``` Required ```  | Invoice id |
+| idempotency_key |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+#### Example Usage
+
+```ruby
+invoice_id = 'invoice_id'
+idempotency_key = 'idempotency-key'
+
+result = invoices_controller.cancel_invoice(invoice_id, idempotency_key)
 
 ```
 
@@ -3497,8 +3497,8 @@ def get_orders(page = nil,
 #### Example Usage
 
 ```ruby
-page = 39
-size = 39
+page = 122
+size = 122
 code = 'code'
 status = 'status'
 created_since = DateTime.now
@@ -3880,8 +3880,8 @@ def get_plans(page = nil,
 #### Example Usage
 
 ```ruby
-page = 39
-size = 39
+page = 122
+size = 122
 name = 'name'
 status = 'status'
 billing_type = 'billing_type'
@@ -4044,35 +4044,6 @@ result = plans_controller.delete_plan_item(plan_id, plan_item_id, idempotency_ke
 ```
 
 
-### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plan_item") get_plan_item
-
-> Gets a plan item
-
-
-```ruby
-def get_plan_item(plan_id,
-                      plan_item_id); end
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| plan_id |  ``` Required ```  | Plan id |
-| plan_item_id |  ``` Required ```  | Plan item id |
-
-
-#### Example Usage
-
-```ruby
-plan_id = 'plan_id'
-plan_item_id = 'plan_item_id'
-
-result = plans_controller.get_plan_item(plan_id, plan_item_id)
-
-```
-
-
 ### <a name="delete_plan"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.delete_plan") delete_plan
 
 > Deletes a plan
@@ -4098,6 +4069,35 @@ plan_id = 'plan_id'
 idempotency_key = 'idempotency-key'
 
 result = plans_controller.delete_plan(plan_id, idempotency_key)
+
+```
+
+
+### <a name="get_plan_item"></a>![Method: ](https://apidocs.io/img/method.png ".PlansController.get_plan_item") get_plan_item
+
+> Gets a plan item
+
+
+```ruby
+def get_plan_item(plan_id,
+                      plan_item_id); end
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| plan_id |  ``` Required ```  | Plan id |
+| plan_item_id |  ``` Required ```  | Plan item id |
+
+
+#### Example Usage
+
+```ruby
+plan_id = 'plan_id'
+plan_item_id = 'plan_item_id'
+
+result = plans_controller.get_plan_item(plan_id, plan_item_id)
 
 ```
 

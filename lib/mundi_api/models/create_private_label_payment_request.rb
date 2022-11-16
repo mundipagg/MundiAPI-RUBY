@@ -43,6 +43,10 @@ module MundiApi
     # @return [String]
     attr_accessor :extended_limit_code
 
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrency_cycle
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -55,6 +59,7 @@ module MundiApi
       @_hash['capture'] = 'capture'
       @_hash['extended_limit_enabled'] = 'extended_limit_enabled'
       @_hash['extended_limit_code'] = 'extended_limit_code'
+      @_hash['recurrency_cycle'] = 'recurrency_cycle'
       @_hash
     end
 
@@ -66,7 +71,8 @@ module MundiApi
                    recurrence = nil,
                    capture = true,
                    extended_limit_enabled = nil,
-                   extended_limit_code = nil)
+                   extended_limit_code = nil,
+                   recurrency_cycle = nil)
       @installments = installments
       @statement_descriptor = statement_descriptor
       @card = card
@@ -76,6 +82,7 @@ module MundiApi
       @capture = capture
       @extended_limit_enabled = extended_limit_enabled
       @extended_limit_code = extended_limit_code
+      @recurrency_cycle = recurrency_cycle
     end
 
     # Creates an instance of the object from a hash.
@@ -92,6 +99,7 @@ module MundiApi
       capture = hash['capture'] ||= true
       extended_limit_enabled = hash['extended_limit_enabled']
       extended_limit_code = hash['extended_limit_code']
+      recurrency_cycle = hash['recurrency_cycle']
 
       # Create object from extracted values.
       CreatePrivateLabelPaymentRequest.new(installments,
@@ -102,7 +110,8 @@ module MundiApi
                                            recurrence,
                                            capture,
                                            extended_limit_enabled,
-                                           extended_limit_code)
+                                           extended_limit_code,
+                                           recurrency_cycle)
     end
   end
 end

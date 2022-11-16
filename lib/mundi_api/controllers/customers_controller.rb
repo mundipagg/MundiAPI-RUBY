@@ -564,6 +564,113 @@ module MundiApi
       GetCardResponse.from_hash(decoded)
     end
 
+    # Delete a customer's access token
+    # @param [String] customer_id Required parameter: Customer Id
+    # @param [String] token_id Required parameter: Token Id
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return GetAccessTokenResponse response from the API call
+    def delete_access_token(customer_id,
+                            token_id,
+                            idempotency_key = nil)
+      # Prepare query url.
+      _path_url = '/customers/{customer_id}/access-tokens/{token_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'customer_id' => customer_id,
+        'token_id' => token_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'idempotency-key' => idempotency_key
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetAccessTokenResponse.from_hash(decoded)
+    end
+
+    # Creates a new address for a customer
+    # @param [String] customer_id Required parameter: Customer Id
+    # @param [CreateAddressRequest] request Required parameter: Request for
+    # creating an address
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return GetAddressResponse response from the API call
+    def create_address(customer_id,
+                       request,
+                       idempotency_key = nil)
+      # Prepare query url.
+      _path_url = '/customers/{customer_id}/addresses'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'customer_id' => customer_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.post(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetAddressResponse.from_hash(decoded)
+    end
+
+    # Get a customer's card
+    # @param [String] customer_id Required parameter: Customer id
+    # @param [String] card_id Required parameter: Card id
+    # @return GetCardResponse response from the API call
+    def get_card(customer_id,
+                 card_id)
+      # Prepare query url.
+      _path_url = '/customers/{customer_id}/cards/{card_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'customer_id' => customer_id,
+        'card_id' => card_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetCardResponse.from_hash(decoded)
+    end
+
     # Get all cards from a customer
     # @param [String] customer_id Required parameter: Customer Id
     # @param [Integer] page Optional parameter: Page number
@@ -688,113 +795,6 @@ module MundiApi
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       ListCustomersResponse.from_hash(decoded)
-    end
-
-    # Delete a customer's access token
-    # @param [String] customer_id Required parameter: Customer Id
-    # @param [String] token_id Required parameter: Token Id
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetAccessTokenResponse response from the API call
-    def delete_access_token(customer_id,
-                            token_id,
-                            idempotency_key = nil)
-      # Prepare query url.
-      _path_url = '/customers/{customer_id}/access-tokens/{token_id}'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'customer_id' => customer_id,
-        'token_id' => token_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'idempotency-key' => idempotency_key
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.delete(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetAccessTokenResponse.from_hash(decoded)
-    end
-
-    # Creates a new address for a customer
-    # @param [String] customer_id Required parameter: Customer Id
-    # @param [CreateAddressRequest] request Required parameter: Request for
-    # creating an address
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetAddressResponse response from the API call
-    def create_address(customer_id,
-                       request,
-                       idempotency_key = nil)
-      # Prepare query url.
-      _path_url = '/customers/{customer_id}/addresses'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'customer_id' => customer_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.post(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetAddressResponse.from_hash(decoded)
-    end
-
-    # Get a customer's card
-    # @param [String] customer_id Required parameter: Customer id
-    # @param [String] card_id Required parameter: Card id
-    # @return GetCardResponse response from the API call
-    def get_card(customer_id,
-                 card_id)
-      # Prepare query url.
-      _path_url = '/customers/{customer_id}/cards/{card_id}'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'customer_id' => customer_id,
-        'card_id' => card_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetCardResponse.from_hash(decoded)
     end
   end
 end

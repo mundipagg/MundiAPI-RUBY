@@ -22,6 +22,10 @@ module MundiApi
     # @return [CreateCardRequest]
     attr_accessor :card
 
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrency_cycle
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -29,17 +33,20 @@ module MundiApi
       @_hash['card_id'] = 'card_id'
       @_hash['card_token'] = 'card_token'
       @_hash['card'] = 'Card'
+      @_hash['recurrency_cycle'] = 'recurrency_cycle'
       @_hash
     end
 
     def initialize(statement_descriptor = nil,
                    card_id = nil,
                    card_token = nil,
-                   card = nil)
+                   card = nil,
+                   recurrency_cycle = nil)
       @statement_descriptor = statement_descriptor
       @card_id = card_id
       @card_token = card_token
       @card = card
+      @recurrency_cycle = recurrency_cycle
     end
 
     # Creates an instance of the object from a hash.
@@ -51,12 +58,14 @@ module MundiApi
       card_id = hash['card_id']
       card_token = hash['card_token']
       card = CreateCardRequest.from_hash(hash['Card']) if hash['Card']
+      recurrency_cycle = hash['recurrency_cycle']
 
       # Create object from extracted values.
       CreateVoucherPaymentRequest.new(statement_descriptor,
                                       card_id,
                                       card_token,
-                                      card)
+                                      card,
+                                      recurrency_cycle)
     end
   end
 end

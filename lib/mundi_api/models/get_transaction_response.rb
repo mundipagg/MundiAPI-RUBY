@@ -71,6 +71,18 @@ module MundiApi
     # @return [List of GetSplitResponse]
     attr_accessor :split
 
+    # The Gateway Response
+    # @return [GetInterestResponse]
+    attr_accessor :interest
+
+    # The Gateway Response
+    # @return [GetFineResponse]
+    attr_accessor :fine
+
+    # The Gateway Response
+    # @return [Integer]
+    attr_accessor :max_days_to_pay_past_due
+
     # Discriminators mapping.
     def self.discriminators
       if @_discriminators.nil?
@@ -107,6 +119,9 @@ module MundiApi
       @_hash['antifraud_response'] = 'antifraud_response'
       @_hash['metadata'] = 'metadata'
       @_hash['split'] = 'split'
+      @_hash['interest'] = 'interest'
+      @_hash['fine'] = 'fine'
+      @_hash['max_days_to_pay_past_due'] = 'max_days_to_pay_past_due'
       @_hash
     end
 
@@ -125,7 +140,10 @@ module MundiApi
                    split = nil,
                    next_attempt = nil,
                    transaction_type = nil,
-                   metadata = nil)
+                   metadata = nil,
+                   interest = nil,
+                   fine = nil,
+                   max_days_to_pay_past_due = nil)
       @gateway_id = gateway_id
       @amount = amount
       @status = status
@@ -142,6 +160,9 @@ module MundiApi
       @antifraud_response = antifraud_response
       @metadata = metadata
       @split = split
+      @interest = interest
+      @fine = fine
+      @max_days_to_pay_past_due = max_days_to_pay_past_due
     end
 
     # Creates an instance of the object from a hash.
@@ -189,6 +210,10 @@ module MundiApi
         hash['next_attempt']
       transaction_type = hash['transaction_type']
       metadata = hash['metadata']
+      interest = GetInterestResponse.from_hash(hash['interest']) if
+        hash['interest']
+      fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']
+      max_days_to_pay_past_due = hash['max_days_to_pay_past_due']
 
       # Create object from extracted values.
       GetTransactionResponse.new(gateway_id,
@@ -206,7 +231,10 @@ module MundiApi
                                  split,
                                  next_attempt,
                                  transaction_type,
-                                 metadata)
+                                 metadata,
+                                 interest,
+                                 fine,
+                                 max_days_to_pay_past_due)
     end
   end
 end
