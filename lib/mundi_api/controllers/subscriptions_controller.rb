@@ -905,6 +905,215 @@ module MundiApi
       ListCyclesResponse.from_hash(decoded)
     end
 
+    # Gets all subscriptions
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
+    # @param [String] code Optional parameter: Filter for subscription's code
+    # @param [String] billing_type Optional parameter: Filter for subscription's
+    # billing type
+    # @param [String] customer_id Optional parameter: Filter for subscription's
+    # customer id
+    # @param [String] plan_id Optional parameter: Filter for subscription's plan
+    # id
+    # @param [String] card_id Optional parameter: Filter for subscription's card
+    # id
+    # @param [String] status Optional parameter: Filter for subscription's
+    # status
+    # @param [DateTime] next_billing_since Optional parameter: Filter for
+    # subscription's next billing date start range
+    # @param [DateTime] next_billing_until Optional parameter: Filter for
+    # subscription's next billing date end range
+    # @param [DateTime] created_since Optional parameter: Filter for
+    # subscription's creation date start range
+    # @param [DateTime] created_until Optional parameter: Filter for
+    # subscriptions creation date end range
+    # @return ListSubscriptionsResponse response from the API call
+    def get_subscriptions(page = nil,
+                          size = nil,
+                          code = nil,
+                          billing_type = nil,
+                          customer_id = nil,
+                          plan_id = nil,
+                          card_id = nil,
+                          status = nil,
+                          next_billing_since = nil,
+                          next_billing_until = nil,
+                          created_since = nil,
+                          created_until = nil)
+      # Prepare query url.
+      _path_url = '/subscriptions'
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'page' => page,
+          'size' => size,
+          'code' => code,
+          'billing_type' => billing_type,
+          'customer_id' => customer_id,
+          'plan_id' => plan_id,
+          'card_id' => card_id,
+          'status' => status,
+          'next_billing_since' => next_billing_since,
+          'next_billing_until' => next_billing_until,
+          'created_since' => created_since,
+          'created_until' => created_until
+        },
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ListSubscriptionsResponse.from_hash(decoded)
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [String] discount_id Required parameter: Example:
+    # @return GetDiscountResponse response from the API call
+    def get_discount_by_id(subscription_id,
+                           discount_id)
+      # Prepare query url.
+      _path_url = '/subscriptions/{subscription_id}/discounts/{discountId}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'subscription_id' => subscription_id,
+        'discountId' => discount_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetDiscountResponse.from_hash(decoded)
+    end
+
+    # Get Subscription Items
+    # @param [String] subscription_id Required parameter: The subscription id
+    # @param [Integer] page Optional parameter: Page number
+    # @param [Integer] size Optional parameter: Page size
+    # @param [String] name Optional parameter: The item name
+    # @param [String] code Optional parameter: Identification code in the client
+    # system
+    # @param [String] status Optional parameter: The item statis
+    # @param [String] description Optional parameter: The item description
+    # @param [String] created_since Optional parameter: Filter for item's
+    # creation date start range
+    # @param [String] created_until Optional parameter: Filter for item's
+    # creation date end range
+    # @return ListSubscriptionItemsResponse response from the API call
+    def get_subscription_items(subscription_id,
+                               page = nil,
+                               size = nil,
+                               name = nil,
+                               code = nil,
+                               status = nil,
+                               description = nil,
+                               created_since = nil,
+                               created_until = nil)
+      # Prepare query url.
+      _path_url = '/subscriptions/{subscription_id}/items'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'subscription_id' => subscription_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'page' => page,
+          'size' => size,
+          'name' => name,
+          'code' => code,
+          'status' => status,
+          'description' => description,
+          'created_since' => created_since,
+          'created_until' => created_until
+        },
+        array_serialization: Configuration.array_serialization
+      )
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json'
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.get(
+        _query_url,
+        headers: _headers
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ListSubscriptionItemsResponse.from_hash(decoded)
+    end
+
+    # Atualização do valor mínimo da assinatura
+    # @param [String] subscription_id Required parameter: Subscription Id
+    # @param [UpdateSubscriptionMinimumPriceRequest] request Required parameter:
+    # Request da requisição com o valor mínimo que será configurado
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @return GetSubscriptionResponse response from the API call
+    def update_subscription_minium_price(subscription_id,
+                                         request,
+                                         idempotency_key = nil)
+      # Prepare query url.
+      _path_url = '/subscriptions/{subscription_id}/minimum_price'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'subscription_id' => subscription_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'content-type' => 'application/json; charset=utf-8',
+        'idempotency-key' => idempotency_key
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.patch(
+        _query_url,
+        headers: _headers,
+        parameters: request.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      GetSubscriptionResponse.from_hash(decoded)
+    end
+
     # Gets a subscription
     # @param [String] subscription_id Required parameter: Subscription id
     # @return GetSubscriptionResponse response from the API call
@@ -1202,215 +1411,6 @@ module MundiApi
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetIncrementResponse.from_hash(decoded)
-    end
-
-    # Gets all subscriptions
-    # @param [Integer] page Optional parameter: Page number
-    # @param [Integer] size Optional parameter: Page size
-    # @param [String] code Optional parameter: Filter for subscription's code
-    # @param [String] billing_type Optional parameter: Filter for subscription's
-    # billing type
-    # @param [String] customer_id Optional parameter: Filter for subscription's
-    # customer id
-    # @param [String] plan_id Optional parameter: Filter for subscription's plan
-    # id
-    # @param [String] card_id Optional parameter: Filter for subscription's card
-    # id
-    # @param [String] status Optional parameter: Filter for subscription's
-    # status
-    # @param [DateTime] next_billing_since Optional parameter: Filter for
-    # subscription's next billing date start range
-    # @param [DateTime] next_billing_until Optional parameter: Filter for
-    # subscription's next billing date end range
-    # @param [DateTime] created_since Optional parameter: Filter for
-    # subscription's creation date start range
-    # @param [DateTime] created_until Optional parameter: Filter for
-    # subscriptions creation date end range
-    # @return ListSubscriptionsResponse response from the API call
-    def get_subscriptions(page = nil,
-                          size = nil,
-                          code = nil,
-                          billing_type = nil,
-                          customer_id = nil,
-                          plan_id = nil,
-                          card_id = nil,
-                          status = nil,
-                          next_billing_since = nil,
-                          next_billing_until = nil,
-                          created_since = nil,
-                          created_until = nil)
-      # Prepare query url.
-      _path_url = '/subscriptions'
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_builder = APIHelper.append_url_with_query_parameters(
-        _query_builder,
-        {
-          'page' => page,
-          'size' => size,
-          'code' => code,
-          'billing_type' => billing_type,
-          'customer_id' => customer_id,
-          'plan_id' => plan_id,
-          'card_id' => card_id,
-          'status' => status,
-          'next_billing_since' => next_billing_since,
-          'next_billing_until' => next_billing_until,
-          'created_since' => created_since,
-          'created_until' => created_until
-        },
-        array_serialization: Configuration.array_serialization
-      )
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      ListSubscriptionsResponse.from_hash(decoded)
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] subscription_id Required parameter: The subscription id
-    # @param [String] discount_id Required parameter: Example:
-    # @return GetDiscountResponse response from the API call
-    def get_discount_by_id(subscription_id,
-                           discount_id)
-      # Prepare query url.
-      _path_url = '/subscriptions/{subscription_id}/discounts/{discountId}'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'subscription_id' => subscription_id,
-        'discountId' => discount_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetDiscountResponse.from_hash(decoded)
-    end
-
-    # Get Subscription Items
-    # @param [String] subscription_id Required parameter: The subscription id
-    # @param [Integer] page Optional parameter: Page number
-    # @param [Integer] size Optional parameter: Page size
-    # @param [String] name Optional parameter: The item name
-    # @param [String] code Optional parameter: Identification code in the client
-    # system
-    # @param [String] status Optional parameter: The item statis
-    # @param [String] description Optional parameter: The item description
-    # @param [String] created_since Optional parameter: Filter for item's
-    # creation date start range
-    # @param [String] created_until Optional parameter: Filter for item's
-    # creation date end range
-    # @return ListSubscriptionItemsResponse response from the API call
-    def get_subscription_items(subscription_id,
-                               page = nil,
-                               size = nil,
-                               name = nil,
-                               code = nil,
-                               status = nil,
-                               description = nil,
-                               created_since = nil,
-                               created_until = nil)
-      # Prepare query url.
-      _path_url = '/subscriptions/{subscription_id}/items'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'subscription_id' => subscription_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_builder = APIHelper.append_url_with_query_parameters(
-        _query_builder,
-        {
-          'page' => page,
-          'size' => size,
-          'name' => name,
-          'code' => code,
-          'status' => status,
-          'description' => description,
-          'created_since' => created_since,
-          'created_until' => created_until
-        },
-        array_serialization: Configuration.array_serialization
-      )
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json'
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.get(
-        _query_url,
-        headers: _headers
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      ListSubscriptionItemsResponse.from_hash(decoded)
-    end
-
-    # Atualização do valor mínimo da assinatura
-    # @param [String] subscription_id Required parameter: Subscription Id
-    # @param [UpdateSubscriptionMinimumPriceRequest] request Required parameter:
-    # Request da requisição com o valor mínimo que será configurado
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetSubscriptionResponse response from the API call
-    def update_subscription_minium_price(subscription_id,
-                                         request,
-                                         idempotency_key = nil)
-      # Prepare query url.
-      _path_url = '/subscriptions/{subscription_id}/minimum_price'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'subscription_id' => subscription_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.patch(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetSubscriptionResponse.from_hash(decoded)
     end
 
     # TODO: type endpoint description here

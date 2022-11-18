@@ -34,6 +34,10 @@ module MundiApi
     # @return [CreateCardPaymentContactlessRequest]
     attr_accessor :token
 
+    # Defines whether the card has been used one or more times.
+    # @return [String]
+    attr_accessor :recurrency_cycle
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -44,6 +48,7 @@ module MundiApi
       @_hash['recurrence'] = 'recurrence'
       @_hash['authentication'] = 'authentication'
       @_hash['token'] = 'token'
+      @_hash['recurrency_cycle'] = 'recurrency_cycle'
       @_hash
     end
 
@@ -53,7 +58,8 @@ module MundiApi
                    card_token = nil,
                    recurrence = nil,
                    authentication = nil,
-                   token = nil)
+                   token = nil,
+                   recurrency_cycle = nil)
       @statement_descriptor = statement_descriptor
       @card = card
       @card_id = card_id
@@ -61,6 +67,7 @@ module MundiApi
       @recurrence = recurrence
       @authentication = authentication
       @token = token
+      @recurrency_cycle = recurrency_cycle
     end
 
     # Creates an instance of the object from a hash.
@@ -78,6 +85,7 @@ module MundiApi
       end
       token = CreateCardPaymentContactlessRequest.from_hash(hash['token']) if
         hash['token']
+      recurrency_cycle = hash['recurrency_cycle']
 
       # Create object from extracted values.
       CreateDebitCardPaymentRequest.new(statement_descriptor,
@@ -86,7 +94,8 @@ module MundiApi
                                         card_token,
                                         recurrence,
                                         authentication,
-                                        token)
+                                        token,
+                                        recurrency_cycle)
     end
   end
 end

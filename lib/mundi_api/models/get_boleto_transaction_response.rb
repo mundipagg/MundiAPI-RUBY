@@ -127,7 +127,10 @@ module MundiApi
                    credit_at = nil,
                    next_attempt = nil,
                    transaction_type = nil,
-                   metadata = nil)
+                   metadata = nil,
+                   interest = nil,
+                   fine = nil,
+                   max_days_to_pay_past_due = nil)
       @url = url
       @barcode = barcode
       @nosso_numero = nosso_numero
@@ -161,7 +164,10 @@ module MundiApi
             split,
             next_attempt,
             transaction_type,
-            metadata)
+            metadata,
+            interest,
+            fine,
+            max_days_to_pay_past_due)
     end
 
     # Creates an instance of the object from a hash.
@@ -222,6 +228,10 @@ module MundiApi
         hash['next_attempt']
       transaction_type = hash['transaction_type']
       metadata = hash['metadata']
+      interest = GetInterestResponse.from_hash(hash['interest']) if
+        hash['interest']
+      fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']
+      max_days_to_pay_past_due = hash['max_days_to_pay_past_due']
 
       # Create object from extracted values.
       GetBoletoTransactionResponse.new(url,
@@ -255,7 +265,10 @@ module MundiApi
                                        credit_at,
                                        next_attempt,
                                        transaction_type,
-                                       metadata)
+                                       metadata,
+                                       interest,
+                                       fine,
+                                       max_days_to_pay_past_due)
     end
   end
 end
