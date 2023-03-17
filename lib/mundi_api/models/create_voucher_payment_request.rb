@@ -18,8 +18,8 @@ module MundiApi
     # @return [String]
     attr_accessor :card_token
 
-    # Card info
-    # @return [CreateCardRequest]
+    # Card token
+    # @return [Card1]
     attr_accessor :card
 
     # Defines whether the card has been used one or more times.
@@ -57,7 +57,7 @@ module MundiApi
       statement_descriptor = hash['statement_descriptor']
       card_id = hash['card_id']
       card_token = hash['card_token']
-      card = CreateCardRequest.from_hash(hash['Card']) if hash['Card']
+      card = Card1.from_hash(hash['Card']) if hash['Card']
       recurrency_cycle = hash['recurrency_cycle']
 
       # Create object from extracted values.

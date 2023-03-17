@@ -10,15 +10,15 @@ module MundiApi
     # @return [String]
     attr_accessor :type
 
-    # The ApplePay encrypted request
-    # @return [CreateApplePayRequest]
+    # The authentication type
+    # @return [ApplePay]
     attr_accessor :apple_pay
 
-    # The GooglePay encrypted request
-    # @return [CreateGooglePayRequest]
+    # The authentication type
+    # @return [GooglePay]
     attr_accessor :google_pay
 
-    # The Emv encrypted request
+    # The authentication type
     # @return [CreateEmvDecryptRequest]
     attr_accessor :emv
 
@@ -48,9 +48,8 @@ module MundiApi
 
       # Extract variables from the hash.
       type = hash['type']
-      apple_pay = CreateApplePayRequest.from_hash(hash['apple_pay']) if
-        hash['apple_pay']
-      google_pay = CreateGooglePayRequest.from_hash(hash['google_pay']) if
+      apple_pay = ApplePay.from_hash(hash['apple_pay']) if hash['apple_pay']
+      google_pay = GooglePay.from_hash(hash['google_pay']) if
         hash['google_pay']
       emv = CreateEmvDecryptRequest.from_hash(hash['emv']) if hash['emv']
 

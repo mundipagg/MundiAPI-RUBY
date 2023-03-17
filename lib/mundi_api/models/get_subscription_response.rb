@@ -32,7 +32,7 @@ module MundiApi
     attr_accessor :billing_type
 
     # TODO: Write general description for this method
-    # @return [GetPeriodResponse]
+    # @return [CurrentCycle]
     attr_accessor :current_cycle
 
     # TODO: Write general description for this method
@@ -60,11 +60,11 @@ module MundiApi
     attr_accessor :updated_at
 
     # TODO: Write general description for this method
-    # @return [GetCustomerResponse]
+    # @return [Customer]
     attr_accessor :customer
 
     # TODO: Write general description for this method
-    # @return [GetCardResponse]
+    # @return [Card]
     attr_accessor :card
 
     # TODO: Write general description for this method
@@ -80,7 +80,7 @@ module MundiApi
     attr_accessor :metadata
 
     # TODO: Write general description for this method
-    # @return [GetSetupResponse]
+    # @return [Setup]
     attr_accessor :setup
 
     # Affiliation Code
@@ -115,8 +115,8 @@ module MundiApi
     # @return [Integer]
     attr_accessor :boleto_due_days
 
-    # Subscription's split response
-    # @return [GetSubscriptionSplitResponse]
+    # Days until boleto expires
+    # @return [Split]
     attr_accessor :split
 
     # A mapping from model property names to API property names.
@@ -228,7 +228,7 @@ module MundiApi
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
-      card = GetCardResponse.from_hash(hash['card']) if hash['card']
+      card = Card.from_hash(hash['card']) if hash['card']
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?
@@ -239,7 +239,7 @@ module MundiApi
       end
       statement_descriptor = hash['statement_descriptor']
       metadata = hash['metadata']
-      setup = GetSetupResponse.from_hash(hash['setup']) if hash['setup']
+      setup = Setup.from_hash(hash['setup']) if hash['setup']
       gateway_affiliation_id = hash['gateway_affiliation_id']
       # Parameter is an array, so we need to iterate through it
       increments = nil
@@ -249,12 +249,10 @@ module MundiApi
           increments << (GetIncrementResponse.from_hash(structure) if structure)
         end
       end
-      split = GetSubscriptionSplitResponse.from_hash(hash['split']) if
-        hash['split']
-      current_cycle = GetPeriodResponse.from_hash(hash['current_cycle']) if
+      split = Split.from_hash(hash['split']) if hash['split']
+      current_cycle = CurrentCycle.from_hash(hash['current_cycle']) if
         hash['current_cycle']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
       next_billing_at = APIHelper.rfc3339(hash['next_billing_at']) if
         hash['next_billing_at']
       billing_day = hash['billing_day']

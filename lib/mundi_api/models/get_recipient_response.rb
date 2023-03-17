@@ -47,8 +47,8 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :deleted_at
 
-    # Default bank account
-    # @return [GetBankAccountResponse]
+    # Deletion date
+    # @return [DefaultBankAccount]
     attr_accessor :default_bank_account
 
     # Info about the recipient on the gateway
@@ -60,7 +60,7 @@ module MundiApi
     attr_accessor :metadata
 
     # Metadata
-    # @return [GetAutomaticAnticipationResponse]
+    # @return [CreateAutomaticAnticipationSettingsRequest]
     attr_accessor :automatic_anticipation_settings
 
     # Metadata
@@ -113,7 +113,7 @@ module MundiApi
                    gateway_recipients = nil,
                    metadata = nil,
                    code = nil,
-                   payment_mode = 'bank_transfer',
+                   payment_mode = nil,
                    automatic_anticipation_settings = nil,
                    transfer_settings = nil)
       @id = id
@@ -151,7 +151,7 @@ module MundiApi
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       if hash['default_bank_account']
-        default_bank_account = GetBankAccountResponse.from_hash(hash['default_bank_account'])
+        default_bank_account = DefaultBankAccount.from_hash(hash['default_bank_account'])
       end
       # Parameter is an array, so we need to iterate through it
       gateway_recipients = nil
@@ -163,9 +163,9 @@ module MundiApi
       end
       metadata = hash['metadata']
       code = hash['code']
-      payment_mode = hash['payment_mode'] ||= 'bank_transfer'
+      payment_mode = hash['payment_mode']
       if hash['automatic_anticipation_settings']
-        automatic_anticipation_settings = GetAutomaticAnticipationResponse.from_hash(hash['automatic_anticipation_settings'])
+        automatic_anticipation_settings = CreateAutomaticAnticipationSettingsRequest.from_hash(hash['automatic_anticipation_settings'])
       end
       if hash['transfer_settings']
         transfer_settings = GetTransferSettingsResponse.from_hash(hash['transfer_settings'])

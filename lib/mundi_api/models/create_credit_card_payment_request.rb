@@ -14,8 +14,8 @@ module MundiApi
     # @return [String]
     attr_accessor :statement_descriptor
 
-    # Credit card data
-    # @return [CreateCardRequest]
+    # The text that will be shown on the credit card's statement
+    # @return [Card1]
     attr_accessor :card
 
     # The credit card id
@@ -47,12 +47,12 @@ module MundiApi
     # @return [Long]
     attr_accessor :merchant_category_code
 
-    # The payment authentication request
-    # @return [CreatePaymentAuthenticationRequest]
+    # Customer business segment code
+    # @return [Authentication2]
     attr_accessor :authentication
 
-    # The Credit card payment contactless request
-    # @return [CreateCardPaymentContactlessRequest]
+    # Customer business segment code
+    # @return [Contactless]
     attr_accessor :contactless
 
     # Indicates whether a particular payment will enter the offline retry flow
@@ -127,7 +127,7 @@ module MundiApi
       # Extract variables from the hash.
       installments = hash['installments'] ||= 1
       statement_descriptor = hash['statement_descriptor']
-      card = CreateCardRequest.from_hash(hash['card']) if hash['card']
+      card = Card1.from_hash(hash['card']) if hash['card']
       card_id = hash['card_id']
       card_token = hash['card_token']
       recurrence = hash['recurrence']
@@ -135,12 +135,10 @@ module MundiApi
       extended_limit_enabled = hash['extended_limit_enabled']
       extended_limit_code = hash['extended_limit_code']
       merchant_category_code = hash['merchant_category_code']
-      if hash['authentication']
-        authentication = CreatePaymentAuthenticationRequest.from_hash(hash['authentication'])
-      end
-      if hash['contactless']
-        contactless = CreateCardPaymentContactlessRequest.from_hash(hash['contactless'])
-      end
+      authentication = Authentication2.from_hash(hash['authentication']) if
+        hash['authentication']
+      contactless = Contactless.from_hash(hash['contactless']) if
+        hash['contactless']
       auto_recovery = hash['auto_recovery']
       operation_type = hash['operation_type']
       recurrency_cycle = hash['recurrency_cycle']

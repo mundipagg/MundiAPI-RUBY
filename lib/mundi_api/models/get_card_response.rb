@@ -44,11 +44,11 @@ module MundiApi
     attr_accessor :updated_at
 
     # TODO: Write general description for this method
-    # @return [GetBillingAddressResponse]
+    # @return [BillingAddress]
     attr_accessor :billing_address
 
     # TODO: Write general description for this method
-    # @return [GetCustomerResponse]
+    # @return [Customer]
     attr_accessor :customer
 
     # TODO: Write general description for this method
@@ -148,16 +148,14 @@ module MundiApi
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
-      if hash['billing_address']
-        billing_address = GetBillingAddressResponse.from_hash(hash['billing_address'])
-      end
+      billing_address = BillingAddress.from_hash(hash['billing_address']) if
+        hash['billing_address']
       metadata = hash['metadata']
       type = hash['type']
       holder_document = hash['holder_document']
       first_six_digits = hash['first_six_digits']
       label = hash['label']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.

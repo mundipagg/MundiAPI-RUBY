@@ -52,11 +52,11 @@ module MundiApi
     attr_accessor :type
 
     # TODO: Write general description for this method
-    # @return [GetTransferSourceResponse]
+    # @return [GetWithdrawSourceResponse]
     attr_accessor :source
 
     # TODO: Write general description for this method
-    # @return [GetTransferTargetResponse]
+    # @return [GetWithdrawTargetResponse]
     attr_accessor :target
 
     # A mapping from model property names to API property names.
@@ -118,9 +118,9 @@ module MundiApi
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       type = hash['type']
-      source = GetTransferSourceResponse.from_hash(hash['source']) if
+      source = GetWithdrawSourceResponse.from_hash(hash['source']) if
         hash['source']
-      target = GetTransferTargetResponse.from_hash(hash['target']) if
+      target = GetWithdrawTargetResponse.from_hash(hash['target']) if
         hash['target']
       metadata = hash['metadata']
       fee = hash['fee']

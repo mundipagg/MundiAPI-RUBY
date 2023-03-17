@@ -10,8 +10,8 @@ module MundiApi
     # @return [String]
     attr_accessor :statement_descriptor
 
-    # Creates payment authentication
-    # @return [CreatePaymentAuthenticationRequest]
+    # Card invoice text descriptor
+    # @return [Authentication2]
     attr_accessor :authentication
 
     # A mapping from model property names to API property names.
@@ -33,9 +33,8 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      if hash['authentication']
-        authentication = CreatePaymentAuthenticationRequest.from_hash(hash['authentication'])
-      end
+      authentication = Authentication2.from_hash(hash['authentication']) if
+        hash['authentication']
       statement_descriptor = hash['statement_descriptor']
 
       # Create object from extracted values.

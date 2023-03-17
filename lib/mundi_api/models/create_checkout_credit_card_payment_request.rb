@@ -14,8 +14,8 @@ module MundiApi
     # @return [List of CreateCheckoutCardInstallmentOptionRequest]
     attr_accessor :installments
 
-    # Creates payment authentication
-    # @return [CreatePaymentAuthenticationRequest]
+    # Payment installment options
+    # @return [Authentication2]
     attr_accessor :authentication
 
     # Authorize and capture?
@@ -56,9 +56,8 @@ module MundiApi
           installments << (CreateCheckoutCardInstallmentOptionRequest.from_hash(structure) if structure)
         end
       end
-      if hash['authentication']
-        authentication = CreatePaymentAuthenticationRequest.from_hash(hash['authentication'])
-      end
+      authentication = Authentication2.from_hash(hash['authentication']) if
+        hash['authentication']
       capture = hash['capture']
 
       # Create object from extracted values.

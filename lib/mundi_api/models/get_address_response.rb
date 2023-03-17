@@ -56,7 +56,7 @@ module MundiApi
     attr_accessor :updated_at
 
     # TODO: Write general description for this method
-    # @return [GetCustomerResponse]
+    # @return [Customer]
     attr_accessor :customer
 
     # TODO: Write general description for this method
@@ -154,8 +154,7 @@ module MundiApi
       metadata = hash['metadata']
       line_1 = hash['line_1']
       line_2 = hash['line_2']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
 
       # Create object from extracted values.

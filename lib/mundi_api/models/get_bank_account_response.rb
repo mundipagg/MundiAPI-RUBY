@@ -59,8 +59,8 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :deleted_at
 
-    # Recipient
-    # @return [GetRecipientResponse]
+    # Deletion date
+    # @return [Recipient]
     attr_accessor :recipient
 
     # Metadata
@@ -147,8 +147,7 @@ module MundiApi
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']
       metadata = hash['metadata']
       pix_key = hash['pix_key']
-      recipient = GetRecipientResponse.from_hash(hash['recipient']) if
-        hash['recipient']
+      recipient = Recipient.from_hash(hash['recipient']) if hash['recipient']
 
       # Create object from extracted values.
       GetBankAccountResponse.new(id,

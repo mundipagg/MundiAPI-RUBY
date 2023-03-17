@@ -10,32 +10,32 @@ module MundiApi
     # @return [String]
     attr_accessor :payment_method
 
-    # Settings for credit card payment
-    # @return [CreateCreditCardPaymentRequest]
+    # Payment method
+    # @return [CreditCard1]
     attr_accessor :credit_card
 
-    # Settings for debit card payment
-    # @return [CreateDebitCardPaymentRequest]
+    # Payment method
+    # @return [DebitCard1]
     attr_accessor :debit_card
 
-    # Settings for boleto payment
-    # @return [CreateBoletoPaymentRequest]
+    # Payment method
+    # @return [Boleto1]
     attr_accessor :boleto
 
     # Currency. Must be informed using 3 characters
     # @return [String]
     attr_accessor :currency
 
-    # Settings for voucher payment
-    # @return [CreateVoucherPaymentRequest]
+    # Currency. Must be informed using 3 characters
+    # @return [Voucher]
     attr_accessor :voucher
 
     # Splits
     # @return [List of CreateSplitRequest]
     attr_accessor :split
 
-    # Settings for bank transfer payment
-    # @return [CreateBankTransferPaymentRequest]
+    # Splits
+    # @return [BankTransfer1]
     attr_accessor :bank_transfer
 
     # Gateway affiliation code
@@ -46,32 +46,32 @@ module MundiApi
     # @return [Integer]
     attr_accessor :amount
 
-    # Settings for checkout payment
-    # @return [CreateCheckoutPaymentRequest]
+    # The amount of the payment, in cents
+    # @return [Checkout]
     attr_accessor :checkout
 
     # Customer Id
     # @return [String]
     attr_accessor :customer_id
 
-    # Customer
-    # @return [CreateCustomerRequest]
+    # Customer Id
+    # @return [Customer8]
     attr_accessor :customer
 
     # Metadata
     # @return [Array<String, String>]
     attr_accessor :metadata
 
-    # Settings for cash payment
+    # Metadata
     # @return [CreateCashPaymentRequest]
     attr_accessor :cash
 
-    # Settings for private label payment
-    # @return [CreatePrivateLabelPaymentRequest]
+    # Metadata
+    # @return [PrivateLabel]
     attr_accessor :private_label
 
-    # Settings for pix payment
-    # @return [CreatePixPaymentRequest]
+    # Metadata
+    # @return [Pix]
     attr_accessor :pix
 
     # A mapping from model property names to API property names.
@@ -139,20 +139,15 @@ module MundiApi
 
       # Extract variables from the hash.
       payment_method = hash['payment_method']
-      if hash['private_label']
-        private_label = CreatePrivateLabelPaymentRequest.from_hash(hash['private_label'])
-      end
-      if hash['credit_card']
-        credit_card = CreateCreditCardPaymentRequest.from_hash(hash['credit_card'])
-      end
-      if hash['debit_card']
-        debit_card = CreateDebitCardPaymentRequest.from_hash(hash['debit_card'])
-      end
-      boleto = CreateBoletoPaymentRequest.from_hash(hash['boleto']) if
-        hash['boleto']
+      private_label = PrivateLabel.from_hash(hash['private_label']) if
+        hash['private_label']
+      credit_card = CreditCard1.from_hash(hash['credit_card']) if
+        hash['credit_card']
+      debit_card = DebitCard1.from_hash(hash['debit_card']) if
+        hash['debit_card']
+      boleto = Boleto1.from_hash(hash['boleto']) if hash['boleto']
       currency = hash['currency']
-      voucher = CreateVoucherPaymentRequest.from_hash(hash['voucher']) if
-        hash['voucher']
+      voucher = Voucher.from_hash(hash['voucher']) if hash['voucher']
       # Parameter is an array, so we need to iterate through it
       split = nil
       unless hash['split'].nil?
@@ -161,19 +156,16 @@ module MundiApi
           split << (CreateSplitRequest.from_hash(structure) if structure)
         end
       end
-      if hash['bank_transfer']
-        bank_transfer = CreateBankTransferPaymentRequest.from_hash(hash['bank_transfer'])
-      end
+      bank_transfer = BankTransfer1.from_hash(hash['bank_transfer']) if
+        hash['bank_transfer']
       gateway_affiliation_id = hash['gateway_affiliation_id']
       amount = hash['amount']
-      checkout = CreateCheckoutPaymentRequest.from_hash(hash['checkout']) if
-        hash['checkout']
+      checkout = Checkout.from_hash(hash['checkout']) if hash['checkout']
       customer_id = hash['customer_id']
-      customer = CreateCustomerRequest.from_hash(hash['customer']) if
-        hash['customer']
+      customer = Customer8.from_hash(hash['customer']) if hash['customer']
       metadata = hash['metadata']
       cash = CreateCashPaymentRequest.from_hash(hash['cash']) if hash['cash']
-      pix = CreatePixPaymentRequest.from_hash(hash['pix']) if hash['pix']
+      pix = Pix.from_hash(hash['pix']) if hash['pix']
 
       # Create object from extracted values.
       CreatePaymentRequest.new(payment_method,

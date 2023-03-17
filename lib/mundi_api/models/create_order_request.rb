@@ -10,8 +10,8 @@ module MundiApi
     # @return [List of CreateOrderItemRequest]
     attr_accessor :items
 
-    # Customer
-    # @return [CreateCustomerRequest]
+    # Items
+    # @return [Customer8]
     attr_accessor :customer
 
     # Payment data
@@ -26,8 +26,8 @@ module MundiApi
     # @return [String]
     attr_accessor :customer_id
 
-    # Shipping data
-    # @return [CreateShippingRequest]
+    # The customer id
+    # @return [Shipping3]
     attr_accessor :shipping
 
     # Metadata
@@ -46,15 +46,15 @@ module MundiApi
     # @return [String]
     attr_accessor :session_id
 
-    # Request's location
-    # @return [CreateLocationRequest]
+    # Session id
+    # @return [Location]
     attr_accessor :location
 
-    # Device's informations
-    # @return [CreateDeviceRequest]
+    # Session id
+    # @return [Device1]
     attr_accessor :device
 
-    # Device's informations
+    # Session id
     # @return [Boolean]
     attr_accessor :closed
 
@@ -66,8 +66,8 @@ module MundiApi
     # @return [CreateAntifraudRequest]
     attr_accessor :antifraud
 
-    # SubMerchant
-    # @return [CreateSubMerchantRequest]
+    # Currency
+    # @return [Submerchant]
     attr_accessor :submerchant
 
     # A mapping from model property names to API property names.
@@ -98,7 +98,7 @@ module MundiApi
                    code = nil,
                    customer_id = nil,
                    metadata = nil,
-                   closed = true,
+                   closed = nil,
                    shipping = nil,
                    antifraud_enabled = nil,
                    ip = nil,
@@ -139,8 +139,7 @@ module MundiApi
           items << (CreateOrderItemRequest.from_hash(structure) if structure)
         end
       end
-      customer = CreateCustomerRequest.from_hash(hash['customer']) if
-        hash['customer']
+      customer = Customer8.from_hash(hash['customer']) if hash['customer']
       # Parameter is an array, so we need to iterate through it
       payments = nil
       unless hash['payments'].nil?
@@ -152,19 +151,17 @@ module MundiApi
       code = hash['code']
       customer_id = hash['customer_id']
       metadata = hash['metadata']
-      closed = hash['closed'] ||= true
-      shipping = CreateShippingRequest.from_hash(hash['shipping']) if
-        hash['shipping']
+      closed = hash['closed']
+      shipping = Shipping3.from_hash(hash['shipping']) if hash['shipping']
       antifraud_enabled = hash['antifraud_enabled']
       ip = hash['ip']
       session_id = hash['session_id']
-      location = CreateLocationRequest.from_hash(hash['location']) if
-        hash['location']
-      device = CreateDeviceRequest.from_hash(hash['device']) if hash['device']
+      location = Location.from_hash(hash['location']) if hash['location']
+      device = Device1.from_hash(hash['device']) if hash['device']
       currency = hash['currency']
       antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if
         hash['antifraud']
-      submerchant = CreateSubMerchantRequest.from_hash(hash['submerchant']) if
+      submerchant = Submerchant.from_hash(hash['submerchant']) if
         hash['submerchant']
 
       # Create object from extracted values.

@@ -19,8 +19,8 @@ module MundiApi
     # @return [Integer]
     attr_accessor :approved_amount
 
-    # Recipient
-    # @return [GetRecipientResponse]
+    # Approved amount
+    # @return [Recipient]
     attr_accessor :recipient
 
     # Anticipation id on the gateway
@@ -100,8 +100,7 @@ module MundiApi
         hash['payment_date']
       status = hash['status']
       timeframe = hash['timeframe']
-      recipient = GetRecipientResponse.from_hash(hash['recipient']) if
-        hash['recipient']
+      recipient = Recipient.from_hash(hash['recipient']) if hash['recipient']
 
       # Create object from extracted values.
       GetAnticipationResponse.new(id,

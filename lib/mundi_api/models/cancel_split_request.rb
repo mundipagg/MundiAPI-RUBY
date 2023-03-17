@@ -18,8 +18,8 @@ module MundiApi
     # @return [String]
     attr_accessor :recipient_id
 
-    # The split options request
-    # @return [CreateSplitOptionsRequest]
+    # Recipient id
+    # @return [Options2]
     attr_accessor :options
 
     # Rule id
@@ -57,8 +57,7 @@ module MundiApi
       type = hash['type']
       amount = hash['amount']
       recipient_id = hash['recipient_id']
-      options = CreateSplitOptionsRequest.from_hash(hash['options']) if
-        hash['options']
+      options = Options2.from_hash(hash['options']) if hash['options']
       split_rule_id = hash['split_rule_id']
 
       # Create object from extracted values.

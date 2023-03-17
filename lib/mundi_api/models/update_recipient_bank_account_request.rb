@@ -6,8 +6,8 @@
 module MundiApi
   # Updates the default bank account for a recipient
   class UpdateRecipientBankAccountRequest < BaseModel
-    # Bank account
-    # @return [CreateBankAccountRequest]
+    # TODO: Write general description for this method
+    # @return [BankAccount1]
     attr_accessor :bank_account
 
     # Payment mode
@@ -23,7 +23,7 @@ module MundiApi
     end
 
     def initialize(bank_account = nil,
-                   payment_mode = 'bank_transfer')
+                   payment_mode = nil)
       @bank_account = bank_account
       @payment_mode = payment_mode
     end
@@ -33,9 +33,9 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      bank_account = CreateBankAccountRequest.from_hash(hash['bank_account']) if
+      bank_account = BankAccount1.from_hash(hash['bank_account']) if
         hash['bank_account']
-      payment_mode = hash['payment_mode'] ||= 'bank_transfer'
+      payment_mode = hash['payment_mode']
 
       # Create object from extracted values.
       UpdateRecipientBankAccountRequest.new(bank_account,

@@ -14,32 +14,32 @@ module MundiApi
     # @return [String]
     attr_accessor :payment_method
 
-    # Credit card data
-    # @return [CreateCreditCardPaymentRequest]
+    # The new payment method
+    # @return [CreditCard1]
     attr_accessor :credit_card
 
-    # Debit card data
-    # @return [CreateDebitCardPaymentRequest]
+    # The new payment method
+    # @return [DebitCard1]
     attr_accessor :debit_card
 
-    # Boleto data
-    # @return [CreateBoletoPaymentRequest]
+    # The new payment method
+    # @return [Boleto1]
     attr_accessor :boleto
 
-    # Voucher data
-    # @return [CreateVoucherPaymentRequest]
+    # The new payment method
+    # @return [Voucher]
     attr_accessor :voucher
 
-    # Cash data
+    # The new payment method
     # @return [CreateCashPaymentRequest]
     attr_accessor :cash
 
-    # Bank Transfer data
-    # @return [CreateBankTransferPaymentRequest]
+    # The new payment method
+    # @return [BankTransfer1]
     attr_accessor :bank_transfer
 
-    # Bank Transfer data
-    # @return [CreatePrivateLabelPaymentRequest]
+    # The new payment method
+    # @return [PrivateLabel]
     attr_accessor :private_label
 
     # A mapping from model property names to API property names.
@@ -84,23 +84,17 @@ module MundiApi
       # Extract variables from the hash.
       update_subscription = hash['update_subscription']
       payment_method = hash['payment_method']
-      if hash['credit_card']
-        credit_card = CreateCreditCardPaymentRequest.from_hash(hash['credit_card'])
-      end
-      if hash['debit_card']
-        debit_card = CreateDebitCardPaymentRequest.from_hash(hash['debit_card'])
-      end
-      boleto = CreateBoletoPaymentRequest.from_hash(hash['boleto']) if
-        hash['boleto']
-      voucher = CreateVoucherPaymentRequest.from_hash(hash['voucher']) if
-        hash['voucher']
+      credit_card = CreditCard1.from_hash(hash['credit_card']) if
+        hash['credit_card']
+      debit_card = DebitCard1.from_hash(hash['debit_card']) if
+        hash['debit_card']
+      boleto = Boleto1.from_hash(hash['boleto']) if hash['boleto']
+      voucher = Voucher.from_hash(hash['voucher']) if hash['voucher']
       cash = CreateCashPaymentRequest.from_hash(hash['cash']) if hash['cash']
-      if hash['bank_transfer']
-        bank_transfer = CreateBankTransferPaymentRequest.from_hash(hash['bank_transfer'])
-      end
-      if hash['private_label']
-        private_label = CreatePrivateLabelPaymentRequest.from_hash(hash['private_label'])
-      end
+      bank_transfer = BankTransfer1.from_hash(hash['bank_transfer']) if
+        hash['bank_transfer']
+      private_label = PrivateLabel.from_hash(hash['private_label']) if
+        hash['private_label']
 
       # Create object from extracted values.
       UpdateChargePaymentMethodRequest.new(update_subscription,

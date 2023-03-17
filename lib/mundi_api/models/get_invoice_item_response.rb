@@ -15,11 +15,11 @@ module MundiApi
     attr_accessor :description
 
     # TODO: Write general description for this method
-    # @return [GetPricingSchemeResponse]
+    # @return [PricingScheme]
     attr_accessor :pricing_scheme
 
     # TODO: Write general description for this method
-    # @return [GetPriceBracketResponse]
+    # @return [PriceBracket]
     attr_accessor :price_bracket
 
     # TODO: Write general description for this method
@@ -70,12 +70,10 @@ module MundiApi
       # Extract variables from the hash.
       amount = hash['amount']
       description = hash['description']
-      if hash['pricing_scheme']
-        pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme'])
-      end
-      if hash['price_bracket']
-        price_bracket = GetPriceBracketResponse.from_hash(hash['price_bracket'])
-      end
+      pricing_scheme = PricingScheme.from_hash(hash['pricing_scheme']) if
+        hash['pricing_scheme']
+      price_bracket = PriceBracket.from_hash(hash['price_bracket']) if
+        hash['price_bracket']
       subscription_item_id = hash['subscription_item_id']
       quantity = hash['quantity']
       name = hash['name']

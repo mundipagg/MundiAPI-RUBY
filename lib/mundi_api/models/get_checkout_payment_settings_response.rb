@@ -22,8 +22,8 @@ module MundiApi
     # @return [String]
     attr_accessor :status
 
-    # Customer
-    # @return [GetCustomerResponse]
+    # Status
+    # @return [Customer]
     attr_accessor :customer
 
     # Payment amount
@@ -79,8 +79,7 @@ module MundiApi
       payment_url = hash['payment_url']
       accepted_payment_methods = hash['accepted_payment_methods']
       status = hash['status']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
       amount = hash['amount']
       default_payment_method = hash['default_payment_method']
       gateway_affiliation_id = hash['gateway_affiliation_id']

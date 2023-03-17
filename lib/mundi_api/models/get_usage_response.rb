@@ -35,7 +35,7 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :deleted_at
 
-    # Subscription item
+    # Status
     # @return [GetSubscriptionItemResponse]
     attr_accessor :subscription_item
 

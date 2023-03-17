@@ -26,16 +26,16 @@ module MundiApi
     # @return [String]
     attr_accessor :type
 
-    # Bank account
-    # @return [CreateBankAccountRequest]
+    # Recipient type
+    # @return [DefaultBankAccount1]
     attr_accessor :default_bank_account
 
     # Metadata
     # @return [Array<String, String>]
     attr_accessor :metadata
 
-    # Receiver Transfer Information
-    # @return [CreateTransferSettingsRequest]
+    # Metadata
+    # @return [GetTransferSettingsResponse]
     attr_accessor :transfer_settings
 
     # Recipient code
@@ -70,7 +70,7 @@ module MundiApi
                    default_bank_account = nil,
                    metadata = nil,
                    code = nil,
-                   payment_mode = 'bank_transfer',
+                   payment_mode = nil,
                    transfer_settings = nil)
       @name = name
       @email = email
@@ -95,13 +95,13 @@ module MundiApi
       document = hash['document']
       type = hash['type']
       if hash['default_bank_account']
-        default_bank_account = CreateBankAccountRequest.from_hash(hash['default_bank_account'])
+        default_bank_account = DefaultBankAccount1.from_hash(hash['default_bank_account'])
       end
       metadata = hash['metadata']
       code = hash['code']
-      payment_mode = hash['payment_mode'] ||= 'bank_transfer'
+      payment_mode = hash['payment_mode']
       if hash['transfer_settings']
-        transfer_settings = CreateTransferSettingsRequest.from_hash(hash['transfer_settings'])
+        transfer_settings = GetTransferSettingsResponse.from_hash(hash['transfer_settings'])
       end
 
       # Create object from extracted values.

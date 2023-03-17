@@ -10,8 +10,8 @@ module MundiApi
     # @return [List of GetAnticipationResponse]
     attr_accessor :data
 
-    # Paging
-    # @return [PagingResponse]
+    # Anticipations
+    # @return [Paging]
     attr_accessor :paging
 
     # A mapping from model property names to API property names.
@@ -41,7 +41,7 @@ module MundiApi
           data << (GetAnticipationResponse.from_hash(structure) if structure)
         end
       end
-      paging = PagingResponse.from_hash(hash['paging']) if hash['paging']
+      paging = Paging.from_hash(hash['paging']) if hash['paging']
 
       # Create object from extracted values.
       ListAnticipationResponse.new(data,

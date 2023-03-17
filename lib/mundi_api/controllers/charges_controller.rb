@@ -18,7 +18,7 @@ module MundiApi
 
     # Get a charge from its id
     # @param [String] charge_id Required parameter: Charge id
-    # @return GetChargeResponse response from the API call
+    # @return ChargesResponse response from the API call
     def get_charge(charge_id)
       # Prepare query url.
       _path_url = '/charges/{charge_id}'
@@ -40,21 +40,123 @@ module MundiApi
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesResponse.from_hash(decoded)
     end
 
-    # TODO: type endpoint description here
-    # @param [String] charge_id Required parameter: Example:
-    # @param [CreateConfirmPaymentRequest] request Optional parameter: Request
-    # for confirm payment
+    # Cancel a charge
+    # @param [String] charge_id Required parameter: Charge id
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
+    # @param [ChargesRequest] body Optional parameter: Request for cancelling a
+    # charge
+    # @return ChargesResponse response from the API call
+    def cancel_charge(charge_id,
+                      idempotency_key = nil,
+                      body = nil)
+      # Prepare query url.
+      _path_url = '/charges/{charge_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'charge_id' => charge_id
+      )
+      _query_builder = Configuration.base_uri.dup
+      _query_builder << _path_url
+      _query_url = APIHelper.clean_url _query_builder
+      # Prepare headers.
+      _headers = {
+        'accept' => 'application/json',
+        'Content-Type' => 'application/json',
+        'idempotency-key' => idempotency_key
+      }
+      # Prepare and execute HttpRequest.
+      _request = @http_client.delete(
+        _query_url,
+        headers: _headers,
+        parameters: body.to_json
+      )
+      BasicAuth.apply(_request)
+      _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
+      validate_response(_context)
+      # Return appropriate response type.
+      decoded = APIHelper.json_deserialize(_context.response.raw_body)
+      ChargesResponse.from_hash(decoded)
+    end
+
+    # ConfirmPayment
+    # @param [String] charge_id Required parameter: Example:
+    # @param [String] idempotency_key Optional parameter: Example:
+    # @param [CreateConfirmPaymentRequest] body Optional parameter: Request for
+    # confirm payment
+    # @return ChargesConfirmPaymentResponse response from the API call
     def confirm_payment(charge_id,
-                        request = nil,
-                        idempotency_key = nil)
+                        idempotency_key = nil,
+                        body = nil)
       # Prepare query url.
       _path_url = '/charges/{charge_id}/confirm-payment'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -67,31 +169,63 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
+        'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
         headers: _headers,
-        parameters: request.to_json
+        parameters: body.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesConfirmPaymentResponse.from_hash(decoded)
     end
 
     # Updates the card from a charge
     # @param [String] charge_id Required parameter: Charge id
-    # @param [UpdateChargeCardRequest] request Required parameter: Request for
-    # updating a charge's card
+    # @param [ChargesCardRequest] body Required parameter: Request for updating
+    # a charge's card
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
+    # @return ChargesCardResponse response from the API call
     def update_charge_card(charge_id,
-                           request,
+                           body,
                            idempotency_key = nil)
       # Prepare query url.
       _path_url = '/charges/{charge_id}/card'
@@ -105,21 +239,53 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
+        'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
         headers: _headers,
-        parameters: request.to_json
+        parameters: body.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesCardResponse.from_hash(decoded)
     end
 
     # Lists all charges
@@ -137,7 +303,7 @@ module MundiApi
     # beginning of the range for charge's creation
     # @param [DateTime] created_until Optional parameter: Filter for the end of
     # the range for charge's creation
-    # @return ListChargesResponse response from the API call
+    # @return ChargesResponse2 response from the API call
     def get_charges(page = nil,
                     size = nil,
                     code = nil,
@@ -178,54 +344,48 @@ module MundiApi
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      ListChargesResponse.from_hash(decoded)
-    end
-
-    # Cancel a charge
-    # @param [String] charge_id Required parameter: Charge id
-    # @param [CreateCancelChargeRequest] request Optional parameter: Request for
-    # cancelling a charge
-    # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
-    def cancel_charge(charge_id,
-                      request = nil,
-                      idempotency_key = nil)
-      # Prepare query url.
-      _path_url = '/charges/{charge_id}'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'charge_id' => charge_id
-      )
-      _query_builder = Configuration.base_uri.dup
-      _query_builder << _path_url
-      _query_url = APIHelper.clean_url _query_builder
-      # Prepare headers.
-      _headers = {
-        'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
-        'idempotency-key' => idempotency_key
-      }
-      # Prepare and execute HttpRequest.
-      _request = @http_client.delete(
-        _query_url,
-        headers: _headers,
-        parameters: request.to_json
-      )
-      BasicAuth.apply(_request)
-      _context = execute_request(_request)
-      validate_response(_context)
-      # Return appropriate response type.
-      decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesResponse2.from_hash(decoded)
     end
 
     # Retries a charge
     # @param [String] charge_id Required parameter: Charge id
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
+    # @return ChargesRetryResponse response from the API call
     def retry_charge(charge_id,
                      idempotency_key = nil)
       # Prepare query url.
@@ -249,20 +409,52 @@ module MundiApi
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesRetryResponse.from_hash(decoded)
     end
 
     # Updates a charge's payment method
     # @param [String] charge_id Required parameter: Charge id
-    # @param [UpdateChargePaymentMethodRequest] request Required parameter:
-    # Request for updating the payment method from a charge
+    # @param [ChargesPaymentMethodRequest] body Required parameter: Request for
+    # updating the payment method from a charge
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
+    # @return ChargesPaymentMethodResponse response from the API call
     def update_charge_payment_method(charge_id,
-                                     request,
+                                     body,
                                      idempotency_key = nil)
       # Prepare query url.
       _path_url = '/charges/{charge_id}/payment-method'
@@ -276,31 +468,63 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
+        'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
         headers: _headers,
-        parameters: request.to_json
+        parameters: body.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesPaymentMethodResponse.from_hash(decoded)
     end
 
     # Updates the metadata from a charge
     # @param [String] charge_id Required parameter: The charge id
-    # @param [UpdateMetadataRequest] request Required parameter: Request for
+    # @param [ChargesMetadataRequest] body Required parameter: Request for
     # updating the charge metadata
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
+    # @return ChargesMetadataResponse response from the API call
     def update_charge_metadata(charge_id,
-                               request,
+                               body,
                                idempotency_key = nil)
       # Prepare query url.
       _path_url = '/Charges/{charge_id}/metadata'
@@ -314,32 +538,64 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
+        'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
         headers: _headers,
-        parameters: request.to_json
+        parameters: body.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesMetadataResponse.from_hash(decoded)
     end
 
     # Captures a charge
     # @param [String] charge_id Required parameter: Charge id
-    # @param [CreateCaptureChargeRequest] request Optional parameter: Request
-    # for capturing a charge
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
+    # @param [ChargesCaptureRequest] body Optional parameter: Request for
+    # capturing a charge
+    # @return ChargesCaptureResponse response from the API call
     def capture_charge(charge_id,
-                       request = nil,
-                       idempotency_key = nil)
+                       idempotency_key = nil,
+                       body = nil)
       # Prepare query url.
       _path_url = '/charges/{charge_id}/capture'
       _path_url = APIHelper.append_url_with_template_parameters(
@@ -352,31 +608,63 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
+        'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
         headers: _headers,
-        parameters: request.to_json
+        parameters: body.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesCaptureResponse.from_hash(decoded)
     end
 
     # Updates the due date from a charge
     # @param [String] charge_id Required parameter: Charge Id
-    # @param [UpdateChargeDueDateRequest] request Required parameter: Request
-    # for updating the due date
+    # @param [ChargesDueDateRequest] body Required parameter: Request for
+    # updating the due date
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
+    # @return ChargesDueDateResponse response from the API call
     def update_charge_due_date(charge_id,
-                               request,
+                               body,
                                idempotency_key = nil)
       # Prepare query url.
       _path_url = '/Charges/{charge_id}/due-date'
@@ -390,29 +678,61 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
+        'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.patch(
         _query_url,
         headers: _headers,
-        parameters: request.to_json
+        parameters: body.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesDueDateResponse.from_hash(decoded)
     end
 
     # Creates a new charge
-    # @param [CreateChargeRequest] request Required parameter: Request for
-    # creating a charge
+    # @param [ChargesRequest1] body Required parameter: Request for creating a
+    # charge
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetChargeResponse response from the API call
-    def create_charge(request,
+    # @return ChargesResponse response from the API call
+    def create_charge(body,
                       idempotency_key = nil)
       # Prepare query url.
       _path_url = '/Charges'
@@ -422,28 +742,60 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
+        'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
         headers: _headers,
-        parameters: request.to_json
+        parameters: body.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetChargeResponse.from_hash(decoded)
+      ChargesResponse.from_hash(decoded)
     end
 
-    # TODO: type endpoint description here
+    # GetChargeTransactions
     # @param [String] charge_id Required parameter: Charge Id
     # @param [Integer] page Optional parameter: Page number
     # @param [Integer] size Optional parameter: Page size
-    # @return ListChargeTransactionsResponse response from the API call
+    # @return ChargesTransactionsResponse response from the API call
     def get_charge_transactions(charge_id,
                                 page = nil,
                                 size = nil)
@@ -475,13 +827,45 @@ module MundiApi
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      ListChargeTransactionsResponse.from_hash(decoded)
+      ChargesTransactionsResponse.from_hash(decoded)
     end
 
-    # TODO: type endpoint description here
+    # GetChargesSummary
     # @param [String] status Required parameter: Example:
     # @param [DateTime] created_since Optional parameter: Example:
     # @param [DateTime] created_until Optional parameter: Example:
@@ -514,6 +898,38 @@ module MundiApi
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)

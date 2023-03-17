@@ -16,51 +16,94 @@ module MundiApi
       self.class.instance
     end
 
-    # TODO: type endpoint description here
+    # CreateToken
     # @param [String] public_key Required parameter: Public key
-    # @param [CreateTokenRequest] request Required parameter: Request for
-    # creating a token
+    # @param [TokensRequest] body Required parameter: Request for creating a
+    # token
     # @param [String] idempotency_key Optional parameter: Example:
-    # @return GetTokenResponse response from the API call
+    # @param [String] app_id Optional parameter: Example:
+    # @return TokensResponse response from the API call
     def create_token(public_key,
-                     request,
-                     idempotency_key = nil)
+                     body,
+                     idempotency_key = nil,
+                     app_id = nil)
       # Prepare query url.
-      _path_url = '/tokens?appId={public_key}'
+      _path_url = '/tokens'
       _path_url = APIHelper.append_url_with_template_parameters(
         _path_url,
         'public_key' => public_key
       )
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'appId' => app_id
+        },
+        array_serialization: Configuration.array_serialization
+      )
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8',
+        'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
         headers: _headers,
-        parameters: request.to_json
+        parameters: body.to_json
       )
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetTokenResponse.from_hash(decoded)
+      TokensResponse.from_hash(decoded)
     end
 
     # Gets a token from its id
     # @param [String] id Required parameter: Token id
     # @param [String] public_key Required parameter: Public key
-    # @return GetTokenResponse response from the API call
+    # @param [String] app_id Optional parameter: Example:
+    # @return TokensResponse response from the API call
     def get_token(id,
-                  public_key)
+                  public_key,
+                  app_id = nil)
       # Prepare query url.
-      _path_url = '/tokens/{id}?appId={public_key}'
+      _path_url = '/tokens/{id}'
       _path_url = APIHelper.append_url_with_template_parameters(
         _path_url,
         'id' => id,
@@ -68,6 +111,13 @@ module MundiApi
       )
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
+      _query_builder = APIHelper.append_url_with_query_parameters(
+        _query_builder,
+        {
+          'appId' => app_id
+        },
+        array_serialization: Configuration.array_serialization
+      )
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
@@ -79,10 +129,42 @@ module MundiApi
         headers: _headers
       )
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
-      GetTokenResponse.from_hash(decoded)
+      TokensResponse.from_hash(decoded)
     end
   end
 end

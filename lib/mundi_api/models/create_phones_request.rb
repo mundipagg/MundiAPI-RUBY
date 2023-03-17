@@ -7,11 +7,11 @@ module MundiApi
   # CreatePhonesRequest Model.
   class CreatePhonesRequest < BaseModel
     # TODO: Write general description for this method
-    # @return [CreatePhoneRequest]
+    # @return [GetPhoneResponse]
     attr_accessor :home_phone
 
     # TODO: Write general description for this method
-    # @return [CreatePhoneRequest]
+    # @return [GetPhoneResponse]
     attr_accessor :mobile_phone
 
     # A mapping from model property names to API property names.
@@ -33,9 +33,9 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      home_phone = CreatePhoneRequest.from_hash(hash['home_phone']) if
+      home_phone = GetPhoneResponse.from_hash(hash['home_phone']) if
         hash['home_phone']
-      mobile_phone = CreatePhoneRequest.from_hash(hash['mobile_phone']) if
+      mobile_phone = GetPhoneResponse.from_hash(hash['mobile_phone']) if
         hash['mobile_phone']
 
       # Create object from extracted values.

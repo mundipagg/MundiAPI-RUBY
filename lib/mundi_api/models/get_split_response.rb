@@ -14,8 +14,8 @@ module MundiApi
     # @return [Integer]
     attr_accessor :amount
 
-    # Recipient
-    # @return [GetRecipientResponse]
+    # Amount
+    # @return [Recipient]
     attr_accessor :recipient
 
     # The split rule gateway id
@@ -65,8 +65,7 @@ module MundiApi
       amount = hash['amount']
       gateway_id = hash['gateway_id']
       id = hash['id']
-      recipient = GetRecipientResponse.from_hash(hash['recipient']) if
-        hash['recipient']
+      recipient = Recipient.from_hash(hash['recipient']) if hash['recipient']
       options = GetSplitOptionsResponse.from_hash(hash['options']) if
         hash['options']
 

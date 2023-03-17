@@ -24,8 +24,8 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :due_at
 
-    # Card's billing address
-    # @return [CreateAddressRequest]
+    # Boleto due date
+    # @return [BillingAddress1]
     attr_accessor :billing_address
 
     # The address id for the billing address
@@ -41,11 +41,11 @@ module MundiApi
     attr_accessor :document_number
 
     # Boleto identification
-    # @return [CreateInterestRequest]
+    # @return [Interest]
     attr_accessor :interest
 
     # Boleto identification
-    # @return [CreateFineRequest]
+    # @return [Fine]
     attr_accessor :fine
 
     # Boleto identification
@@ -101,16 +101,14 @@ module MundiApi
       retries = hash['retries']
       bank = hash['bank']
       instructions = hash['instructions']
-      if hash['billing_address']
-        billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
-      end
+      billing_address = BillingAddress1.from_hash(hash['billing_address']) if
+        hash['billing_address']
       billing_address_id = hash['billing_address_id']
       document_number = hash['document_number']
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       nosso_numero = hash['nosso_numero']
-      interest = CreateInterestRequest.from_hash(hash['interest']) if
-        hash['interest']
-      fine = CreateFineRequest.from_hash(hash['fine']) if hash['fine']
+      interest = Interest.from_hash(hash['interest']) if hash['interest']
+      fine = Fine.from_hash(hash['fine']) if hash['fine']
       max_days_to_pay_past_due = hash['max_days_to_pay_past_due']
 
       # Create object from extracted values.

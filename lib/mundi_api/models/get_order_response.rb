@@ -24,7 +24,7 @@ module MundiApi
     attr_accessor :items
 
     # TODO: Write general description for this method
-    # @return [GetCustomerResponse]
+    # @return [Customer]
     attr_accessor :customer
 
     # TODO: Write general description for this method
@@ -48,7 +48,7 @@ module MundiApi
     attr_accessor :invoice_url
 
     # TODO: Write general description for this method
-    # @return [GetShippingResponse]
+    # @return [Shipping]
     attr_accessor :shipping
 
     # TODO: Write general description for this method
@@ -67,12 +67,12 @@ module MundiApi
     # @return [String]
     attr_accessor :session_id
 
-    # Location
-    # @return [GetLocationResponse]
+    # Session id
+    # @return [Location]
     attr_accessor :location
 
-    # Device's informations
-    # @return [GetDeviceResponse]
+    # Session id
+    # @return [Device]
     attr_accessor :device
 
     # Indicates whether the order is closed
@@ -169,12 +169,10 @@ module MundiApi
         end
       end
       invoice_url = hash['invoice_url']
-      shipping = GetShippingResponse.from_hash(hash['shipping']) if
-        hash['shipping']
+      shipping = Shipping.from_hash(hash['shipping']) if hash['shipping']
       metadata = hash['metadata']
       closed = hash['closed']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
       # Parameter is an array, so we need to iterate through it
       checkouts = nil
       unless hash['checkouts'].nil?
@@ -185,9 +183,8 @@ module MundiApi
       end
       ip = hash['ip']
       session_id = hash['session_id']
-      location = GetLocationResponse.from_hash(hash['location']) if
-        hash['location']
-      device = GetDeviceResponse.from_hash(hash['device']) if hash['device']
+      location = Location.from_hash(hash['location']) if hash['location']
+      device = Device.from_hash(hash['device']) if hash['device']
 
       # Create object from extracted values.
       GetOrderResponse.new(id,

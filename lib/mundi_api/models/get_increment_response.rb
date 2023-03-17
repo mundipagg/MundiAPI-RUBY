@@ -43,7 +43,7 @@ module MundiApi
     # @return [GetSubscriptionResponse]
     attr_accessor :subscription
 
-    # The Subscription Item
+    # TODO: Write general description for this method
     # @return [GetSubscriptionItemResponse]
     attr_accessor :subscription_item
 

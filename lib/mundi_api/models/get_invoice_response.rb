@@ -40,11 +40,11 @@ module MundiApi
     attr_accessor :items
 
     # TODO: Write general description for this method
-    # @return [GetCustomerResponse]
+    # @return [Customer]
     attr_accessor :customer
 
     # TODO: Write general description for this method
-    # @return [GetChargeResponse]
+    # @return [Charge]
     attr_accessor :charge
 
     # TODO: Write general description for this method
@@ -52,7 +52,7 @@ module MundiApi
     attr_accessor :installments
 
     # TODO: Write general description for this method
-    # @return [GetBillingAddressResponse]
+    # @return [BillingAddress]
     attr_accessor :billing_address
 
     # TODO: Write general description for this method
@@ -60,11 +60,11 @@ module MundiApi
     attr_accessor :subscription
 
     # TODO: Write general description for this method
-    # @return [GetPeriodResponse]
+    # @return [Cycle]
     attr_accessor :cycle
 
     # TODO: Write general description for this method
-    # @return [GetShippingResponse]
+    # @return [Shipping]
     attr_accessor :shipping
 
     # TODO: Write general description for this method
@@ -196,20 +196,17 @@ module MundiApi
           items << (GetInvoiceItemResponse.from_hash(structure) if structure)
         end
       end
-      charge = GetChargeResponse.from_hash(hash['charge']) if hash['charge']
+      charge = Charge.from_hash(hash['charge']) if hash['charge']
       installments = hash['installments']
-      if hash['billing_address']
-        billing_address = GetBillingAddressResponse.from_hash(hash['billing_address'])
-      end
+      billing_address = BillingAddress.from_hash(hash['billing_address']) if
+        hash['billing_address']
       subscription = GetSubscriptionResponse.from_hash(hash['subscription']) if
         hash['subscription']
-      shipping = GetShippingResponse.from_hash(hash['shipping']) if
-        hash['shipping']
+      shipping = Shipping.from_hash(hash['shipping']) if hash['shipping']
       metadata = hash['metadata']
       subscription_id = hash['subscription_id']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
-      cycle = GetPeriodResponse.from_hash(hash['cycle']) if hash['cycle']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
+      cycle = Cycle.from_hash(hash['cycle']) if hash['cycle']
       due_at = APIHelper.rfc3339(hash['due_at']) if hash['due_at']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']

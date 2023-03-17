@@ -27,8 +27,8 @@ module MundiApi
     # @return [DateTime]
     attr_accessor :updated_at
 
-    # Bank account
-    # @return [GetBankAccountResponse]
+    # Transfer last update date
+    # @return [BankAccount]
     attr_accessor :bank_account
 
     # Metadata
@@ -74,7 +74,7 @@ module MundiApi
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
-      bank_account = GetBankAccountResponse.from_hash(hash['bank_account']) if
+      bank_account = BankAccount.from_hash(hash['bank_account']) if
         hash['bank_account']
       metadata = hash['metadata']
 

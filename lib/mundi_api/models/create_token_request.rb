@@ -10,8 +10,8 @@ module MundiApi
     # @return [String]
     attr_accessor :type
 
-    # Card data
-    # @return [CreateCardTokenRequest]
+    # Token type
+    # @return [Card11]
     attr_accessor :card
 
     # A mapping from model property names to API property names.
@@ -22,7 +22,7 @@ module MundiApi
       @_hash
     end
 
-    def initialize(type = 'card',
+    def initialize(type = nil,
                    card = nil)
       @type = type
       @card = card
@@ -33,8 +33,8 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      type = hash['type'] ||= 'card'
-      card = CreateCardTokenRequest.from_hash(hash['card']) if hash['card']
+      type = hash['type']
+      card = Card11.from_hash(hash['card']) if hash['card']
 
       # Create object from extracted values.
       CreateTokenRequest.new(type,

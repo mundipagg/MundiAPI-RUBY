@@ -52,15 +52,15 @@ module MundiApi
     attr_accessor :last_transaction
 
     # TODO: Write general description for this method
-    # @return [GetInvoiceResponse]
+    # @return [Invoice]
     attr_accessor :invoice
 
     # TODO: Write general description for this method
-    # @return [GetOrderResponse]
+    # @return [Order]
     attr_accessor :order
 
     # TODO: Write general description for this method
-    # @return [GetCustomerResponse]
+    # @return [Customer]
     attr_accessor :customer
 
     # TODO: Write general description for this method
@@ -183,11 +183,9 @@ module MundiApi
       if hash['last_transaction']
         last_transaction = GetTransactionResponse.from_hash(hash['last_transaction'])
       end
-      invoice = GetInvoiceResponse.from_hash(hash['invoice']) if
-        hash['invoice']
-      order = GetOrderResponse.from_hash(hash['order']) if hash['order']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
+      invoice = Invoice.from_hash(hash['invoice']) if hash['invoice']
+      order = Order.from_hash(hash['order']) if hash['order']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
       paid_at = APIHelper.rfc3339(hash['paid_at']) if hash['paid_at']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']

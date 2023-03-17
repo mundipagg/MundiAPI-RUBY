@@ -26,7 +26,7 @@ module MundiApi
     attr_accessor :additional_information
 
     # TODO: Write general description for this method
-    # @return [GetPixPayerResponse]
+    # @return [Object]
     attr_accessor :payer
 
     # A mapping from model property names to API property names.
@@ -45,6 +45,7 @@ module MundiApi
                    qr_code_url = nil,
                    expires_at = nil,
                    additional_information = nil,
+                   payer = nil,
                    gateway_id = nil,
                    amount = nil,
                    status = nil,
@@ -58,7 +59,6 @@ module MundiApi
                    gateway_response = nil,
                    antifraud_response = nil,
                    split = nil,
-                   payer = nil,
                    next_attempt = nil,
                    transaction_type = nil,
                    metadata = nil,
@@ -109,6 +109,7 @@ module MundiApi
           additional_information << (PixAdditionalInformation.from_hash(structure) if structure)
         end
       end
+      payer = hash['payer']
       gateway_id = hash['gateway_id']
       amount = hash['amount']
       status = hash['status']
@@ -126,9 +127,8 @@ module MundiApi
         end
       end
       id = hash['id']
-      if hash['gateway_response']
-        gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response'])
-      end
+      gateway_response = GatewayResponse.from_hash(hash['gateway_response']) if
+        hash['gateway_response']
       if hash['antifraud_response']
         antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response'])
       end
@@ -140,14 +140,12 @@ module MundiApi
           split << (GetSplitResponse.from_hash(structure) if structure)
         end
       end
-      payer = GetPixPayerResponse.from_hash(hash['payer']) if hash['payer']
       next_attempt = APIHelper.rfc3339(hash['next_attempt']) if
         hash['next_attempt']
       transaction_type = hash['transaction_type']
       metadata = hash['metadata']
-      interest = GetInterestResponse.from_hash(hash['interest']) if
-        hash['interest']
-      fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']
+      interest = Interest.from_hash(hash['interest']) if hash['interest']
+      fine = Fine.from_hash(hash['fine']) if hash['fine']
       max_days_to_pay_past_due = hash['max_days_to_pay_past_due']
 
       # Create object from extracted values.
@@ -155,6 +153,7 @@ module MundiApi
                                     qr_code_url,
                                     expires_at,
                                     additional_information,
+                                    payer,
                                     gateway_id,
                                     amount,
                                     status,
@@ -168,7 +167,6 @@ module MundiApi
                                     gateway_response,
                                     antifraud_response,
                                     split,
-                                    payer,
                                     next_attempt,
                                     transaction_type,
                                     metadata,

@@ -17,7 +17,7 @@ module MundiApi
       @_hash
     end
 
-    def initialize(cancel_pending_invoices = true)
+    def initialize(cancel_pending_invoices = nil)
       @cancel_pending_invoices = cancel_pending_invoices
     end
 
@@ -26,7 +26,7 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      cancel_pending_invoices = hash['cancel_pending_invoices'] ||= true
+      cancel_pending_invoices = hash['cancel_pending_invoices']
 
       # Create object from extracted values.
       CreateCancelSubscriptionRequest.new(cancel_pending_invoices)

@@ -26,8 +26,8 @@ module MundiApi
     # @return [String]
     attr_accessor :cvv
 
-    # Card's billing address
-    # @return [CreateAddressRequest]
+    # The card's security code
+    # @return [BillingAddress1]
     attr_accessor :billing_address
 
     # Card brand
@@ -46,8 +46,8 @@ module MundiApi
     # @return [String]
     attr_accessor :type
 
-    # Options for creating the card
-    # @return [CreateCardOptionsRequest]
+    # Card type
+    # @return [Options1]
     attr_accessor :options
 
     # Document number for the card's holder
@@ -101,7 +101,7 @@ module MundiApi
                    brand = nil,
                    billing_address_id = nil,
                    metadata = nil,
-                   type = 'credit',
+                   type = nil,
                    options = nil,
                    private_label = nil,
                    label = nil,
@@ -136,15 +136,13 @@ module MundiApi
       exp_month = hash['exp_month']
       exp_year = hash['exp_year']
       cvv = hash['cvv']
-      if hash['billing_address']
-        billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
-      end
+      billing_address = BillingAddress1.from_hash(hash['billing_address']) if
+        hash['billing_address']
       brand = hash['brand']
       billing_address_id = hash['billing_address_id']
       metadata = hash['metadata']
-      type = hash['type'] ||= 'credit'
-      options = CreateCardOptionsRequest.from_hash(hash['options']) if
-        hash['options']
+      type = hash['type']
+      options = Options1.from_hash(hash['options']) if hash['options']
       private_label = hash['private_label']
       label = hash['label']
       holder_document = hash['holder_document']
