@@ -7,12 +7,12 @@ require 'date'
 module MundiApi
   # Request for creating a subcription
   class CreateSubscriptionRequest < BaseModel
-    # Customer
-    # @return [CreateCustomerRequest]
+    # TODO: Write general description for this method
+    # @return [Customer8]
     attr_accessor :customer
 
-    # Card
-    # @return [CreateCardRequest]
+    # TODO: Write general description for this method
+    # @return [Card1]
     attr_accessor :card
 
     # Subscription code
@@ -47,16 +47,16 @@ module MundiApi
     # @return [Integer]
     attr_accessor :interval_count
 
-    # Subscription pricing scheme
-    # @return [CreatePricingSchemeRequest]
+    # Interval count
+    # @return [PricingScheme4]
     attr_accessor :pricing_scheme
 
     # Subscription items
     # @return [List of CreateSubscriptionItemRequest]
     attr_accessor :items
 
-    # Shipping
-    # @return [CreateShippingRequest]
+    # Subscription items
+    # @return [Shipping3]
     attr_accessor :shipping
 
     # Discounts
@@ -67,8 +67,8 @@ module MundiApi
     # @return [Array<String, String>]
     attr_accessor :metadata
 
-    # Setup data
-    # @return [CreateSetupRequest]
+    # Metadata
+    # @return [Setup1]
     attr_accessor :setup
 
     # Plan id
@@ -127,12 +127,12 @@ module MundiApi
     # @return [CreatePeriodRequest]
     attr_accessor :period
 
-    # SubMerchant
-    # @return [CreateSubMerchantRequest]
+    # Increments
+    # @return [Submerchant]
     attr_accessor :submerchant
 
-    # Subscription's split
-    # @return [CreateSubscriptionSplitRequest]
+    # Increments
+    # @return [UpdateSubscriptionSplitRequest]
     attr_accessor :split
 
     # A mapping from model property names to API property names.
@@ -244,9 +244,8 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      customer = CreateCustomerRequest.from_hash(hash['customer']) if
-        hash['customer']
-      card = CreateCardRequest.from_hash(hash['card']) if hash['card']
+      customer = Customer8.from_hash(hash['customer']) if hash['customer']
+      card = Card1.from_hash(hash['card']) if hash['card']
       code = hash['code']
       payment_method = hash['payment_method']
       billing_type = hash['billing_type']
@@ -255,9 +254,8 @@ module MundiApi
       currency = hash['currency']
       interval = hash['interval']
       interval_count = hash['interval_count']
-      if hash['pricing_scheme']
-        pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme'])
-      end
+      pricing_scheme = PricingScheme4.from_hash(hash['pricing_scheme']) if
+        hash['pricing_scheme']
       # Parameter is an array, so we need to iterate through it
       items = nil
       unless hash['items'].nil?
@@ -266,8 +264,7 @@ module MundiApi
           items << (CreateSubscriptionItemRequest.from_hash(structure) if structure)
         end
       end
-      shipping = CreateShippingRequest.from_hash(hash['shipping']) if
-        hash['shipping']
+      shipping = Shipping3.from_hash(hash['shipping']) if hash['shipping']
       # Parameter is an array, so we need to iterate through it
       discounts = nil
       unless hash['discounts'].nil?
@@ -277,7 +274,7 @@ module MundiApi
         end
       end
       metadata = hash['metadata']
-      setup = CreateSetupRequest.from_hash(hash['setup']) if hash['setup']
+      setup = Setup1.from_hash(hash['setup']) if hash['setup']
       # Parameter is an array, so we need to iterate through it
       increments = nil
       unless hash['increments'].nil?
@@ -299,9 +296,9 @@ module MundiApi
       quantity = hash['quantity']
       boleto_due_days = hash['boleto_due_days']
       period = CreatePeriodRequest.from_hash(hash['period']) if hash['period']
-      submerchant = CreateSubMerchantRequest.from_hash(hash['submerchant']) if
+      submerchant = Submerchant.from_hash(hash['submerchant']) if
         hash['submerchant']
-      split = CreateSubscriptionSplitRequest.from_hash(hash['split']) if
+      split = UpdateSubscriptionSplitRequest.from_hash(hash['split']) if
         hash['split']
 
       # Create object from extracted values.

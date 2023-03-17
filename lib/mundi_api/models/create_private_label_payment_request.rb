@@ -14,8 +14,8 @@ module MundiApi
     # @return [String]
     attr_accessor :statement_descriptor
 
-    # Card data
-    # @return [CreateCardRequest]
+    # The text that will be shown on the private label's statement
+    # @return [Card1]
     attr_accessor :card
 
     # The Card id
@@ -92,7 +92,7 @@ module MundiApi
       # Extract variables from the hash.
       installments = hash['installments'] ||= 1
       statement_descriptor = hash['statement_descriptor']
-      card = CreateCardRequest.from_hash(hash['card']) if hash['card']
+      card = Card1.from_hash(hash['card']) if hash['card']
       card_id = hash['card_id']
       card_token = hash['card_token']
       recurrence = hash['recurrence']

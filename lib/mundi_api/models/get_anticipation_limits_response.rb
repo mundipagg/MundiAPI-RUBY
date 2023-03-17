@@ -6,12 +6,12 @@
 module MundiApi
   # Anticipation limits
   class GetAnticipationLimitsResponse < BaseModel
-    # Max limit
-    # @return [GetAnticipationLimitResponse]
+    # TODO: Write general description for this method
+    # @return [Max]
     attr_accessor :max
 
-    # Min limit
-    # @return [GetAnticipationLimitResponse]
+    # TODO: Write general description for this method
+    # @return [Min]
     attr_accessor :min
 
     # A mapping from model property names to API property names.
@@ -33,8 +33,8 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      max = GetAnticipationLimitResponse.from_hash(hash['max']) if hash['max']
-      min = GetAnticipationLimitResponse.from_hash(hash['min']) if hash['min']
+      max = Max.from_hash(hash['max']) if hash['max']
+      min = Min.from_hash(hash['min']) if hash['min']
 
       # Create object from extracted values.
       GetAnticipationLimitsResponse.new(max,

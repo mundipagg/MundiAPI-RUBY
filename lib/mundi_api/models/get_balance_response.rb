@@ -14,15 +14,15 @@ module MundiApi
     # @return [Long]
     attr_accessor :available_amount
 
-    # Recipient
-    # @return [GetRecipientResponse]
+    # Amount available for transferring
+    # @return [Recipient]
     attr_accessor :recipient
 
-    # Recipient
+    # Amount available for transferring
     # @return [Long]
     attr_accessor :waiting_funds_amount
 
-    # Recipient
+    # Amount available for transferring
     # @return [Long]
     attr_accessor :transferred_amount
 
@@ -58,8 +58,7 @@ module MundiApi
       available_amount = hash['available_amount']
       waiting_funds_amount = hash['waiting_funds_amount']
       transferred_amount = hash['transferred_amount']
-      recipient = GetRecipientResponse.from_hash(hash['recipient']) if
-        hash['recipient']
+      recipient = Recipient.from_hash(hash['recipient']) if hash['recipient']
 
       # Create object from extracted values.
       GetBalanceResponse.new(currency,

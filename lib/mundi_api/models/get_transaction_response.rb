@@ -55,31 +55,31 @@ module MundiApi
     # @return [String]
     attr_accessor :id
 
-    # The Gateway Response
-    # @return [GetGatewayResponseResponse]
+    # Código da transação
+    # @return [GatewayResponse]
     attr_accessor :gateway_response
 
-    # The Gateway Response
+    # Código da transação
     # @return [GetAntifraudResponse]
     attr_accessor :antifraud_response
 
-    # The Gateway Response
+    # Código da transação
     # @return [Array<String, String>]
     attr_accessor :metadata
 
-    # The Gateway Response
+    # Código da transação
     # @return [List of GetSplitResponse]
     attr_accessor :split
 
-    # The Gateway Response
-    # @return [GetInterestResponse]
+    # Código da transação
+    # @return [Interest]
     attr_accessor :interest
 
-    # The Gateway Response
-    # @return [GetFineResponse]
+    # Código da transação
+    # @return [Fine]
     attr_accessor :fine
 
-    # The Gateway Response
+    # Código da transação
     # @return [Integer]
     attr_accessor :max_days_to_pay_past_due
 
@@ -192,9 +192,8 @@ module MundiApi
         end
       end
       id = hash['id']
-      if hash['gateway_response']
-        gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response'])
-      end
+      gateway_response = GatewayResponse.from_hash(hash['gateway_response']) if
+        hash['gateway_response']
       if hash['antifraud_response']
         antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response'])
       end
@@ -210,9 +209,8 @@ module MundiApi
         hash['next_attempt']
       transaction_type = hash['transaction_type']
       metadata = hash['metadata']
-      interest = GetInterestResponse.from_hash(hash['interest']) if
-        hash['interest']
-      fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']
+      interest = Interest.from_hash(hash['interest']) if hash['interest']
+      fine = Fine.from_hash(hash['fine']) if hash['fine']
       max_days_to_pay_past_due = hash['max_days_to_pay_past_due']
 
       # Create object from extracted values.

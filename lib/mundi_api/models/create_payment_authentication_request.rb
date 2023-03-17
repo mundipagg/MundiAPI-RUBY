@@ -10,8 +10,8 @@ module MundiApi
     # @return [String]
     attr_accessor :type
 
-    # The 3D-S authentication object
-    # @return [CreateThreeDSecureRequest]
+    # The Authentication type
+    # @return [ThreedSecure1]
     attr_accessor :threed_secure
 
     # A mapping from model property names to API property names.
@@ -34,9 +34,8 @@ module MundiApi
 
       # Extract variables from the hash.
       type = hash['type']
-      if hash['threed_secure']
-        threed_secure = CreateThreeDSecureRequest.from_hash(hash['threed_secure'])
-      end
+      threed_secure = ThreedSecure1.from_hash(hash['threed_secure']) if
+        hash['threed_secure']
 
       # Create object from extracted values.
       CreatePaymentAuthenticationRequest.new(type,

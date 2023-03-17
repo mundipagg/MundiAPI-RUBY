@@ -13,7 +13,7 @@ module MundiApi
       @http_call_back = http_call_back
 
       @global_headers = {
-        'user-agent' => 'MundiSDK - Ruby 2.4.0'
+        'user-agent' => 'MundiSDK - Ruby 2.4.1'
       }
     end
 
@@ -44,25 +44,6 @@ module MundiApi
     end
 
     def validate_response(context)
-      if context.response.status_code == 400
-        raise ErrorException.new('Invalid request',
-                                 context)
-      elsif context.response.status_code == 401
-        raise ErrorException.new('Invalid API key',
-                                 context)
-      elsif context.response.status_code == 404
-        raise ErrorException.new('An informed resource was not found',
-                                 context)
-      elsif context.response.status_code == 412
-        raise ErrorException.new('Business validation error',
-                                 context)
-      elsif context.response.status_code == 422
-        raise ErrorException.new('Contract validation error',
-                                 context)
-      elsif context.response.status_code == 500
-        raise ErrorException.new('Internal server error',
-                                 context)
-      end
       raise APIException.new 'HTTP Response Not OK', context unless
         context.response.status_code.between?(200, 208) # [200,208] = HTTP OK
     end

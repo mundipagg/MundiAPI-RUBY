@@ -24,7 +24,7 @@ module MundiApi
     attr_accessor :expires_at
 
     # TODO: Write general description for this method
-    # @return [GetCardTokenResponse]
+    # @return [Card9]
     attr_accessor :card
 
     # A mapping from model property names to API property names.
@@ -59,7 +59,7 @@ module MundiApi
       type = hash['type']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       expires_at = hash['expires_at']
-      card = GetCardTokenResponse.from_hash(hash['card']) if hash['card']
+      card = Card9.from_hash(hash['card']) if hash['card']
 
       # Create object from extracted values.
       GetTokenResponse.new(id,

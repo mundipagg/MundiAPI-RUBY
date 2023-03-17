@@ -14,8 +14,8 @@ module MundiApi
     # @return [List of GetCheckoutCardInstallmentOptionsResponse]
     attr_accessor :installments
 
-    # Payment Authentication response
-    # @return [GetPaymentAuthenticationResponse]
+    # Parcelas
+    # @return [Authentication]
     attr_accessor :authentication
 
     # A mapping from model property names to API property names.
@@ -49,9 +49,8 @@ module MundiApi
           installments << (GetCheckoutCardInstallmentOptionsResponse.from_hash(structure) if structure)
         end
       end
-      if hash['authentication']
-        authentication = GetPaymentAuthenticationResponse.from_hash(hash['authentication'])
-      end
+      authentication = Authentication.from_hash(hash['authentication']) if
+        hash['authentication']
 
       # Create object from extracted values.
       GetCheckoutCreditCardPaymentResponse.new(statement_descriptor,

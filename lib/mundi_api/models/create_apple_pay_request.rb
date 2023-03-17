@@ -14,8 +14,8 @@ module MundiApi
     # @return [String]
     attr_accessor :data
 
-    # The ApplePay header request
-    # @return [CreateApplePayHeaderRequest]
+    # The cryptography data
+    # @return [Header]
     attr_accessor :header
 
     # Detached PKCS #7 signature, Base64 encoded as string
@@ -56,8 +56,7 @@ module MundiApi
       # Extract variables from the hash.
       version = hash['version']
       data = hash['data']
-      header = CreateApplePayHeaderRequest.from_hash(hash['header']) if
-        hash['header']
+      header = Header.from_hash(hash['header']) if hash['header']
       signature = hash['signature']
       merchant_identifier = hash['merchant_identifier']
 

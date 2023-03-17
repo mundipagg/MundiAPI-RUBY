@@ -16,7 +16,7 @@ module MundiApi
       self.class.instance
     end
 
-    # TODO: type endpoint description here
+    # GetTransaction
     # @param [String] transaction_id Required parameter: Example:
     # @return GetTransactionResponse response from the API call
     def get_transaction(transaction_id)
@@ -40,6 +40,38 @@ module MundiApi
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)

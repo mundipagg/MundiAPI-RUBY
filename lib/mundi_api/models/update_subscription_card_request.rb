@@ -6,8 +6,8 @@
 module MundiApi
   # Request for updating the card from a subscription
   class UpdateSubscriptionCardRequest < BaseModel
-    # Credit card data
-    # @return [CreateCardRequest]
+    # TODO: Write general description for this method
+    # @return [Card1]
     attr_accessor :card
 
     # Credit card id
@@ -33,7 +33,7 @@ module MundiApi
       return nil unless hash
 
       # Extract variables from the hash.
-      card = CreateCardRequest.from_hash(hash['card']) if hash['card']
+      card = Card1.from_hash(hash['card']) if hash['card']
       card_id = hash['card_id']
 
       # Create object from extracted values.

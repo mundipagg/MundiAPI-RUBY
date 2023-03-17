@@ -10,8 +10,8 @@ module MundiApi
     # @return [String]
     attr_accessor :statement_descriptor
 
-    # Debit card data
-    # @return [CreateCardRequest]
+    # The text that will be shown on the debit card's statement
+    # @return [Card1]
     attr_accessor :card
 
     # The debit card id
@@ -26,12 +26,12 @@ module MundiApi
     # @return [Boolean]
     attr_accessor :recurrence
 
-    # The payment authentication request
-    # @return [CreatePaymentAuthenticationRequest]
+    # Indicates a recurrence
+    # @return [Authentication2]
     attr_accessor :authentication
 
-    # The Debit card payment token request
-    # @return [CreateCardPaymentContactlessRequest]
+    # Indicates a recurrence
+    # @return [Token]
     attr_accessor :token
 
     # Defines whether the card has been used one or more times.
@@ -76,15 +76,13 @@ module MundiApi
 
       # Extract variables from the hash.
       statement_descriptor = hash['statement_descriptor']
-      card = CreateCardRequest.from_hash(hash['card']) if hash['card']
+      card = Card1.from_hash(hash['card']) if hash['card']
       card_id = hash['card_id']
       card_token = hash['card_token']
       recurrence = hash['recurrence']
-      if hash['authentication']
-        authentication = CreatePaymentAuthenticationRequest.from_hash(hash['authentication'])
-      end
-      token = CreateCardPaymentContactlessRequest.from_hash(hash['token']) if
-        hash['token']
+      authentication = Authentication2.from_hash(hash['authentication']) if
+        hash['authentication']
+      token = Token.from_hash(hash['token']) if hash['token']
       recurrency_cycle = hash['recurrency_cycle']
 
       # Create object from extracted values.

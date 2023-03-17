@@ -10,8 +10,8 @@ module MundiApi
     # @return [String]
     attr_accessor :description
 
-    # Pricing scheme
-    # @return [CreatePricingSchemeRequest]
+    # Item description
+    # @return [PricingScheme4]
     attr_accessor :pricing_scheme
 
     # Item id
@@ -83,9 +83,8 @@ module MundiApi
 
       # Extract variables from the hash.
       description = hash['description']
-      if hash['pricing_scheme']
-        pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme'])
-      end
+      pricing_scheme = PricingScheme4.from_hash(hash['pricing_scheme']) if
+        hash['pricing_scheme']
       id = hash['id']
       plan_item_id = hash['plan_item_id']
       # Parameter is an array, so we need to iterate through it

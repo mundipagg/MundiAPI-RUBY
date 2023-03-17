@@ -22,8 +22,8 @@ module MundiApi
     # @return [String]
     attr_accessor :billing_address_id
 
-    # Billing address
-    # @return [CreateAddressRequest]
+    # Id of the address to be used as billing address
+    # @return [BillingAddress1]
     attr_accessor :billing_address
 
     # Metadata
@@ -72,9 +72,8 @@ module MundiApi
       exp_month = hash['exp_month']
       exp_year = hash['exp_year']
       billing_address_id = hash['billing_address_id']
-      if hash['billing_address']
-        billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
-      end
+      billing_address = BillingAddress1.from_hash(hash['billing_address']) if
+        hash['billing_address']
       metadata = hash['metadata']
       label = hash['label']
 

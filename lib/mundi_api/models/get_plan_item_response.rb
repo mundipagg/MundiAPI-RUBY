@@ -28,7 +28,7 @@ module MundiApi
     attr_accessor :updated_at
 
     # TODO: Write general description for this method
-    # @return [GetPricingSchemeResponse]
+    # @return [PricingScheme]
     attr_accessor :pricing_scheme
 
     # TODO: Write general description for this method
@@ -36,7 +36,7 @@ module MundiApi
     attr_accessor :description
 
     # TODO: Write general description for this method
-    # @return [GetPlanResponse]
+    # @return [Plan]
     attr_accessor :plan
 
     # TODO: Write general description for this method
@@ -102,11 +102,10 @@ module MundiApi
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
-      if hash['pricing_scheme']
-        pricing_scheme = GetPricingSchemeResponse.from_hash(hash['pricing_scheme'])
-      end
+      pricing_scheme = PricingScheme.from_hash(hash['pricing_scheme']) if
+        hash['pricing_scheme']
       description = hash['description']
-      plan = GetPlanResponse.from_hash(hash['plan']) if hash['plan']
+      plan = Plan.from_hash(hash['plan']) if hash['plan']
       quantity = hash['quantity']
       cycles = hash['cycles']
       deleted_at = APIHelper.rfc3339(hash['deleted_at']) if hash['deleted_at']

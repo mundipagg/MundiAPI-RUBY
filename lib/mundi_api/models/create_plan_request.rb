@@ -57,8 +57,8 @@ module MundiApi
     # @return [String]
     attr_accessor :billing_type
 
-    # Plan's pricing scheme
-    # @return [CreatePricingSchemeRequest]
+    # Billing type
+    # @return [PricingScheme4]
     attr_accessor :pricing_scheme
 
     # Metadata
@@ -167,9 +167,8 @@ module MundiApi
       interval_count = hash['interval_count']
       billing_days = hash['billing_days']
       billing_type = hash['billing_type']
-      if hash['pricing_scheme']
-        pricing_scheme = CreatePricingSchemeRequest.from_hash(hash['pricing_scheme'])
-      end
+      pricing_scheme = PricingScheme4.from_hash(hash['pricing_scheme']) if
+        hash['pricing_scheme']
       metadata = hash['metadata']
       minimum_price = hash['minimum_price']
       cycles = hash['cycles']

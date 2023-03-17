@@ -27,8 +27,8 @@ module MundiApi
     # @return [String]
     attr_accessor :address_id
 
-    # Address data
-    # @return [CreateAddressRequest]
+    # The id of the address that will be used for shipping
+    # @return [Address1]
     attr_accessor :address
 
     # Data máxima de entrega
@@ -88,8 +88,7 @@ module MundiApi
       recipient_name = hash['recipient_name']
       recipient_phone = hash['recipient_phone']
       address_id = hash['address_id']
-      address = CreateAddressRequest.from_hash(hash['address']) if
-        hash['address']
+      address = Address1.from_hash(hash['address']) if hash['address']
       type = hash['type']
       max_delivery_date = APIHelper.rfc3339(hash['max_delivery_date']) if
         hash['max_delivery_date']

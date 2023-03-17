@@ -14,12 +14,12 @@ module MundiApi
     # @return [Integer]
     attr_accessor :total_amount
 
-    # Period Details
-    # @return [GetPeriodResponse]
+    # Current Invoice Amount
+    # @return [Period]
     attr_accessor :period
 
-    # Usages Details
-    # @return [ListUsagesDetailsResponse]
+    # Current Invoice Amount
+    # @return [Usages]
     attr_accessor :usages
 
     # Total discounted value
@@ -63,9 +63,8 @@ module MundiApi
       # Extract variables from the hash.
       subscription_id = hash['subscription_id']
       total_amount = hash['total_amount']
-      usages = ListUsagesDetailsResponse.from_hash(hash['Usages']) if
-        hash['Usages']
-      period = GetPeriodResponse.from_hash(hash['Period']) if hash['Period']
+      usages = Usages.from_hash(hash['Usages']) if hash['Usages']
+      period = Period.from_hash(hash['Period']) if hash['Period']
       total_discount = hash['total_discount']
       total_increment = hash['total_increment']
 

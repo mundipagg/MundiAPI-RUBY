@@ -15,8 +15,8 @@ module MundiApi
     # @return [String]
     attr_accessor :description
 
-    # Payment data
-    # @return [CreatePaymentRequest]
+    # Description
+    # @return [Payment]
     attr_accessor :payment
 
     # A mapping from model property names to API property names.
@@ -43,8 +43,7 @@ module MundiApi
       # Extract variables from the hash.
       amount = hash['amount']
       description = hash['description']
-      payment = CreatePaymentRequest.from_hash(hash['payment']) if
-        hash['payment']
+      payment = Payment.from_hash(hash['payment']) if hash['payment']
 
       # Create object from extracted values.
       CreateSetupRequest.new(amount,

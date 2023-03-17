@@ -44,7 +44,7 @@ module MundiApi
     attr_accessor :fb_access_token
 
     # TODO: Write general description for this method
-    # @return [GetAddressResponse]
+    # @return [Address]
     attr_accessor :address
 
     # TODO: Write general description for this method
@@ -134,8 +134,7 @@ module MundiApi
       document = hash['document']
       type = hash['type']
       fb_access_token = hash['fb_access_token']
-      address = GetAddressResponse.from_hash(hash['address']) if
-        hash['address']
+      address = Address.from_hash(hash['address']) if hash['address']
       metadata = hash['metadata']
       phones = GetPhonesResponse.from_hash(hash['phones']) if hash['phones']
       code = hash['code']

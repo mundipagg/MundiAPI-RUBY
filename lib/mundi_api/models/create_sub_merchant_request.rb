@@ -30,12 +30,12 @@ module MundiApi
     # @return [String]
     attr_accessor :type
 
-    # Phone
-    # @return [CreatePhoneRequest]
+    # Document type. Can be either 'individual' or 'company'
+    # @return [GetPhoneResponse]
     attr_accessor :phone
 
-    # Address
-    # @return [CreateAddressRequest]
+    # Document type. Can be either 'individual' or 'company'
+    # @return [Address1]
     attr_accessor :address
 
     # A mapping from model property names to API property names.
@@ -81,9 +81,8 @@ module MundiApi
       merchant_category_code = hash['merchant_category_code']
       document = hash['document']
       type = hash['type']
-      phone = CreatePhoneRequest.from_hash(hash['phone']) if hash['phone']
-      address = CreateAddressRequest.from_hash(hash['address']) if
-        hash['address']
+      phone = GetPhoneResponse.from_hash(hash['phone']) if hash['phone']
+      address = Address1.from_hash(hash['address']) if hash['address']
 
       # Create object from extracted values.
       CreateSubMerchantRequest.new(payment_facilitator_code,

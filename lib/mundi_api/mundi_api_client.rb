@@ -6,6 +6,30 @@
 module MundiApi
   #  mundi_api client class.
   class MundiApiClient
+    # Singleton access to subscriptions controller.
+    # @return [SubscriptionsController] Returns the controller instance.
+    def subscriptions
+      SubscriptionsController.instance
+    end
+
+    # Singleton access to orders controller.
+    # @return [OrdersController] Returns the controller instance.
+    def orders
+      OrdersController.instance
+    end
+
+    # Singleton access to plans controller.
+    # @return [PlansController] Returns the controller instance.
+    def plans
+      PlansController.instance
+    end
+
+    # Singleton access to invoices controller.
+    # @return [InvoicesController] Returns the controller instance.
+    def invoices
+      InvoicesController.instance
+    end
+
     # Singleton access to customers controller.
     # @return [CustomersController] Returns the controller instance.
     def customers
@@ -24,34 +48,10 @@ module MundiApi
       RecipientsController.instance
     end
 
-    # Singleton access to subscriptions controller.
-    # @return [SubscriptionsController] Returns the controller instance.
-    def subscriptions
-      SubscriptionsController.instance
-    end
-
-    # Singleton access to invoices controller.
-    # @return [InvoicesController] Returns the controller instance.
-    def invoices
-      InvoicesController.instance
-    end
-
-    # Singleton access to orders controller.
-    # @return [OrdersController] Returns the controller instance.
-    def orders
-      OrdersController.instance
-    end
-
     # Singleton access to tokens controller.
     # @return [TokensController] Returns the controller instance.
     def tokens
       TokensController.instance
-    end
-
-    # Singleton access to plans controller.
-    # @return [PlansController] Returns the controller instance.
-    def plans
-      PlansController.instance
     end
 
     # Singleton access to transactions controller.

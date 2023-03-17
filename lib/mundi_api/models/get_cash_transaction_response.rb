@@ -88,9 +88,8 @@ module MundiApi
         end
       end
       id = hash['id']
-      if hash['gateway_response']
-        gateway_response = GetGatewayResponseResponse.from_hash(hash['gateway_response'])
-      end
+      gateway_response = GatewayResponse.from_hash(hash['gateway_response']) if
+        hash['gateway_response']
       if hash['antifraud_response']
         antifraud_response = GetAntifraudResponse.from_hash(hash['antifraud_response'])
       end
@@ -106,9 +105,8 @@ module MundiApi
         hash['next_attempt']
       transaction_type = hash['transaction_type']
       metadata = hash['metadata']
-      interest = GetInterestResponse.from_hash(hash['interest']) if
-        hash['interest']
-      fine = GetFineResponse.from_hash(hash['fine']) if hash['fine']
+      interest = Interest.from_hash(hash['interest']) if hash['interest']
+      fine = Fine.from_hash(hash['fine']) if hash['fine']
       max_days_to_pay_past_due = hash['max_days_to_pay_past_due']
 
       # Create object from extracted values.

@@ -59,19 +59,19 @@ module MundiApi
     # @return [Boolean]
     attr_accessor :customer_editable
 
-    # Dados do comprador
-    # @return [GetCustomerResponse]
+    # Torna o objeto customer editável
+    # @return [Customer]
     attr_accessor :customer
 
-    # Dados do endereço de cobrança
-    # @return [GetAddressResponse]
+    # Torna o objeto customer editável
+    # @return [Billingaddress3]
     attr_accessor :billingaddress
 
-    # Configurações de cartão de crédito
+    # Torna o objeto customer editável
     # @return [GetCheckoutCreditCardPaymentResponse]
     attr_accessor :credit_card
 
-    # Configurações de boleto
+    # Torna o objeto customer editável
     # @return [GetCheckoutBoletoPaymentResponse]
     attr_accessor :boleto
 
@@ -79,8 +79,8 @@ module MundiApi
     # @return [Boolean]
     attr_accessor :billing_address_editable
 
-    # Configurações  de entrega
-    # @return [GetShippingResponse]
+    # Indica se o billing address poderá ser editado
+    # @return [Shipping]
     attr_accessor :shipping
 
     # Indica se possui entrega
@@ -99,12 +99,12 @@ module MundiApi
     # @return [String]
     attr_accessor :currency
 
-    # Configurações de cartão de débito
+    # Moeda
     # @return [GetCheckoutDebitCardPaymentResponse]
     attr_accessor :debit_card
 
-    # Bank transfer payment response
-    # @return [GetCheckoutBankTransferPaymentResponse]
+    # Moeda
+    # @return [BankTransfer]
     attr_accessor :bank_transfer
 
     # Accepted Brands
@@ -213,7 +213,7 @@ module MundiApi
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
       updated_at = APIHelper.rfc3339(hash['updated_at']) if hash['updated_at']
       customer_editable = hash['customer_editable']
-      billingaddress = GetAddressResponse.from_hash(hash['billingaddress']) if
+      billingaddress = Billingaddress3.from_hash(hash['billingaddress']) if
         hash['billingaddress']
       if hash['credit_card']
         credit_card = GetCheckoutCreditCardPaymentResponse.from_hash(hash['credit_card'])
@@ -221,24 +221,21 @@ module MundiApi
       boleto = GetCheckoutBoletoPaymentResponse.from_hash(hash['boleto']) if
         hash['boleto']
       billing_address_editable = hash['billing_address_editable']
-      shipping = GetShippingResponse.from_hash(hash['shipping']) if
-        hash['shipping']
+      shipping = Shipping.from_hash(hash['shipping']) if hash['shipping']
       shippable = hash['shippable']
       currency = hash['currency']
       accepted_brands = hash['accepted_brands']
       amount = hash['amount']
       canceled_at = APIHelper.rfc3339(hash['canceled_at']) if
         hash['canceled_at']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
       closed_at = APIHelper.rfc3339(hash['closed_at']) if hash['closed_at']
       expires_at = APIHelper.rfc3339(hash['expires_at']) if hash['expires_at']
       if hash['debit_card']
         debit_card = GetCheckoutDebitCardPaymentResponse.from_hash(hash['debit_card'])
       end
-      if hash['bank_transfer']
-        bank_transfer = GetCheckoutBankTransferPaymentResponse.from_hash(hash['bank_transfer'])
-      end
+      bank_transfer = BankTransfer.from_hash(hash['bank_transfer']) if
+        hash['bank_transfer']
 
       # Create object from extracted values.
       GetCheckoutPaymentResponse.new(id,

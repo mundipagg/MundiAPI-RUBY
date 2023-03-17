@@ -26,15 +26,15 @@ module MundiApi
     # @return [String]
     attr_accessor :gateway_affiliation_id
 
-    # Credit Card payment request
-    # @return [CreateCheckoutCreditCardPaymentRequest]
+    # Gateway Affiliation Id
+    # @return [CreditCard2]
     attr_accessor :credit_card
 
-    # Debit Card payment request
-    # @return [CreateCheckoutDebitCardPaymentRequest]
+    # Gateway Affiliation Id
+    # @return [DebitCard2]
     attr_accessor :debit_card
 
-    # Boleto payment request
+    # Gateway Affiliation Id
     # @return [CreateCheckoutBoletoPaymentRequest]
     attr_accessor :boleto
 
@@ -54,12 +54,12 @@ module MundiApi
     # @return [Boolean]
     attr_accessor :billing_address_editable
 
-    # Billing Address
-    # @return [CreateAddressRequest]
+    # Billing Address is editable?
+    # @return [BillingAddress1]
     attr_accessor :billing_address
 
-    # Bank Transfer payment request
-    # @return [CreateCheckoutBankTransferRequest]
+    # Billing Address is editable?
+    # @return [BankTransfer2]
     attr_accessor :bank_transfer
 
     # Accepted Brands
@@ -130,21 +130,17 @@ module MundiApi
       success_url = hash['success_url']
       skip_checkout_success_page = hash['skip_checkout_success_page']
       billing_address_editable = hash['billing_address_editable']
-      if hash['billing_address']
-        billing_address = CreateAddressRequest.from_hash(hash['billing_address'])
-      end
-      if hash['bank_transfer']
-        bank_transfer = CreateCheckoutBankTransferRequest.from_hash(hash['bank_transfer'])
-      end
+      billing_address = BillingAddress1.from_hash(hash['billing_address']) if
+        hash['billing_address']
+      bank_transfer = BankTransfer2.from_hash(hash['bank_transfer']) if
+        hash['bank_transfer']
       accepted_brands = hash['accepted_brands']
       default_payment_method = hash['default_payment_method']
       gateway_affiliation_id = hash['gateway_affiliation_id']
-      if hash['credit_card']
-        credit_card = CreateCheckoutCreditCardPaymentRequest.from_hash(hash['credit_card'])
-      end
-      if hash['debit_card']
-        debit_card = CreateCheckoutDebitCardPaymentRequest.from_hash(hash['debit_card'])
-      end
+      credit_card = CreditCard2.from_hash(hash['credit_card']) if
+        hash['credit_card']
+      debit_card = DebitCard2.from_hash(hash['debit_card']) if
+        hash['debit_card']
       boleto = CreateCheckoutBoletoPaymentRequest.from_hash(hash['boleto']) if
         hash['boleto']
       customer_editable = hash['customer_editable']

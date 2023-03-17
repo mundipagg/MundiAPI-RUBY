@@ -22,8 +22,8 @@ module MundiApi
     # @return [String]
     attr_accessor :type
 
-    # Address
-    # @return [CreateAddressRequest]
+    # Person type
+    # @return [Address1]
     attr_accessor :address
 
     # Metadata
@@ -93,8 +93,7 @@ module MundiApi
       email = hash['email']
       document = hash['document']
       type = hash['type']
-      address = CreateAddressRequest.from_hash(hash['address']) if
-        hash['address']
+      address = Address1.from_hash(hash['address']) if hash['address']
       metadata = hash['metadata']
       phones = CreatePhonesRequest.from_hash(hash['phones']) if hash['phones']
       code = hash['code']

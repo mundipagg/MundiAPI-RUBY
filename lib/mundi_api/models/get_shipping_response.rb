@@ -24,7 +24,7 @@ module MundiApi
     attr_accessor :recipient_phone
 
     # TODO: Write general description for this method
-    # @return [GetAddressResponse]
+    # @return [Address]
     attr_accessor :address
 
     # Data máxima de entrega
@@ -80,8 +80,7 @@ module MundiApi
       description = hash['description']
       recipient_name = hash['recipient_name']
       recipient_phone = hash['recipient_phone']
-      address = GetAddressResponse.from_hash(hash['address']) if
-        hash['address']
+      address = Address.from_hash(hash['address']) if hash['address']
       type = hash['type']
       max_delivery_date = APIHelper.rfc3339(hash['max_delivery_date']) if
         hash['max_delivery_date']

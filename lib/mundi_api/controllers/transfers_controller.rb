@@ -16,10 +16,10 @@ module MundiApi
       self.class.instance
     end
 
-    # TODO: type endpoint description here
-    # @param [CreateTransfer] request Required parameter: Example:
+    # CreateTransfer
+    # @param [CreateTransfer] body Required parameter: Example:
     # @return GetTransfer response from the API call
-    def create_transfer(request)
+    def post_create_transfer(body)
       # Prepare query url.
       _path_url = '/transfers/recipients'
       _query_builder = Configuration.base_uri.dup
@@ -28,23 +28,55 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
-        'content-type' => 'application/json; charset=utf-8'
+        'Content-Type' => 'application/json'
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.post(
         _query_url,
         headers: _headers,
-        parameters: request.to_json
+        parameters: body.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
       GetTransfer.from_hash(decoded)
     end
 
-    # TODO: type endpoint description here
+    # GetTransferById
     # @param [String] transfer_id Required parameter: Example:
     # @return GetTransfer response from the API call
     def get_transfer_by_id(transfer_id)
@@ -68,6 +100,38 @@ module MundiApi
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)
@@ -76,7 +140,7 @@ module MundiApi
 
     # Gets all transfers
     # @return ListTransfers response from the API call
-    def get_transfers
+    def get_transfers1
       # Prepare query url.
       _path_url = '/transfers'
       _query_builder = Configuration.base_uri.dup
@@ -93,6 +157,38 @@ module MundiApi
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
+      # Validate response against endpoint and global error codes.
+      if _context.response.status_code == 400
+        raise ErrorException.new(
+          'Invalid request',
+          _context
+        )
+      elsif _context.response.status_code == 401
+        raise ErrorException.new(
+          'Invalid API key',
+          _context
+        )
+      elsif _context.response.status_code == 404
+        raise ErrorException.new(
+          'An informed resource was not found',
+          _context
+        )
+      elsif _context.response.status_code == 412
+        raise ErrorException.new(
+          'Business validation error',
+          _context
+        )
+      elsif _context.response.status_code == 422
+        raise ErrorException.new(
+          'Contract validation error',
+          _context
+        )
+      elsif _context.response.status_code == 500
+        raise ErrorException.new(
+          'Internal server error',
+          _context
+        )
+      end
       validate_response(_context)
       # Return appropriate response type.
       decoded = APIHelper.json_deserialize(_context.response.raw_body)

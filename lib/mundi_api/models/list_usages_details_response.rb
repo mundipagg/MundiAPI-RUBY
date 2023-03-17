@@ -10,8 +10,8 @@ module MundiApi
     # @return [List of GetUsageResponse]
     attr_accessor :data
 
-    # paging object
-    # @return [PagingResponse]
+    # The usage objects
+    # @return [Paging]
     attr_accessor :paging
 
     # A mapping from model property names to API property names.
@@ -41,7 +41,7 @@ module MundiApi
           data << (GetUsageResponse.from_hash(structure) if structure)
         end
       end
-      paging = PagingResponse.from_hash(hash['paging']) if hash['paging']
+      paging = Paging.from_hash(hash['paging']) if hash['paging']
 
       # Create object from extracted values.
       ListUsagesDetailsResponse.new(data,

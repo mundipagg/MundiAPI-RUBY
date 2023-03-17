@@ -19,12 +19,12 @@ module MundiApi
     # @return [String]
     attr_accessor :customer_id
 
-    # Customer data
-    # @return [CreateCustomerRequest]
+    # The customer's id
+    # @return [Customer8]
     attr_accessor :customer
 
-    # Payment data
-    # @return [CreatePaymentRequest]
+    # The customer's id
+    # @return [Payment]
     attr_accessor :payment
 
     # Metadata
@@ -86,10 +86,8 @@ module MundiApi
       code = hash['code']
       amount = hash['amount']
       customer_id = hash['customer_id']
-      customer = CreateCustomerRequest.from_hash(hash['customer']) if
-        hash['customer']
-      payment = CreatePaymentRequest.from_hash(hash['payment']) if
-        hash['payment']
+      customer = Customer8.from_hash(hash['customer']) if hash['customer']
+      payment = Payment.from_hash(hash['payment']) if hash['payment']
       metadata = hash['metadata']
       antifraud = CreateAntifraudRequest.from_hash(hash['antifraud']) if
         hash['antifraud']

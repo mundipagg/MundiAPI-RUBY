@@ -14,8 +14,8 @@ module MundiApi
     # @return [String]
     attr_accessor :card_id
 
-    # Card data
-    # @return [CreateCardRequest]
+    # Card id
+    # @return [Card1]
     attr_accessor :card
 
     # The Card Token
@@ -49,7 +49,7 @@ module MundiApi
       # Extract variables from the hash.
       payment_method = hash['payment_method']
       card_id = hash['card_id']
-      card = CreateCardRequest.from_hash(hash['card']) if hash['card']
+      card = Card1.from_hash(hash['card']) if hash['card']
       card_token = hash['card_token']
 
       # Create object from extracted values.

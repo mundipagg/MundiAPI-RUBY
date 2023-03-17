@@ -24,7 +24,7 @@ module MundiApi
     attr_accessor :created_at
 
     # TODO: Write general description for this method
-    # @return [GetCustomerResponse]
+    # @return [Customer]
     attr_accessor :customer
 
     # A mapping from model property names to API property names.
@@ -59,8 +59,7 @@ module MundiApi
       code = hash['code']
       status = hash['status']
       created_at = APIHelper.rfc3339(hash['created_at']) if hash['created_at']
-      customer = GetCustomerResponse.from_hash(hash['customer']) if
-        hash['customer']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
 
       # Create object from extracted values.
       GetAccessTokenResponse.new(id,
