@@ -16,25 +16,27 @@ module MundiApi
       self.class.instance
     end
 
-    # CreateTransfer
-    # @param [CreateTransfer] body Required parameter: Example:
+    # GetTransferById
+    # @param [String] transfer_id Required parameter: Example:
     # @return GetTransfer response from the API call
-    def post_create_transfer(body)
+    def get_transfer_by_id(transfer_id)
       # Prepare query url.
-      _path_url = '/transfers/recipients'
+      _path_url = '/transfers/{transfer_id}'
+      _path_url = APIHelper.append_url_with_template_parameters(
+        _path_url,
+        'transfer_id' => transfer_id
+      )
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json',
-        'Content-Type' => 'application/json'
+        'accept' => 'application/json'
       }
       # Prepare and execute HttpRequest.
-      _request = @http_client.post(
+      _request = @http_client.get(
         _query_url,
-        headers: _headers,
-        parameters: body.to_json
+        headers: _headers
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)
@@ -76,27 +78,25 @@ module MundiApi
       GetTransfer.from_hash(decoded)
     end
 
-    # GetTransferById
-    # @param [String] transfer_id Required parameter: Example:
+    # CreateTransfer
+    # @param [CreateTransfer] body Required parameter: Example:
     # @return GetTransfer response from the API call
-    def get_transfer_by_id(transfer_id)
+    def post_create_transfer(body)
       # Prepare query url.
-      _path_url = '/transfers/{transfer_id}'
-      _path_url = APIHelper.append_url_with_template_parameters(
-        _path_url,
-        'transfer_id' => transfer_id
-      )
+      _path_url = '/transfers/recipients'
       _query_builder = Configuration.base_uri.dup
       _query_builder << _path_url
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'Content-Type' => 'application/json'
       }
       # Prepare and execute HttpRequest.
-      _request = @http_client.get(
+      _request = @http_client.post(
         _query_url,
-        headers: _headers
+        headers: _headers,
+        parameters: body.to_json
       )
       BasicAuth.apply(_request)
       _context = execute_request(_request)

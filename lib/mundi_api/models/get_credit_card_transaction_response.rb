@@ -57,6 +57,10 @@ module MundiApi
     # @return [String]
     attr_accessor :threed_authentication_url
 
+    # Identify when a card is prepaid, credit or debit.
+    # @return [String]
+    attr_accessor :funding_source
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -72,6 +76,7 @@ module MundiApi
       @_hash['acquirer_return_code'] = 'acquirer_return_code'
       @_hash['installments'] = 'installments'
       @_hash['threed_authentication_url'] = 'threed_authentication_url'
+      @_hash['funding_source'] = 'funding_source'
       @_hash = super().merge(@_hash)
       @_hash
     end
@@ -87,6 +92,7 @@ module MundiApi
                    acquirer_message = nil,
                    acquirer_return_code = nil,
                    threed_authentication_url = nil,
+                   funding_source = nil,
                    gateway_id = nil,
                    amount = nil,
                    status = nil,
@@ -119,6 +125,7 @@ module MundiApi
       @acquirer_return_code = acquirer_return_code
       @installments = installments
       @threed_authentication_url = threed_authentication_url
+      @funding_source = funding_source
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -158,6 +165,7 @@ module MundiApi
       acquirer_message = hash['acquirer_message']
       acquirer_return_code = hash['acquirer_return_code']
       threed_authentication_url = hash['threed_authentication_url']
+      funding_source = hash['funding_source']
       gateway_id = hash['gateway_id']
       amount = hash['amount']
       status = hash['status']
@@ -209,6 +217,7 @@ module MundiApi
                                            acquirer_message,
                                            acquirer_return_code,
                                            threed_authentication_url,
+                                           funding_source,
                                            gateway_id,
                                            amount,
                                            status,
