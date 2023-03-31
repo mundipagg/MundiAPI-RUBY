@@ -48,6 +48,12 @@ module MundiApi
       RecipientsController.instance
     end
 
+    # Singleton access to transfers controller.
+    # @return [TransfersController] Returns the controller instance.
+    def transfers
+      TransfersController.instance
+    end
+
     # Singleton access to tokens controller.
     # @return [TokensController] Returns the controller instance.
     def tokens
@@ -58,12 +64,6 @@ module MundiApi
     # @return [TransactionsController] Returns the controller instance.
     def transactions
       TransactionsController.instance
-    end
-
-    # Singleton access to transfers controller.
-    # @return [TransfersController] Returns the controller instance.
-    def transfers
-      TransfersController.instance
     end
 
     # Returns the configuration class for easy access.
