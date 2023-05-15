@@ -26,6 +26,10 @@ module MundiApi
     # @return [String]
     attr_accessor :recurrency_cycle
 
+    # Customer business segment code
+    # @return [Long]
+    attr_accessor :merchant_category_code
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -34,6 +38,7 @@ module MundiApi
       @_hash['card_token'] = 'card_token'
       @_hash['card'] = 'Card'
       @_hash['recurrency_cycle'] = 'recurrency_cycle'
+      @_hash['merchant_category_code'] = 'merchant_category_code'
       @_hash
     end
 
@@ -41,12 +46,14 @@ module MundiApi
                    card_id = nil,
                    card_token = nil,
                    card = nil,
-                   recurrency_cycle = nil)
+                   recurrency_cycle = nil,
+                   merchant_category_code = nil)
       @statement_descriptor = statement_descriptor
       @card_id = card_id
       @card_token = card_token
       @card = card
       @recurrency_cycle = recurrency_cycle
+      @merchant_category_code = merchant_category_code
     end
 
     # Creates an instance of the object from a hash.
@@ -59,13 +66,15 @@ module MundiApi
       card_token = hash['card_token']
       card = Card1.from_hash(hash['Card']) if hash['Card']
       recurrency_cycle = hash['recurrency_cycle']
+      merchant_category_code = hash['merchant_category_code']
 
       # Create object from extracted values.
       CreateVoucherPaymentRequest.new(statement_descriptor,
                                       card_id,
                                       card_token,
                                       card,
-                                      recurrency_cycle)
+                                      recurrency_cycle,
+                                      merchant_category_code)
     end
   end
 end
