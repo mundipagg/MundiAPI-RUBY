@@ -29,6 +29,10 @@ module MundiApi
     # @return [Object]
     attr_accessor :payer
 
+    # Pix provider TID
+    # @return [String]
+    attr_accessor :pix_provider_tid
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -37,6 +41,7 @@ module MundiApi
       @_hash['expires_at'] = 'expires_at'
       @_hash['additional_information'] = 'additional_information'
       @_hash['payer'] = 'payer'
+      @_hash['pix_provider_tid'] = 'pix_provider_tid'
       @_hash = super().merge(@_hash)
       @_hash
     end
@@ -46,6 +51,7 @@ module MundiApi
                    expires_at = nil,
                    additional_information = nil,
                    payer = nil,
+                   pix_provider_tid = nil,
                    gateway_id = nil,
                    amount = nil,
                    status = nil,
@@ -70,6 +76,7 @@ module MundiApi
       @expires_at = expires_at
       @additional_information = additional_information
       @payer = payer
+      @pix_provider_tid = pix_provider_tid
 
       # Call the constructor of the base class
       super(gateway_id,
@@ -110,6 +117,7 @@ module MundiApi
         end
       end
       payer = hash['payer']
+      pix_provider_tid = hash['pix_provider_tid']
       gateway_id = hash['gateway_id']
       amount = hash['amount']
       status = hash['status']
@@ -154,6 +162,7 @@ module MundiApi
                                     expires_at,
                                     additional_information,
                                     payer,
+                                    pix_provider_tid,
                                     gateway_id,
                                     amount,
                                     status,
