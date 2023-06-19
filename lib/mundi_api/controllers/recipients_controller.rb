@@ -36,6 +36,7 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name,
         'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
@@ -105,6 +106,7 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name,
         'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
@@ -172,7 +174,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -240,7 +243,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -301,6 +305,7 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name,
         'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
@@ -365,7 +370,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -463,7 +469,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -531,6 +538,7 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name,
         'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
@@ -601,6 +609,7 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name,
         'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
@@ -665,7 +674,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -732,6 +742,7 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name,
         'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
@@ -799,7 +810,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -884,7 +896,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -952,6 +965,7 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name,
         'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
@@ -1029,7 +1043,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -1094,6 +1109,7 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name,
         'Content-Type' => 'application/json'
       }
       # Prepare and execute HttpRequest.
@@ -1178,7 +1194,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -1243,7 +1260,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(
@@ -1311,6 +1329,7 @@ module MundiApi
       # Prepare headers.
       _headers = {
         'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name,
         'Content-Type' => 'application/json',
         'idempotency-key' => idempotency_key
       }
@@ -1375,7 +1394,8 @@ module MundiApi
       _query_url = APIHelper.clean_url _query_builder
       # Prepare headers.
       _headers = {
-        'accept' => 'application/json'
+        'accept' => 'application/json',
+        'ServiceRefererName' => Configuration.service_referer_name
       }
       # Prepare and execute HttpRequest.
       _request = @http_client.get(

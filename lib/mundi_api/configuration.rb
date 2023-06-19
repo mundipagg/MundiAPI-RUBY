@@ -11,6 +11,8 @@ module MundiApi
     # The base Uri for API calls
     @base_uri = 'https://api.mundipagg.com/core/v1'
 
+    @service_referer_name = 'TODO: Replace'
+
     # The username to use with basic authentication
     @basic_auth_user_name = 'TODO: Replace'
 
@@ -21,6 +23,7 @@ module MundiApi
     class << self
       attr_accessor :array_serialization
       attr_accessor :base_uri
+      attr_accessor :service_referer_name
       attr_accessor :basic_auth_user_name
       attr_accessor :basic_auth_password
     end
