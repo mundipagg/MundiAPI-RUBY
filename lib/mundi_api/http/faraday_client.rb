@@ -18,6 +18,7 @@ module MundiApi
         faraday.request :multipart
         faraday.request :url_encoded
         faraday.ssl[:ca_file] = Certifi.where
+        faraday.proxy = ENV['FARADAY_PROXY'] if ENV['FARADAY_PROXY']
         faraday.request :retry, max: max_retries, interval: if max_retries &&
                                                                retry_interval
                                                               retry_interval
