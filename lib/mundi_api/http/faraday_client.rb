@@ -18,6 +18,7 @@ module MundiApi
         faraday.request :multipart
         faraday.request :url_encoded
         faraday.ssl[:ca_file] = Certifi.where
+        faraday.proxy = Configuration.proxy if Configuration.proxy
         faraday.request :retry, max: max_retries, interval: if max_retries &&
                                                                retry_interval
                                                               retry_interval
@@ -35,9 +36,7 @@ module MundiApi
         http_request.query_url
       ) do |request|
         request.headers = http_request.headers
-        unless http_request.parameters.empty?
-          request.body = http_request.parameters
-        end
+        request.body = http_request.parameters unless http_request.parameters.empty?
       end
       convert_response(response)
     end
@@ -49,9 +48,7 @@ module MundiApi
         http_request.query_url
       ) do |request|
         request.headers = http_request.headers
-        unless http_request.parameters.empty?
-          request.body = http_request.parameters
-        end
+        request.body = http_request.parameters unless http_request.parameters.empty?
       end
       convert_response(response)
     end

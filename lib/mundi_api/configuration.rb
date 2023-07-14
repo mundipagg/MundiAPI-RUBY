@@ -19,13 +19,13 @@ module MundiApi
     # The password to use with basic authentication
     @basic_auth_password = 'TODO: Replace'
 
+    # The proxy server to use for the request
+    @proxy = nil
+
     # The attribute accessors for public properties.
     class << self
-      attr_accessor :array_serialization
-      attr_accessor :base_uri
-      attr_accessor :service_referer_name
-      attr_accessor :basic_auth_user_name
-      attr_accessor :basic_auth_password
+      attr_accessor :array_serialization, :base_uri, :service_referer_name, :basic_auth_user_name,
+                    :basic_auth_password, :proxy
     end
   end
 end
